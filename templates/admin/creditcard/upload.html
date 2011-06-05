@@ -1,0 +1,23 @@
+{% extends 'admin/base_site.html' %}
+{% load i18n %}
+
+{% block title %}Upload Purchaser CSV{% endblock %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+     <a href="../../../">Home</a> &rsaquo;
+     <a href="../../">Creditcard</a> &rsaquo; 
+     <a href="../">Purchasers</a> &rsaquo;
+     {% trans 'Upload' %}
+</div>
+{% endblock %}
+
+{% block content %}
+    <h2>Upload Purchaser CSV</h2>
+    {{ purchased_items|unordered_list }}
+
+    <form action={% url upload %} enctype="multipart/form-data" method="post">
+        {{ form.as_p }}
+        <input type="submit" value="Process File" />
+    </form>
+{% endblock %}

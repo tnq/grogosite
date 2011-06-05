@@ -1,0 +1,127 @@
+{% extends 'wordpress-base.html' %}
+
+{% block title %}Technique 2012 Senior Information{% endblock %}
+
+{% block content%}
+<div style="padding-top:30px; padding-bottom:30px; width:100%; text-align:center"><img src="http://technique.mit.edu/wp-content/uploads/2010/10/ghe_senior.jpg" /></div>
+<p class="info">This form is for filling out your biographical information to go with your senior photo in <em>Technique 2012</em>.  It is NOT for scheduling your senior photo - for that, please go back to our main <a href=http://technique.mit.edu/seniors/>seniors page</a>.
+<p class="info">Please fill out as many fields as you can.  You'll be able to review this information after you submit it, but changing it is somewhat of a hassle.</p>
+<p class="info">Want to see your previously submitted answers? Visit <a href={% url senior-email %}>this page</a>!</p>
+<p class="info">If you have any questions or concerns please email us at <a href="mailto:tnq-seniors@mit.edu">tnq-seniors@mit.edu</a>.
+<p class="info">Required fields have a <span class="required_callout">*</span>.
+    <form action={% url submit-info %} method="post">
+        {{ form.non_field_errors }}
+        <h3>Biographical Information</h3>
+        <div class="formSubSection">
+            <div class="fieldWrapper">
+                <p class="fieldSuperText"><span class="required_callout">*</span> Your name, as you want it to appear in the book:</p> 
+                {{ form.name.errors }}
+                {{ form.name }}
+                <p class="fieldSubText">Ex: "Timothy Beaver IV"</p>
+            </div>
+            <div class="fieldWrapper">
+                <p class="fieldSuperText">If your name has any special characters or accents, please describe them:</p> 
+                {{ form.name_comments.errors }}
+                {{ form.name_comments }}
+                <p class="fieldSubText">Ex: "Rene with an acute accent on the second e"</p>
+            </div>
+            <div class="fieldWrapper">
+                <p class="fieldSuperText"><span class="required_callout">*</span> The first letter of your last name (used to sort your name):</p> 
+                {{ form.sort_letter.errors }}
+                {{ form.sort_letter }}
+                <p class="fieldSubText">Ex: Timothy Beaver IV would enter "B"</p>
+            </div>
+            <div class="fieldWrapper">
+                <p class="fieldSuperText"><span class="required_callout">*</span> Your hometown:</p> 
+                {{ form.home_town.errors }}
+                {{ form.home_town }}
+                <p class="fieldSubText">Ex: "Chicago"</p>
+            </div>
+            <div class="fieldWrapper">
+                <p class="fieldSuperText"><span class="required_callout">*</span> Your home state (or country if not the USA):</p> 
+                {{ form.home_state_or_country.errors }}
+                {{ form.home_state_or_country }}
+                <p class="fieldSubText">Ex: "Illinois" or "Kenya"</p>
+            </div>
+        </div>
+        <h3>MIT Information</h3>
+        <div class="formSubSection">
+            <div class="fieldWrapper">
+                <p class="fieldSuperText"><span class="required_callout">*</span> Kerberos username:</p> 
+                {{ form.kerberos.errors }}
+                {{ form.kerberos }}
+                <p class="fieldSubText">Ex: "tbeaver"</p>
+            </div>
+            <div class="fieldWrapper">
+                <p class="fieldSuperText"><span class="required_callout">*</span> Major(s):</p> 
+                {{ form.major.errors }}
+                {{ form.major }}
+                <p class="fieldSubText">Only include numbers and letters.  Separate multiple majors by space-slash-space.</p>
+                <p class="fieldSubText">Ex: "3" or "7-A" or "6 / 15"</p>
+            </div>
+            <div class="fieldWrapper">
+                <p class="fieldSuperText">Minor(s):</p> 
+                {{ form.minor }}
+                {{ form.minor.errors }}
+            </div>
+            <div class="fieldWrapper">
+                <p class="fieldSuperText">Living Group / Dorm:</p> 
+                {{ form.lg }}
+                {{ form.lg.errors }}
+                <p class="fieldSubText">Ex: "Senior Haus" or "Conner 1"</p>
+            </div>
+        </div>
+        <h3>Activities</h3>
+        <div class="formSubSection">
+            {{ formset.management_form }}
+            {% for act_form in formset.forms %}
+                <p class="fieldSuperText">Name of group/activity (#{{ forloop.counter }})</p>
+                {{ act_form.title.errors }}
+                {{ act_form.title }}
+                {% if forloop.first %}
+                    <p class="fieldSubText">Please keep it short; try to use abbreviations!</p>
+                    <p class="fieldSubText">Ex: "Basketweaving Society" or "UA"</p>
+                {% endif %}
+
+                <p class="fieldCloseSuperText">Years Involved:</p>
+                {{ act_form.years.errors }}
+                {{ act_form.years }}
+                {% if forloop.first %}
+                    <p class="fieldSubText">Use 1 for freshman year, 2 for sophomore, etc. Separate with spaces only.</p>
+                    <p class="fieldSubText">Ex: "2" or "1 2 3 4" or "1 3 4"</p>
+                {% endif %}
+
+                <p class="fieldCloseSuperText">Offices held:</p>
+                {{ act_form.offices.errors }}
+                {{ act_form.offices }}
+                {% if forloop.first %}
+                    <p class="fieldSubText">Ex: "Social Chair"</p>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <h3>Favorite Quote:</h3>
+        <div class="formSubSection">
+            <div class="fieldWrapper">
+                <p class="fieldSuperText">Quote:</p> 
+                {{ form.quote.errors }}
+                {{ form.quote }}
+                <p class="fieldSubText">Don't use quotation marks. Don't put the name of the source.</p>
+                <p class="fieldSubText">Ex: I want to know God's thoughts... the rest are details.</p>
+            </div>
+            <div class="fieldWrapper">
+                <p class="fieldSuperText">Quote Source:</p> 
+                {{ form.quote_author.errors }}
+                {{ form.quote_author }}
+                <p class="fieldSubText">Ex: "Albert Einstein"</p>
+            </div>
+        </div>
+
+        <div class="formSubSection">
+            <br />
+            <br />
+            <input type="submit" value="Submit" />
+            <input type="reset" value="Reset Form" />
+        </div>
+    </form>
+{% endblock %}

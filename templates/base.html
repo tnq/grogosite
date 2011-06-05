@@ -1,0 +1,22 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <script src="http://web.mit.edu/nwiltsie/Public/sorttable.js"></script>
+        <link href="http://web.mit.edu/nwiltsie/Public/style.css" rel="stylesheet" type="text/css"></link>
+	{% block headerend %}{% endblock %}
+    </head>
+    <body>
+        <div id="header">
+            <h2>Technique Orders Management</h2>
+            {% block header %}{% endblock %}
+        </div>
+        <div id="content">
+        {% block content %}{% endblock %}
+        </div>
+        <div id="footer">
+	{% block footer %}
+	{% endblock %}
+        </div>
+    </body>
+</html>

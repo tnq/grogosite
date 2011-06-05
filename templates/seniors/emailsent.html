@@ -1,0 +1,10 @@
+{% extends 'wordpress-base.html' %}
+
+{% block title%}Email Sent{% endblock %}
+
+{% block content %}
+<h2>E-Mail Sent!</h2>
+
+<p class="info">An email has been sent to user  {{kerberos|upper}}.  Please email <a href="mailto:tnq-seniors@mit.edu">tnq-seniors@mit.edu</a> if you find any errors or wish to make any changes.</p>
+
+{% endblock %}

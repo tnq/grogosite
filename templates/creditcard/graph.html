@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Graph</title>
+        <script language="javascript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+	<script language="javascript" type="text/javascript" src="http://web.mit.edu/nwiltsie/www/flot/jquery.flot.js"></script>
+	<script language="javascript" type="text/javascript" src="http://web.mit.edu/nwiltsie/www/flot/jquery.flot.selection.js"></script>
+   <script>
+$(document).ready(function(){
+    var deliveries = { data: {{deliveries}}, label:"Daily Deliveries", color:1};
+    var total_deliveries = { data: {{total_deliveries}}, label:"Total Deliveries", color: 2};
+    var sales = { data: {{sales}}, label:"Daily Sales", color: 3};
+    var total_sales = { data: {{total_sales}}, label:"Total Sales", color:4};
+
+    var options = { xaxis: { mode: "time" },
+                    yaxes: [{ min: 0 }, { position:"right" }],
+                    legend: {position: 'nw'},
+                    lines: { steps: true },
+                    selection: { mode: "x" }
+                  }
+
+    var saleplot = $.plot($("#salediv"), [total_sales, total_deliveries], options );
+    var deliveryplot = $.plot($("#deliverydiv"), [sales, deliveries], options );
+    var overview = $.plot($("#overview"), [deliveries, sales, total_deliveries, total_sales], {
+                                series:{
+                                    lines: { show:true, lineWidth: 1 },
+                                    shadowSize: 0
+                                },
+                                xaxis: {ticks: [], mode:"time"},
+                                yaxis: {ticks: [], min: 0, autoscaleMargin: 0.1 },
+                                selection: { mode: "x" },
+                                legend: {show: false} 
+    });
+
+    $("#deliverydiv").bind("plotselected", function (event, ranges) {
+        // do the zooming
+        deliveryplot = $.plot($("#deliverydiv"), [sales, deliveries],
+                      $.extend(true, {}, options, {
+                          xaxis: { min: ranges.xaxis.from, max: ranges.xaxis.to }
+                      }));
+
+        saleplot = $.plot($("#salediv"), [total_sales, total_deliveries],
+                      $.extend(true, {}, options, {
+                          xaxis: { min: ranges.xaxis.from, max: ranges.xaxis.to }
+                      }));
+ 
+        // don't fire event on the overview to prevent eternal loop
+        overview.setSelection(ranges, true);
+    });
+
+    $("#salediv").bind("plotselected", function (event, ranges) {
+        // do the zooming
+        deliveryplot = $.plot($("#deliverydiv"), [sales, deliveries],
+                      $.extend(true, {}, options, {
+                          xaxis: { min: ranges.xaxis.from, max: ranges.xaxis.to }
+                      }));
+
+        saleplot = $.plot($("#salediv"), [total_sales, total_deliveries],
+                      $.extend(true, {}, options, {
+                          xaxis: { min: ranges.xaxis.from, max: ranges.xaxis.to }
+                      }));
+ 
+        // don't fire event on the overview to prevent eternal loop
+        overview.setSelection(ranges, true);
+    });
+    
+    $("#overview").bind("plotselected", function (event, ranges) {
+        saleplot.setSelection(ranges);
+        deliveryplot.setSelection(ranges);
+    });
+
+});
+   </script>
+    </head>
+    <body>
+        <div id="salediv" style="width:600px; height:300px;"></div>
+        <div id="deliverydiv" style="width:600px; height:300px;"></div>
+        <div id="overview" style="margin-left:50px;margin-top:20px;width:400px;height:50px"></div>
+    </body>
+</html>

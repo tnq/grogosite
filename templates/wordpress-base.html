@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <link href="http://technique.mit.edu/wp-content/themes/tnq_custom/style.css" rel="stylesheet" type="text/css"></link>
+        <link rel="shortcut icon" href="http://technique.mit.edu/scripts/favicon.gif" />
+    </head>
+    <body>
+        <div id="wrapper">
+        <div id="innerwrapper">
+        <div id="header">
+            <ul id="nav">
+                <li class="page_item page-item-3 current_page_item"><a href="http://technique.mit.edu/" title="
+Home">Home</a></li>
+                <li class="page_item page-item-7"><a href="http://technique.mit.edu/seniors/" title="Senior Portraits">Senior Portraits</a></li>
+                <li class="page_item page-item-32"><a href="http://technique.mit.edu/lg/" title="Living Groups">Living Groups</a></li>
+                <li class="page_item page-item-44"><a href="http://technique.mit.edu/join/" title="Join Us">Join Us</a></li>
+                <li class="page_item page-item-62"><a href="http://technique.mit.edu/patrons/" title="Be a Patron">Be a Patron</a></li>
+                <li class="page_item page-item-86"><a href="http://technique.mit.edu/buy/" title="Buy a Book">Buy a Book</a></li>
+                <li class="page_item page-item-2"><a href="http://technique.mit.edu/about/" title="About">About</a></li>
+            </ul>
+        </div>
+        <div id="content2">
+        {% block content %}{% endblock %}
+        </div>
+        <div id="footer">
+	{% block footer %}
+	{% endblock %}
+        </div>
+        </div>
+        </div>
+    </body>
+</html>

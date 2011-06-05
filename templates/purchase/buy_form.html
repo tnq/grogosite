@@ -1,0 +1,156 @@
+{% extends 'wordpress-base.html' %}
+
+{% block title %}Order &emdash technique &#8211; the yearbook of mit{% endblock %}
+
+{% block content%}
+
+<h3>THIS IS A TEST PAGE, DO NOT ORDER ANYTHING FROM THIS PAGE!</h3>
+<p class="info">This page is for ordering Technique yearbooks using your credit card as payment. We accept <strong>Visa, Master Card, American Express,</strong> and <strong>Discover!</strong> The form is submitted using Secure Sockets Layer (SSL) technology to ensure your privacy.</p> 
+<p class="info">If you order <em>Technique 2011</em> (the upcoming year's book) or a set of four years' books (2008-2011), it will be <strong>available for pickup in the student center in May 2011.</strong> We will have booths in front of LaVerde's and it will be convenient to retrieve!</p> 
+<p class="info">If you choose shipping at an additional cost, which is recommended for off-campus orderers, they will ship the <strong>second half of June 2011</strong>. Note that <strong>ALL</strong> orders will be charged to your credit card within days.</p> 
+<p class="info">Javascript <strong>MUST</strong> be enabled in your browser for the order amount to process. If you cannot enable Javascript, please try a different browser or computer! Please fill in all required fields, and please read the <a href="#returnpolicy">Return Policy</a> and <a href="http://web.mit.edu/chargemit/policy.html">Privacy Policy</a>. If you have trouble, contact us at <a href="mailto:tnq-orders@mit.edu">tnq-orders@mit.edu</a>.</p> 
+<div id="orderform"> 
+    <h3>Become a Patron</h3> 
+    <form action="https://shopmitprd.mit.edu/controller/index.php?auto_submit=Y" method=post onSubmit="return submitForm(this)"> 
+    <input name="merchant_id" type="hidden" value="MIT_SAO_Technique" /> 
+    <input name="amount" type="hidden" value="0" /> 
+    <input name="billTo_country" type="hidden" value="us" /> 
+    <input name="shipping_method" type="hidden" value=":none" /> 
+    <p class="info">Patrons of Technique will receive a copy of <em>Technique 2011</em> for no additional charge. Platinum, Gold, and Silver Patrons will receive an additional gift: a beautifully mounted photograph taken on the MIT campus by our photographers. See our <a href="patrons">Patrons</a> page for more details.</p> 
+<div class="ordersection"> 
+<p class="orderoption"> 
+<input title="Platinum" onclick="this.form.total.value=makeChoice(this); this.form.merchantDefinedData4.value=concatNames(this);" name="Patron" type="radio" value="600.00" /> Become a <strong>Platinum Patron</strong> of <em>Technique 2011</em> for <strong>$600!</strong></p> 
+<p class="orderoption"> 
+<input title="Gold" onclick="this.form.total.value=makeChoice(this); this.form.merchantDefinedData4.value=concatNames(this);" name="Patron" type="radio" value="300.00" /> Become a <strong><span style="color: #ffcc00;">Gold Patron</span></strong> of <em>Technique 2011</em> for <strong>$300!</strong></p> 
+<p class="orderoption"> 
+<input title="Silver" onclick="this.form.total.value=makeChoice(this); this.form.merchantDefinedData4.value=concatNames(this);" name="Patron" type="radio" value="200.00" /> Become a <strong><span style="color: #cccccc;">Silver Patron</span></strong> of <em>Technique 2011</em> for <strong>$200!</strong></p> 
+<p class="orderoption"> 
+<input title="Bronze" onclick="this.form.total.value=makeChoice(this); this.form.merchantDefinedData4.value=concatNames(this);" name="Patron" type="radio" value="100.00" /> Become a <strong><span style="color: #cc9900;">Bronze Patron</span></strong> of <em>Technique 2011</em> for <strong>$100!</strong></p> 
+<p class="orderoption"><button type="button" onclick="clearPatronChoice(this); this.form.total.value=makeChoice(this);this.form.merchantDefinedData4.value=concatNames(this);">Clear Patron choice</button></p> 
+<p class="orderoption"><strong><br /> 
+</strong></p> 
+<p class="orderoption"><strong>Patrons Only:</strong> The name you would like to appear in <em>Technique 2011</em>:</p> 
+<p class="orderoption"> 
+<input maxlength="64" name="merchantDefinedData2" size="60" type="text" /></p> 
+<p class="orderoption"><strong><br /> 
+</strong></p> 
+</div> 
+<h3>Or just buy some books!</h3> 
+<div class="ordersection"> 
+<select name="2011-Book" onchange="this.form.total.value=makeChoice(this); this.form.merchantDefinedData4.value=concatNames(this);"> 
+<option title="0" value="0">0</option> 
+<option title="1" value="50">1</option> 
+<option title="2" value="100">2</option> 
+<option title="3" value="150">3</option> 
+<option title="4" value="200">4</option> 
+</select> 
+<p class="orderselecttext">Pre-Order <em>Technique 2011</em> for <strong>$50!</strong>  That&#8217;s $10 in savings!</p> 
+<p class="ordernote">(Pickup May 2011, Ships June 2011)</p> 
+<select name="2010-Book" onchange="this.form.total.value=makeChoice(this); this.form.merchantDefinedData4.value=concatNames(this);"> 
+<option title="0" value="0">0</option> 
+<option title="1" value="60">1</option> 
+<option title="2" value="120">2</option> 
+<option title="3" value="180">3</option> 
+<option title="4" value="240">4</option> 
+</select> 
+<p class="orderselecttext">Order last year&#8217;s<em>Technique 2010</em> for <strong>$60!</strong></p> 
+<p class="ordernote">(Pickup May 2011, Ships June 2011)</p> 
+<select name="2009-Book" onchange="this.form.total.value=makeChoice(this); this.form.merchantDefinedData4.value=concatNames(this);"> 
+<option title="0" value="0">0</option> 
+<option title="1" value="60">1</option> 
+<option title="2" value="120">2</option> 
+<option title="3" value="180">3</option> 
+<option title="4" value="240">4</option> 
+</select> 
+<p class="orderselecttext">Order <em>Technique 2009</em> for <strong>$60!</strong></p> 
+<p class="ordernote">(Pickup May 2011, Ships June 2011)</p> 
+<select name="2008-Book" onchange="this.form.total.value=makeChoice(this); this.form.merchantDefinedData4.value=concatNames(this);"> 
+<option title="0" value="0">0</option> 
+<option title="1" value="60">1</option> 
+<option title="2" value="120">2</option> 
+<option title="3" value="180">3</option> 
+<option title="4" value="240">4</option> 
+</select> 
+<p class="orderselecttext">Order <em>Technique 2008</em> for <strong>$60!</strong></p> 
+<p class="ordernote">(Pickup May 2011, Ships June 2011)</p> 
+<p><strong> </strong></p> 
+<p class="orderoption"> 
+<input title="Bundle" onclick="this.form.total.value=makeChoice(this); this.form.merchantDefinedData4.value=concatNames(this);" name="Bundle" type="checkbox" value="199" /> Order all four years <em>Technique 2008-2011</em> for <strong>$199!</strong> ($31 savings!)</p> 
+<p class="ordernote">(Pickup May 2011, Ships June 2011)</p> 
+</div> 
+<p class="reply">Older copies of <em>Technique</em> are available upon request.  Email tnq-orders@mit.edu for more information.</p> 
+<h3>Shipping</h3> 
+<p class="reply">Shipping costs $5 / book.  The current year&#8217;s book is usually shipped out in the second week of June.  All other orders are generally processed within a few weeks and sent via USPS Media Mail.  Please note that we do not generally reimburse shipping costs, even if the purchaser or student picks the book up in person.</p> 
+<div class="ordersection"> 
+<p class="orderoption"> 
+<input title="Shipping" onclick="this.form.total.value=makeChoice(this); this.form.merchantDefinedData4.value=concatNames(this);" name="Shipping" type="checkbox" value="5" /> Purchase shipping for <strong>$5 / book</strong>!</p> 
+</div> 
+<div class="ordersection"> 
+<p class="ordertotal">Your Order Total Is:<br /> 
+<input name="total" readonly="readonly" size="9" type="text" /></p> 
+<p class="ordertotal">Your Order Is:<br /> 
+<input name="merchantDefinedData4" readonly="readonly" size="80" type="text" /></p> 
+</div> 
+<p class="reply">If checkboxes above do not cause the Order Total to accumulate, you probably have Javascript disabled. Turn it on, or try a different browser or computer. The Order Total listed above MUST be correct for your order to be processed!</p> 
+<p><strong> </strong></p> 
+<h3>Billing Information</h3> 
+<p class="reply">Please enter your credit card billing address.  USA addresses only.<br />Items marked with a <span style="color: #ff0000;">*</span> are required.</p> 
+<div class="ordersection"> 
+<p class="orderoption"><span style="color: #ff0000;">* </span>First Name:<br /> 
+<input maxlength="60" name="billTo_firstName" size="30" type="text" /></p> 
+<p class="orderoption"><span style="color: #ff0000;">* </span>Last Name:<br /> 
+<input maxlength="60" name="billTo_lastName" size="30" type="text" /></p> 
+<p class="orderoption"><span style="color: #ff0000;">* </span>Email:<br /> 
+<input maxlength="100" name="billTo_email" size="60" type="text" /></p> 
+<p class="orderoption">Company:<br /> 
+<input maxlength="40" name="billTo_company" size="60" type="text" /></p> 
+<p class="orderoption"><span style="color: #ff0000;">* </span>Address 1:<br /> 
+<input maxlength="50" name="billTo_street1" size="60" type="text" /></p> 
+<p class="orderoption">Address 2:<br /> 
+<input maxlength="50" name="billTo_street2" size="60" type="text" /></p> 
+<p class="orderoption"><span style="color: #ff0000;">* </span>City:<br /> 
+<input maxlength="50" name="billTo_city" size="60" type="text" /></p> 
+<p class="orderoption"><span style="color: #ff0000;">* </span>State:<br /> 
+<input maxlength="2" name="billTo_state" size="2" type="text" /></p> 
+<p class="orderoption"><span style="color: #ff0000;">* </span>Zip:<br /> 
+<input maxlength="5" name="billTo_postalCode" size="5" type="text" /></p> 
+<p class="orderoption"><span style="color: #ff0000;">* </span>Phone:<br /> 
+<input maxlength="15" name="billTo_phoneNumber" size="15" type="text" /></p> 
+</div> 
+<h3>Pickup / Shipping Information</h3> 
+<p class="reply">Students or others picking up a book must present an ID matching the name entered below.</p> 
+<div class="ordersection"> 
+<p class="orderoption"><span style="color: #ff0000;">* </span>First Name:<br /> 
+<input maxlength="60" name="shipTo_firstName" size="30" type="text" /></p> 
+<p class="orderoption"><span style="color: #ff0000;">* </span>Last Name:<br /> 
+<input maxlength="60" name="shipTo_lastName" size="30" type="text" /></p> 
+</div> 
+<p class="reply">Only enter the following information if shipping is chosen.</p> 
+<div class="ordersection"> 
+<p class="orderoption">Company:<br /> 
+<input maxlength="40" name="shipTo_company" size="60" type="text" /></p> 
+<p class="orderoption"><span style="color: #ff0000;">* </span>Address 1:<br /> 
+<input maxlength="50" name="shipTo_street1" size="60" type="text" /></p> 
+<p class="orderoption">Address 2:<br /> 
+<input maxlength="50" name="shipTo_street2" size="60" type="text" /></p> 
+<p class="orderoption"><span style="color: #ff0000;">* </span>City:<br /> 
+<input maxlength="50" name="shipTo_city" size="60" type="text" /></p> 
+<p class="orderoption"><span style="color: #ff0000;">* </span>State:<br /> 
+<input maxlength="2" name="shipTo_state" size="2" type="text" /></p> 
+<p class="orderoption"><span style="color: #ff0000;">* </span>Zip:<br /> 
+<input maxlength="5" name="shipTo_postalCode" size="5" type="text" /></p> 
+</div> 
+<h3>Almost there!</h3> 
+<p class="reply">Please make sure all of the above information is correct &#8211; mistakes will delay the processing of your order.  Once you are ready, click the &#8220;Next&#8221; button once and you will be redirected to a secure form to enter your credit card information.</p> 
+<div class="ordersection"> 
+<p class="orderoption"><button type=submit name=submitbutton>Next</button></p> 
+<p class="orderoption"><button type=reset>Clear Form</button></p> 
+</div> 
+</form> 
+</div> 
+
+
+</div>
+
+
+{% endblock %}

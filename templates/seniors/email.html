@@ -1,0 +1,24 @@
+{% extends 'wordpress-base.html' %}
+
+{% block title%}Technique 2011 Senior Information Request{% endblock %}
+
+{% block content %}
+<h2>Check Your Information</h2> 
+<p class="info">If you have already submitted your Senior information for inclusion in <em>Technique 2011</em> <a href={% url enter-info %}>here</a>, you can re-send the confirmation email by entering your Kerberos name (without '@mit.edu'!) in the form below:</p>
+
+<form action={% url submit-email %} method="post">
+    <div class="formSubSection">
+        <div class="fieldWrapper">
+            <p class="fieldSuperText">Kerberos:</p> 
+            {{ form.kerberos.errors }}
+            {{ form.kerberos }}
+            <p class="fieldSubText">Ex: "tbeaver"</p>
+        </div>
+        <div class="fieldWrapper">
+            <p></p>
+            <input type="submit" value="Resend Confirmation" />
+        </div>
+    </div>
+</form>
+
+{% endblock %}

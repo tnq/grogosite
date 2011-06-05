@@ -1,0 +1,26 @@
+{% extends 'wordpress-base.html' %}
+
+{% block title%}Technique 2011 Senior Information{% endblock %}
+
+{% block content %}
+<h2>Thanks!</h2>
+<p class="info">Thanks, {{ senior.name }}!  All the information below is now in our database.  If you see any mistakes or want to change anything, please email <a href="mailto:tnq-seniors@mit.edu">tnq-seniors@mit.edu</a> - we reject duplicate kerberos usernames, so you will not be able to re-submit the form.</p>
+
+<ul>
+{% for field in senior_object %}
+    <li><b>{{ field.label }}:</b> {{ field.data }}</li>
+{% endfor %}
+
+{% for activity in activities %}
+    <br />
+    <li><b>Activity #{{ forloop.counter }}</b>: {{ activity.title }}</li>
+    <li><b>Years</b>: {{ activity.years }}</li>
+    <li><b>Offices</b>: {{ activity.offices }}</li>
+{% endfor %}
+</ul>
+
+<p class="info">Click <a href={% url enter-info %}>here</a> to return to the form (your answers have been cleared).</p>
+
+
+
+{% endblock %}
