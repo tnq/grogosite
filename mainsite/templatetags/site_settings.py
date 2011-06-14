@@ -1,10 +1,15 @@
 from django import template
 from scripts.mainsite.models import Setting
+from django.core.exceptions import ObjectDoesNotExist
 
 register = template.Library()
 
 def tnq_setting(tag):
-    return Setting.objects.get(tag=tag).value
+    try:
+        value = Setting.objects.get(tag=tag).value
+    except ObjectDoesNotExist:
+        value = ""
+    return value
 
 register.simple_tag(tnq_setting)    
 

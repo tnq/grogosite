@@ -7,12 +7,7 @@ class Book(models.Model):
     price = models.IntegerField()
     
     def __unicode__(self):
-	return "%d ($%d)" % (self.year, self.price)
+	    return "%d ($%d)" % (self.year, self.price)
 
-class Patron(models.Model):
-    type = models.CharField(max_length = 10)
-    color = models.CharField(max_length = 6)
-    price = models.IntegerField()
-
-    def __unicode__(self):
-        return "%s - $%d (%d)" % (self.type, self.price, self.year)
+    class Meta:
+        ordering = ['-year']

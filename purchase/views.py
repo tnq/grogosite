@@ -10,6 +10,24 @@ from django.forms.models import model_to_dict
 from django.forms.formsets import formset_factory
 from django.core.mail import send_mail, EmailMessage
 from django.core.exceptions import ObjectDoesNotExist
+from scripts.purchase.models import Book
+
+class BookForm(forms.Form):
+    numbers = forms.ChoiceField(choices=[(i,i) for i in range(1,5)])
+    years = forms.ChoiceField(choices=
+            [(book.year, "%s ($%s)"% (book.year, book.price)) for book in Book.objects.all().order_by("-year")])
+
+BookFormSet = formset_factory(BookForm, extra=0)
 
 def buy_form(request):
-    return render_to_response('purchase/buy_form.html', { })
+    if request.method == "POST":
+        formset = BookFormSet(request.POST)
+        for form in formset.forms:
+            if form.is_valid():
+                print form.cleaned_data
+            else:
+                print "Invalid form!"
+                print form
+    else:
+        formset = BookFormSet()
+    return render_to_response('purchase/buy_form.html', {'formset':formset })

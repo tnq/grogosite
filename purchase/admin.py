@@ -1,6 +1,5 @@
 from django.contrib import admin
-from scripts.purchase.models import Patron, Book
+from scripts.purchase.models import Book
 
-admin.site.register(Patron)
 admin.site.register(Book)
 

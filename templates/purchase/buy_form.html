@@ -1,35 +1,34 @@
 {% extends 'wordpress-base.html' %}
 
-{% block title %}Order &emdash technique &#8211; the yearbook of mit{% endblock %}
+{% block title %}Order - technique &#8211; the yearbook of mit{% endblock %}
 
 {% block content%}
+{% load site_settings %}
 
 <h3>THIS IS A TEST PAGE, DO NOT ORDER ANYTHING FROM THIS PAGE!</h3>
 <p class="info">This page is for ordering Technique yearbooks using your credit card as payment. We accept <strong>Visa, Master Card, American Express,</strong> and <strong>Discover!</strong> The form is submitted using Secure Sockets Layer (SSL) technology to ensure your privacy.</p> 
-<p class="info">If you order <em>Technique 2011</em> (the upcoming year's book) or a set of four years' books (2008-2011), it will be <strong>available for pickup in the student center in May 2011.</strong> We will have booths in front of LaVerde's and it will be convenient to retrieve!</p> 
-<p class="info">If you choose shipping at an additional cost, which is recommended for off-campus orderers, they will ship the <strong>second half of June 2011</strong>. Note that <strong>ALL</strong> orders will be charged to your credit card within days.</p> 
 <p class="info">Javascript <strong>MUST</strong> be enabled in your browser for the order amount to process. If you cannot enable Javascript, please try a different browser or computer! Please fill in all required fields, and please read the <a href="#returnpolicy">Return Policy</a> and <a href="http://web.mit.edu/chargemit/policy.html">Privacy Policy</a>. If you have trouble, contact us at <a href="mailto:tnq-orders@mit.edu">tnq-orders@mit.edu</a>.</p> 
 <div id="orderform"> 
-    <h3>Become a Patron</h3> 
-    <form action="https://shopmitprd.mit.edu/controller/index.php?auto_submit=Y" method=post onSubmit="return submitForm(this)"> 
+    <form action="{% url buy_form %}" method=post> 
     <input name="merchant_id" type="hidden" value="MIT_SAO_Technique" /> 
     <input name="amount" type="hidden" value="0" /> 
     <input name="billTo_country" type="hidden" value="us" /> 
     <input name="shipping_method" type="hidden" value=":none" /> 
-    <p class="info">Patrons of Technique will receive a copy of <em>Technique 2011</em> for no additional charge. Platinum, Gold, and Silver Patrons will receive an additional gift: a beautifully mounted photograph taken on the MIT campus by our photographers. See our <a href="patrons">Patrons</a> page for more details.</p> 
+
+    {{ formset.management_form }}
+
+    <h3>Become a Patron</h3> 
+    <p class="info">Patrons of Technique will receive a copy of <em>Technique {% tnq_setting "tnq_year" %}</em> for no additional charge. Platinum, Gold, and Silver Patrons will receive an additional gift: a beautifully mounted photograph taken on the MIT campus by our photographers. See our <a href="patrons">Patrons</a> page for more details.</p> 
 <div class="ordersection"> 
 <p class="orderoption"> 
-<input title="Platinum" onclick="this.form.total.value=makeChoice(this); this.form.merchantDefinedData4.value=concatNames(this);" name="Patron" type="radio" value="600.00" /> Become a <strong>Platinum Patron</strong> of <em>Technique 2011</em> for <strong>$600!</strong></p> 
-<p class="orderoption"> 
-<input title="Gold" onclick="this.form.total.value=makeChoice(this); this.form.merchantDefinedData4.value=concatNames(this);" name="Patron" type="radio" value="300.00" /> Become a <strong><span style="color: #ffcc00;">Gold Patron</span></strong> of <em>Technique 2011</em> for <strong>$300!</strong></p> 
-<p class="orderoption"> 
-<input title="Silver" onclick="this.form.total.value=makeChoice(this); this.form.merchantDefinedData4.value=concatNames(this);" name="Patron" type="radio" value="200.00" /> Become a <strong><span style="color: #cccccc;">Silver Patron</span></strong> of <em>Technique 2011</em> for <strong>$200!</strong></p> 
-<p class="orderoption"> 
-<input title="Bronze" onclick="this.form.total.value=makeChoice(this); this.form.merchantDefinedData4.value=concatNames(this);" name="Patron" type="radio" value="100.00" /> Become a <strong><span style="color: #cc9900;">Bronze Patron</span></strong> of <em>Technique 2011</em> for <strong>$100!</strong></p> 
-<p class="orderoption"><button type="button" onclick="clearPatronChoice(this); this.form.total.value=makeChoice(this);this.form.merchantDefinedData4.value=concatNames(this);">Clear Patron choice</button></p> 
-<p class="orderoption"><strong><br /> 
-</strong></p> 
-<p class="orderoption"><strong>Patrons Only:</strong> The name you would like to appear in <em>Technique 2011</em>:</p> 
+    <input title="{% tnq_setting 'patron_year' %}-Platnium" onclick="this.form.total.value=makeChoice(this); this.form.merchantDefinedData4.value=concatNames(this);" name="Patron" type="radio" value="{% tnq_setting "platinum_price" %}" /> Become a <strong>Platinum Patron</strong> of <em>Technique {% tnq_setting "tnq_year" %}</em> for <strong>${% tnq_setting "platinum_price" %}!</strong>
+    <input title="{% tnq_setting 'patron_year' %}-Gold" onclick="this.form.total.value=makeChoice(this); this.form.merchantDefinedData4.value=concatNames(this);" name="Patron" type="radio" value="{% tnq_setting "gold_price" %}" /> Become a <strong>Gold Patron</strong> of <em>Technique {% tnq_setting "tnq_year" %}</em> for <strong>${% tnq_setting "gold_price" %}!</strong>
+    <input title="{% tnq_setting 'patron_year' %}-Silver" onclick="this.form.total.value=makeChoice(this); this.form.merchantDefinedData4.value=concatNames(this);" name="Patron" type="radio" value="{% tnq_setting "silver_price" %}" /> Become a <strong>Silver Patron</strong> of <em>Technique {% tnq_setting "tnq_year" %}</em> for <strong>${% tnq_setting "silver_price" %}!</strong>
+    <input title="{% tnq_setting 'patron_year' %}-Bronze" onclick="this.form.total.value=makeChoice(this); this.form.merchantDefinedData4.value=concatNames(this);" name="Patron" type="radio" value="{% tnq_setting "bronze_price" %}" /> Become a <strong>Bronze Patron</strong> of <em>Technique {% tnq_setting "tnq_year" %}</em> for <strong>${% tnq_setting "bronze_price" %}!</strong></p>
+
+    <p class="orderoption"><button type="button" onclick="clearPatronChoice(this); this.form.total.value=makeChoice(this);this.form.merchantDefinedData4.value=concatNames(this);">Clear Patron choice</button></p>
+
+<p class="orderoption"><strong>Patrons Only:</strong> The name you would like to appear in <em>Technique {% tnq_setting "tnq_year" %}</em>:</p> 
 <p class="orderoption"> 
 <input maxlength="64" name="merchantDefinedData2" size="60" type="text" /></p> 
 <p class="orderoption"><strong><br /> 
@@ -44,36 +43,18 @@
 <option title="3" value="150">3</option> 
 <option title="4" value="200">4</option> 
 </select> 
-<p class="orderselecttext">Pre-Order <em>Technique 2011</em> for <strong>$50!</strong>  That&#8217;s $10 in savings!</p> 
-<p class="ordernote">(Pickup May 2011, Ships June 2011)</p> 
-<select name="2010-Book" onchange="this.form.total.value=makeChoice(this); this.form.merchantDefinedData4.value=concatNames(this);"> 
-<option title="0" value="0">0</option> 
-<option title="1" value="60">1</option> 
-<option title="2" value="120">2</option> 
-<option title="3" value="180">3</option> 
-<option title="4" value="240">4</option> 
-</select> 
-<p class="orderselecttext">Order last year&#8217;s<em>Technique 2010</em> for <strong>$60!</strong></p> 
-<p class="ordernote">(Pickup May 2011, Ships June 2011)</p> 
-<select name="2009-Book" onchange="this.form.total.value=makeChoice(this); this.form.merchantDefinedData4.value=concatNames(this);"> 
-<option title="0" value="0">0</option> 
-<option title="1" value="60">1</option> 
-<option title="2" value="120">2</option> 
-<option title="3" value="180">3</option> 
-<option title="4" value="240">4</option> 
-</select> 
-<p class="orderselecttext">Order <em>Technique 2009</em> for <strong>$60!</strong></p> 
-<p class="ordernote">(Pickup May 2011, Ships June 2011)</p> 
-<select name="2008-Book" onchange="this.form.total.value=makeChoice(this); this.form.merchantDefinedData4.value=concatNames(this);"> 
-<option title="0" value="0">0</option> 
-<option title="1" value="60">1</option> 
-<option title="2" value="120">2</option> 
-<option title="3" value="180">3</option> 
-<option title="4" value="240">4</option> 
-</select> 
-<p class="orderselecttext">Order <em>Technique 2008</em> for <strong>$60!</strong></p> 
-<p class="ordernote">(Pickup May 2011, Ships June 2011)</p> 
-<p><strong> </strong></p> 
+<p class="orderselecttext">Pre-Order <em>Technique {% tnq_setting "tnq_year" %}</em> for <strong>$50!</strong>  That&#8217;s $10 in savings!</p> 
+<p class="ordernote">(Pickup May {% tnq_setting "tnq_year" %}, Ships late May {% tnq_setting "tnq_year" %})</p> 
+<div style="display:none;" id="form_template">
+    <div class="booksection" id="booksection__prefix__">
+{{ formset.empty_form.numbers.errors }}
+{{ formset.empty_form.years.errors }}
+Buy{{ formset.empty_form.numbers }}copy/copies of <em>Technique</em>{{ formset.empty_form.years }}
+    </div>
+</div>
+<div id="forms"></div>
+<input type="button" value="Add an older book to order" id="add_button" />
+<input type="button" value="Remove book from order" id="remove_button" />
 <p class="orderoption"> 
 <input title="Bundle" onclick="this.form.total.value=makeChoice(this); this.form.merchantDefinedData4.value=concatNames(this);" name="Bundle" type="checkbox" value="199" /> Order all four years <em>Technique 2008-2011</em> for <strong>$199!</strong> ($31 savings!)</p> 
 <p class="ordernote">(Pickup May 2011, Ships June 2011)</p> 
@@ -148,8 +129,6 @@
 </div> 
 </form> 
 </div> 
-
-
 </div>
 
 

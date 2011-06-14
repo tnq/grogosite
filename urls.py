@@ -1,4 +1,5 @@
 from django.conf.urls.defaults import *
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -9,6 +10,7 @@ urlpatterns = patterns('',
     # (r'^orders/', include('orders.foo.urls')),
     (r'^orders/', include('scripts.creditcard.urls')),
     (r'^seniors/', include('scripts.seniors.urls')),
+    url(r'^buy/', 'scripts.purchase.views.buy_form', name='buy_form'),
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/creditcard/purchaser/upload/$', 'scripts.creditcard.views.upload', name='upload'),
 
@@ -19,3 +21,5 @@ urlpatterns = patterns('',
     url(r'favicon\.gif$', 'django.views.generic.simple.redirect_to', {'url' : 'http://technique.mit.edu/static/favicon.gif'}),
     url(r'favicon\.ico$', 'django.views.generic.simple.redirect_to', {'url' : 'http://technique.mit.edu/static/favicon.gif'}),
 )
+
+urlpatterns += staticfiles_urlpatterns()

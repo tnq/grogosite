@@ -49,10 +49,15 @@ MEDIA_URL = ''
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/__scripts/django/media/'
+#ADMIN_MEDIA_PREFIX = '/__scripts/django/media/'
+ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 # URL prefix for static files to be served by templates
-STATIC_URL = "http://technique.mit.edu/static/"
+STATIC_URL = "/static/"
+
+STATICFILES_DIRS = (
+    '/Users/nwiltsie/Stuff/Technique/scripts/static',
+)
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '99&xeaxqq+om4i1lhqid#&olgq1crnah#9b)bz(j7kub(s84v9'
@@ -91,6 +96,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.flatpages',
+    'django.contrib.staticfiles',
     'scripts.creditcard',
     'scripts.seniors',
     'scripts.creditcard',
