@@ -55,9 +55,12 @@ ADMIN_MEDIA_PREFIX = '/static/admin/'
 # URL prefix for static files to be served by templates
 STATIC_URL = "/static/"
 
+# Directory where static files live.  ONLY USED IN DEVELOPMENT.
 STATICFILES_DIRS = (
     '/Users/nwiltsie/Stuff/Technique/scripts/static',
 )
+
+DAJAXICE_MEDIA_PREFIX = "dajaxice"
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '99&xeaxqq+om4i1lhqid#&olgq1crnah#9b)bz(j7kub(s84v9'
@@ -66,7 +69,7 @@ SECRET_KEY = '99&xeaxqq+om4i1lhqid#&olgq1crnah#9b)bz(j7kub(s84v9'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.load_template_source',
     'django.template.loaders.app_directories.load_template_source',
-#     'django.template.loaders.eggs.load_template_source',
+     'django.template.loaders.eggs.load_template_source',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -102,5 +105,7 @@ INSTALLED_APPS = (
     'scripts.creditcard',
     'scripts.mainsite',
     'scripts.purchase',
+    'scripts.dajaxice',
+    'scripts.dajax',
 )
 

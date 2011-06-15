@@ -15,4 +15,8 @@ $(document).ready(function() {
             $("#booksection"+num_lines).remove();
         }
     });
+    $("#show_button").click(function() {
+        data = $("#order_form").serialize(true);
+        Dajaxice.scripts.purchase.update_purchase('Dajax.process', {'form':data});
+    });
 });

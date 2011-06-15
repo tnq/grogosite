@@ -4,8 +4,11 @@
         {% load static %}
         <link href="{% get_static_prefix %}style/wordpress_style.css" rel="stylesheet" type="text/css"></link>
         <script type="text/javascript" src="{% get_static_prefix %}js/jquery-1.6.1.min.js"></script>
+        <script type="text/javascript" src="{% get_static_prefix %}js/jquery.ba-serializeobject.js"></script>
         <script type="text/javascript" src="{% get_static_prefix %}js/orders.js"></script>
-        <link rel="shortcut icon" href="http://technique.mit.edu/scripts/favicon.gif" />
+        {% load dajaxice_templatetags %}
+        {% dajaxice_js_import %}
+        <script src="{% get_static_prefix %}js/jquery.dajax.core.js" type="text/javascript" charset="utf-8"></script>
     </head>
     <body>
         <div id="wrapper">

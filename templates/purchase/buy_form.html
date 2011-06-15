@@ -9,7 +9,7 @@
 <p class="info">This page is for ordering Technique yearbooks using your credit card as payment. We accept <strong>Visa, Master Card, American Express,</strong> and <strong>Discover!</strong> The form is submitted using Secure Sockets Layer (SSL) technology to ensure your privacy.</p> 
 <p class="info">Javascript <strong>MUST</strong> be enabled in your browser for the order amount to process. If you cannot enable Javascript, please try a different browser or computer! Please fill in all required fields, and please read the <a href="#returnpolicy">Return Policy</a> and <a href="http://web.mit.edu/chargemit/policy.html">Privacy Policy</a>. If you have trouble, contact us at <a href="mailto:tnq-orders@mit.edu">tnq-orders@mit.edu</a>.</p> 
 <div id="orderform"> 
-    <form action="{% url buy_form %}" method=post> 
+    <form action="{% url buy_form %}" method=post id="order_form"> 
     <input name="merchant_id" type="hidden" value="MIT_SAO_Technique" /> 
     <input name="amount" type="hidden" value="0" /> 
     <input name="billTo_country" type="hidden" value="us" /> 
@@ -55,6 +55,7 @@ Buy{{ formset.empty_form.numbers }}copy/copies of <em>Technique</em>{{ formset.e
 <div id="forms"></div>
 <input type="button" value="Add an older book to order" id="add_button" />
 <input type="button" value="Remove book from order" id="remove_button" />
+<input type="button" value="Try ajaxy goodness" id="show_button" />
 <p class="orderoption"> 
 <input title="Bundle" onclick="this.form.total.value=makeChoice(this); this.form.merchantDefinedData4.value=concatNames(this);" name="Bundle" type="checkbox" value="199" /> Order all four years <em>Technique 2008-2011</em> for <strong>$199!</strong> ($31 savings!)</p> 
 <p class="ordernote">(Pickup May 2011, Ships June 2011)</p> 
@@ -68,9 +69,9 @@ Buy{{ formset.empty_form.numbers }}copy/copies of <em>Technique</em>{{ formset.e
 </div> 
 <div class="ordersection"> 
 <p class="ordertotal">Your Order Total Is:<br /> 
-<input name="total" readonly="readonly" size="9" type="text" /></p> 
+<input name="total" id="total" readonly="readonly" size="9" type="text" /></p> 
 <p class="ordertotal">Your Order Is:<br /> 
-<input name="merchantDefinedData4" readonly="readonly" size="80" type="text" /></p> 
+<input name="merchantDefinedData4" id="merchantDefinedData4" readonly="readonly" size="80" type="text" /></p> 
 </div> 
 <p class="reply">If checkboxes above do not cause the Order Total to accumulate, you probably have Javascript disabled. Turn it on, or try a different browser or computer. The Order Total listed above MUST be correct for your order to be processed!</p> 
 <p><strong> </strong></p> 
