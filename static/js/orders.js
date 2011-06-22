@@ -18,9 +18,21 @@ $(document).ready(function() {
             $("[name=form-TOTAL_FORMS]").val(num_lines);
             $("#booksection"+num_lines).remove();
         }
+        validate();
     });
-    $("#show_button").click(function() {
+
+    $("#clear_button").click(function() {
+        $("input:radio").removeAttr("checked");
+        validate();
+    });
+
+    $("#order_form input, #order_form").change(function() {
+        validate();
+    });
+
+    function validate(){
         data = $("#order_form").serialize(true);
         Dajaxice.scripts.purchase.update_purchase('Dajax.process', {'form':data});
-    });
+    }
+
 });

@@ -17,7 +17,7 @@ class OrderForm(forms.Form):
     shipping = forms.BooleanField(required = False)
 
 class OldBookForm(forms.Form):
-    numbers = forms.ChoiceField(choices=[(i,i) for i in range(1,5)])
+    numbers = forms.ChoiceField(choices=[(i,i) for i in range(0,5)])
     years = forms.ChoiceField(choices=
             [(book.year, "%s ($%s)"% (book.year, book.price)) for book in Book.objects.all().order_by("-year")])
 

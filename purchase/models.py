@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Book(models.Model):
-    year = models.IntegerField()
+    year = models.IntegerField(unique=True)
     price = models.IntegerField()
     
     def __unicode__(self):

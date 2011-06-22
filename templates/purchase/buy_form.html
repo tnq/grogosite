@@ -21,12 +21,14 @@
     <p class="info">Patrons of Technique will receive a copy of <em>Technique {% tnq_setting "tnq_year" %}</em> for no additional charge. Platinum, Gold, and Silver Patrons will receive an additional gift: a beautifully mounted photograph taken on the MIT campus by our photographers. See our <a href="patrons">Patrons</a> page for more details.</p> 
 <div class="ordersection"> 
 <p class="orderoption"> 
-    <input title="{% tnq_setting 'patron_year' %}-Platinum" name="patron" type="radio" value="platinum" /> Become a <strong>Platinum Patron</strong> of <em>Technique {% tnq_setting "tnq_year" %}</em> for <strong>${% tnq_setting "platinum_price" %}!</strong>
-    <input title="{% tnq_setting 'patron_year' %}-Gold" name="patron" type="radio" value="gold" /> Become a <strong>Gold Patron</strong> of <em>Technique {% tnq_setting "tnq_year" %}</em> for <strong>${% tnq_setting "gold_price" %}!</strong>
-    <input title="{% tnq_setting 'patron_year' %}-Silver" name="patron" type="radio" value="silver" /> Become a <strong>Silver Patron</strong> of <em>Technique {% tnq_setting "tnq_year" %}</em> for <strong>${% tnq_setting "silver_price" %}!</strong>
-    <input title="{% tnq_setting 'patron_year' %}-Bronze" name="patron" type="radio" value="bronze" /> Become a <strong>Bronze Patron</strong> of <em>Technique {% tnq_setting "tnq_year" %}</em> for <strong>${% tnq_setting "bronze_price" %}!</strong></p>
+    <ul class="orderlist">
+        <li><input title="{% tnq_setting 'patron_year' %}-Platinum" name="patron" type="radio" value="platinum" /> Become a <strong>Platinum Patron</strong> of <em>Technique {% tnq_setting "tnq_year" %}</em> for <strong>${% tnq_setting "platinum_price" %}!</strong></li>
+        <li><input title="{% tnq_setting 'patron_year' %}-Gold" name="patron" type="radio" value="gold" /> Become a <strong>Gold Patron</strong> of <em>Technique {% tnq_setting "tnq_year" %}</em> for <strong>${% tnq_setting "gold_price" %}!</strong></li>
+        <li><input title="{% tnq_setting 'patron_year' %}-Silver" name="patron" type="radio" value="silver" /> Become a <strong>Silver Patron</strong> of <em>Technique {% tnq_setting "tnq_year" %}</em> for <strong>${% tnq_setting "silver_price" %}!</strong></li>
+        <li><input title="{% tnq_setting 'patron_year' %}-Bronze" name="patron" type="radio" value="bronze" /> Become a <strong>Bronze Patron</strong> of <em>Technique {% tnq_setting "tnq_year" %}</em> for <strong>${% tnq_setting "bronze_price" %}!</strong></p></li>
+    </ul>
 
-    <p class="orderoption"><button type="button" name="clear_button" id="clear_button">Clear Patron choice</button></p>
+    <p class="orderoption"><input type="button" id="clear_button" value="Clear Patron choice" /></p>
 
 <p class="orderoption"><strong>Patrons Only:</strong> The name you would like to appear in <em>Technique {% tnq_setting "tnq_year" %}</em>:</p> 
 <p class="orderoption"> 
@@ -44,7 +46,7 @@
 <option title="4" value="4">4</option> 
 </select> 
 <input type="hidden" name="form-0-years" id="form-0-years" value="2012" />
-<p class="orderselecttext">Pre-Order <em>Technique {% tnq_setting "tnq_year" %}</em> for <strong>$50!</strong>  That&#8217;s $10 in savings!</p> 
+<p class="orderselecttext">Pre-Order <em>Technique {% tnq_setting "tnq_year" %}</em> for <strong>$50!</strong></p> 
 <p class="ordernote">(Pickup May {% tnq_setting "tnq_year" %}, Ships late May {% tnq_setting "tnq_year" %})</p> 
 <div style="display:none;" id="form_template">
     <div class="booksection" id="booksection__prefix__">
@@ -56,17 +58,16 @@ Buy{{ formset.empty_form.numbers }}copy/copies of <em>Technique</em>{{ formset.e
 <div id="forms"></div>
 <input type="button" value="Add an older book to order" id="add_button" />
 <input type="button" value="Remove book from order" id="remove_button" />
-<input type="button" value="Try ajaxy goodness" id="show_button" />
 <p class="orderoption"> 
-<input title="Bundle" name="Bundle" type="checkbox" value="199" /> Order all four years <em>Technique 2008-2011</em> for <strong>$199!</strong> ($31 savings!)</p> 
+<input title="Bundle" name="Bundle" type="checkbox" value="199" /> Order all four years <em>Technique 2008-2011</em> for <strong>$199!</strong></p> 
 <p class="ordernote">(Pickup May 2011, Ships June 2011)</p> 
 </div> 
 <p class="reply">Older copies of <em>Technique</em> are available upon request.  Email tnq-orders@mit.edu for more information.</p> 
 <h3>Shipping</h3> 
-<p class="reply">Shipping costs $5 / book.  The current year&#8217;s book is usually shipped out in the second week of June.  All other orders are generally processed within a few weeks and sent via USPS Media Mail.  Please note that we do not generally reimburse shipping costs, even if the purchaser or student picks the book up in person.</p> 
+<p class="reply">Shipping costs ${% tnq_setting "shipping_price" %} / book.  The current year&#8217;s book is usually shipped out in the second week of June.  All other orders are generally processed within a few weeks and sent via USPS Media Mail.  Please note that we do not generally reimburse shipping costs, even if the purchaser or student picks the book up in person.</p> 
 <div class="ordersection"> 
 <p class="orderoption"> 
-<input title="Shipping" id="id_shipping" name="shipping" type="checkbox" value="5" /> Purchase shipping for <strong>$5 / book</strong>!</p> 
+<input title="Shipping" id="id_shipping" name="shipping" type="checkbox" value="Shipping" /> Purchase shipping for <strong>${% tnq_setting "shipping_price" %} / book</strong>!</p> 
 </div> 
 <div class="ordersection"> 
 <p class="ordertotal">Your Order Total Is:<br /> 
