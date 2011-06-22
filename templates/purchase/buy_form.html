@@ -21,28 +21,29 @@
     <p class="info">Patrons of Technique will receive a copy of <em>Technique {% tnq_setting "tnq_year" %}</em> for no additional charge. Platinum, Gold, and Silver Patrons will receive an additional gift: a beautifully mounted photograph taken on the MIT campus by our photographers. See our <a href="patrons">Patrons</a> page for more details.</p> 
 <div class="ordersection"> 
 <p class="orderoption"> 
-    <input title="{% tnq_setting 'patron_year' %}-Platnium" onclick="this.form.total.value=makeChoice(this); this.form.merchantDefinedData4.value=concatNames(this);" name="Patron" type="radio" value="{% tnq_setting "platinum_price" %}" /> Become a <strong>Platinum Patron</strong> of <em>Technique {% tnq_setting "tnq_year" %}</em> for <strong>${% tnq_setting "platinum_price" %}!</strong>
-    <input title="{% tnq_setting 'patron_year' %}-Gold" onclick="this.form.total.value=makeChoice(this); this.form.merchantDefinedData4.value=concatNames(this);" name="Patron" type="radio" value="{% tnq_setting "gold_price" %}" /> Become a <strong>Gold Patron</strong> of <em>Technique {% tnq_setting "tnq_year" %}</em> for <strong>${% tnq_setting "gold_price" %}!</strong>
-    <input title="{% tnq_setting 'patron_year' %}-Silver" onclick="this.form.total.value=makeChoice(this); this.form.merchantDefinedData4.value=concatNames(this);" name="Patron" type="radio" value="{% tnq_setting "silver_price" %}" /> Become a <strong>Silver Patron</strong> of <em>Technique {% tnq_setting "tnq_year" %}</em> for <strong>${% tnq_setting "silver_price" %}!</strong>
-    <input title="{% tnq_setting 'patron_year' %}-Bronze" onclick="this.form.total.value=makeChoice(this); this.form.merchantDefinedData4.value=concatNames(this);" name="Patron" type="radio" value="{% tnq_setting "bronze_price" %}" /> Become a <strong>Bronze Patron</strong> of <em>Technique {% tnq_setting "tnq_year" %}</em> for <strong>${% tnq_setting "bronze_price" %}!</strong></p>
+    <input title="{% tnq_setting 'patron_year' %}-Platinum" name="patron" type="radio" value="platinum" /> Become a <strong>Platinum Patron</strong> of <em>Technique {% tnq_setting "tnq_year" %}</em> for <strong>${% tnq_setting "platinum_price" %}!</strong>
+    <input title="{% tnq_setting 'patron_year' %}-Gold" name="patron" type="radio" value="gold" /> Become a <strong>Gold Patron</strong> of <em>Technique {% tnq_setting "tnq_year" %}</em> for <strong>${% tnq_setting "gold_price" %}!</strong>
+    <input title="{% tnq_setting 'patron_year' %}-Silver" name="patron" type="radio" value="silver" /> Become a <strong>Silver Patron</strong> of <em>Technique {% tnq_setting "tnq_year" %}</em> for <strong>${% tnq_setting "silver_price" %}!</strong>
+    <input title="{% tnq_setting 'patron_year' %}-Bronze" name="patron" type="radio" value="bronze" /> Become a <strong>Bronze Patron</strong> of <em>Technique {% tnq_setting "tnq_year" %}</em> for <strong>${% tnq_setting "bronze_price" %}!</strong></p>
 
-    <p class="orderoption"><button type="button" onclick="clearPatronChoice(this); this.form.total.value=makeChoice(this);this.form.merchantDefinedData4.value=concatNames(this);">Clear Patron choice</button></p>
+    <p class="orderoption"><button type="button" name="clear_button" id="clear_button">Clear Patron choice</button></p>
 
 <p class="orderoption"><strong>Patrons Only:</strong> The name you would like to appear in <em>Technique {% tnq_setting "tnq_year" %}</em>:</p> 
 <p class="orderoption"> 
-<input maxlength="64" name="merchantDefinedData2" size="60" type="text" /></p> 
+<input maxlength="64" name="patron_name" size="60" type="text" /></p> 
 <p class="orderoption"><strong><br /> 
 </strong></p> 
 </div> 
 <h3>Or just buy some books!</h3> 
 <div class="ordersection"> 
-<select name="2011-Book" onchange="this.form.total.value=makeChoice(this); this.form.merchantDefinedData4.value=concatNames(this);"> 
+<select name="form-0-numbers" id="form-0-numbers"> 
 <option title="0" value="0">0</option> 
-<option title="1" value="50">1</option> 
-<option title="2" value="100">2</option> 
-<option title="3" value="150">3</option> 
-<option title="4" value="200">4</option> 
+<option title="1" value="1">1</option> 
+<option title="2" value="2">2</option> 
+<option title="3" value="3">3</option> 
+<option title="4" value="4">4</option> 
 </select> 
+<input type="hidden" name="form-0-years" id="form-0-years" value="2012" />
 <p class="orderselecttext">Pre-Order <em>Technique {% tnq_setting "tnq_year" %}</em> for <strong>$50!</strong>  That&#8217;s $10 in savings!</p> 
 <p class="ordernote">(Pickup May {% tnq_setting "tnq_year" %}, Ships late May {% tnq_setting "tnq_year" %})</p> 
 <div style="display:none;" id="form_template">
@@ -57,7 +58,7 @@ Buy{{ formset.empty_form.numbers }}copy/copies of <em>Technique</em>{{ formset.e
 <input type="button" value="Remove book from order" id="remove_button" />
 <input type="button" value="Try ajaxy goodness" id="show_button" />
 <p class="orderoption"> 
-<input title="Bundle" onclick="this.form.total.value=makeChoice(this); this.form.merchantDefinedData4.value=concatNames(this);" name="Bundle" type="checkbox" value="199" /> Order all four years <em>Technique 2008-2011</em> for <strong>$199!</strong> ($31 savings!)</p> 
+<input title="Bundle" name="Bundle" type="checkbox" value="199" /> Order all four years <em>Technique 2008-2011</em> for <strong>$199!</strong> ($31 savings!)</p> 
 <p class="ordernote">(Pickup May 2011, Ships June 2011)</p> 
 </div> 
 <p class="reply">Older copies of <em>Technique</em> are available upon request.  Email tnq-orders@mit.edu for more information.</p> 
@@ -65,13 +66,13 @@ Buy{{ formset.empty_form.numbers }}copy/copies of <em>Technique</em>{{ formset.e
 <p class="reply">Shipping costs $5 / book.  The current year&#8217;s book is usually shipped out in the second week of June.  All other orders are generally processed within a few weeks and sent via USPS Media Mail.  Please note that we do not generally reimburse shipping costs, even if the purchaser or student picks the book up in person.</p> 
 <div class="ordersection"> 
 <p class="orderoption"> 
-<input title="Shipping" onclick="this.form.total.value=makeChoice(this); this.form.merchantDefinedData4.value=concatNames(this);" name="Shipping" type="checkbox" value="5" /> Purchase shipping for <strong>$5 / book</strong>!</p> 
+<input title="Shipping" id="id_shipping" name="shipping" type="checkbox" value="5" /> Purchase shipping for <strong>$5 / book</strong>!</p> 
 </div> 
 <div class="ordersection"> 
 <p class="ordertotal">Your Order Total Is:<br /> 
 <input name="total" id="total" readonly="readonly" size="9" type="text" /></p> 
 <p class="ordertotal">Your Order Is:<br /> 
-<input name="merchantDefinedData4" id="merchantDefinedData4" readonly="readonly" size="80" type="text" /></p> 
+<input name="comment" id="comment" readonly="readonly" size="80" type="text" /></p> 
 </div> 
 <p class="reply">If checkboxes above do not cause the Order Total to accumulate, you probably have Javascript disabled. Turn it on, or try a different browser or computer. The Order Total listed above MUST be correct for your order to be processed!</p> 
 <p><strong> </strong></p> 

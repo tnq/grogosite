@@ -1,4 +1,8 @@
 $(document).ready(function() {
+    // Add one to the total forms for the current year
+    num_lines = $("[name=form-TOTAL_FORMS]").val();
+    $("[name=form-TOTAL_FORMS]").val(parseInt(num_lines)+1);
+
     $("#add_button").click(function() {
         num_lines = $("[name=form-TOTAL_FORMS]").val();
         $("[name=form-TOTAL_FORMS]").val(parseInt(num_lines)+1);
@@ -9,7 +13,7 @@ $(document).ready(function() {
 
     $("#remove_button").click(function() {
         num_lines = $("[name=form-TOTAL_FORMS]").val();
-        if (num_lines > 0) {
+        if (num_lines > 1) { //Always leave one form for the current year
             num_lines = parseInt(num_lines)-1;
             $("[name=form-TOTAL_FORMS]").val(num_lines);
             $("#booksection"+num_lines).remove();

@@ -9,11 +9,12 @@ from django.forms.models import model_to_dict
 from django.forms.formsets import formset_factory
 from django.core.mail import send_mail, EmailMessage
 from django.core.exceptions import ObjectDoesNotExist
-from scripts.purchase.models import Book, BookForm, BookFormSet
+from scripts.purchase.models import Book
+from scripts.purchase.forms import OldBookFormSet
 
 def buy_form(request):
     if request.method == "POST":
-        formset = BookFormSet(request.POST)
+        formset = OldBookFormSet(request.POST)
         for form in formset.forms:
             if form.is_valid():
                 print form.cleaned_data
@@ -21,5 +22,5 @@ def buy_form(request):
                 print "Invalid form!"
                 print form
     else:
-        formset = BookFormSet()
+        formset = OldBookFormSet()
     return render_to_response('purchase/buy_form.html', {'formset':formset })
