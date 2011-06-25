@@ -54,6 +54,8 @@ ADMIN_MEDIA_PREFIX = '/__scripts/django/media/'
 # URL prefix for static files to be served by templates
 STATIC_URL = "http://technique.mit.edu/static/"
 
+AUTH_PROFILE_MODULE = 'checkout.User'
+
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '99&xeaxqq+om4i1lhqid#&olgq1crnah#9b)bz(j7kub(s84v9'
 
@@ -92,5 +94,6 @@ INSTALLED_APPS = (
     'scripts.creditcard',
     'scripts.seniors',
     'scripts.creditcard',
+    'scripts.checkout',
 )
 
