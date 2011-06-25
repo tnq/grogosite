@@ -273,6 +273,26 @@ word-spacing:1px;
 font-weight:bold;
 }
 
+#orderform label {
+float:left;
+width:100px;
+}
+
+#orderform fieldset {
+border: 0px;
+}
+
+#orderform ul {
+list-style:none;
+}
+
+#orderform .required {
+font-weight:bolder;
+}
+
+#billingaddress input {
+}
+
 #lgreprint thead th {
 width:100px;
 border-bottom-style:dotted;

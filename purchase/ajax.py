@@ -15,16 +15,29 @@ def update_purchase(request, form):
     formset = OldBookFormSet(form)
 
     shipping_price = int(Setting.objects.get(tag="shipping_price").value)
+    tnq_year = int(Setting.objects.get(tag="tnq_year").value)
     
     items = []
     price = 0
 
     if order_form.is_valid():
         shipping_paid = order_form.cleaned_data['shipping']
+        senior_bundle = order_form.cleaned_data['senior_bundle']
+        freshman_bundle = order_form.cleaned_data['freshman_bundle']
         patron = order_form.cleaned_data['patron']
         if patron:
             price += int(Setting.objects.get(tag="%s_price" %(patron)).value)
             items.append(patron.capitalize())
+        if senior_bundle:
+            price += int(Setting.objects.get(tag="bundle_price").value)
+            if shipping_paid:
+                price += 4 * shipping_price
+            items.append("%s-Bundle"%(tnq_year))
+        if freshman_bundle:
+            price += int(Setting.objects.get(tag="bundle_price").value)
+            if shipping_paid:
+                price += 4 * shipping_price
+            items.append("%s-Bundle"%(tnq_year+3))
     
     if formset.is_valid():
         for form in formset:

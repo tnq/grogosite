@@ -15,6 +15,8 @@ class OrderForm(forms.Form):
                                 required = False)
     patron_name = forms.CharField(required = False)
     shipping = forms.BooleanField(required = False)
+    senior_bundle = forms.BooleanField(required = False)
+    freshman_bundle = forms.BooleanField(required=False)
 
 class OldBookForm(forms.Form):
     numbers = forms.ChoiceField(choices=[(i,i) for i in range(0,5)])
