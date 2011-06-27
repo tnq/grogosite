@@ -62,6 +62,8 @@ STATICFILES_DIRS = (
 
 DAJAXICE_MEDIA_PREFIX = "dajaxice"
 
+AUTH_PROFILE_MODULE = 'checkout.User'
+
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '99&xeaxqq+om4i1lhqid#&olgq1crnah#9b)bz(j7kub(s84v9'
 
@@ -107,5 +109,6 @@ INSTALLED_APPS = (
     'scripts.purchase',
     'scripts.dajaxice',
     'scripts.dajax',
+    'scripts.checkout',
 )
 
