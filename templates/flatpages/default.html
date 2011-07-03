@@ -4,7 +4,11 @@
         <title>{{ flatpage.title }}</title>
     </head>
     <body>
-    {% load site_settings %}
-    {% evaluate flatpage.content %}
+        {% include 'fatpages/header.html' %}
+        <div id="content">
+            {% load site_settings %}
+            {% evaluate flatpage.content %}
+        </div> <!-- close content -->
+        {% include 'flatpages/footer.html' %}
     </body>
 </html>
