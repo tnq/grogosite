@@ -23,9 +23,7 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     (r'^admin/', include(admin.site.urls)),
     url(r'^login/', 'django.contrib.auth.views.login', name='login-page'),
-    url(r'^logout/$', 'django.contrib.auth.views.logout_then_login', name='logout-page'),
-    url(r'favicon\.gif$', 'django.views.generic.simple.redirect_to', {'url' : 'http://technique.mit.edu/static/favicon.gif'}),
-    url(r'favicon\.ico$', 'django.views.generic.simple.redirect_to', {'url' : 'http://technique.mit.edu/static/favicon.gif'}),
+    url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout-page'),
 )
 
 urlpatterns += staticfiles_urlpatterns()

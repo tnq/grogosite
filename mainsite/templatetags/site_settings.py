@@ -1,4 +1,5 @@
 from django import template
+from django.conf import settings
 from scripts.mainsite.models import Setting
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -8,7 +9,10 @@ def tnq_setting(tag):
     try:
         value = Setting.objects.get(tag=tag).value
     except ObjectDoesNotExist:
-        value = ""
+        if settings.DEBUG:
+            value = "TAG %s NOT FOUND!" %(tag)
+        else:
+            value = ""
     return value
 
 register.simple_tag(tnq_setting)    
