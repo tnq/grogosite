@@ -4,15 +4,12 @@ from django.contrib.auth.models import User as DjangoUser
 
 # Create your models here.
 class User(models.Model):
-    user = models.OneToOneField(DjangoUser, primary_key=True)
+    user = models.OneToOneField(DjangoUser, primary_key=True, db_column="authuser_id")
     barcode_id = models.CharField("MIT ID Number", max_length=9, unique=True)
     phone = models.CharField("Phone Number", max_length=20, blank=True, null=True)
 
     def __unicode__(self):
         return "%s %s" %(self.user.first_name, self.user.last_name)
-
-    class Meta:
-        db_table = "tnq_checkout_models_user"
 
 class Equipment(models.Model):
     equip_choices = (   ('CAMERA', 'Camera'),
@@ -47,7 +44,6 @@ class Equipment(models.Model):
             return self.barcode_id
 
     class Meta:
-        db_table = "tnq_checkout_models_equipment"
         verbose_name_plural = "Equipment"
 
 class Checkout(models.Model):
@@ -56,6 +52,3 @@ class Checkout(models.Model):
     manboard_member = models.ForeignKey(User, related_name="authorizing_user")
     date_out = models.DateTimeField()
     date_in = models.DateTimeField(null=True)
-
-    class Meta:
-        db_table = "tnq_checkout_models_checkout"
