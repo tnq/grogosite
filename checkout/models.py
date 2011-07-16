@@ -4,13 +4,12 @@ from django.contrib.auth.models import User as DjangoUser
 
 # Create your models here.
 class User(models.Model):
-    user = models.OneToOneField(DjangoUser)
-    krb_name = models.CharField("Kerberos Name", blank=True, null=True, max_length=8)
+    user = models.OneToOneField(DjangoUser, primary_key=True)
     barcode_id = models.CharField("MIT ID Number", max_length=9, unique=True)
     phone = models.CharField("Phone Number", max_length=20, blank=True, null=True)
 
     def __unicode__(self):
-        return "%s %s (%s)" %(self.user.first_name, self.user.last_name, self.krb_name)
+        return "%s %s" %(self.user.first_name, self.user.last_name)
 
     class Meta:
         db_table = "tnq_checkout_models_user"
@@ -43,9 +42,9 @@ class Equipment(models.Model):
 
     def __unicode__(self):
         if self.pet_name:
-            return pet_name
+            return self.pet_name
         else:
-            return barcode_id
+            return self.barcode_id
 
     class Meta:
         db_table = "tnq_checkout_models_equipment"
