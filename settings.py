@@ -57,7 +57,7 @@ STATIC_URL = "/static/"
 
 # Directory where static files live.  ONLY USED IN DEVELOPMENT.
 STATICFILES_DIRS = (
-    '/Users/nwiltsie/Stuff/Technique/scripts/static',
+    'static',
 )
 
 DAJAXICE_MEDIA_PREFIX = "dajaxice"
@@ -86,8 +86,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'scripts.urls'
 
 TEMPLATE_DIRS = (
-    '/mit/yearbook/Scripts/django/scripts/templates',
-    '/Users/nwiltsie/Stuff/Technique/scripts/templates',
+    'templates',
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
