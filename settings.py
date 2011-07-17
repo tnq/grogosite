@@ -16,6 +16,10 @@ DATABASE_PASSWORD = ''
 DATABASE_HOST = ''
 DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
 
+import os.path
+if os.path.exists("settings_private.py"):
+    execfile("settings_private.py")
+
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/admin'
 FORCE_SCRIPT_NAME=''
