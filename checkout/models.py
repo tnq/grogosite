@@ -4,7 +4,7 @@ from django.contrib.auth.models import User as DjangoUser
 
 # Create your models here.
 class User(DjangoUser):
-    user = models.OneToOneField(DjangoUser, primary_key=True, db_column="id", parent_link=True)
+    user = models.OneToOneField(DjangoUser, primary_key=True, db_column="id", parent_link=True, related_name="checkout_user")
     barcode_id = models.CharField("MIT ID Number", max_length=9, unique=True)
     phone = models.CharField("Phone Number", max_length=20, blank=True, null=True)
 
@@ -50,9 +50,9 @@ class Equipment(models.Model):
         verbose_name_plural = "Equipment"
 
 class Checkout(models.Model):
-    user = models.ForeignKey(User, related_name="checkout_user")
+    user = models.ForeignKey(User, related_name="checkouts")
     equipment = models.ForeignKey(Equipment)
-    manboard_member = models.ForeignKey(User, related_name="authorizing_user")
+    manboard_member = models.ForeignKey(User, related_name="authorized_checkouts")
     date_out = models.DateTimeField()
     date_in = models.DateTimeField(blank=True, null=True)
 
