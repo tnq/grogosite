@@ -3,13 +3,16 @@ from django.forms import ModelForm
 from django.contrib.auth.models import User as DjangoUser
 
 # Create your models here.
-class User(models.Model):
-    user = models.OneToOneField(DjangoUser, primary_key=True, db_column="authuser_id")
+class User(DjangoUser):
+    user = models.OneToOneField(DjangoUser, primary_key=True, db_column="id", parent_link=True)
     barcode_id = models.CharField("MIT ID Number", max_length=9, unique=True)
     phone = models.CharField("Phone Number", max_length=20, blank=True, null=True)
 
     def __unicode__(self):
-        return "%s %s" %(self.user.first_name, self.user.last_name)
+        if self.user.first_name or self.user.last_name:
+            return "%s %s" %(self.user.first_name, self.user.last_name)
+        else:
+            return str(self.user.username)
 
 class Equipment(models.Model):
     equip_choices = (   ('CAMERA', 'Camera'),
@@ -51,4 +54,12 @@ class Checkout(models.Model):
     equipment = models.ForeignKey(Equipment)
     manboard_member = models.ForeignKey(User, related_name="authorizing_user")
     date_out = models.DateTimeField()
-    date_in = models.DateTimeField(null=True)
+    date_in = models.DateTimeField(blank=True, null=True)
+
+    def returned(self):
+        return self.date_in != None
+    returned.boolean = True
+
+    def __unicode__(self):
+        return "%s - %s" %(self.user.user.username, self.equipment.__unicode__())
+
