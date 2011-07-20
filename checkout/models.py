@@ -38,14 +38,15 @@ class Equipment(models.Model):
                     )
 
 
-    barcode_id = models.CharField(max_length=7, unique=True)
-    equip_type = models.CharField(max_length=30, choices=equip_choices)
-    pet_name = models.CharField(max_length=30, blank=True, null=True)
-    brand = models.CharField(max_length=30)
-    model = models.CharField(max_length=128, blank=True, null=True)
+    barcode_id = models.CharField('Barcode ID', max_length=7, unique=True)
+    equip_type = models.CharField('Equipment Type', max_length=30, choices=equip_choices)
+    pet_name = models.CharField('Pet Name', max_length=30, blank=True, null=True)
+    brand = models.CharField('Brand', max_length=30, help_text='Nikon, Mamiya, etc')
+    model = models.CharField('Model', max_length=128, blank=True, null=True, help_text='D300, D90, SB900, etc')
+    checkout_hours = models.IntegerField('Checkout Length', help_text='Number of hours equipment can be checked out')
     description = models.TextField(max_length=500, blank=True, null=True)
-    manual_link = models.URLField(max_length=256, blank=True, null=True)
-    serial = models.CharField(max_length=128, blank=True, null=True)
+    manual_link = models.URLField('Manual Link', max_length=256, blank=True, null=True, help_text='URL of the equipment manual')
+    serial = models.CharField('Serial Number', max_length=128, blank=True, null=True)
     notes = models.TextField(max_length=500, blank=True, null=True)
 
     def __unicode__(self):
@@ -62,6 +63,7 @@ class Checkout(models.Model):
     equipment = models.ForeignKey(Equipment)
     manboard_member = models.ForeignKey(User, related_name="authorized_checkouts")
     date_out = models.DateTimeField()
+    date_due = models.DateTimeField()
     date_in = models.DateTimeField(blank=True, null=True)
 
     def returned(self):
