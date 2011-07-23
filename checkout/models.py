@@ -34,6 +34,9 @@ class Equipment(models.Model):
                         ('35MM_CAMERA', '35mm Camera'),
                         ('MEDIUM_FORMAT_CAMERA', 'Medium-Format Camera'),
                         ('LARGE_FORMAT_CAMERA', 'Large-Format Camera'),
+                        ('MEDIUM_FORMAT_BACK', 'Medium-Format Film Back'),
+                        ('CHARGER', 'Charger'),
+                        ('BATTERY', 'Battery'),
                         ('SNAX', 'Snacks'),
                     )
 
