@@ -42,7 +42,7 @@ font:120% "Courier New", "Lucida Console", Arial;
 --------------------------------------------------*/
 #header {
 border:0px;
-background-image:url(/static/images/tnq_logo.gif);
+background-image:url(/scripts/static/images/tnq_logo.gif);
 background-repeat:no-repeat;
 background-position:bottom left;
 margin-top:0px;
@@ -67,7 +67,7 @@ min-height:100%;
 margin:0 auto;
 padding-left:50px;
 padding-right:50px;
-background-image:url(/static/images/bg.gif);
+background-image:url(/scripts/static/images/bg.gif);
 background-position:left;
 background-repeat:repeat-y;
 }
@@ -550,7 +550,7 @@ clear:both;
 margin:0;
 padding:20px 0;
 font-size:120%;
-background-image:url(/static/images/mit.gif);
+background-image:url(/scripts/static/images/mit.gif);
 background-repeat:no-repeat;
 background-position:bottom left;
 padding-bottom:60px;
