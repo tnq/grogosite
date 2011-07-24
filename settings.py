@@ -116,5 +116,6 @@ INSTALLED_APPS = (
     'scripts.dajaxice',
     'scripts.dajax',
     'scripts.checkout',
+    'massadmin'
 )
 

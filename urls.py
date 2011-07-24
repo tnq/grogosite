@@ -10,6 +10,8 @@ from dajaxice.core import dajaxice_autodiscover
 from django.conf import settings
 dajaxice_autodiscover()
 
+import massadmin.massadmin
+
 urlpatterns = patterns('',
     # Example:
     # (r'^orders/', include('orders.foo.urls')),
@@ -21,6 +23,7 @@ urlpatterns = patterns('',
     (r'^%s/' % settings.DAJAXICE_MEDIA_PREFIX, include('dajaxice.urls')),
 
     # Uncomment the next line to enable the admin:
+    (r'^admin/', include(massadmin.massadmin.urls)),
     (r'^admin/', include(admin.site.urls)),
     url(r'^login/', 'django.contrib.auth.views.login', name='login-page'),
     url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout-page'),
