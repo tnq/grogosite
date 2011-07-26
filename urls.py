@@ -21,6 +21,7 @@ urlpatterns = patterns('',
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/creditcard/purchaser/upload/$', 'scripts.creditcard.views.upload', name='upload'),
     (r'^%s/' % settings.DAJAXICE_URL_PREFIX, include('dajaxice.urls')),
+    (r'^scripts/%s/' % settings.DAJAXICE_URL_PREFIX, include('dajaxice.urls')),
 
     # Uncomment the next line to enable the admin:
     (r'^admin/', include(massadmin.massadmin.urls)),
