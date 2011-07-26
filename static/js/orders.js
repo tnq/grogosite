@@ -57,7 +57,7 @@ $(document).ready(function() {
 
     function validate(){
         data = $("#order_form").serialize(true);
-        Dajaxice.scripts.purchase.update_purchase('Dajax.process', {'form':data});
+        Dajaxice.purchase.update_purchase(Dajax.process, {'form':data});
     }
 
 });

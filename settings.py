@@ -108,14 +108,14 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'django.contrib.flatpages',
     'django.contrib.staticfiles',
-    'scripts.creditcard',
-    'scripts.seniors',
-    'scripts.creditcard',
-    'scripts.mainsite',
-    'scripts.purchase',
-    'scripts.dajaxice',
-    'scripts.dajax',
-    'scripts.checkout',
+    'creditcard',
+    'seniors',
+    'creditcard',
+    'mainsite',
+    'purchase',
+    'dajaxice',
+    'dajax',
+    'checkout',
     'massadmin'
 )
 
