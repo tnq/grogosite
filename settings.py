@@ -64,7 +64,8 @@ STATICFILES_DIRS = (
     'static',
 )
 
-DAJAXICE_MEDIA_PREFIX = 'dajaxice'
+DAJAXICE_MEDIA_PREFIX = 'scripts/dajaxice'
+DAJAXICE_URL_PREFIX = 'dajaxice'
 
 AUTH_PROFILE_MODULE = 'checkout.User'
 
