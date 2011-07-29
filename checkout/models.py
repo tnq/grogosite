@@ -35,6 +35,7 @@ class Equipment(models.Model):
                         ('MEDIUM_FORMAT_CAMERA', 'Medium-Format Camera'),
                         ('LARGE_FORMAT_CAMERA', 'Large-Format Camera'),
                         ('MEDIUM_FORMAT_BACK', 'Medium-Format Film Back'),
+                        ('LARGE_FORMAT_BACK', 'Large-Format Back'),
                         ('CHARGER', 'Charger'),
                         ('BATTERY', 'Battery'),
                         ('SNAX', 'Snacks'),
