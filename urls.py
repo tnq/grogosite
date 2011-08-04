@@ -23,6 +23,9 @@ urlpatterns = patterns('',
     (r'^%s/' % settings.DAJAXICE_URL_PREFIX, include('dajaxice.urls')),
     (r'^scripts/%s/' % settings.DAJAXICE_URL_PREFIX, include('dajaxice.urls')),
 
+    url(r'favicon\.ico/$', 'django.views.generic.simple.redirect_to', {'url' : settings.STATIC_URL + 'images/favicon.gif'}),
+    url(r'favicon\.gif/$', 'django.views.generic.simple.redirect_to', {'url' : settings.STATIC_URL + 'images/favicon.gif'}),
+
     # Uncomment the next line to enable the admin:
     (r'^admin/', include(massadmin.massadmin.urls)),
     (r'^admin/', include(admin.site.urls)),

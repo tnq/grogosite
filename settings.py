@@ -94,7 +94,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 )
 
-ROOT_URLCONF = 'scripts.urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = (
     'templates',
