@@ -1,6 +1,6 @@
 # Create your views here.
 from django.shortcuts import render_to_response, get_object_or_404, get_list_or_404
-from scripts.seniors.models import Senior, SeniorForm, ActivityForm, Activity
+from seniors.models import Senior, SeniorForm, ActivityForm, Activity
 from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext

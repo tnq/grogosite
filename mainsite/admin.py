@@ -1,5 +1,5 @@
 from django.contrib import admin
-from scripts.mainsite.models import Setting
+from mainsite.models import Setting
 
 from django.contrib.flatpages.models import FlatPage
 from django.contrib.flatpages.admin import FlatPageAdmin as FlatPageAdminOld

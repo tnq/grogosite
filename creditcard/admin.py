@@ -4,7 +4,7 @@ from django import forms
 from django.contrib import admin
 from django.contrib.contenttypes.models import ContentType
 from django.http import HttpResponse, HttpResponseRedirect
-from scripts.creditcard.models import Purchaser, LineItem, Patron
+from creditcard.models import Purchaser, LineItem, Patron
 
 class LineItemInline(admin.TabularInline):
     model = LineItem

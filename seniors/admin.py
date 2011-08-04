@@ -2,7 +2,7 @@ import csv
 from django.contrib import admin
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.contenttypes.models import ContentType
-from scripts.seniors.models import Senior, Activity
+from seniors.models import Senior, Activity
 
 class ActivityInline(admin.TabularInline):
     model = Activity
