@@ -41,7 +41,7 @@ class Equipment(models.Model):
                         ('POLAROID', 'Polaroid Camera'),
                         ('CHARGER', 'Charger'),
                         ('BATTERY', 'Battery'),
-                        ('BAG', 'Camera Bag'),
+                        ('BAG', 'Equipment Case'),
                         ('SNAX', 'Snacks'),
                     )
 
