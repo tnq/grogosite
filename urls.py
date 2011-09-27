@@ -15,11 +15,11 @@ import massadmin.massadmin
 urlpatterns = patterns('',
     # Example:
     # (r'^orders/', include('orders.foo.urls')),
-    (r'^orders/', include('scripts.creditcard.urls')),
-    (r'^seniors/', include('scripts.seniors.urls')),
-    url(r'^buy/', 'scripts.purchase.views.buy_form', name='buy_form'),
+    (r'^orders/', include('creditcard.urls')),
+    (r'^seniors/', include('seniors.urls')),
+    url(r'^buy/', 'purchase.views.buy_form', name='buy_form'),
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
-    url(r'^admin/creditcard/purchaser/upload/$', 'scripts.creditcard.views.upload', name='upload'),
+    url(r'^admin/creditcard/purchaser/upload/$', 'creditcard.views.upload', name='upload'),
     (r'^%s/' % settings.DAJAXICE_URL_PREFIX, include('dajaxice.urls')),
     (r'^scripts/%s/' % settings.DAJAXICE_URL_PREFIX, include('dajaxice.urls')),
 
