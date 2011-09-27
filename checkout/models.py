@@ -34,11 +34,15 @@ class Equipment(models.Model):
                         ('35MM_CAMERA', '35mm Camera'),
                         ('MEDIUM_FORMAT_CAMERA', 'Medium-Format Camera'),
                         ('LARGE_FORMAT_CAMERA', 'Large-Format Camera'),
+                        ('MEDIUM_FORMAT_BACK', 'Medium-Format Film Back'),
+                        ('LARGE_FORMAT_BACK', 'Large-Format Back'),
+                        ('CHARGER', 'Charger'),
+                        ('BATTERY', 'Battery'),
                         ('SNAX', 'Snacks'),
                     )
 
 
-    barcode_id = models.CharField('Barcode ID', max_length=7, unique=True)
+    barcode_id = models.CharField('Barcode ID', max_length=13, unique=True)
     equip_type = models.CharField('Equipment Type', max_length=30, choices=equip_choices)
     pet_name = models.CharField('Pet Name', max_length=30, blank=True, null=True)
     brand = models.CharField('Brand', max_length=30, help_text='Nikon, Mamiya, etc')

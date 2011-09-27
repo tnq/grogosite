@@ -1,6 +1,6 @@
 # Django settings for orders project.
 
-DEBUG = True 
+DEBUG = False 
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -22,7 +22,7 @@ if os.path.exists("settings_private.py"):
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/admin'
-FORCE_SCRIPT_NAME=''
+FORCE_SCRIPT_NAME = None
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -65,6 +65,7 @@ STATICFILES_DIRS = (
 )
 
 DAJAXICE_MEDIA_PREFIX = 'dajaxice'
+DAJAXICE_URL_PREFIX = 'dajaxice'
 
 AUTH_PROFILE_MODULE = 'checkout.User'
 
@@ -93,7 +94,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 )
 
-ROOT_URLCONF = 'scripts.urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = (
     'templates',
@@ -108,13 +109,14 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'django.contrib.flatpages',
     'django.contrib.staticfiles',
-    'scripts.creditcard',
-    'scripts.seniors',
-    'scripts.creditcard',
-    'scripts.mainsite',
-    'scripts.purchase',
-    'scripts.dajaxice',
-    'scripts.dajax',
-    'scripts.checkout',
+    'creditcard',
+    'seniors',
+    'creditcard',
+    'mainsite',
+    'purchase',
+    'dajaxice',
+    'dajax',
+    'checkout',
+    'massadmin'
 )
 

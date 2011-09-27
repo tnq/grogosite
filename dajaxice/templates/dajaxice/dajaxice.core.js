@@ -2,7 +2,7 @@ var Dajaxice = {
     {% for module in dajaxice_js_functions %}
         {% include "dajaxice/dajaxice_core_loop.js" %}
         {% endfor %}{% ifnotequal dajaxice_js_functions|length 0 %},{% endifnotequal %}
-    
+
     get_cookie: function(name)
     {
         var cookieValue = null;
@@ -19,17 +19,25 @@ var Dajaxice = {
         }
         return cookieValue;
     },
-            
-    call: function(dajaxice_function, dajaxice_callback, argv)
+
+    call: function(dajaxice_function, dajaxice_callback, argv, custom_settings)
     {
         var send_data = [];
-        is_callback_a_function = (typeof(dajaxice_callback) == 'function');
-        
-        if (!is_callback_a_function){
-            /* Backward compatibility for old callback as string usage. */
-            send_data.push('callback='+dajaxice_callback);
+        var is_callback_a_function = (typeof(dajaxice_callback) == 'function');
+
+        if(!is_callback_a_function){
+            alert("dajaxice_callback should be a function since dajaxice 0.2")
         }
-        
+
+        if(custom_settings == undefined){
+            custom_settings = {};
+        }
+
+        var error_callback = this.get_setting('default_exception_callback');
+        if('error_callback' in custom_settings && typeof(custom_settings['error_callback']) == 'function'){
+            error_callback = custom_settings['error_callback'];
+        }
+
         send_data.push('argv='+encodeURIComponent(JSON.stringify(argv)));
         send_data = send_data.join('&');
         var oXMLHttpRequest = new XMLHttpRequest;
@@ -38,42 +46,66 @@ var Dajaxice = {
         oXMLHttpRequest.setRequestHeader("X-CSRFToken",Dajaxice.get_cookie('csrftoken'));
         oXMLHttpRequest.onreadystatechange = function() {
             if (this.readyState == XMLHttpRequest.DONE) {
-                if (is_callback_a_function){
-                    try{
-                        dajaxice_callback(JSON.parse(this.responseText));
-                    }
-                    catch(exception){
-                        dajaxice_callback(this.responseText);
-                    }
+                if(this.responseText == Dajaxice.EXCEPTION || !(this.status in Dajaxice.valid_http_responses())){
+                    error_callback();
                 }
                 else{
-                    /* Backward compatibility for old callback as string usage. */
-                    eval(this.responseText);
+                    var response;
+                    try {
+                        response = JSON.parse(this.responseText);
+                    }
+                    catch (exception) {
+                        response = this.responseText;
+                    }
+                    dajaxice_callback(response);
                 }
             }
         }
         oXMLHttpRequest.send(send_data);
+    },
+
+    setup: function(settings)
+    {
+        this.settings = settings;
+    },
+
+    get_setting: function(key){
+        if(this.settings == undefined || this.settings[key] == undefined){
+            return this.default_settings[key];
+        }
+        return this.settings[key];
+    },
+
+    default_exception_callback: function(data){
+        alert('Something goes wrong');
+    },
+
+    valid_http_responses: function(){
+        return {200: null, 301: null, 302: null, 304: null}
     }
 };
-Dajaxice.EXCEPTION = {{ DAJAXICE_EXCEPTION|safe }};
+
+Dajaxice.EXCEPTION = '{{ DAJAXICE_EXCEPTION }}';
+Dajaxice.default_settings = {'default_exception_callback': Dajaxice.default_exception_callback}
+
 window['Dajaxice'] = Dajaxice;
 
 {% comment %}
 /*
     XMLHttpRequest.js Compiled with Google Closure
-    
+
     XMLHttpRequest.js Copyright (C) 2008 Sergey Ilinsky (http://www.ilinsky.com)
-    
+
     This work is free software; you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
     the Free Software Foundation; either version 2.1 of the License, or
     (at your option) any later version.
-    
+
     This work is distributed in the hope that it will be useful,
     but without any warranty; without even the implied warranty of
     merchantability or fitness for a particular purpose. See the
     GNU Lesser General Public License for more details.
-    
+
     You should have received a copy of the GNU Lesser General Public License
     along with this library; if not, write to the Free Software Foundation, Inc.,
     59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
