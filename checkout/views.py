@@ -23,4 +23,10 @@ def graph_checkouts(request):
 
     return render_to_response('checkout/graph.html', {'checkouts':all_checkouts})
 
-                
+@login_required
+def equipment_status(request):
+    digital = Equipment.objects.filter(equip_type="CAMERA")
+    lenses =          Equipment.objects.filter(equip_type="LENS")
+    cards =           Equipment.objects.filter(equip_type="MEMORY")
+    
+    return render_to_response('checkout/equipment.html', {'digital':digital, 'lenses':lenses, 'cards':cards})

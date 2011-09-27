@@ -3,6 +3,7 @@ from django.forms import ModelForm
 from django.contrib.auth.models import User as DjangoUser
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
+import datetime
 
 @receiver(pre_save)
 def update_nulls(sender, instance, **kwargs):
@@ -59,12 +60,22 @@ class Equipment(models.Model):
         else:
             return self.barcode_id
 
+    def current_checkout(self):
+        return self.checkouts.get(date_in=None)
+
+    def is_overdue(self):
+        current_checkout = self.current_checkout()
+        if current_checkout:
+            return datetime.datetime.now() > current_checkout.date_due
+        else:
+            return False
+
     class Meta:
         verbose_name_plural = "Equipment"
 
 class Checkout(models.Model):
     user = models.ForeignKey(User, related_name="checkouts")
-    equipment = models.ForeignKey(Equipment)
+    equipment = models.ForeignKey(Equipment, related_name="checkouts")
     manboard_member = models.ForeignKey(User, related_name="authorized_checkouts")
     date_out = models.DateTimeField()
     date_due = models.DateTimeField()
