@@ -1,6 +1,6 @@
 # Create your views here.
 from django.shortcuts import render_to_response, get_object_or_404, get_list_or_404
-from scripts.creditcard.models import Purchaser, LineItem, Patron, PurchaserForm, PatronForm, LineItemForm
+from creditcard.models import Purchaser, LineItem, Patron, PurchaserForm, PatronForm, LineItemForm
 from django.http import Http404, HttpResponse
 from django.contrib.auth.decorators import login_required, permission_required
 from django.template import RequestContext

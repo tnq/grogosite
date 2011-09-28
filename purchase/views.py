@@ -9,8 +9,8 @@ from django.forms.models import model_to_dict
 from django.forms.formsets import formset_factory
 from django.core.mail import send_mail, EmailMessage
 from django.core.exceptions import ObjectDoesNotExist
-from scripts.purchase.models import Book
-from scripts.purchase.forms import OldBookFormSet
+from purchase.models import Book
+from purchase.forms import OldBookFormSet
 
 def buy_form(request):
     if request.method == "POST":

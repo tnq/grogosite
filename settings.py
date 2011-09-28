@@ -54,10 +54,10 @@ MEDIA_URL = ''
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
 #ADMIN_MEDIA_PREFIX = '/__scripts/django/media/'
-ADMIN_MEDIA_PREFIX = '/scripts/static/admin/'
+ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 # URL prefix for static files to be served by templates
-STATIC_URL = "/scripts/static/"
+STATIC_URL = "/static/"
 
 # Directory where static files live.  ONLY USED IN DEVELOPMENT.
 STATICFILES_DIRS = (

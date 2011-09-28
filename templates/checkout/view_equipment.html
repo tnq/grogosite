@@ -1,0 +1,45 @@
+<html>
+    <head><title>Technique Equipment</title></head>
+    <body>
+        <h2>Digital Cameras</h2>
+        <table>
+            <tr><th>Brand</th><th>Model</th><th>Name</th></tr>
+            {% for camera in digital_cameras %}
+            <tr><td>{{ camera.brand }}</td><td>{{ camera.model }}</td><td>{{ camera }}</td></tr>
+            {% endfor %}
+        </table>
+
+        <h2>35mm Film Cameras</h2>
+        <table>
+            <tr><th>Brand</th><th>Model</th><th>Name</th></tr>
+            {% for camera in film_cameras %}
+            <tr><td>{{ camera.brand }}</td><td>{{ camera.model }}</td><td>{{ camera }}</td></tr>
+            {% endfor %}
+        </table>
+
+        <h2>Medium Format Cameras</h2>
+        <table>
+            <tr><th>Brand</th><th>Model</th><th>Name</th></tr>
+            {% for camera in medium_cameras %}
+            <tr><td>{{ camera.brand }}</td><td>{{ camera.model }}</td><td>{{ camera }}</td></tr>
+            {% endfor %}
+        </table>
+
+        <h2>Large Format Cameras</h2>
+        <table>
+            <tr><th>Brand</th><th>Model</th><th>Name</th></tr>
+            {% for camera in large_cameras %}
+            <tr><td>{{ camera.brand }}</td><td>{{ camera.model }}</td><td>{{ camera }}</td></tr>
+            {% endfor %}
+        </table>
+
+        <h2>Lenses</h2>
+        <table>
+            <tr><th>Brand</th><th>Model</th><th>Name</th></tr>
+            {% for lens in lenses %}
+            <tr><td>{{ lens.brand }}</td><td>{{ lens.model }}</td><td>{{ lens }}</td></tr>
+            {% endfor %}
+        </table>
+
+    </body>
+</html>

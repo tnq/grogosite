@@ -25,7 +25,7 @@ class User(DjangoUser):
             return str(self.user.username)
 
 class Equipment(models.Model):
-    equip_choices = (   ('CAMERA', 'Camera'),
+    equip_choices = (   ('CAMERA', 'Digital Camera'),
                         ('LENS', 'Lens'),
                         ('MEMORY', 'Memory Card'),
                         ('EXTERNAL_FLASH', 'External Flash'),
@@ -38,6 +38,7 @@ class Equipment(models.Model):
                         ('LARGE_FORMAT_CAMERA', 'Large-Format Camera'),
                         ('MEDIUM_FORMAT_BACK', 'Medium-Format Film Back'),
                         ('LARGE_FORMAT_BACK', 'Large-Format Back'),
+                        ('POLAROID', 'Polaroid Camera'),
                         ('CHARGER', 'Charger'),
                         ('BATTERY', 'Battery'),
                         ('SNAX', 'Snacks'),
