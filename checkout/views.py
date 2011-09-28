@@ -26,7 +26,11 @@ def graph_checkouts(request):
 @login_required
 def equipment_status(request):
     digital = Equipment.objects.filter(equip_type="CAMERA")
-    lenses =          Equipment.objects.filter(equip_type="LENS")
-    cards =           Equipment.objects.filter(equip_type="MEMORY")
+    lenses = Equipment.objects.filter(equip_type="LENS")
+    cards = Equipment.objects.filter(equip_type="MEMORY")
+
+    key_func = lambda r: r.date_due() if r.date_due() else datetime.datetime(1990,01,01,00,00,00,00)
+
+    digital = sorted(digital, key=key_func)
     
     return render_to_response('checkout/equipment.html', {'digital':digital, 'lenses':lenses, 'cards':cards})

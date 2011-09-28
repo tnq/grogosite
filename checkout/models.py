@@ -3,6 +3,7 @@ from django.forms import ModelForm
 from django.contrib.auth.models import User as DjangoUser
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
+from django.core.exceptions import ObjectDoesNotExist
 import datetime
 
 @receiver(pre_save)
@@ -61,12 +62,22 @@ class Equipment(models.Model):
             return self.barcode_id
 
     def current_checkout(self):
-        return self.checkouts.get(date_in=None)
+        try:
+            return self.checkouts.get(date_in=None)
+        except ObjectDoesNotExist:
+            return None
 
-    def is_overdue(self):
+    def date_due(self):
         current_checkout = self.current_checkout()
         if current_checkout:
-            return datetime.datetime.now() > current_checkout.date_due
+            return current_checkout.date_due
+        else:
+            return None
+
+    def is_overdue(self):
+        date_due = self.date_due()
+        if date_due:
+            return datetime.datetime.now() > date_due
         else:
             return False
 
