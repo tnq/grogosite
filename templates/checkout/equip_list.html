@@ -1,0 +1,19 @@
+        <h2>{{ table_name }}</h2>
+        <table>
+            <tr><th>Brand</th><th>Model</th><th>Name</th><th>Due Date</th></tr>
+            {% for equipment in equip_list %}
+            <tr>
+                <td>{{ equipment.brand }}</td><td>{{ equipment.model }}</td><td>{{ equipment }}</td>
+            {% if equipment.current_checkout %}
+                {% if equipment.is_overdue %}
+                    <td class="equipment_overdue">
+                {% else %}
+                    <td class="equipment_out">
+                {% endif %}
+                    {{ equipment.current_checkout.date_due }}</td>
+            {% else %}
+                <td class="equipment_id">Checked In!</td>
+            {% endif %}
+            </tr>
+            {% endfor %}
+        </table>

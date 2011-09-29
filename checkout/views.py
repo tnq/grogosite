@@ -23,18 +23,6 @@ def graph_checkouts(request):
 
     return render_to_response('checkout/graph.html', {'checkouts':all_checkouts})
 
-@login_required
-def equipment_status(request):
-    digital = Equipment.objects.filter(equip_type="CAMERA")
-    lenses = Equipment.objects.filter(equip_type="LENS")
-    cards = Equipment.objects.filter(equip_type="MEMORY")
-
-    key_func = lambda r: r.date_due() if r.date_due() else datetime.datetime(1990,01,01,00,00,00,00)
-
-    digital = sorted(digital, key=key_func)
-    
-    return render_to_response('checkout/equipment.html', {'digital':digital, 'lenses':lenses, 'cards':cards})
-
 def graph_user_checkouts(request):
     checkouts = request.user.checkouts.order
     equipment = [c.equipment for c in checkouts]
@@ -77,8 +65,15 @@ def view_equipment(request):
     film_cameras = Equipment.objects.filter(equip_type="35MM_CAMERA").order_by("brand","-model")
     medium_cameras = Equipment.objects.filter(equip_type="MEDIUM_FORMAT_CAMERA").order_by("brand","-model")
     large_cameras = Equipment.objects.filter(equip_type="LARGE_FORMAT_CAMERA").order_by("brand","-model")
-
     lenses = Equipment.objects.filter(equip_type="LENS").order_by("brand","-model")
+
+#key_func = lambda r: r.date_due() if r.date_due() else datetime(1990,01,01,00,00,00,00)
+
+#digital_cameras = sorted(digital_cameras, key=key_func)
+#film_cameras = sorted(film_cameras, key=key_func)
+#medium_cameras = sorted(medium_cameras, key=key_func)
+#large_cameras = sorted(large_cameras, key=key_func)
+#lenses = sorted(lenses, key=key_func)
 
     return render_to_response('checkout/view_equipment.html', { 'digital_cameras'   : digital_cameras,
                                                                 'film_cameras'      : film_cameras,
