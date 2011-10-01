@@ -122,6 +122,8 @@ header nav ul li.hire a:hover, header nav ul li.hire.selected a {
   background-color: #1557a2;
 }
 #content {
+  min-height: 100%;
+  height: auto !important;
   height: 100%;
   width: 960px;
   margin: 0 auto;
@@ -132,8 +134,9 @@ footer {
   background-image: -moz-linear-gradient(top, #000000 0%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 75%, #000000 100%), url("../../images/dark_stripes.png");
   background-image: -ms-linear-gradient(top, #000000 0%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 75%, #000000 100%), url("../../images/dark_stripes.png");
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #000000), color-stop(0.25, rgba(0, 0, 0, 0)), color-stop(0.75, rgba(0, 0, 0, 0)), color-stop(1, #000000)), url("../../images/dark_stripes.png");
-  height: 10em;
-  margin-top: -10em;
+  height: 200px;
+  margin-top: -200px;
+  clear: both;
 }
 footer #footer-data {
   font-size: 0.83em;
@@ -142,22 +145,17 @@ footer #footer-data {
   width: 960px;
   margin: 0 auto;
   color: #ffffff;
-  position: relative;
 }
 footer address {
   font-style: normal;
-  position: absolute;
-  top: 20px;
-  left: 0px;
+  float: left;
 }
 footer address strong {
   font-size: 1.2em;
 }
 footer #mit-link {
-  position: absolute;
+  float: right;
   text-align: right;
-  top: 20px;
-  right: 0px;
 }
 footer a, footer a:link, footer a:visited {
   color: #ffffff;
@@ -165,5 +163,5 @@ footer a, footer a:link, footer a:visited {
 }
 #push {
   clear: both;
-  height: 10em;
+  height: 200px;
 }

@@ -71,12 +71,14 @@ body {
     .gradient-image-bg;
 }
 
+@headerHeight: 45px;
+
 header {
     @headerFontWeight: 500;
     @headerFontSize: 1em;
     
     .header-footer-bg;
-    height: 45px;
+    height: @headerHeight;
     width: 100%;
     position: absolute;
     top: 0;
@@ -149,17 +151,20 @@ header {
 }
 
 #content {
+    min-height: 100%;
+    height: auto !important;
     height: 100%;
     .centered-content;
 }
 
-@footerHeight: 10em;
+@footerHeight: 200px;
 
 footer {
     @footerFontWeight: 200;
     .header-footer-bg;
     height: @footerHeight;
     margin-top: -@footerHeight;
+    clear:both;
     
     #footer-data {
         font-size: 0.83em;
@@ -167,24 +172,19 @@ footer {
         font-wegiht: @footerFontWeight;
         .centered-content;
         color: @footerHeaderTextColor;
-        position: relative;
-    }
+            }
     
     address {
         font-style: normal;
-        position: absolute;
-        top: 20px;
-        left: 0px;
+        float:left;
         strong {
             font-size: 1.2em;
         }
     }
     
     #mit-link {
-        position: absolute;
+        float: right;
         text-align: right;
-        top: 20px;
-        right: 0px;
     }
     
     a, a:link, a:visited {
