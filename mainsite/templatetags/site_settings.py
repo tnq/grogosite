@@ -1,6 +1,6 @@
 from django import template
 from django.conf import settings
-from scripts.mainsite.models import Setting
+from mainsite.models import Setting
 from django.core.exceptions import ObjectDoesNotExist
 
 register = template.Library()
