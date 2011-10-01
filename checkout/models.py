@@ -62,6 +62,10 @@ class Equipment(models.Model):
     status = models.CharField('Equipment Status', max_length=30, choices=status_choices)
     notes = models.TextField(max_length=500, blank=True, null=True)
 
+    def active(self):
+        return self.status=='ACTIVE'
+    active.boolean = True
+
     def __unicode__(self):
         if self.pet_name:
             return self.pet_name
