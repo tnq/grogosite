@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load static %}
+{% load site_settings %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Technique: The yearbook, photography &amp; design club of MIT.</title>
+        <link rel="stylesheet" href="{% get_static_prefix %}stylesheets/css/main.css" />
+        {% block extra_headers %}
+	    {% endblock %}
+    </head>
+    <body>
+        <header>
+            <hgroup>
+                <h1><a href="{% url tnq_main %}"><img src="{% get_static_prefix %}images/TNQ.png" alt="Technique" /></a></h1>
+                <h2>The Yearbook of MIT</h2>
+            </hgroup>
+            <nav>
+                <ul>
+                    <li class="buy {% block buy_selected %}{% endblock %}"><a href="#">Buy a Book</a></li>
+                    <li class="support {% block support_selected %}{% endblock %}"><a href="#">Support Us</a></li>
+                    <li class="seniors {% block seniors_selected %}{% endblock %}"><a href="#">Seniors</a></li>
+                    <li class="lgs {% block lgs_selected %}{% endblock %}"><a href="#">Living Groups</a></li>
+                    <li class="join {% block join_selected %}{% endblock %}"><a href="#">Join Us</a></li>
+                    <li class="hire {% block hire_selected %}{% endblock %}"><a href="#">Hire Us</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div id="content" role="content">
+            {% block content %}
+	        {% endblock %}
+            <div id="push"></div>
+        </div>
+        <footer>
+            <div id="footer-data">
+                <address>
+                    <a href="{% url tnq_main %}"><strong>MIT Technique</strong></a><br />
+                    +1.617.253.2980 | W20-451<br /> 
+                    @hrhgrogo | <a href="mailto:technique@mit.edu">technique@mit.edu</a><br />
+                    P.O. Box 397005<br />
+                    Cambridge, MA 02139
+                </address> 
+               
+                <div id="mit-link">
+                   <a href="http://web.mit.edu/"><img src="{% get_static_prefix %}images/mit-logo.png" alt="MIT" /></a><br />
+                   <a href="http://web.mit.edu/">Massachusetts Institute of Technology</a>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

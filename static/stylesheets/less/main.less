@@ -1,0 +1,200 @@
+@image-url: "../../images";
+@footerHeaderTextColor: #ffffff;
+
+@greenColor: #79ba01;
+@blueColor: #0c93e5;
+@orangeColor: #ff8b03;
+@redColor: #e40d0d;
+@purpleColor: #6927a6;
+@indigoColor: #1557a2;
+
+html{
+    height: 100%;
+}
+
+article, aside, figure, footer, header, hgroup, nav, section {display: block;}
+
+img { border: none; }
+
+strong {
+    font-weight: 800;
+}
+
+.centered-content () {
+    width: 960px;
+    margin: 0 auto;
+}
+
+.gradient-image-bg () {
+    background-image:  @mainBg;
+    background-image:  @opera-grad, @mainBg;
+    background-image:  @moz-grad, @mainBg;
+    background-image:  @ms-grad, @mainBg;
+    background-image:  @webkit-grad, @mainBg;
+}
+
+body {
+    @bgStart:  rgba(255,255,255,.69);
+    @bgEnd:    rgba(255,255,255,0);
+    @mainBg:   url("@{image-url}/background_alu.png");
+    @yStart: 0%;
+    @yStop: 100%;
+    
+    @opera-grad: -o-linear-gradient(top, @bgStart @yStart, @bgEnd @yStop);
+    @moz-grad: -moz-linear-gradient(top, @bgStart @yStart, @bgEnd @yStop);
+    @ms-grad: -ms-linear-gradient(top, @bgStart @yStart, @bgEnd @yStop);
+    @webkit-grad: -webkit-gradient(linear, left top, left bottom, color-stop(0, @bgStart), color-stop(1, @bgEnd));
+    
+    .gradient-image-bg;
+    
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica Neue", "Helvetica", "Lucida Grande", "Arial", "Open Sans", sans-serif;
+    font-size: 14px;
+}
+
+.header-footer-bg () {
+    @bgEnds: rgba(0,0,0,1);
+    @bgMid:  rgba(0,0,0,0);
+    @mainBg: url("@{image-url}/dark_stripes.png");
+    @yStart: 0%;
+    @yMid1: 25%;
+    @yMid2: 75%;
+    @yStop: 100%;
+    
+    @opera-grad: -o-linear-gradient(top, @bgEnds @yStart, @bgMid @yMid1, @bgMid @yMid2, @bgEnds @yStop);
+    @moz-grad: -moz-linear-gradient(top, @bgEnds @yStart, @bgMid @yMid1, @bgMid @yMid2, @bgEnds @yStop);
+    @ms-grad: -ms-linear-gradient(top, @bgEnds @yStart, @bgMid @yMid1, @bgMid @yMid2, @bgEnds @yStop);
+    @webkit-grad: -webkit-gradient(linear, left top, left bottom, color-stop(0, @bgEnds), color-stop(0.25, @bgMid), color-stop(0.75, @bgMid), color-stop(1, @bgEnds));
+    
+    .gradient-image-bg;
+}
+
+header {
+    @headerFontWeight: 500;
+    @headerFontSize: 1em;
+    
+    .header-footer-bg;
+    height: 45px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: @footerHeaderTextColor;
+    
+    hgroup, nav {
+        .centered-content;
+        position: relative;
+    }
+    
+    h1,h2 {
+        margin: 0;
+        position:absolute;
+        font-size: @headerFontSize;
+        font-weight: @headerFontWeight;
+    }
+    h1 {
+        left: 0px;
+        top: 7px;
+    }
+    h2 {
+        right: 0px;
+        top: 15px;
+    }
+    
+    nav ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        position:absolute;
+        top: 7px;
+        left: 100px;
+        
+        li {
+            float: left;
+            border-bottom: 4px solid black;
+            margin: 0 4px;
+        }
+        
+        a {
+            display: block;
+            padding: 8px .4em;
+            padding-bottom: 13px;
+        }
+        
+        a, a:link, a:visited {
+            color: @footerHeaderTextColor;
+            font-size: @headerFontSize;
+            font-weight: @headerFontWeight;
+            text-decoration: none;
+        }
+        
+        li.buy{ border-color: @greenColor; }
+        li.support{ border-color: @blueColor; }
+        li.seniors{ border-color: @orangeColor; }
+        li.lgs{ border-color: @redColor; }
+        li.join{ border-color: @purpleColor; }
+        li.hire{ border-color: @indigoColor; }
+        
+        li.buy a:hover, li.buy.selected a{ background-color: @greenColor; }
+        li.support a:hover, li.support.selected a{ background-color: @blueColor; }
+        li.seniors a:hover, li.seniors.selected a{ background-color: @orangeColor; }
+        li.lgs a:hover, li.lgs.selected a{ background-color: @redColor; }
+        li.join a:hover, li.join.selected a{ background-color: @purpleColor; }
+        li.hire a:hover, li.hire.selected a{ background-color: @indigoColor; }
+        
+    }
+    
+}
+
+#content {
+    height: 100%;
+    .centered-content;
+}
+
+@footerHeight: 10em;
+
+footer {
+    @footerFontWeight: 200;
+    .header-footer-bg;
+    height: @footerHeight;
+    margin-top: -@footerHeight;
+    
+    #footer-data {
+        font-size: 0.83em;
+        line-height: 1.6em;
+        font-wegiht: @footerFontWeight;
+        .centered-content;
+        color: @footerHeaderTextColor;
+        position: relative;
+    }
+    
+    address {
+        font-style: normal;
+        position: absolute;
+        top: 20px;
+        left: 0px;
+        strong {
+            font-size: 1.2em;
+        }
+    }
+    
+    #mit-link {
+        position: absolute;
+        text-align: right;
+        top: 20px;
+        right: 0px;
+    }
+    
+    a, a:link, a:visited {
+        color: @footerHeaderTextColor;
+        text-decoration: none;
+    }
+}
+
+#push {
+    clear: both;
+    height: @footerHeight;
+}
+
