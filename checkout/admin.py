@@ -7,7 +7,7 @@ class EquipmentAdmin(admin.ModelAdmin):
     list_filter = ('equip_type','brand')
     fieldsets = (
         ('Technique Information', { 
-            'fields':('barcode_id', 'pet_name', 'checkout_hours'),
+            'fields':('barcode_id', 'pet_name', 'checkout_hours', 'status'),
         }),
         ('Hardware', {
             'fields':('equip_type', 'brand', 'model', 'serial'),

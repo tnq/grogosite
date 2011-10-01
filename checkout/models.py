@@ -44,6 +44,11 @@ class Equipment(models.Model):
                         ('SNAX', 'Snacks'),
                     )
 
+    status_choices = (  ('ACTIVE', 'Active'),
+                        ('REPAIR', 'Out for repair'),
+                        ('MISSING', 'Missing'),
+                        ('BROKEN', 'Broken')
+                    )
 
     barcode_id = models.CharField('Barcode ID', max_length=13, unique=True)
     equip_type = models.CharField('Equipment Type', max_length=30, choices=equip_choices)
@@ -54,6 +59,7 @@ class Equipment(models.Model):
     description = models.TextField(max_length=500, blank=True, null=True)
     manual_link = models.URLField('Manual Link', max_length=256, blank=True, null=True, help_text='URL of the equipment manual')
     serial = models.CharField('Serial Number', max_length=128, blank=True, null=True)
+    status = models.CharField('Equipment Status', max_length=30, choices=status_choices)
     notes = models.TextField(max_length=500, blank=True, null=True)
 
     def __unicode__(self):
