@@ -26,9 +26,11 @@
                 </ul>
             </nav>
         </header>
-        <div id="content" role="content">
-            {% block content %}
-	        {% endblock %}
+        <div id="wrapper">
+            <div id="content" role="content">
+                {% block content %}
+    	        {% endblock %}
+            </div>
             <div id="push"></div>
         </div>
         <footer>
@@ -45,6 +47,7 @@
                    <a href="http://web.mit.edu/"><img src="{% get_static_prefix %}images/mit-logo.png" alt="MIT" /></a><br />
                    <a href="http://web.mit.edu/">Massachusetts Institute of Technology</a>
                 </div>
+                <div id="credits">Copyright &copy; 2011 MIT Technique.</div>
             </div>
         </footer>
     </body>
