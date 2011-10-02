@@ -20,6 +20,9 @@ class KerberosForm (forms.Form):
 
 def closed(request):
     return render_to_response('seniors/closed.html')
+    
+def seniors(request):
+    return render_to_response('tnq_site/seniors.html')
 
 def enterinfo(request):
     ActivityFormSet = formset_factory(ActivityForm, extra=4)

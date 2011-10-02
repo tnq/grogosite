@@ -1,15 +1,16 @@
-{% extends 'wordpress-base.html' %}
+{% extends 'tnq_base.html' %}
 
 {% block title %}Technique 2012 Senior Information{% endblock %}
 
 {% block content%}
+{% load site_settings %}
 <div style="padding-top:30px; padding-bottom:30px; width:100%; text-align:center"><img src="http://technique.mit.edu/wp-content/uploads/2010/10/ghe_senior.jpg" /></div>
-<p class="info">This form is for filling out your biographical information to go with your senior photo in <em>Technique 2012</em>.  It is NOT for scheduling your senior photo - for that, please go back to our main <a href=http://technique.mit.edu/seniors/>seniors page</a>.
+<p class="info">This form is for filling out your biographical information to go with your senior photo in <em>Technique 2012</em>.  It is NOT for scheduling your senior photo - for that, please go back to our main <a href="{% url tnq_seniors %}">seniors page</a>.
 <p class="info">Please fill out as many fields as you can.  You'll be able to review this information after you submit it, but changing it is somewhat of a hassle.</p>
-<p class="info">Want to see your previously submitted answers? Visit <a href={% url senior-email %}>this page</a>!</p>
+<p class="info">Want to see your previously submitted answers? Visit <a href="{% url senior_email %}">this page</a>!</p>
 <p class="info">If you have any questions or concerns please email us at <a href="mailto:tnq-seniors@mit.edu">tnq-seniors@mit.edu</a>.
 <p class="info">Required fields have a <span class="required_callout">*</span>.
-    <form action={% url submit-info %} method="post">
+    <form action={% url submit_senior_info %} method="post">
         {{ form.non_field_errors }}
         <h3>Biographical Information</h3>
         <div class="formSubSection">
