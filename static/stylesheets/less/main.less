@@ -1,4 +1,4 @@
-@image-url: "../../images";
+@imageUrl: "../../images";
 
 @greenColor: #79ba01;
 @blueColor: #0c93e5;
@@ -6,6 +6,11 @@
 @redColor: #e40d0d;
 @purpleColor: #6927a6;
 @indigoColor: #1557a2;
+
+@lighterText: #595959;
+@darkerText: #181818;
+
+@colSpace: 5px;
 
 /** page Structure **/
 
@@ -35,7 +40,7 @@ strong {
 }
 
 body {
-    background-image:  url("@{image-url}/background_alu.png");
+    background-image:  url("@{imageUrl}/background_alu.png");
     
     height: 100%;
     margin: 0;
@@ -47,7 +52,7 @@ body {
 .header-footer-bg () {
     @bgEnds: rgba(0,0,0,1);
     @bgMid:  rgba(0,0,0,0);
-    @mainBg: url("@{image-url}/dark_stripes.png");
+    @mainBg: url("@{imageUrl}/dark_stripes.png");
     @yStart: 0%;
     @yMid1: 25%;
     @yMid2: 75%;
@@ -58,6 +63,7 @@ body {
     @ms-grad: -ms-linear-gradient(top, @bgEnds @yStart, @bgMid @yMid1, @bgMid @yMid2, @bgEnds @yStop);
     @webkit-grad: -webkit-gradient(linear, left top, left bottom, color-stop(0, @bgEnds), color-stop(0.25, @bgMid), color-stop(0.75, @bgMid), color-stop(1, @bgEnds));
     
+    background-color: rgba(0,0,0,1);
     background-image:  @mainBg;
     background-image:  @opera-grad, @mainBg;
     background-image:  @moz-grad, @mainBg;
@@ -69,6 +75,7 @@ body {
 @footerHeaderTextColor: #ffffff;
 
 header {
+    z-index: 999;
     @headerFontWeight: 500;
     @headerFontSize: 1em;
     
@@ -103,7 +110,6 @@ header {
     nav ul {
         margin: 0;
         padding: 0;
-        list-style: none;
         position:absolute;
         top: 7px;
         left: 100px;
@@ -124,28 +130,14 @@ header {
             color: @footerHeaderTextColor;
             font-size: @headerFontSize;
             font-weight: @headerFontWeight;
-            text-decoration: none;
         }
-        
-        li.buy{ border-color: @greenColor; }
-        li.support{ border-color: @blueColor; }
-        li.seniors{ border-color: @orangeColor; }
-        li.lgs{ border-color: @redColor; }
-        li.join{ border-color: @purpleColor; }
-        li.hire{ border-color: @indigoColor; }
-        
-        li.buy a:hover, li.buy.selected a{ background-color: @greenColor; }
-        li.support a:hover, li.support.selected a{ background-color: @blueColor; }
-        li.seniors a:hover, li.seniors.selected a{ background-color: @orangeColor; }
-        li.lgs a:hover, li.lgs.selected a{ background-color: @redColor; }
-        li.join a:hover, li.join.selected a{ background-color: @purpleColor; }
-        li.hire a:hover, li.hire.selected a{ background-color: @indigoColor; }
         
     }
     
 }
 
 #content {
+    z-index: 1;
     padding-top: @headerHeight;
     .centered-content;
 }
@@ -232,7 +224,212 @@ footer {
 
 /* Content Styling **/
 
-
 .smallText () {
-    font-size: .9em;
+    font-size: .88em;
+    font-weight: 400;
+    line-height: 1.6em;
+    color: @lighterText;
 }
+
+.smallHeadlineText () {
+    font-size: 1.86em;
+    font-weight: 300;
+    line-height: 1.2em;
+    color: @darkerText;
+}
+
+.subHeadlineText () {
+    font-size: 1.29em;
+    font-weight: 300;
+    line-height: 1.2em;
+    color: @darkerText;
+}
+
+.superSmallSubhead () {
+    font-size: 0.8em;
+    font-weight: 700;
+    color: @lighterText;
+    margin-top: 0.2em;
+    margin-bottom: 0.8em;
+}
+
+#content{
+    p {
+        a, a:link, a:visited {
+            color: darken(@blueColor, 20%);
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+#content:after {
+    .clear-floats;
+}
+
+#content.main {
+    @leftColWidth: 470px;
+    @rightColWidth: 430px;
+    @topMargin: 80px;
+    padding-bottom: 8em;
+    clear: both;
+    
+    article {
+        margin-left: @colSpace;
+        margin-top: @topMargin;
+        float: left;
+        width: @leftColWidth;
+        
+        p {
+            text-align: right;
+        }
+    }
+    nav {
+        margin-right: @colSpace;
+        margin-top: @topMargin;
+        float: right;
+        width: @rightColWidth;
+        margin-bottom: 4em;
+        ul {
+            margin: 0;
+            padding: 0;
+            margin-top: 50px;
+            
+            li {
+                .smallText;
+                a,a:visited, a:link {
+                    border-bottom: 2px solid;
+                    color: @darkerText;
+                    font-weight: 700;
+                }
+                a:hover {
+                    color: #ffffff;
+                }
+            }
+            
+            li.support,
+            li.lgs,
+            li.join {
+                margin-bottom: 1.6em;
+            }
+        }
+        
+    }
+    p {
+        .smallText;
+    }
+    
+    section#twitter-feed {
+        clear: both;
+        width: @leftColWidth;
+        float: left;
+        
+        blockquote {
+            float:right;
+            margin: 0;
+            width: 350px;
+            background-color: rgba(255, 255, 255, 0.95);
+            position:relative;
+            
+            @radius: 28px;
+            -webkit-border-radius: @radius;
+            -moz-border-radius: @radius;
+            border-radius: @radius;
+            
+            @boxShadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+            @boxShadowInset: 0 0 40px rgba(0, 0, 0, 0.1) inset;
+            -webkit-box-shadow: @boxShadow;
+            -moz-box-shadow: @boxShadow;
+            box-shadow: @boxShadow;
+            
+            p {
+                margin: 20px 30px;
+                font-size: 1em;
+                line-height: 1.4em;                
+                span {
+                    color: lighten(@lighterText, 30%);
+                }
+            }
+        }
+        
+        blockquote::after {
+            content: url('@{imageUrl}/speech_bubble_tail.png');
+            position: absolute;
+            width: 45px;
+            height: 29px;
+            left: 10px;
+            bottom: -29px;
+        }
+        
+        .grogo {
+            clear: right;
+            margin-top: -5px;
+            margin-left:12px;
+            
+            p {
+                float: right;
+                margin-right: 226px;
+                margin-top: 65px;
+                margin-bottom: 0;
+                a {
+                    display: block;
+                    float: right;
+                    margin-right: 24px;
+                    margin-top: 3px;
+                }
+            } 
+        }
+    }
+    
+    section#upcoming-events {
+        width: @rightColWidth;
+        float: right;
+        margin-right: @colSpace;
+        
+        h2 {
+            .smallHeadlineText;
+            margin-top: .5em;
+            margin-bottom: 0;
+        }
+        
+        h3 {
+            .subHeadlineText;
+            margin-bottom: 0;
+            margin-top: 1.3em;
+        }
+        
+        h4 {
+            .superSmallSubhead;
+        }
+    }
+}
+
+
+
+/* common navigation styles */
+
+header nav ul, 
+#content.main nav ul {
+    list-style: none;
+    
+    a, a:link, a:visited {
+        text-decoration: none;
+    }
+    
+    li.buy, li.buy a{ border-color: @greenColor; }
+    li.support, li.support a{ border-color: @blueColor; }
+    li.seniors, li.seniors a{ border-color: @orangeColor; }
+    li.lgs, li.lgs a{ border-color: @redColor; }
+    li.join, li.join a{ border-color: @purpleColor; }
+    li.hire, li.hire a{ border-color: @indigoColor; }
+    
+    li.buy a:hover, li.buy.selected a{ background-color: @greenColor; }
+    li.support a:hover, li.support.selected a{ background-color: @blueColor; }
+    li.seniors a:hover, li.seniors.selected a{ background-color: @orangeColor; }
+    li.lgs a:hover, li.lgs.selected a{ background-color: @redColor; }
+    li.join a:hover, li.join.selected a{ background-color: @purpleColor; }
+    li.hire a:hover, li.hire.selected a{ background-color: @indigoColor; }
+}
+

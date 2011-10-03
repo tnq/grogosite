@@ -27,7 +27,7 @@
             </nav>
         </header>
         <div id="wrapper">
-            <div id="content" role="content">
+            <div id="content" role="content" {% block content_class_tag %}{% endblock %}>
                 {% block content %}
     	        {% endblock %}
             </div>

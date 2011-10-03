@@ -1,13 +1,44 @@
 {% extends "tnq_base.html" %}
+{% load static %}
+
+{% block content_class_tag %}class="main"{% endblock %}
 
 {% block content %}
-<h2>Hipster Ipsum</h2>
-
-<p>Ex nulla cillum anim stumptown, artisan before they sold out elit twee. Aute sustainable proident, reprehenderit do cupidatat nostrud raw denim vice skateboard. Et odio cred, est iphone echo park nihil. Mlkshk irure est, aesthetic high life williamsburg master cleanse tattooed gluten-free thundercats qui tofu sustainable reprehenderit keytar. Proident eu wes anderson etsy jean shorts odio, banksy cred keytar aute assumenda delectus aliquip. Magna cillum sustainable, butcher trust fund sunt dreamcatcher thundercats readymade hoodie consequat. 8-bit nesciunt single-origin coffee dolore, trust fund voluptate irony chambray shoreditch.</p>
-
-<p>Artisan four loko trust fund jean shorts occaecat, ex reprehenderit aesthetic sunt put a bird on it. Pariatur leggings brooklyn, assumenda vegan locavore viral. 3 wolf moon est hoodie consectetur, commodo you probably haven't heard of them laboris mlkshk marfa thundercats viral labore keffiyeh. Portland et occaecat aute keffiyeh laborum, laboris velit jean shorts proident next level cillum. Nesciunt squid eu, master cleanse craft beer vice twee synth DIY cosby sweater butcher sint cred wayfarers williamsburg. Mlkshk magna nisi, keytar before they sold out sint photo booth fixie aesthetic tofu in dolore. Master cleanse quinoa wes anderson, beard raw denim mlkshk aesthetic hoodie sartorial adipisicing vice delectus four loko tempor.</p>
-
-<p>Farm-to-table ad readymade, mixtape labore non american apparel ut aliquip vinyl. Irure labore adipisicing, shoreditch food truck magna consectetur freegan quis artisan ullamco portland. Lo-fi ex aute sapiente ethical brooklyn, marfa williamsburg seitan raw denim. Adipisicing chambray aute skateboard iphone odio. Deserunt voluptate consequat leggings, keffiyeh you probably haven't heard of them sartorial shoreditch jean shorts DIY. Freegan ut terry richardson sustainable exercitation etsy. Placeat four loko beard, lo-fi terry richardson magna 8-bit.</p>
-
-<p>Wes anderson 8-bit PBR eu photo booth pitchfork food truck, anim iphone fugiat art party aesthetic sed ea minim. Irure non commodo squid DIY, banksy id locavore master cleanse odio tempor letterpress blog esse. Anim qui culpa labore, et +1 deserunt in shoreditch reprehenderit. Aliquip quis delectus, retro high life photo booth est labore skateboard incididunt whatever adipisicing nostrud. Sapiente fixie nostrud +1 hoodie. Consequat eu proident photo booth, etsy banksy yr occaecat leggings pariatur aute labore voluptate jean shorts sartorial. Do lo-fi et carles non delectus.</p>
+<article>
+    <h1><img src="{% get_static_prefix %}images/technique_full_logo.png" width="472" height="70" alt="Technique" /></h1>
+    <p>We are a student group dedicated to photography, design, and crafting 
+    the yearbook of the Massachusetts Instutute of Technology.</p>
+</article>
+<nav>
+    <ul>
+        <li class="buy"><a href="#">Buy a book</a> to remember the days you spent at the institute.</li>
+        <li class="support"><a href="#">Support us</a> to keep the club growing and learning.</li>
+        
+        <li class="seniors"><a href="#">Seniors,</a> get your portraits in the book.</li>
+        <li class="lgs"><a href="#">Living groups,</a> schedule your group photo with us.</li>
+        
+        <li class="join"><a href="#">Join</a> a thriving community of MIT photographers and designers. Learn how to use an SLR or a large format camera. Conquer Photoshop, Illustrator, and InDesign. Develop film. Checkout a camera. Make friends.</li>
+        
+        <li class="hire"><a href="#">Hire</a> a photographer or two from our community to photograph your next event. We provide services for photo booths and studio photography.</li>
+    </ul>
+</nav>
+<section id="twitter-feed" role="twitter-feed">
+    <blockquote>
+        <p>I'll be teaching you how to use a camera, today at 1pm in W20-451. Be there! <span>&mdash;Sep 17</span></p>
+    </blockquote>
+    <div class="grogo">
+        <p>Our mascot is<br />H.R.H. Grogo, a gorilla.<br /><img src="{% get_static_prefix %}images/twitter_bird.png" width="34" height="24" alt="Twitter" /> <a href="#">@hrhgrogo</a></p>
+        <a href="#"><img src="{% get_static_prefix %}images/grogo.png" width="96" height="139" alt="H.R.H. Grogo" /></a>
+    </div>
+</section>
+<section id="upcoming-events" role="upcoming-events">
+    <h2>Upcoming Events</h2>
+    <h3>Intro to the Book</h3>
+    <h4>Saturday 24 September 2011</h4>
+    <p>Learn how to get involved in designing, photo editing, and crafting the 2012 yearbook. Meet the manboard officers and get the schedule.</p>
+    
+    <h3>Photoshop &amp; Darkroom Tutorials. </h3>
+    <h4>Saturday 1 October 2011</h4>
+    <p>Learn how to get involved in designing, photo editing, and crafting the 2012 yearbook. Meet the manboard officers and get the schedule.</p>
+</section>
 {% endblock %}
