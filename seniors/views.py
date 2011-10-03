@@ -11,6 +11,7 @@ from django.forms.models import model_to_dict
 from django.forms.formsets import formset_factory
 from django.core.mail import send_mail, EmailMessage
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.urlresolvers import reverse
 import csv
 
 __CURRENT_TNQ_YEAR = 2012
@@ -41,7 +42,7 @@ def enterinfo(request):
             
             request.session['seniorid'] = senior.id;
             sendemail(senior)
-            return HttpResponseRedirect('/scripts/seniors/thanks/')
+            return HttpResponseRedirect(reverse('senior_success'))
     else:
         form = SeniorForm()
         formset = ActivityFormSet()
@@ -54,9 +55,9 @@ def thanks(request):
             senior = Senior.objects.get(id=request.session['seniorid'])
         except:
             del request.session['seniorid']
-            return HttpResponseRedirect('/scripts/seniors/')
+            return HttpResponseRedirect(reverse('enter_senior_info'))
     else:
-        return HttpResponseRedirect('/scripts/seniors/')
+        return HttpResponseRedirect(reverse('enter_senior_info'))
 
     senior_object = SeniorForm(data=model_to_dict(senior))
     activities = Activity.objects.filter(senior = senior)
@@ -74,9 +75,9 @@ def email(request):
             try:
                 senior = Senior.objects.get(kerberos=kerberos)
                 sendemail(senior)
-                return HttpResponseRedirect('/scripts/seniors/emailsent/')
+                return HttpResponseRedirect(reverse('senior_email_sent'))
             except ObjectDoesNotExist:
-                return HttpResponseRedirect('/scripts/seniors/noinfo/')
+                return HttpResponseRedirect(reverse('no_senior_info'))
     else:
         form = KerberosForm()
     return render_to_response('seniors/email.html', { 'form':form })
@@ -87,7 +88,7 @@ def noinfo(request):
         del request.session['kerberos']
         return render_to_response('seniors/noinfo.html', { 'kerberos':kerberos })
     else:
-        return HttpResponseRedirect('/scripts/seniors/email/')
+        return HttpResponseRedirect(reverse('enter_senior_info'))
 
 def emailsent(request):
     if 'kerberos' in request.session:
@@ -95,7 +96,7 @@ def emailsent(request):
         del request.session['kerberos']
         return render_to_response('seniors/emailsent.html', { 'kerberos':kerberos })
     else:
-        return HttpResponseRedirect('/scripts/seniors/email/')
+        return HttpResponseRedirect(reverse('enter_senior_info'))
 
 
 def sendemail(senior):
