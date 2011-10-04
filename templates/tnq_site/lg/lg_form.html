@@ -1,0 +1,136 @@
+{% extends 'tnq_base.html' %}
+
+{% block content %}
+
+<h2>Living Group Portrait Scheduling</h2>
+<p>This form is for scheduling your Living Group's portrait session with Technique.<br />
+Please fill out all fields.</p>
+<p>If you would like a logo or crest for your living group to be a part of the page, remember that the cost is now $30.  Please send the image as an attachment to <em>tnq-LG at mit dot edu</em>.  The file must have sufficient resolution, or we will contact you for a replacement file.  This means a vector file (.EPS, .SVG, .AI, etc) or a raster image (.JPG, .TIF, etc) with at least 500 pixels on its longer dimension.</p>
+<form action="http://web.mit.edu/bin/cgiemail/afs/athena.mit.edu/activity/y/yearbook/www/lgform.txt" method="post">
+<h3>Living Group Name (as it will be printed in the book):</h3>
+<input maxlength="50" name="LivingGroupName" size="30" type="text" />
+<h3>Living Group Representative's Name:</h3>
+<input maxlength="50" name="LGRepName" size="30" type="text" />
+<h3>E-mail:</h3>
+<input maxlength="50" name="LGRepEmail" size="30" type="text" />
+<h3>Phone:</h3>
+<input maxlength="50" name="LGRepPhone" size="30" type="text" />
+<p>Please choose three dates and times for your portrait.  We will try our best to accommodate your choices, but please keep in mind that we have a busy schedule of groups to photograph.  Each session will last approximately 30 minutes.  We prefer to take the portraits on Fridays, Saturdays, and Sundays, but please email if another day is more convenient.</p>
+<h3>First Choice:</h3>
+<select name="FirstChoiceDay">
+<option selected="selected" value="notchosen">Choose Day...</option>
+<option value="FriOct7">Fri/Oct 7</option>
+<option value="SatOct8">Sat/Oct 8</option>
+<option value="SunOct9">Sun/Oct 9</option>
+<option value="FriOct14">Fri/Oct 14</option>
+<option value="SatOct15">Sat/Oct 15</option>
+<option value="SunOct16">Sun/Oct 16</option>
+<option value="FriOct21">Fri/Oct 21</option>
+<option value="SatOct22">Sat/Oct 22</option>
+<option value="SunOct23">Sun/Oct 23</option>
+<option value="FriOct28">Fri/Oct 28</option>
+<option value="SatOct29">Sat/Oct 29</option>
+<option value="SunOct30">Sun/Oct 30</option>
+<option value="FriNov4">Fri/Nov 4</option>
+<option value="SatNov5">Sat/Nov 5</option>
+<option value="SunNov6">Sun/Nov 6</option>
+<option value="FriNov11">Fri/Nov 11</option>
+<option value="SatNov12">Sat/Nov 12</option>
+<option value="SunNov13">Sun/Nov 13</option>
+</select>
+<select name="FirstChoiceTime">
+<option selected="selected" value="notchosen">Choose Time...;</option>
+<option value="10a">10am</option>
+<option value="11a">11am</option>
+<option value="12p">12pm</option>
+<option value="1p">1pm</option>
+<option value="2p">2pm</option>
+<option value="3p">3pm</option>
+<option value="4p">4pm</option>
+<option value="5p">5pm</option>
+<option value="6p">6pm</option>
+<option value="7p">7pm</option>
+</select>
+<h3>Second Choice:</h3>
+<select name="SecondChoiceDay">
+<option selected="selected" value="notchosen">Choose Day...</option>
+<option value="FriOct7">Fri/Oct 7</option>
+<option value="SatOct8">Sat/Oct 8</option>
+<option value="SunOct9">Sun/Oct 9</option>
+<option value="FriOct14">Fri/Oct 14</option>
+<option value="SatOct15">Sat/Oct 15</option>
+<option value="SunOct16">Sun/Oct 16</option>
+<option value="FriOct21">Fri/Oct 21</option>
+<option value="SatOct22">Sat/Oct 22</option>
+<option value="SunOct23">Sun/Oct 23</option>
+<option value="FriOct28">Fri/Oct 28</option>
+<option value="SatOct29">Sat/Oct 29</option>
+<option value="SunOct30">Sun/Oct 30</option>
+<option value="FriNov4">Fri/Nov 4</option>
+<option value="SatNov5">Sat/Nov 5</option>
+<option value="SunNov6">Sun/Nov 6</option>
+<option value="FriNov11">Fri/Nov 11</option>
+<option value="SatNov12">Sat/Nov 12</option>
+<option value="SunNov13">Sun/Nov 13</option>
+</select>
+<select name="SecondChoiceTime">
+<option selected="selected" value="notchosen">Choose Time...</option>
+<option value="10a">10am</option>
+<option value="11a">11am</option>
+<option value="12p">12pm</option>
+<option value="1p">1pm</option>
+<option value="2p">2pm</option>
+<option value="3p">3pm</option>
+<option value="4p">4pm</option>
+<option value="5p">5pm</option>
+<option value="6p">6pm</option>
+<option value="7p">7pm</option>
+</select>
+<h3>Third Choice:</h3>
+<select name="ThirdChoiceDay">
+<option selected="selected" value="notchosen">Choose Day...</option>
+<option value="FriOct7">Fri/Oct 7</option>
+<option value="SatOct8">Sat/Oct 8</option>
+<option value="SunOct9">Sun/Oct 9</option>
+<option value="FriOct14">Fri/Oct 14</option>
+<option value="SatOct15">Sat/Oct 15</option>
+<option value="SunOct16">Sun/Oct 16</option>
+<option value="FriOct21">Fri/Oct 21</option>
+<option value="SatOct22">Sat/Oct 22</option>
+<option value="SunOct23">Sun/Oct 23</option>
+<option value="FriOct28">Fri/Oct 28</option>
+<option value="SatOct29">Sat/Oct 29</option>
+<option value="SunOct30">Sun/Oct 30</option>
+<option value="FriNov4">Fri/Nov 4</option>
+<option value="SatNov5">Sat/Nov 5</option>
+<option value="SunNov6">Sun/Nov 6</option>
+<option value="FriNov11">Fri/Nov 11</option>
+<option value="SatNov12">Sat/Nov 12</option>
+<option value="SunNov13">Sun/Nov 13</option>
+</select>
+<select name="ThirdChoiceTime">
+<option selected="selected" value="notchosen">Choose Time...</option>
+<option value="10a">10am</option>
+<option value="11a">11am</option>
+<option value="12p">12pm</option>
+<option value="1p">1pm</option>
+<option value="2p">2pm</option>
+<option value="3p">3pm</option>
+<option value="4p">4pm</option>
+<option value="5p">5pm</option>
+<option value="6p">6pm</option>
+<option value="7p">7pm</option>
+</select>
+<p>Please describe the portrait location.  The portrait can be taken indoors or outdoors. Please provide the address if the location is off campus; in this case, please also arrange transportation for our equipment and photographers from the Student Center on the day of the portrait.</p>
+<p><textarea cols="50" rows="5" name="Location"></textarea></p>
+<h3>Any other comments/concerns? (optional)</h3>
+<p><textarea cols="50" rows="5" name="Comments"></textarea></p>
+<p>Remember that this is an agreement to have your LG shot taken and placed in the book if we can accommodate one of your three choices.<br />
+The information you entered will be sent to the Living Group Editors and CCed to yourself.  If you have trouble using this form, email us at <em>tnq-LG at mit dot edu</em>.<br />
+Thank you!</p>
+<input type="submit" value="Submit" />
+<input type="reset" />
+<input name="success" type="hidden" value="{% url lg_success %}" />
+</form>
+
+{% endblock %}

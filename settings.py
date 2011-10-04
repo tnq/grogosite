@@ -111,12 +111,12 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'creditcard',
     'seniors',
-    'creditcard',
     'mainsite',
     'purchase',
     'dajaxice',
     'dajax',
     'checkout',
-    'massadmin'
+    'massadmin',
+    'lg',
 )
 
