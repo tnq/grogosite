@@ -194,6 +194,24 @@ a.button:active {
 #content p a:hover {
   text-decoration: underline;
 }
+#content dl {
+  width: 580px;
+}
+#content dl dt {
+  font-size: 1.29em;
+  font-weight: 200;
+  color: #2e2e2e;
+  line-height: 1.22em;
+}
+#content dl dd {
+  font-size: 0.93em;
+  font-weight: 400;
+  line-height: 1.4em;
+  color: #595959;
+  margin-left: 60px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
 #content:after {
   content: ".";
   display: block;
@@ -329,36 +347,21 @@ a.button:active {
   margin-top: 0.2em;
   margin-bottom: 0.8em;
 }
-#content.buy {
+#content.buy, #content.hire {
   padding-bottom: 4em;
 }
-#content.buy article {
+#content.buy article, #content.hire article {
   padding: 0 10px;
   padding-top: 3em;
 }
-#content.buy article h1 {
+#content.buy article h1, #content.hire article h1 {
   font-size: 3.6em;
   font-weight: 200;
   line-height: 1.2em;
   color: #595959;
   margin: 0;
 }
-#content.buy article h2 {
-  font-size: 1em;
-  font-weight: 700;
-  color: #595959;
-  margin-top: 0;
-  margin-bottom: 2em;
-}
-#content.buy section#preorder {
-  width: 400px;
-  float: left;
-}
-#content.buy section#bundle {
-  width: 460px;
-  float: right;
-}
-#content.buy section#preorder h2, #content.buy section#bundle h2 {
+#content.buy article h2, #content.hire article h2 {
   font-size: 1.86em;
   font-weight: 400;
   line-height: 1.2em;
@@ -366,28 +369,49 @@ a.button:active {
   margin-top: 0;
   margin-bottom: .4em;
 }
-#content.buy section#preorder .order-info, #content.buy section#bundle .order-info {
+#content.buy article hgroup h2, #content.hire article hgroup h2 {
+  font-size: 1em;
+  font-weight: 700;
+  color: #595959;
+  margin-top: 0;
+  margin-bottom: 1.5em;
+}
+#content.buy section#preorder, #content.hire section#preorder {
+  width: 400px;
+  float: left;
+}
+#content.buy section#bundle, #content.hire section#bundle {
+  width: 460px;
+  float: right;
+}
+#content.buy section h3, #content.hire section h3 {
+  font-size: 1.57em;
+  font-weight: 200;
+  color: #181818;
+  line-height: 1.22em;
+}
+#content.buy section .order-info, #content.hire section .order-info {
   float: left;
   clear: left;
 }
-#content.buy section#preorder .order-links, #content.buy section#bundle .order-links {
+#content.buy section .order-links, #content.hire section .order-links {
   padding-top: 7px;
   float: right;
 }
-#content.buy section#preorder .order-info {
+#content.buy section#preorder .order-info, #content.hire section#preorder .order-info {
   width: 220px;
 }
-#content.buy section#preorder .order-links {
+#content.buy section#preorder .order-links, #content.hire section#preorder .order-links {
   width: 160px;
 }
-#content.buy section#preorder p {
+#content.buy section#preorder p, #content.hire section#preorder p {
   font-size: 1.57em;
   font-weight: 200;
   color: #181818;
   line-height: 1.22em;
   margin: 0;
 }
-#content.buy a.button.preorder {
+#content.buy a.button.preorder, #content.hire a.button.preorder {
   background-image: -o-linear-gradient(top, #79ba01 0%, #5f9101 100%);
   background-image: -moz-linear-gradient(top, #79ba01 0%, #5f9101 100%);
   background-image: -ms-linear-gradient(top, #79ba01 0%, #5f9101 100%);
@@ -397,17 +421,17 @@ a.button:active {
   font-size: 1.29em;
   font-weight: 200;
 }
-#content.buy a.button.preorder strong {
+#content.buy a.button.preorder strong, #content.hire a.button.preorder strong {
   display: block;
   font-weight: 600;
 }
-#content.buy a.button.preorder:active {
+#content.buy a.button.preorder:active, #content.hire a.button.preorder:active {
   font-size: 1.161em;
   padding: 22.5px 0;
   width: 144px;
   margin: 7px 8px;
 }
-#content.buy a.button.bundle {
+#content.buy a.button.bundle, #content.hire a.button.bundle {
   background-image: -o-linear-gradient(top, #0c93e5 0%, #0a7abe 100%);
   background-image: -moz-linear-gradient(top, #0c93e5 0%, #0a7abe 100%);
   background-image: -ms-linear-gradient(top, #0c93e5 0%, #0a7abe 100%);
@@ -419,56 +443,59 @@ a.button:active {
   padding-bottom: 11px;
   margin-bottom: 20px;
 }
-#content.buy a.button.bundle strong {
+#content.buy a.button.bundle strong, #content.hire a.button.bundle strong {
   display: block;
   font-size: .9em;
   font-weight: 600;
 }
-#content.buy a.button.bundle:active {
+#content.buy a.button.bundle:active, #content.hire a.button.bundle:active {
   font-size: 1.026em;
   padding: 9px 0;
   width: 198px;
   margin: 2px 11px;
   margin-bottom: 23px;
 }
-#content.buy section#bundle .order-info {
+#content.buy section#bundle .order-info, #content.hire section#bundle .order-info {
   width: 226px;
   padding-top: .5em;
 }
-#content.buy section#bundle .order-links {
+#content.buy section#bundle .order-links, #content.hire section#bundle .order-links {
   width: 220px;
 }
-#content.buy section#bundle p {
+#content.buy section#bundle p, #content.hire section#bundle p {
   margin: 0;
   font-weight: 400;
   line-height: 1.3em;
   margin-bottom: 1em;
 }
-#content.buy section#bundle p strong {
+#content.buy section#bundle p strong, #content.hire section#bundle p strong {
   font-size: 1.57em;
   font-weight: 200;
   color: #181818;
   line-height: 1.22em;
   font-weight: 800;
 }
-#content.buy section#bundle p span {
+#content.buy section#bundle p span, #content.hire section#bundle p span {
   color: #e40d0d;
   font-size: .9em;
   vertical-align: top;
   line-height: 1.8em;
 }
-#content.buy section#preorder:after, #content.buy section#bundle:after {
+#content.buy section#preorder:after,
+#content.hire section#preorder:after,
+#content.buy section#bundle:after,
+#content.hire section#bundle:after {
   content: ".";
   display: block;
   height: 0;
   clear: both;
   visibility: hidden;
 }
-#content.buy section#about {
+#content.buy section#about, #content.hire section#about {
   clear: both;
   padding-top: 20px;
 }
-#content.buy section#about p {
+#content.buy section#about p, #content.hire section#about p {
   font-size: 0.93em;
   font-weight: 400;
   line-height: 1.6em;
@@ -476,11 +503,11 @@ a.button:active {
   margin: 0;
   margin-bottom: 1em;
 }
-#content.buy section#about img {
+#content.buy section#about img, #content.hire section#about img {
   float: right;
   margin-left: 20px;
 }
-#content.buy section#preorder .order-links p {
+#content.buy section#preorder .order-links p, #content.hire section#preorder .order-links p {
   font-size: .88em;
   font-weight: 400;
   line-height: 1.6em;
@@ -490,32 +517,32 @@ a.button:active {
   float: none;
   padding-top: .7em;
 }
-#content.buy article#previous {
+#content.buy article#previous, #content.hire article#previous {
   width: 400px;
   float: left;
 }
-#content.buy article#previous input[type='submit'] {
+#content.buy article#previous input[type='submit'], #content.hire article#previous input[type='submit'] {
   margin-top: -1px;
 }
-#content.buy article#patron {
+#content.buy article#patron, #content.hire article#patron {
   width: 460px;
   float: right;
 }
-#content.buy article.subarticle {
+#content.buy article.subarticle, #content.hire article.subarticle {
   padding-top: 1em;
 }
-#content.buy article.subarticle h1 {
+#content.buy article.subarticle h1, #content.hire article.subarticle h1 {
   line-height: 1em;
   padding-bottom: .4em;
 }
-#content.buy article.subarticle h2 {
+#content.buy article.subarticle h2, #content.hire article.subarticle h2 {
   font-size: 1.57em;
   font-weight: 200;
   color: #181818;
   line-height: 1.22em;
   margin-bottom: 0;
 }
-#content.buy article.subarticle p {
+#content.buy article.subarticle p, #content.hire article.subarticle p {
   width: 220px;
   font-size: .88em;
   font-weight: 400;
@@ -523,7 +550,7 @@ a.button:active {
   color: #595959;
   line-height: 1.3em;
 }
-#content.buy article.subarticle input[type='text'] {
+#content.buy article.subarticle input[type='text'], #content.hire article.subarticle input[type='text'] {
   width: 204px;
   height: 40px;
   border: 1px solid rgba(58, 58, 58, 0.44);
@@ -531,7 +558,10 @@ a.button:active {
   font-size: 1.5em;
   padding: 0 4px;
 }
-#content.buy article.subarticle a.button, #content.buy article.subarticle input[type='submit'] {
+#content.buy article.subarticle a.button,
+#content.hire article.subarticle a.button,
+#content.buy article.subarticle input[type='submit'],
+#content.hire article.subarticle input[type='submit'] {
   background-image: -o-linear-gradient(top, #0c93e5 0%, #0a7abe 100%);
   background-image: -moz-linear-gradient(top, #0c93e5 0%, #0a7abe 100%);
   background-image: -ms-linear-gradient(top, #0c93e5 0%, #0a7abe 100%);
@@ -542,8 +572,88 @@ a.button:active {
   width: 160px;
   float: right;
 }
-#content.buy article.subarticle a.button {
+#content.buy article.subarticle a.button, #content.hire article.subarticle a.button {
   margin-top: 3px;
+}
+#content.hire .imagerow {
+  margin-bottom: 20px;
+}
+#content.hire .imagerow img {
+  float: left;
+  margin-right: 20px;
+}
+#content.hire .imagerow img:last-child {
+  margin-right: 0;
+}
+#content.hire .imagerow:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+#content.hire .imagerow.first {
+  width: 640px;
+  float: left;
+  margin-right: 20px;
+}
+#content.hire a.button.quote {
+  background-image: -o-linear-gradient(top, #1557a2 0%, #10447e 100%);
+  background-image: -moz-linear-gradient(top, #1557a2 0%, #10447e 100%);
+  background-image: -ms-linear-gradient(top, #1557a2 0%, #10447e 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #1557a2), color-stop(1, #10447e));
+  font-size: 1.42em;
+  font-weight: 200;
+  width: 218px;
+  line-height: 55px;
+  padding: 0;
+}
+#content.hire section p {
+  font-size: 0.93em;
+  font-weight: 400;
+  line-height: 1.4em;
+  color: #595959;
+}
+#content.hire section#booth a.button.quote {
+  margin-top: 10px;
+  float: right;
+  margin-right: 35px;
+}
+#content.hire section#booth a.button.quote:active {
+  line-height: 49.5px;
+  margin-top: 12.75px;
+  font-size: 1.278em;
+  width: 196.20000000000002px;
+  margin-right: 45.89999999999999px;
+}
+#content.hire section#event {
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+#content.hire section#event img {
+  float: right;
+  margin-left: 20px;
+}
+#content.hire section#event:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+#content.hire section#event p {
+  margin-bottom: 1.2em;
+  width: 278px;
+}
+#content.hire section#event a.button.quote {
+  margin-left: 35px;
+}
+#content.hire section#event a.button.quote:active {
+  line-height: 49.5px;
+  margin-top: 2.75px;
+  font-size: 1.278em;
+  width: 196.20000000000002px;
+  margin-left: 45.89999999999999px;
 }
 #content.seniors, #content.lgs {
   padding-bottom: 4em;
@@ -755,24 +865,6 @@ a.button:active {
 }
 #content.seniors section#reminder a.button:active, #content.lgs section#reminder a.button:active {
   width: 234px;
-}
-#content.seniors dl, #content.lgs dl {
-  width: 580px;
-}
-#content.seniors dl dt, #content.lgs dl dt {
-  font-size: 1.29em;
-  font-weight: 200;
-  color: #2e2e2e;
-  line-height: 1.22em;
-}
-#content.seniors dl dd, #content.lgs dl dd {
-  font-size: 0.93em;
-  font-weight: 400;
-  line-height: 1.4em;
-  color: #595959;
-  margin-left: 60px;
-  margin-top: 10px;
-  margin-bottom: 20px;
 }
 #content.seniors .sample-images, #content.lgs .sample-images {
   width: 360px;

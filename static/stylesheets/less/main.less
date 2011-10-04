@@ -205,6 +205,18 @@ a.button:active {
             text-decoration: underline;
         }
     }
+    dl {
+        .column-width(10);
+        dt {
+            .mediumText;
+        }
+        dd {
+            .normalText(1.4em);
+            margin-left: @colWidth + (@colSpace*2);
+            margin-top: @colSpace;
+            margin-bottom: @colSpace*2;
+        }
+    }
 }
 
 #content:after {
@@ -342,7 +354,8 @@ a.button:active {
     }
 }
 
-#content.buy {
+#content.buy,
+#content.hire {
     @leftColWidth: 400px;
     @rightColWidth: 460px;
     
@@ -356,9 +369,14 @@ a.button:active {
             margin:0;
         }
         h2 {
+            .smallHeadlineText;
+            margin-top: 0;
+            margin-bottom: .4em;
+        }
+        hgroup h2 {
             .taglineText;
             margin-top: 0;
-            margin-bottom: 2em;
+            margin-bottom: 1.5em;
         }
     }
     
@@ -372,12 +390,9 @@ a.button:active {
         float: right;
     }
     
-    section#preorder,
-    section#bundle {
-        h2 {
-            .smallHeadlineText;
-            margin-top: 0;
-            margin-bottom: .4em;
+    section {
+        h3 {
+            .largeText;
         }
         .order-info {
             float: left;
@@ -536,6 +551,84 @@ a.button:active {
         }
         a.button {
             margin-top: 3px;
+        }
+    }
+}
+
+#content.hire {
+    
+    .imagerow {
+        margin-bottom: @colSpace*2;
+        img {
+            float: left;
+            margin-right: @colSpace*2;
+        }
+        img:last-child {
+            margin-right: 0;
+        }
+        &:after {
+            .clear-floats;
+        }
+        &.first {
+            .column-width(11);
+            float: left;
+            margin-right: @colSpace*2;
+        }
+    }
+    @buttonWidth: 218px;
+    @buttonLineHeight: 55px;
+    @buttonFontSize: 1.42em;
+    a.button.quote {
+        .indigo-button;
+        font-size: @buttonFontSize;
+        font-weight: 200;
+        width: @buttonWidth;
+        line-height: @buttonLineHeight;
+        padding: 0;
+    }   
+    section {
+        p {
+            .normalText (1.4em);
+        }
+    }
+    section#booth {
+       a.button.quote {
+            margin-top: 10px;
+            float: right;
+            margin-right: 35px;
+            &:active {
+                line-height: @buttonLineHeight*@activeScale;
+                margin-top: 10px + (@buttonLineHeight - @buttonLineHeight*@activeScale)/2;
+                font-size: @buttonFontSize*@activeScale;
+                width: @buttonWidth*@activeScale;
+                margin-right: 35px + (@buttonWidth - @buttonWidth*@activeScale)/2;
+            }
+        }
+    }
+    
+    section#event {
+        padding-top: @colSpace*2;
+        padding-bottom: @colSpace*4;
+        img {
+            float: right;
+            margin-left: @colSpace*2;
+        }
+        &:after {
+            .clear-floats;
+        }
+        p {
+            margin-bottom: 1.2em;
+            .column-width(5,-1);
+        }
+        a.button.quote {
+            margin-left: 35px;
+            &:active {
+                line-height: @buttonLineHeight*@activeScale;
+                margin-top: (@buttonLineHeight - @buttonLineHeight*@activeScale)/2;
+                font-size: @buttonFontSize*@activeScale;
+                width: @buttonWidth*@activeScale;
+                margin-left: 35px + (@buttonWidth - @buttonWidth*@activeScale)/2;
+            }
         }
     }
 }
@@ -723,19 +816,6 @@ a.button:active {
             &:active {
                 width: @width*@activeScale;
             }
-        }
-    }
-    
-    dl {
-        .column-width(10);
-        dt {
-            .mediumText;
-        }
-        dd {
-            .normalText(1.4em);
-            margin-left: @colWidth + (@colSpace*2);
-            margin-top: @colSpace;
-            margin-bottom: @colSpace*2;
         }
     }
     
