@@ -1,0 +1,146 @@
+/*  Technique Stylesheet
+    copyright 2011 Technique */
+
+@greenColor: #79ba01;
+@blueColor: #0c93e5;
+@orangeColor: #ff8b03;
+@redColor: #e40d0d;
+@purpleColor: #6927a6;
+@indigoColor: #1557a2;
+
+@lighterText: #595959;
+@darkerText: #181818;
+
+@colSpace: 10px;
+@colWidth: 40px;
+
+@activeScale: 0.9;
+
+.column-width(@colNum:4,@extra:0,@scale:1) {
+    width: ((@colNum * @colWidth) + 2*(@colSpace * (@colNum - 1) + @extra))*@scale;
+}
+
+.centered-content () {
+    width: 960px;
+    margin: 0 auto;
+}
+.clear-floats () {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.smallText () {
+    font-size: .88em;
+    font-weight: 400;
+    line-height: 1.6em;
+    color: @lighterText;
+}
+
+.captionText () {
+    .smallText;
+    line-height: 1.3em;
+}
+
+.normalText () {
+    font-size: 0.93em;
+    font-weight: 400;
+    line-height: 1.6em;
+    color: @lighterText;
+}
+
+.largeText () {
+    font-size: 1.57em;
+    font-weight: 200;
+    color: @darkerText;
+    line-height: 1.22em;
+}
+
+.largeHeadlineText () {
+    font-size: 3.6em;
+    font-weight: 200;
+    line-height: 1.2em;
+    color: @lighterText;
+}
+
+.taglineText () {
+    font-size: 1em;
+    font-weight: 700;
+    color: @lighterText;
+}
+
+.smallHeadlineText () {
+    font-size: 1.86em;
+    font-weight: 400;
+    line-height: 1.2em;
+    color: @darkerText;
+}
+
+.subHeadlineText () {
+    font-size: 1.29em;
+    font-weight: 300;
+    line-height: 1.2em;
+    color: @darkerText;
+}
+
+.superSmallSubhead () {
+    font-size: 0.8em;
+    font-weight: 700;
+    color: @lighterText;
+    margin-top: 0.2em;
+    margin-bottom: 0.8em;
+}
+
+.border-radius(@radius) {
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+    border-radius: @radius;
+}
+
+.box-shadow(@shadow: 0 1px 4px rgba(0, 0, 0, 0.3)) {
+    -webkit-box-shadow: @shadow;
+    -moz-box-shadow: @shadow;
+    box-shadow: @shadow;
+}
+
+.linear-gradient(@colorStart:rgba(255,255,255,.69), @colorEnd:rgba(255,255,255,0), @start:0, @stop:100) {
+    @opera-grad: -o-linear-gradient(top, @colorStart @start *1%, @colorEnd @stop * 1%);
+    @moz-grad: -moz-linear-gradient(top, @colorStart @start * 1%, @colorEnd @stop * 1%);
+    @ms-grad: -ms-linear-gradient(top, @colorStart @start * 1%, @colorEnd @stop * 1%);
+    @webkit-grad: -webkit-gradient(linear, left top, left bottom, color-stop(@start / 100, @colorStart), color-stop(@stop / 100, @colorEnd));
+    
+    background-image:  @opera-grad;
+    background-image:  @moz-grad;
+    background-image:  @ms-grad;
+    background-image:  @webkit-grad;
+
+}
+
+.bar-gradient-with-image(@colorOut:rgba(0,0,0,1), @colorIn:rgba(0,0,0,0), @bgImage:url("@{imageUrl}/dark_stripes.png")) {
+    @yStart: 0;
+    @yMid1: 25;
+    @yMid2: 75;
+    @yStop: 100;
+    
+    @opera-grad: -o-linear-gradient(top, @colorOut @yStart * 1%, @colorIn @yMid1 * 1%, @colorIn @yMid2 * 1%, @colorOut @yStop * 1%);
+    @moz-grad: -moz-linear-gradient(top, @colorOut @yStart * 1%, @colorIn @yMid1 * 1%, @colorIn @yMid2 * 1%, @colorOut @yStop * 1%);
+    @ms-grad: -ms-linear-gradient(top, @colorOut @yStart * 1%, @colorIn @yMid1 * 1%, @colorIn @yMid2 * 1%, @colorOut @yStop * 1%);
+    @webkit-grad: -webkit-gradient(linear, left top, left bottom, color-stop(@yStart / 100, @colorOut), color-stop(@yMid1 / 100, @colorIn), color-stop(@yMid2 / 100, @colorIn), color-stop(@yStop / 100, @colorOut));
+    
+    
+    background-image:  @bgImage;
+    background-image:  @opera-grad, @bgImage;
+    background-image:  @moz-grad, @bgImage;
+    background-image:  @ms-grad, @bgImage;
+    background-image:  @webkit-grad, @bgImage;
+}
+
+.green-button() {
+    .linear-gradient(@greenColor, darken(@greenColor, 8%));
+}
+
+.blue-button() {
+    .linear-gradient(@blueColor, darken(@blueColor, 8%));
+}

@@ -1,7 +1,69 @@
 {% extends 'tnq_base.html' %}
+{% load static %}
+
+{% block buy_selected %}selected{% endblock %}
+
+{% block content_class_tag %}class="buy"{% endblock %}
 
 {% block content %}
+<article>
+    <hgroup>
+        <h1>Technique 2012</h1>
+        <h2>The yearbook of the Massachusetts Institute of Technology, dedicated to the Class of 2012.</h2>
+    </hgroup>
+    
+    <section id="preorder">
+        <h2>Pre-order Technique 2012</h2>
+        <div class="order-info">
+            <p>Your copy of Technique 2012, the current volume, can be pre-ordered today for <strong>$90</strong>.</p>
+        </div>
+        <div class="order-links">
+            <a href="#" class="button preorder"><strong>Pre-order</strong> Technique 2012</a>
+            <p>Book prices will rise to <strong>$120</strong> after January 31st.</p>
+        </div>
+    </section>
+    
+    <section id="bundle">
+        <h2>Purchase a Four Year Bundle</h2>
+        <div class="order-info">
+            <p>Pre-order the Freshman Bundle (Technique 2012 to 2015) today for <strong>$290</strong>. <span>(A $190 discount)</span></p>
+            <p>Pre-order the Senior Bundle (Technique 2009 to 2012) today for <strong>$390</strong>. <span>(A $90 discount)</span></p>
+        </div>
+        <div class="order-links">
+            <a href="#" class="button bundle freshman"><strong>Get the Freshman Bundle</strong> (Technique 2012 to 2015)</a>
+            <a href="#" class="button bundle senior"><strong>Get the Senior Bundle</strong> (Technique 2009 to 2012)</a>
+        </div>
+    </section>
+    
+    <section id="about">
+        <img src="{% get_static_prefix %}images/buy_photo.png" alt="Technique 2012" />
+        <p>
+            Technique 2012 captures the essence of MIT undergraduate life in photographs and stories. Our 400 page annual showcases award-winning photography, graphic design, and poignant writing from a talented and diverse sampling of MIT students.
+        </p>
+    
+        <p>Sections include: Life in Hell—a photographic essay of MIT student life. Journal—a timline notable events at the Institute and around the world during the calendar year of 2011. Activities—featuring MIT’s diverse community of student groups. Sports—candid photographs of MIT athletes at their best. Living Groups—photographs of the members of nearly every dorm community, fraternity, sorority, and independent living group. Seniors—portraits of the 2012 senior class.</p>
+    
+        <p>Technique 2012 is a tribute not only to the students of today, but to the traditions that have shaped their undergraduate experience and the paths that they will take tomorrow.</p>
+    </section>
+</article>
 
-Hey!  Buy a book!
+<article class="subarticle" id="previous">
+    <hgroup>
+        <h1>Techniques from previous years</h1>
+        <h2>We maintain an extensive archive of Techniques from past years.</h2>
+    </hgroup>
+    <form>
+        <p>Please enter in the year(s) of Technique you are interested in (ex: 2008, 2009):</p>
+        <input type="text" value="" />
+        <input type="submit" value="Check Availability" />
+    </form>
+</article>
 
+<article class="subarticle" id="patron">
+    <hgroup>
+        <h1>Become a Patron, get Technique 2012</h1>
+        <h2>Technique cannot exist without the support of generous donors. If you are interested in supporting us, please become a patron for Technique 2012.</h2>
+    </hgroup>
+    <a href="#" class="button patron">Become a Patron</a>
+</article>
 {% endblock %}
