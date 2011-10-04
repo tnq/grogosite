@@ -20,7 +20,7 @@ class KerberosForm (forms.Form):
     kerberos = forms.CharField(max_length=8)
 
 def closed(request):
-    return render_to_response('seniors/closed.html')
+    return render_to_response('tnq_site/seniors/closed.html')
     
 def seniors(request):
     return render_to_response('tnq_site/seniors.html')
@@ -41,13 +41,13 @@ def enterinfo(request):
                     activity.save()
             
             request.session['seniorid'] = senior.id;
-            sendemail(senior)
+            #sendemail(senior)
             return HttpResponseRedirect(reverse('senior_success'))
     else:
         form = SeniorForm()
         formset = ActivityFormSet()
 
-    return render_to_response('seniors/enterinfo.html', { 'form':form, 'formset':formset } )
+    return render_to_response('tnq_site/seniors/enterinfo.html', { 'form':form, 'formset':formset } )
 
 def thanks(request):
     if 'seniorid' in request.session:
@@ -62,7 +62,7 @@ def thanks(request):
     senior_object = SeniorForm(data=model_to_dict(senior))
     activities = Activity.objects.filter(senior = senior)
 
-    return render_to_response('seniors/thanks.html', { 'senior':senior, 'senior_object':senior_object, 'activities':activities })
+    return render_to_response('tnq_site/seniors/thanks.html', { 'senior':senior, 'senior_object':senior_object, 'activities':activities })
 
 
 def email(request):
@@ -74,19 +74,19 @@ def email(request):
             request.session['kerberos'] = kerberos
             try:
                 senior = Senior.objects.get(kerberos=kerberos)
-                sendemail(senior)
+                #sendemail(senior)
                 return HttpResponseRedirect(reverse('senior_email_sent'))
             except ObjectDoesNotExist:
                 return HttpResponseRedirect(reverse('no_senior_info'))
     else:
         form = KerberosForm()
-    return render_to_response('seniors/email.html', { 'form':form })
+    return render_to_response('tnq_site/seniors/email.html', { 'form':form })
 
 def noinfo(request):
     if 'kerberos' in request.session:
         kerberos = request.session['kerberos']
         del request.session['kerberos']
-        return render_to_response('seniors/noinfo.html', { 'kerberos':kerberos })
+        return render_to_response('tnq_site/seniors/noinfo.html', { 'kerberos':kerberos })
     else:
         return HttpResponseRedirect(reverse('enter_senior_info'))
 
@@ -94,7 +94,7 @@ def emailsent(request):
     if 'kerberos' in request.session:
         kerberos = request.session['kerberos']
         del request.session['kerberos']
-        return render_to_response('seniors/emailsent.html', { 'kerberos':kerberos })
+        return render_to_response('tnq_site/seniors/emailsent.html', { 'kerberos':kerberos })
     else:
         return HttpResponseRedirect(reverse('enter_senior_info'))
 

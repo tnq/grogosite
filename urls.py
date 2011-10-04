@@ -16,6 +16,7 @@ import massadmin.massadmin
 urlpatterns = patterns('',
     # Example:
     # (r'^orders/', include('orders.foo.urls')),
+    url(r'^$', 'mainsite.views.index', name='tnq'),
     url(r'^beta/', 'mainsite.views.index', name='tnq_main'),
     (r'^orders/', include('creditcard.urls')),
     (r'^seniors/', include('seniors.urls')),
