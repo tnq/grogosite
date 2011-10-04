@@ -1,5 +1,6 @@
 /*  Technique Stylesheet
     copyright 2011 Technique */
+@imageUrl: "../../images";
 
 @greenColor: #79ba01;
 @blueColor: #0c93e5;
@@ -8,7 +9,12 @@
 @purpleColor: #6927a6;
 @indigoColor: #1557a2;
 
+@lightGray: #e6e6e6;
+@lightBlue: #dfe6ee;
+@lightGreen: #e6eedf;
+
 @lighterText: #595959;
+@mediumLightText: #2e2e2e;
 @darkerText: #181818;
 
 @colSpace: 10px;
@@ -44,11 +50,18 @@
     line-height: 1.3em;
 }
 
-.normalText () {
+.normalText (@lineHeight:1.6em) {
     font-size: 0.93em;
     font-weight: 400;
-    line-height: 1.6em;
+    line-height: @lineHeight;
     color: @lighterText;
+}
+
+.mediumText() {
+    font-size: 1.29em;
+    font-weight: 200;
+    color: @mediumLightText;
+    line-height: 1.22em;
 }
 
 .largeText () {
@@ -57,6 +70,8 @@
     color: @darkerText;
     line-height: 1.22em;
 }
+
+
 
 .largeHeadlineText () {
     font-size: 3.6em;
@@ -143,4 +158,11 @@
 
 .blue-button() {
     .linear-gradient(@blueColor, darken(@blueColor, 8%));
+}
+
+.boxy() {    
+    .border-radius(15px);
+    background-color: @lightGray;
+    color: @mediumLightText;
+    font-weight: 200;
 }

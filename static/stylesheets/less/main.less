@@ -1,5 +1,3 @@
-@imageUrl: "../../images";
-
 @import "vars.less";
 
 /** page Structure **/
@@ -541,6 +539,218 @@ a.button:active {
         }
     }
 }
+
+#content.seniors {
+    
+    padding-bottom: 4em;
+    
+    article{
+        padding: 0 @colSpace;
+        padding-top: 3em;
+    }
+    
+    h1 {
+        .largeHeadlineText;
+        margin:0;
+    }
+    
+    h2 {
+        .smallHeadlineText;
+        clear: both;
+    }
+    
+    ol {
+        @topMargin: 33px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        li {
+            .column-width(5);
+            float: left;
+            margin-right: 2*@colSpace;
+            .boxy;
+            height:190px;
+            background-color: @lightBlue;
+            
+            p {
+                margin: 0 @colWidth;
+                line-height: 1.43em;
+            }
+            
+            p.emphasize {
+                .mediumText;
+                margin-top: @topMargin;
+                margin-bottom: 7px;
+            }
+        }
+        li:before {
+            content: "2";
+            position: absolute;
+            font-size: 2.07em;
+            font-weight: 800;
+            color: #ffffff;
+            @square: 36px;
+            width: @square;
+            height: @square;
+            line-height: @square;
+            text-align: center;
+            background-color: @blueColor;
+            .border-radius(@square/2+10);
+            border: 3px solid #ffffff;
+            .box-shadow(2px 3px 4px rgba(0,0,0,0.5));
+            top: -@square/2;
+            margin-left: -@square/2+5px;
+        }
+        
+        li:after {
+            content: url('@{imageUrl}/arrow.png');
+            position: absolute;
+            top: 60px;
+            margin-left: 256px;
+        }
+        
+        li:first-child {
+            background-color: @lightGray;
+            &:before {
+                content: "1";
+                background-color: lighten(@lighterText, 10%);
+            }
+            p {
+                margin: 0 29px;
+                margin-top: @topMargin;
+                margin-bottom: 23px;
+            }
+        }
+        
+        li:last-child {
+            .column-width(6);
+            margin:0;
+            background-color: @lightGreen;
+            
+            &:before {
+                content: "3";
+                background-color: @greenColor;
+            }
+            p {
+                margin-bottom: 17px;
+                margin-left: @colWidth+2px;
+                margin-right: @colWidth+2px;
+            }
+            &:after {
+                content: "";
+            }
+        }
+        
+        
+        &:after {
+            .clear-floats;
+        }
+    }
+    section {
+        margin-top: @colSpace*2;
+        h3 {
+            .mediumText;
+        }
+    }
+    
+    section#more-info {
+        .column-width(10);
+        float: left;
+        margin-bottom: @colSpace*2;
+        img {
+            float: right;
+            margin-left: @colSpace*2;
+        }
+        
+        h3 {
+            margin-top: 0;
+        }
+        
+        p {
+            .normalText(1.4em);
+        }
+    }
+    
+    a.button {
+        .mediumText;
+        @width: 190px;
+        @height: 44px;
+        
+        width: @width;
+        height: @height;
+        line-height: @height;
+        padding: 0;
+        margin: 0 auto;
+        &:active {
+            width: @width*@activeScale;
+            height: @height*@activeScale;
+            line-height: @height*@activeScale;
+            font-size: 18px*@activeScale;
+        }
+        &.bio, &.preorder {
+            .green-button;
+        }
+        &.portrait {
+            .blue-button;
+        }
+        
+    }
+    
+    section#reminder{
+        .boxy;
+        .column-width(6);
+        float: right;
+        height: 200px;
+        h3, p {
+            margin: 0 @colWidth;
+        }
+        h3 {
+            margin-top: 30px;
+        }
+        p {
+            .captionText;
+            margin-top: 8px;
+            margin-bottom: 10px;
+        }
+        a.button {
+            @width: 260px;
+            width: @width;
+            
+            &:active {
+                width: @width*@activeScale;
+            }
+        }
+    }
+    
+    dl {
+        .column-width(10);
+        dt {
+            .mediumText;
+        }
+        dd {
+            .normalText(1.4em);
+            margin-left: @colWidth + (@colSpace*2);
+            margin-top: @colSpace;
+            margin-bottom: @colSpace*2;
+        }
+    }
+    
+    .sample-images {
+        .column-width(6,@colSpace);
+        float: right;
+        img {
+            float: left;
+            margin-left: @colSpace*2;
+            margin-bottom: @colSpace*2;
+        }
+        
+        &:after {
+            .clear-floats;
+        }
+    }
+    
+} 
 
 
 /* common navigation styles */
