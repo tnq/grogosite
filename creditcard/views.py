@@ -15,9 +15,6 @@ from django.forms.formsets import formset_factory
 class UploadFileForm(forms.Form):
     file = forms.FileField()
     
-def buy(request):
-    return render_to_response('tnq_site/buy.html')
-
 #@permission_required(creditcard.add_purchaser)
 @login_required
 def upload(request):
