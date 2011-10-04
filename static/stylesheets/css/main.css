@@ -545,34 +545,36 @@ a.button:active {
 #content.buy article.subarticle a.button {
   margin-top: 3px;
 }
-#content.seniors {
+#content.seniors, #content.lgs {
   padding-bottom: 4em;
 }
-#content.seniors article {
+#content.seniors article, #content.lgs article {
   padding: 0 10px;
   padding-top: 3em;
 }
-#content.seniors h1 {
+#content.seniors h1, #content.lgs h1 {
   font-size: 3.6em;
   font-weight: 200;
   line-height: 1.2em;
   color: #595959;
   margin: 0;
 }
-#content.seniors h2 {
+#content.seniors h2, #content.lgs h2 {
   font-size: 1.86em;
   font-weight: 400;
   line-height: 1.2em;
   color: #181818;
   clear: both;
+  margin-top: 5px;
+  margin-bottom: 1em;
 }
-#content.seniors ol {
+#content.seniors ol, #content.lgs ol {
   list-style: none;
   margin: 0;
   padding: 0;
   position: relative;
 }
-#content.seniors ol li {
+#content.seniors ol li, #content.lgs ol li {
   width: 280px;
   float: left;
   margin-right: 20px;
@@ -585,11 +587,11 @@ a.button:active {
   height: 190px;
   background-color: #dfe6ee;
 }
-#content.seniors ol li p {
+#content.seniors ol li p, #content.lgs ol li p {
   margin: 0 40px;
   line-height: 1.43em;
 }
-#content.seniors ol li p.emphasize {
+#content.seniors ol li p.emphasize, #content.lgs ol li p.emphasize {
   font-size: 1.29em;
   font-weight: 200;
   color: #2e2e2e;
@@ -597,7 +599,7 @@ a.button:active {
   margin-top: 33px;
   margin-bottom: 7px;
 }
-#content.seniors ol li:before {
+#content.seniors ol li:before, #content.lgs ol li:before {
   content: "2";
   position: absolute;
   font-size: 2.07em;
@@ -612,82 +614,82 @@ a.button:active {
   -moz-border-radius: 28px;
   border-radius: 28px;
   border: 3px solid #ffffff;
-  -webkit-box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.5);
-  box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.3);
   top: -18px;
   margin-left: -13px;
 }
-#content.seniors ol li:after {
+#content.seniors ol li:after, #content.lgs ol li:after {
   content: url('../../images/arrow.png');
   position: absolute;
   top: 60px;
   margin-left: 256px;
 }
-#content.seniors ol li:first-child {
+#content.seniors ol li:first-child, #content.lgs ol li:first-child {
   background-color: #e6e6e6;
 }
-#content.seniors ol li:first-child:before {
+#content.seniors ol li:first-child:before, #content.lgs ol li:first-child:before {
   content: "1";
   background-color: #727272;
 }
-#content.seniors ol li:first-child p {
+#content.seniors ol li:first-child p, #content.lgs ol li:first-child p {
   margin: 0 29px;
   margin-top: 33px;
   margin-bottom: 23px;
 }
-#content.seniors ol li:last-child {
+#content.seniors ol li:last-child, #content.lgs ol li:last-child {
   width: 340px;
   margin: 0;
   background-color: #e6eedf;
 }
-#content.seniors ol li:last-child:before {
+#content.seniors ol li:last-child:before, #content.lgs ol li:last-child:before {
   content: "3";
   background-color: #79ba01;
 }
-#content.seniors ol li:last-child p {
+#content.seniors ol li:last-child p, #content.lgs ol li:last-child p {
   margin-bottom: 17px;
   margin-left: 42px;
   margin-right: 42px;
 }
-#content.seniors ol li:last-child:after {
+#content.seniors ol li:last-child:after, #content.lgs ol li:last-child:after {
   content: "";
 }
-#content.seniors ol:after {
+#content.seniors ol:after, #content.lgs ol:after {
   content: ".";
   display: block;
   height: 0;
   clear: both;
   visibility: hidden;
 }
-#content.seniors section {
+#content.seniors section, #content.lgs section {
   margin-top: 20px;
 }
-#content.seniors section h3 {
+#content.seniors section h3, #content.lgs section h3 {
   font-size: 1.29em;
   font-weight: 200;
   color: #2e2e2e;
   line-height: 1.22em;
 }
-#content.seniors section#more-info {
+#content.seniors section#more-info, #content.lgs section#more-info {
   width: 580px;
   float: left;
   margin-bottom: 20px;
 }
-#content.seniors section#more-info img {
+#content.seniors section#more-info img, #content.lgs section#more-info img {
   float: right;
   margin-left: 20px;
 }
-#content.seniors section#more-info h3 {
+#content.seniors section#more-info h3, #content.lgs section#more-info h3 {
   margin-top: 0;
 }
-#content.seniors section#more-info p {
+#content.seniors section#more-info p, #content.lgs section#more-info p {
   font-size: 0.93em;
   font-weight: 400;
   line-height: 1.4em;
   color: #595959;
 }
-#content.seniors a.button {
+#content.seniors a.button, #content.lgs a.button {
   font-size: 1.29em;
   font-weight: 200;
   color: #2e2e2e;
@@ -698,25 +700,28 @@ a.button:active {
   padding: 0;
   margin: 0 auto;
 }
-#content.seniors a.button:active {
+#content.seniors a.button:active, #content.lgs a.button:active {
   width: 171px;
   height: 39.6px;
   line-height: 39.6px;
   font-size: 16.2px;
 }
-#content.seniors a.button.bio, #content.seniors a.button.preorder {
+#content.seniors a.button.bio,
+#content.lgs a.button.bio,
+#content.seniors a.button.preorder,
+#content.lgs a.button.preorder {
   background-image: -o-linear-gradient(top, #79ba01 0%, #5f9101 100%);
   background-image: -moz-linear-gradient(top, #79ba01 0%, #5f9101 100%);
   background-image: -ms-linear-gradient(top, #79ba01 0%, #5f9101 100%);
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #79ba01), color-stop(1, #5f9101));
 }
-#content.seniors a.button.portrait {
+#content.seniors a.button.portrait, #content.lgs a.button.portrait {
   background-image: -o-linear-gradient(top, #0c93e5 0%, #0a7abe 100%);
   background-image: -moz-linear-gradient(top, #0c93e5 0%, #0a7abe 100%);
   background-image: -ms-linear-gradient(top, #0c93e5 0%, #0a7abe 100%);
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #0c93e5), color-stop(1, #0a7abe));
 }
-#content.seniors section#reminder {
+#content.seniors section#reminder, #content.lgs section#reminder {
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   border-radius: 15px;
@@ -727,13 +732,16 @@ a.button:active {
   float: right;
   height: 200px;
 }
-#content.seniors section#reminder h3, #content.seniors section#reminder p {
+#content.seniors section#reminder h3,
+#content.lgs section#reminder h3,
+#content.seniors section#reminder p,
+#content.lgs section#reminder p {
   margin: 0 40px;
 }
-#content.seniors section#reminder h3 {
+#content.seniors section#reminder h3, #content.lgs section#reminder h3 {
   margin-top: 30px;
 }
-#content.seniors section#reminder p {
+#content.seniors section#reminder p, #content.lgs section#reminder p {
   font-size: .88em;
   font-weight: 400;
   line-height: 1.6em;
@@ -742,22 +750,22 @@ a.button:active {
   margin-top: 8px;
   margin-bottom: 10px;
 }
-#content.seniors section#reminder a.button {
+#content.seniors section#reminder a.button, #content.lgs section#reminder a.button {
   width: 260px;
 }
-#content.seniors section#reminder a.button:active {
+#content.seniors section#reminder a.button:active, #content.lgs section#reminder a.button:active {
   width: 234px;
 }
-#content.seniors dl {
+#content.seniors dl, #content.lgs dl {
   width: 580px;
 }
-#content.seniors dl dt {
+#content.seniors dl dt, #content.lgs dl dt {
   font-size: 1.29em;
   font-weight: 200;
   color: #2e2e2e;
   line-height: 1.22em;
 }
-#content.seniors dl dd {
+#content.seniors dl dd, #content.lgs dl dd {
   font-size: 0.93em;
   font-weight: 400;
   line-height: 1.4em;
@@ -766,21 +774,118 @@ a.button:active {
   margin-top: 10px;
   margin-bottom: 20px;
 }
-#content.seniors .sample-images {
+#content.seniors .sample-images, #content.lgs .sample-images {
   width: 360px;
   float: right;
 }
-#content.seniors .sample-images img {
+#content.seniors .sample-images img, #content.lgs .sample-images img {
   float: left;
   margin-left: 20px;
   margin-bottom: 20px;
 }
-#content.seniors .sample-images:after {
+#content.seniors .sample-images:after, #content.lgs .sample-images:after {
   content: ".";
   display: block;
   height: 0;
   clear: both;
   visibility: hidden;
+}
+#content.lgs ol li p {
+  margin-left: 35px;
+  margin-right: 35px;
+}
+#content.lgs ol li:first-child p {
+  margin-left: 40px;
+  margin-right: 40px;
+}
+#content.lgs ol li:last-child p {
+  margin-bottom: 7px;
+}
+#content.lgs section#more-info {
+  width: 580px;
+}
+#content.lgs section#more-info blockquote {
+  font-size: 1.29em;
+  font-weight: 200;
+  color: #2e2e2e;
+  line-height: 1.22em;
+  background-color: #eeeadf;
+  margin: 0;
+  padding: .5em 0;
+  text-align: center;
+}
+#content.lgs section#more-info h2 {
+  margin-bottom: .3em;
+}
+#content.lgs section#more-info p {
+  margin-top: 37px;
+  font-size: 1.29em;
+  font-weight: 200;
+  color: #2e2e2e;
+  line-height: 1.22em;
+}
+#content.lgs section#more-info p:last-child {
+  margin-top: 0;
+}
+#content.lgs section#more-info p.crest {
+  width: 336px;
+  background-color: #f5f5f5;
+  border: 1px solid rgba(0, 0, 0, 0.19);
+  float: right;
+  margin-top: 17px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+#content.lgs section#more-info p.crest span {
+  display: block;
+  padding: 20px;
+  padding-left: 30px;
+}
+#content.lgs section#more-info p.crest img {
+  margin: 10px 20px;
+}
+#content.lgs section#more-info a.sample {
+  font-size: 1.29em;
+  font-weight: 200;
+  color: #2e2e2e;
+  line-height: 1.22em;
+  height: 170px;
+  display: block;
+  width: 340px;
+  margin-left: 20px;
+  float: right;
+  clear: right;
+  position: relative;
+  color: #ffffff;
+  text-decoration: none;
+}
+#content.lgs section#more-info a.sample img {
+  float: none;
+  margin: 0;
+}
+#content.lgs section#more-info a.sample span {
+  display: block;
+  position: absolute;
+  width: 325px;
+  height: 42px;
+  background-color: rgba(0, 0, 0, 0.73);
+  line-height: 42px;
+  padding-left: 15px;
+  top: 120px;
+}
+#content.lgs section#more-info a.sample:hover span {
+  background-color: rgba(255, 255, 255, 0.73);
+  color: #181818;
+}
+#content.lgs section#reminder {
+  height: 221px;
+}
+#content.lgs section#reminder h3 {
+  margin-top: 2em;
+}
+#content.lgs section#reminder p {
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 /* common navigation styles */
 header nav ul, #content.main nav ul {

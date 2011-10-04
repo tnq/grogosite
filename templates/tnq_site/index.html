@@ -1,5 +1,6 @@
 {% extends "tnq_base.html" %}
 {% load static %}
+{% load site_settings %}
 
 {% block content_class_tag %}class="main"{% endblock %}
 
@@ -11,15 +12,15 @@
 </article>
 <nav>
     <ul>
-        <li class="buy"><a href="#">Buy a book</a> to remember the days you spent at the institute.</li>
-        <li class="support"><a href="#">Support us</a> to keep the club growing and learning.</li>
+        <li class="buy"><a href="{% url tnq_buy %}">Buy a book</a> to remember the days you spent at the institute.</li>
+        <li class="support"><a href="{% url tnq_support %}">Support us</a> to keep the club growing and learning.</li>
         
-        <li class="seniors"><a href="#">Seniors,</a> get your portraits in the book.</li>
-        <li class="lgs"><a href="#">Living groups,</a> schedule your group photo with us.</li>
+        <li class="seniors"><a href="{% url tnq_seniors %}">Seniors,</a> get your portraits in the book.</li>
+        <li class="lgs"><a href="{% url tnq_lg %}">Living groups,</a> schedule your group photo with us.</li>
         
-        <li class="join"><a href="#">Join</a> a thriving community of MIT photographers and designers. Learn how to use an SLR or a large format camera. Conquer Photoshop, Illustrator, and InDesign. Develop film. Checkout a camera. Make friends.</li>
+        <li class="join"><a href="{% url tnq_join %}">Join</a> a thriving community of MIT photographers and designers. Learn how to use an SLR or a large format camera. Conquer Photoshop, Illustrator, and InDesign. Develop film. Checkout a camera. Make friends.</li>
         
-        <li class="hire"><a href="#">Hire</a> a photographer or two from our community to photograph your next event. We provide services for photo booths and studio photography.</li>
+        <li class="hire"><a href="{% url tnq_hire %}">Hire</a> a photographer or two from our community to photograph your next event. We provide services for photo booths and studio photography.</li>
     </ul>
 </nav>
 <section id="twitter-feed" role="twitter-feed">
