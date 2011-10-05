@@ -355,7 +355,8 @@ a.button:active {
 }
 
 #content.buy,
-#content.hire {
+#content.hire,
+#content.support {
     @leftColWidth: 400px;
     @rightColWidth: 460px;
     
@@ -629,6 +630,49 @@ a.button:active {
                 width: @buttonWidth*@activeScale;
                 margin-left: 35px + (@buttonWidth - @buttonWidth*@activeScale)/2;
             }
+        }
+    }
+}
+
+#content.support {
+    padding-bottom: 6em;
+    img {
+        float: right;
+        margin-left: @colSpace*2;
+        margin-top: 10px;
+    }
+    
+    p {
+        .normalText;
+    }
+    a.button {
+        .blue-button;
+        .largeText;
+        font-weight: 200;
+        margin: 0 auto;
+        strong {
+            display: block;
+            font-size: 0.8em;
+        }
+        .column-width(4);
+        &:active {
+            .column-width(4,0,@activeScale);
+            font-size: 1.57em*@activeScale;
+            margin-top: 3px;
+            margin-bottom: 3px;
+        }
+    }
+    p.become {
+        float: right;
+        .column-width(8);
+        margin-top: -10px;
+    }
+    p:last-child {
+        .column-width(8);
+        text-align: right;
+        .taglineText;
+        strong {
+            .largeText;
         }
     }
 }

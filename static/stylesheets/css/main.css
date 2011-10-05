@@ -347,21 +347,21 @@ a.button:active {
   margin-top: 0.2em;
   margin-bottom: 0.8em;
 }
-#content.buy, #content.hire {
+#content.buy, #content.hire, #content.support {
   padding-bottom: 4em;
 }
-#content.buy article, #content.hire article {
+#content.buy article, #content.hire article, #content.support article {
   padding: 0 10px;
   padding-top: 3em;
 }
-#content.buy article h1, #content.hire article h1 {
+#content.buy article h1, #content.hire article h1, #content.support article h1 {
   font-size: 3.6em;
   font-weight: 200;
   line-height: 1.2em;
   color: #595959;
   margin: 0;
 }
-#content.buy article h2, #content.hire article h2 {
+#content.buy article h2, #content.hire article h2, #content.support article h2 {
   font-size: 1.86em;
   font-weight: 400;
   line-height: 1.2em;
@@ -369,49 +369,49 @@ a.button:active {
   margin-top: 0;
   margin-bottom: .4em;
 }
-#content.buy article hgroup h2, #content.hire article hgroup h2 {
+#content.buy article hgroup h2, #content.hire article hgroup h2, #content.support article hgroup h2 {
   font-size: 1em;
   font-weight: 700;
   color: #595959;
   margin-top: 0;
   margin-bottom: 1.5em;
 }
-#content.buy section#preorder, #content.hire section#preorder {
+#content.buy section#preorder, #content.hire section#preorder, #content.support section#preorder {
   width: 400px;
   float: left;
 }
-#content.buy section#bundle, #content.hire section#bundle {
+#content.buy section#bundle, #content.hire section#bundle, #content.support section#bundle {
   width: 460px;
   float: right;
 }
-#content.buy section h3, #content.hire section h3 {
+#content.buy section h3, #content.hire section h3, #content.support section h3 {
   font-size: 1.57em;
   font-weight: 200;
   color: #181818;
   line-height: 1.22em;
 }
-#content.buy section .order-info, #content.hire section .order-info {
+#content.buy section .order-info, #content.hire section .order-info, #content.support section .order-info {
   float: left;
   clear: left;
 }
-#content.buy section .order-links, #content.hire section .order-links {
+#content.buy section .order-links, #content.hire section .order-links, #content.support section .order-links {
   padding-top: 7px;
   float: right;
 }
-#content.buy section#preorder .order-info, #content.hire section#preorder .order-info {
+#content.buy section#preorder .order-info, #content.hire section#preorder .order-info, #content.support section#preorder .order-info {
   width: 220px;
 }
-#content.buy section#preorder .order-links, #content.hire section#preorder .order-links {
+#content.buy section#preorder .order-links, #content.hire section#preorder .order-links, #content.support section#preorder .order-links {
   width: 160px;
 }
-#content.buy section#preorder p, #content.hire section#preorder p {
+#content.buy section#preorder p, #content.hire section#preorder p, #content.support section#preorder p {
   font-size: 1.57em;
   font-weight: 200;
   color: #181818;
   line-height: 1.22em;
   margin: 0;
 }
-#content.buy a.button.preorder, #content.hire a.button.preorder {
+#content.buy a.button.preorder, #content.hire a.button.preorder, #content.support a.button.preorder {
   background-image: -o-linear-gradient(top, #79ba01 0%, #5f9101 100%);
   background-image: -moz-linear-gradient(top, #79ba01 0%, #5f9101 100%);
   background-image: -ms-linear-gradient(top, #79ba01 0%, #5f9101 100%);
@@ -421,17 +421,17 @@ a.button:active {
   font-size: 1.29em;
   font-weight: 200;
 }
-#content.buy a.button.preorder strong, #content.hire a.button.preorder strong {
+#content.buy a.button.preorder strong, #content.hire a.button.preorder strong, #content.support a.button.preorder strong {
   display: block;
   font-weight: 600;
 }
-#content.buy a.button.preorder:active, #content.hire a.button.preorder:active {
+#content.buy a.button.preorder:active, #content.hire a.button.preorder:active, #content.support a.button.preorder:active {
   font-size: 1.161em;
   padding: 22.5px 0;
   width: 144px;
   margin: 7px 8px;
 }
-#content.buy a.button.bundle, #content.hire a.button.bundle {
+#content.buy a.button.bundle, #content.hire a.button.bundle, #content.support a.button.bundle {
   background-image: -o-linear-gradient(top, #0c93e5 0%, #0a7abe 100%);
   background-image: -moz-linear-gradient(top, #0c93e5 0%, #0a7abe 100%);
   background-image: -ms-linear-gradient(top, #0c93e5 0%, #0a7abe 100%);
@@ -443,39 +443,39 @@ a.button:active {
   padding-bottom: 11px;
   margin-bottom: 20px;
 }
-#content.buy a.button.bundle strong, #content.hire a.button.bundle strong {
+#content.buy a.button.bundle strong, #content.hire a.button.bundle strong, #content.support a.button.bundle strong {
   display: block;
   font-size: .9em;
   font-weight: 600;
 }
-#content.buy a.button.bundle:active, #content.hire a.button.bundle:active {
+#content.buy a.button.bundle:active, #content.hire a.button.bundle:active, #content.support a.button.bundle:active {
   font-size: 1.026em;
   padding: 9px 0;
   width: 198px;
   margin: 2px 11px;
   margin-bottom: 23px;
 }
-#content.buy section#bundle .order-info, #content.hire section#bundle .order-info {
+#content.buy section#bundle .order-info, #content.hire section#bundle .order-info, #content.support section#bundle .order-info {
   width: 226px;
   padding-top: .5em;
 }
-#content.buy section#bundle .order-links, #content.hire section#bundle .order-links {
+#content.buy section#bundle .order-links, #content.hire section#bundle .order-links, #content.support section#bundle .order-links {
   width: 220px;
 }
-#content.buy section#bundle p, #content.hire section#bundle p {
+#content.buy section#bundle p, #content.hire section#bundle p, #content.support section#bundle p {
   margin: 0;
   font-weight: 400;
   line-height: 1.3em;
   margin-bottom: 1em;
 }
-#content.buy section#bundle p strong, #content.hire section#bundle p strong {
+#content.buy section#bundle p strong, #content.hire section#bundle p strong, #content.support section#bundle p strong {
   font-size: 1.57em;
   font-weight: 200;
   color: #181818;
   line-height: 1.22em;
   font-weight: 800;
 }
-#content.buy section#bundle p span, #content.hire section#bundle p span {
+#content.buy section#bundle p span, #content.hire section#bundle p span, #content.support section#bundle p span {
   color: #e40d0d;
   font-size: .9em;
   vertical-align: top;
@@ -483,19 +483,21 @@ a.button:active {
 }
 #content.buy section#preorder:after,
 #content.hire section#preorder:after,
+#content.support section#preorder:after,
 #content.buy section#bundle:after,
-#content.hire section#bundle:after {
+#content.hire section#bundle:after,
+#content.support section#bundle:after {
   content: ".";
   display: block;
   height: 0;
   clear: both;
   visibility: hidden;
 }
-#content.buy section#about, #content.hire section#about {
+#content.buy section#about, #content.hire section#about, #content.support section#about {
   clear: both;
   padding-top: 20px;
 }
-#content.buy section#about p, #content.hire section#about p {
+#content.buy section#about p, #content.hire section#about p, #content.support section#about p {
   font-size: 0.93em;
   font-weight: 400;
   line-height: 1.6em;
@@ -503,11 +505,11 @@ a.button:active {
   margin: 0;
   margin-bottom: 1em;
 }
-#content.buy section#about img, #content.hire section#about img {
+#content.buy section#about img, #content.hire section#about img, #content.support section#about img {
   float: right;
   margin-left: 20px;
 }
-#content.buy section#preorder .order-links p, #content.hire section#preorder .order-links p {
+#content.buy section#preorder .order-links p, #content.hire section#preorder .order-links p, #content.support section#preorder .order-links p {
   font-size: .88em;
   font-weight: 400;
   line-height: 1.6em;
@@ -517,32 +519,32 @@ a.button:active {
   float: none;
   padding-top: .7em;
 }
-#content.buy article#previous, #content.hire article#previous {
+#content.buy article#previous, #content.hire article#previous, #content.support article#previous {
   width: 400px;
   float: left;
 }
-#content.buy article#previous input[type='submit'], #content.hire article#previous input[type='submit'] {
+#content.buy article#previous input[type='submit'], #content.hire article#previous input[type='submit'], #content.support article#previous input[type='submit'] {
   margin-top: -1px;
 }
-#content.buy article#patron, #content.hire article#patron {
+#content.buy article#patron, #content.hire article#patron, #content.support article#patron {
   width: 460px;
   float: right;
 }
-#content.buy article.subarticle, #content.hire article.subarticle {
+#content.buy article.subarticle, #content.hire article.subarticle, #content.support article.subarticle {
   padding-top: 1em;
 }
-#content.buy article.subarticle h1, #content.hire article.subarticle h1 {
+#content.buy article.subarticle h1, #content.hire article.subarticle h1, #content.support article.subarticle h1 {
   line-height: 1em;
   padding-bottom: .4em;
 }
-#content.buy article.subarticle h2, #content.hire article.subarticle h2 {
+#content.buy article.subarticle h2, #content.hire article.subarticle h2, #content.support article.subarticle h2 {
   font-size: 1.57em;
   font-weight: 200;
   color: #181818;
   line-height: 1.22em;
   margin-bottom: 0;
 }
-#content.buy article.subarticle p, #content.hire article.subarticle p {
+#content.buy article.subarticle p, #content.hire article.subarticle p, #content.support article.subarticle p {
   width: 220px;
   font-size: .88em;
   font-weight: 400;
@@ -550,7 +552,7 @@ a.button:active {
   color: #595959;
   line-height: 1.3em;
 }
-#content.buy article.subarticle input[type='text'], #content.hire article.subarticle input[type='text'] {
+#content.buy article.subarticle input[type='text'], #content.hire article.subarticle input[type='text'], #content.support article.subarticle input[type='text'] {
   width: 204px;
   height: 40px;
   border: 1px solid rgba(58, 58, 58, 0.44);
@@ -560,8 +562,10 @@ a.button:active {
 }
 #content.buy article.subarticle a.button,
 #content.hire article.subarticle a.button,
+#content.support article.subarticle a.button,
 #content.buy article.subarticle input[type='submit'],
-#content.hire article.subarticle input[type='submit'] {
+#content.hire article.subarticle input[type='submit'],
+#content.support article.subarticle input[type='submit'] {
   background-image: -o-linear-gradient(top, #0c93e5 0%, #0a7abe 100%);
   background-image: -moz-linear-gradient(top, #0c93e5 0%, #0a7abe 100%);
   background-image: -ms-linear-gradient(top, #0c93e5 0%, #0a7abe 100%);
@@ -572,7 +576,7 @@ a.button:active {
   width: 160px;
   float: right;
 }
-#content.buy article.subarticle a.button, #content.hire article.subarticle a.button {
+#content.buy article.subarticle a.button, #content.hire article.subarticle a.button, #content.support article.subarticle a.button {
   margin-top: 3px;
 }
 #content.hire .imagerow {
@@ -654,6 +658,61 @@ a.button:active {
   font-size: 1.278em;
   width: 196.20000000000002px;
   margin-left: 45.89999999999999px;
+}
+#content.support {
+  padding-bottom: 6em;
+}
+#content.support img {
+  float: right;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+#content.support p {
+  font-size: 0.93em;
+  font-weight: 400;
+  line-height: 1.6em;
+  color: #595959;
+}
+#content.support a.button {
+  background-image: -o-linear-gradient(top, #0c93e5 0%, #0a7abe 100%);
+  background-image: -moz-linear-gradient(top, #0c93e5 0%, #0a7abe 100%);
+  background-image: -ms-linear-gradient(top, #0c93e5 0%, #0a7abe 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #0c93e5), color-stop(1, #0a7abe));
+  font-size: 1.57em;
+  font-weight: 200;
+  color: #181818;
+  line-height: 1.22em;
+  font-weight: 200;
+  margin: 0 auto;
+  width: 220px;
+}
+#content.support a.button strong {
+  display: block;
+  font-size: 0.8em;
+}
+#content.support a.button:active {
+  width: 198px;
+  font-size: 1.413em;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+#content.support p.become {
+  float: right;
+  width: 460px;
+  margin-top: -10px;
+}
+#content.support p:last-child {
+  width: 460px;
+  text-align: right;
+  font-size: 1em;
+  font-weight: 700;
+  color: #595959;
+}
+#content.support p:last-child strong {
+  font-size: 1.57em;
+  font-weight: 200;
+  color: #181818;
+  line-height: 1.22em;
 }
 #content.seniors, #content.lgs {
   padding-bottom: 4em;
