@@ -1,1 +1,145 @@
-Buy something!
+{% extends 'tnq_base.html' %}
+
+{% block title %}Order - technique - the yearbook of mit{% endblock %}
+
+{% block content%}
+{% load site_settings %}
+
+<h3>THIS IS A TEST PAGE, DO NOT ORDER ANYTHING FROM THIS PAGE!</h3>
+<p class="info">This page is for ordering Technique yearbooks using your credit card as payment. We accept <strong>Visa, Master Card, American Express,</strong> and <strong>Discover!</strong> The form is submitted using Secure Sockets Layer (SSL) technology to ensure your privacy.</p> 
+<p class="info">Javascript <strong>MUST</strong> be enabled in your browser for the order amount to process. If you cannot enable Javascript, please try a different browser or computer! Please fill in all required fields, and please read the <a href="#returnpolicy">Return Policy</a> and <a href="http://web.mit.edu/chargemit/policy.html">Privacy Policy</a>. If you have trouble, contact us at <a href="mailto:tnq-orders@mit.edu">tnq-orders@mit.edu</a>.</p> 
+<div id="orderform"> 
+    <form action="{% url buy_form %}" method=post id="order_form"> 
+    <input name="merchant_id" type="hidden" value="MIT_SAO_Technique" /> 
+    <input name="amount" type="hidden" value="0" /> 
+    <input name="billTo_country" type="hidden" value="us" /> 
+    <input name="shipping_method" type="hidden" value=":none" /> 
+
+    {{ formset.management_form }}
+
+    <h3>Become a Patron</h3> 
+    <p class="info">Patrons of Technique will receive a copy of <em>Technique {% tnq_setting "tnq_year" %}</em> for no additional charge. Platinum, Gold, and Silver Patrons will receive an additional gift: a beautifully mounted photograph taken on the MIT campus by our photographers. See our <a href="patrons">Patrons</a> page for more details.</p> 
+<div class="ordersection"> 
+    <ul id="patronlist" class="orderlist">
+        <li><input title="{% tnq_setting 'patron_year' %}-Platinum" name="patron" type="radio" value="platinum" /> Become a <strong>Platinum Patron</strong> of <em>Technique {% tnq_setting "tnq_year" %}</em> for <strong>${% tnq_setting "platinum_price" %}!</strong></li>
+        <li><input title="{% tnq_setting 'patron_year' %}-Gold" name="patron" type="radio" value="gold" /> Become a <strong><span style="color: #ffcc00;">Gold Patron</span></strong> of <em>Technique {% tnq_setting "tnq_year" %}</em> for <strong>${% tnq_setting "gold_price" %}!</strong></li>
+        <li><input title="{% tnq_setting 'patron_year' %}-Silver" name="patron" type="radio" value="silver" /> Become a <strong><span style="color: #cccccc;">Silver Patron</span></strong> of <em>Technique {% tnq_setting "tnq_year" %}</em> for <strong>${% tnq_setting "silver_price" %}!</strong></li>
+        <li><input title="{% tnq_setting 'patron_year' %}-Bronze" name="patron" type="radio" value="bronze" /> Become a <strong><span style="color: #cc9900;">Bronze Patron</span></strong> of <em>Technique {% tnq_setting "tnq_year" %}</em> for <strong>${% tnq_setting "bronze_price" %}!</strong></p></li>
+        <li><input type="button" id="clear_button" value="Clear Patron choice" /></li>
+    </ul>
+
+
+    <p class="orderoption"><strong>Patrons Only:</strong> The name you would like to appear in <em>Technique {% tnq_setting "tnq_year" %}</em>:</p> 
+    <p class="orderoption"> 
+        <input maxlength="64" name="patron_name" size="60" type="text" /></p> 
+</div> 
+<h3>Buy a four-year bundle!</h3>
+    <div class="ordersection">
+        <p class="orderoption"> 
+            <input title="Bundle" name="senior_bundle" type="checkbox" value="199" /><strong>Senior Special!</strong> Buy the <em>previous</em> four books (including <em>Technique {% tnq_setting "tnq_year" %}</em>) for <strong>$199!</strong></p> 
+        <p class="ordernote">(Pickup May 2011, Ships late May {% tnq_setting "tnq_year" %})</p>                             
+        <p class="orderoption"> 
+            <input title="Bundle" name="freshman_bundle" type="checkbox" value="199" /><strong>Freshman Special!</strong> Buy the <em>next</em> four books (including <em>Technique {% tnq_setting "tnq_year" %}</em>) for <strong>$199!</strong></p> 
+        <p class="ordernote">(Pickup May 2011, Ships late May {% tnq_setting "tnq_year" %})</p>                             
+    </div>
+<h3>Or just buy some books!</h3> 
+<div class="ordersection"> 
+    <select name="form-0-numbers" id="form-0-numbers"> 
+        <option title="0" value="0">0</option> 
+        <option title="1" value="1">1</option> 
+        <option title="2" value="2">2</option> 
+        <option title="3" value="3">3</option> 
+        <option title="4" value="4">4</option> 
+    </select> 
+    <input type="hidden" name="form-0-years" id="form-0-years" value="{% tnq_setting "tnq_year" %}" />
+    <p class="orderselecttext">Pre-Order <em>Technique {% tnq_setting "tnq_year" %}</em> for <strong>$50!</strong></p> 
+    <p class="ordernote">(Pickup May {% tnq_setting "tnq_year" %}, Ships late May {% tnq_setting "tnq_year" %})</p> 
+    <div style="display:none;" id="form_template">
+        <div class="booksection" id="booksection__prefix__">
+            {{ formset.empty_form.numbers.errors }}
+            {{ formset.empty_form.years.errors }}
+            Buy{{ formset.empty_form.numbers }} copy/copies of <em>Technique</em>{{ formset.empty_form.years }}
+        </div>
+    </div>
+    <div id="forms">
+    </div>
+    <input type="button" value="Add an older book to order" id="add_button" />
+    <input type="button" value="Remove book from order" id="remove_button" />
+</div> 
+<h3>Shipping</h3> 
+<p class="info">Shipping costs ${% tnq_setting "shipping_price" %} / book.  The current year&#8217;s book is usually shipped out in the second week of June.  All other orders are generally processed within a few weeks and sent via USPS Media Mail.  Please note that we do not generally reimburse shipping costs, even if the purchaser or student picks the book up in person.</p> 
+<div class="ordersection"> 
+<p class="orderoption"> 
+<input title="Shipping" id="id_shipping" name="shipping" type="checkbox" value="Shipping" /> Purchase shipping for <strong>${% tnq_setting "shipping_price" %} / book</strong>!</p> 
+</div> 
+<div class="ordersection"> 
+<p class="ordertotal">Your Order Total Is:<br /> 
+<input name="total" id="total" readonly="readonly" size="9" type="text" /></p> 
+<p class="ordertotal">Your Order Is:<br /> 
+<input name="comment" id="comment" readonly="readonly" size="80" type="text" /></p> 
+</div> 
+<p class="info">If checkboxes above do not cause the Order Total to accumulate, you probably have Javascript disabled. Turn it on, or try a different browser or computer. The Order Total listed above MUST be correct for your order to be processed!</p> 
+<p><strong> </strong></p> 
+<h3>Billing Information</h3> 
+<p class="info">Please enter your credit card billing address.  USA addresses only.<br />Items marked with a <span style="color: #ff0000;">*</span> are required.</p> 
+<div id="billingaddress" class="ordersection"> 
+<fieldset>
+    <label for="billTo_firstName" class="required">First / Last Name:</label>
+        <input name="billTo_firstName" type="text" /> 
+        <input name="billTo_lastName" type="text" />
+        <br />
+    <label for="billTo_company">Company:</label>
+        <input name="billTo_company" type="text" />
+        <br />
+    <label for="billTo_street1" class="required">Address:</label>
+        <input name="billTo_street1" type="text" />
+        <br />
+    <label for="billTo_street2">Room / Apt:</label>
+        <input name="billTo_street2" type="text" />
+        <br />
+    <label for="billTo_city" class="required">City:</label>
+        <input name="billTo_city" type="text" />
+        <input name="billTo_state" maxlength="2" size="2" type="text" />
+        <input name="billTo_postalCode" maxlength="5" size="5" type="text" />
+        <br />
+    <label for="billTo_email" class="required">Email Address / Phone:</label>
+        <input name="billTo_email" type="text" />
+        <input name="billTo_phoneNumber" maxlength="15" size="15" type="text" />
+        <br />
+</fieldset>
+</div> 
+<h3>Pickup / Shipping Information</h3> 
+<p class="info">Students or others picking up a book must present an ID matching the name entered below.</p> 
+<div class="ordersection"> 
+<p class="orderoption"><span style="color: #ff0000;">* </span>First Name:<br /> 
+<input name="shipTo_firstName" size="30" type="text" /></p> 
+<p class="orderoption"><span style="color: #ff0000;">* </span>Last Name:<br /> 
+<input name="shipTo_lastName" size="30" type="text" /></p> 
+</div> 
+<p class="info">Only enter the following information if shipping is chosen.</p> 
+<div id="shippingaddress" class="ordersection"> 
+<p class="orderoption">Company:<br /> 
+<input name="shipTo_company" size="60" type="text" /></p> 
+<p class="orderoption"><span style="color: #ff0000;">* </span>Address 1:<br /> 
+<input name="shipTo_street1" size="60" type="text" /></p> 
+<p class="orderoption">Address 2:<br /> 
+<input name="shipTo_street2" size="60" type="text" /></p> 
+<p class="orderoption"><span style="color: #ff0000;">* </span>City:<br /> 
+<input name="shipTo_city" size="60" type="text" /></p> 
+<p class="orderoption"><span style="color: #ff0000;">* </span>State:<br /> 
+<input name="shipTo_state" size="2" type="text" /></p> 
+<p class="orderoption"><span style="color: #ff0000;">* </span>Zip:<br /> 
+<input name="shipTo_postalCode" size="5" type="text" /></p> 
+</div> 
+<h3>Almost there!</h3> 
+<p class="info">Please make sure all of the above information is correct &#8211; mistakes will delay the processing of your order.  Once you are ready, click the &#8220;Next&#8221; button once and you will be redirected to a secure form to enter your credit card information.</p> 
+<div class="ordersection"> 
+<p class="orderoption"><button type=submit name=submitbutton>Next</button></p> 
+<p class="orderoption"><button type=reset>Clear Form</button></p> 
+</div> 
+</form> 
+</div> 
+</div>
+
+
+{% endblock %}

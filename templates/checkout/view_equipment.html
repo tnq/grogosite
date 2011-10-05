@@ -1,6 +1,6 @@
-<html>
-    <head><title>Technique Equipment</title></head>
-    <body>
+{% extends 'tnq_base.html' %}
+
+{% block content %}
 
 {% include 'checkout/equip_list.html' with table_name="Digital Cameras" equip_list=digital_cameras %}
 {% include 'checkout/equip_list.html' with table_name="35mm Film Cameras" equip_list=film_cameras %}
@@ -8,5 +8,4 @@
 {% include 'checkout/equip_list.html' with table_name="Large Format Cameras" equip_list=large_cameras %}
 {% include 'checkout/equip_list.html' with table_name="Lenses" equip_list=lenses %}
 
-    </body>
-</html>
+{% endblock %}

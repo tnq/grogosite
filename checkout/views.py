@@ -23,6 +23,7 @@ def graph_checkouts(request):
 
     return render_to_response('checkout/graph.html', {'checkouts':all_checkouts})
 
+@login_required
 def graph_user_checkouts(request):
     checkouts = request.user.checkouts.order
     equipment = [c.equipment for c in checkouts]
