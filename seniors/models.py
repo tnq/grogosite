@@ -1,5 +1,4 @@
 from django.db import models
-from django.forms import ModelForm
 
 # Create your models here.
 class Senior(models.Model):
@@ -19,13 +18,6 @@ class Senior(models.Model):
     def __unicode__(self):
         return "%s (%s)" % (self.name, self.kerberos)
 
-class SeniorForm(ModelForm):
-    error_css_class = 'error'
-    required_css_class = 'required'
-    class Meta:
-        model = Senior
-        exclude = ('tnq_year')
-
 class Activity(models.Model):
     senior = models.ForeignKey(Senior)
     title = models.CharField('Activity Title', max_length=60, blank=True)
@@ -38,9 +30,4 @@ class Activity(models.Model):
     class Meta:
         verbose_name_plural = "Activities"
 
-class ActivityForm(ModelForm):
-    error_css_class = 'error'
-    required_css_class = 'required'
-    class Meta:
-        model = Activity
-        exclude = ('senior')
+

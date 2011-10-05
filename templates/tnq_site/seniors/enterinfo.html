@@ -1,10 +1,15 @@
 {% extends 'tnq_base.html' %}
+{% load static %}
 
 {% block title %}Technique 2012 Senior Information{% endblock %}
 
+{% block extra_headers %}
+    <script type="text/javascript" src="{% get_static_prefix %}js/jquery-1.6.1.min.js"></script>
+    <script src="{% get_static_prefix %}js/seniors.js" type="text/javascript" charset="utf-8"></script>
+{% endblock %}
+
 {% block content%}
 {% load site_settings %}
-{% load static %}
 <div style="padding-top:30px; padding-bottom:30px; width:100%; text-align:center"><img src="{% get_static_prefix %}images/ghe_senior.jpg" /></div>
 <p class="info">This form is for filling out your biographical information to go with your senior photo in <em>Technique 2012</em>.  It is NOT for scheduling your senior photo - for that, please go back to our main <a href="{% url tnq_seniors %}">seniors page</a>.
 <p class="info">Please fill out as many fields as you can.  You'll be able to review this information after you submit it, but changing it is somewhat of a hassle.</p>
@@ -76,31 +81,56 @@
         <h3>Activities</h3>
         <div class="formSubSection">
             {{ formset.management_form }}
+            
+            <div style="display:none;" id="form_template">
+                <div class="activity_section" id="activity_section__prefix__">                    
+                    <p class="fieldSuperText">Name of group/activity</p>
+                    {{ formset.empty_form.title.errors }}
+                    {{ formset.empty_form.title }}
+    
+                    <p class="fieldCloseSuperText">Years Involved:</p>
+                    {{ formset.empty_form.years.errors }}
+                    {{ formset.empty_form.years }}
+    
+                    <p class="fieldCloseSuperText">Offices held:</p>
+                    {{ formset.empty_form.offices.errors }}
+                    {{ formset.empty_form.offices }}
+                </div>
+            </div>
+            
+            <div id="forms">
+            
             {% for act_form in formset.forms %}
-                <p class="fieldSuperText">Name of group/activity (#{{ forloop.counter }})</p>
-                {{ act_form.title.errors }}
-                {{ act_form.title }}
-                {% if forloop.first %}
-                    <p class="fieldSubText">Please keep it short; try to use abbreviations!</p>
-                    <p class="fieldSubText">Ex: "Basketweaving Society" or "UA"</p>
-                {% endif %}
-
-                <p class="fieldCloseSuperText">Years Involved:</p>
-                {{ act_form.years.errors }}
-                {{ act_form.years }}
-                {% if forloop.first %}
-                    <p class="fieldSubText">Use 1 for freshman year, 2 for sophomore, etc. Separate with spaces only.</p>
-                    <p class="fieldSubText">Ex: "2" or "1 2 3 4" or "1 3 4"</p>
-                {% endif %}
-
-                <p class="fieldCloseSuperText">Offices held:</p>
-                {{ act_form.offices.errors }}
-                {{ act_form.offices }}
-                {% if forloop.first %}
-                    <p class="fieldSubText">Ex: "Social Chair"</p>
-                {% endif %}
+                <div class="activity_section" id="activity_section0">  
+                    <p class="fieldSuperText">Name of group/activity (#{{ forloop.counter }})</p>
+                    {{ act_form.title.errors }}
+                    {{ act_form.title }}
+                    {% if forloop.first %}
+                        <p class="fieldSubText">Please keep it short; try to use abbreviations!</p>
+                        <p class="fieldSubText">Ex: "Basketweaving Society" or "UA"</p>
+                    {% endif %}
+    
+                    <p class="fieldCloseSuperText">Years Involved:</p>
+                    {{ act_form.years.errors }}
+                    {{ act_form.years }}
+                    {% if forloop.first %}
+                        <p class="fieldSubText">Use 1 for freshman year, 2 for sophomore, etc. Separate with spaces only.</p>
+                        <p class="fieldSubText">Ex: "2" or "1 2 3 4" or "1 3 4"</p>
+                    {% endif %}
+    
+                    <p class="fieldCloseSuperText">Offices held:</p>
+                    {{ act_form.offices.errors }}
+                    {{ act_form.offices }}
+                    {% if forloop.first %}
+                        <p class="fieldSubText">Ex: "Social Chair"</p>
+                    {% endif %}
+                </div><!-- end activitysection0 -->
             {% endfor %}
+            </div> <!-- end forms -->
         </div>
+        
+        <input type="button" value="Add another activity" id="add_button" />
+        <input type="button" value="Remove last activity" id="remove_button" />
 
         <h3>Favorite Quote:</h3>
         <div class="formSubSection">

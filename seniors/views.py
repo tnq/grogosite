@@ -1,6 +1,6 @@
 # Create your views here.
 from django.shortcuts import render_to_response, get_object_or_404, get_list_or_404
-from seniors.models import Senior, SeniorForm, ActivityForm, Activity
+from seniors.models import Senior, Activity
 from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
@@ -12,12 +12,10 @@ from django.forms.formsets import formset_factory
 from django.core.mail import send_mail, EmailMessage
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse
+from seniors.forms import SeniorForm, ActivityFormSet, KerberosForm
 import csv
 
-__CURRENT_TNQ_YEAR = 2012
-
-class KerberosForm (forms.Form):
-    kerberos = forms.CharField(max_length=8)
+__CURRENT_TNQ_YEAR = 2012 #Replace this with a site-setting
 
 def closed(request):
     return render_to_response('tnq_site/seniors/closed.html')
@@ -26,7 +24,7 @@ def seniors(request):
     return render_to_response('tnq_site/seniors.html')
 
 def enterinfo(request):
-    ActivityFormSet = formset_factory(ActivityForm, extra=4)
+    formset = ActivityFormSet()
     if request.method == 'POST': #If the form has been submitted
         form = SeniorForm(request.POST)
         formset = ActivityFormSet(request.POST)
