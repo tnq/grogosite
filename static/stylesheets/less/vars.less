@@ -8,6 +8,7 @@
 @redColor: #e40d0d;
 @purpleColor: #6927a6;
 @indigoColor: #1557a2;
+@darkGreenColor: #548900;
 
 @lightGray: #e6e6e6;
 @lightBlue: #dfe6ee;
@@ -39,10 +40,10 @@
     visibility: hidden;
 }
 
-.smallText () {
+.smallText (@lineHeight:1.6em) {
     font-size: .88em;
     font-weight: 400;
-    line-height: 1.6em;
+    line-height: @lineHeight;
     color: @lighterText;
 }
 

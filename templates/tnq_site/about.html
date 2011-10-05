@@ -1,0 +1,103 @@
+{% extends 'tnq_base.html' %}
+{% load static %}
+{% load site_settings %}
+
+{% block about_selected %}selected{% endblock %}
+{% block content_class_tag %}class="about"{% endblock %}
+
+{% block content %}
+<article>
+    <hgroup>
+        <h1>About Technique</h1>
+        <h2>Since 1885, our staph have crafted a beautiful annual of photographs and prose commemorating each year at MIT.</h2>
+    </hgroup>
+    
+    <section id="yearly">
+        <h2>Yearly</h2>
+        <p>Our staph send off our 400 page annual to the publisher in February and release the book in May every year. As students and alumni of MIT, we take great care to showcase MIT in its truest form, candidly, at its best and at its worst. We know how tough the Institute can be, and we know how rewarding it is to get to the other side.</p>
+        <p>Technique's staph are also responsible for running the yearly 24-hour event A Day in the Life of MIT, where anyone on MIT’s campus can submit a photographic journal of their day to a common website. <a href="#">The last ADITL happened on September 22, 2011</a>.</p>
+    </section>
+    
+    <section id="weekly">
+        <h2>Weekly</h2>
+        <p>We hold regular meetings at 1pm on Saturday in W20-451. Anyone is welcome to attend. We have photographic equipment for borrowing and often teach various photography and design related seminars at this time.</p>
+        <p>During book season, fall term through IAP, we hold regular meetings during the week where the various editors of each <em>Technique</em> section come in and do work. This is the best time to get involved with the process of crafting a yearbook.</p>
+    </section>
+    
+    <section id="staph">
+        <h2>Staph</h2>
+        <p>Many of our staph are part time (or full time) photographers and/or designers, as well as MIT students and alumni. Most of our staph are free of infection.</p>
+        <p>It takes no experience to <a href="{% url tnq_join %}">join Technique</a>. Our dedicated staph are committed to helping everyone who's willing to learn, especially when it's about photography or design.</p>
+    </section>
+    
+    <section id="about-grogo">
+        <h2>H.R.H. Grogo</h2>
+        <p>If you hang around Technique often, you will see this name plastered everywhere. You will also see many gorillas. This is because our mascot is a gorilla and his name is H.R.H. Grogo.</p>
+        <p>"But why?" you ask. We don't know either, but H.R.H. Grogo has been there since the beginning, inscribed in the back of the very first <em>Technique</em>, and has been there ever since. We're not quite sure how or when he became a gorilla.</p>
+    </section>
+    
+    <section id="manboard">
+        <hgroup>
+            <h2>Technique 2012 Managing Board</h2>
+            <h3>These are the people elected with the responsibility to get things done.</h3>
+        </hgroup>
+        <dl>
+            <dt>Nick Wiltsie</dt>
+                <dd>Editor-In-Chief, Techno Czar</dd>
+            <dt>Meng Heng Touch</dt>
+                <dd>Managing Editor</dd>
+            <dt>Biyeun Buczyk</dt>
+                <dd>Design Editor</dd>
+            <dt>Laura Gabrovsek</dt>
+                <dd>Photography Editor</dd>
+            <dt>Clara Rhee</dt>
+                <dd>Film Editor</dd>
+            <dt>Ioana Zelko</dt>
+                <dd>Journal Editor</dd>
+            <dt>Akimitsu Hogge</dt>
+                <dd>Living Groups Editor, Seniors Editor</dd>
+            <dt>Carolina Kaelin</dt>
+                <dd>Activities Editor</dd>
+            <dt>Xinyi (Cindy) Zhang</dt>
+                <dd>Publicity Director</dd>
+            <dt>Alan Xu</dt>
+                <dd>Orders Czar</dd>
+            <dt>Quentin Smith</dt>
+                <dd>ADITL Editor</dd>
+            <dt>Ta-Chung Ong</dt>
+                <dd>Technique Evangelist</dd>
+            <dt>Clare Bayley</dt>
+                <dd>Contributing Editor</dd>
+            <dt>Ken Haggerty</dt>
+                <dd>Contributing Editor</dd>
+            <dt>William Yee</dt>
+                <dd>Contributing Editor, Coke Pusher</dd>
+            <dt>Yi-An Morgan Lai</dt>
+                <dd>Contributing Editor</dd>
+        </dl>
+    </section>
+    
+    <section id="council">
+        <hgroup>
+            <h2>Council of Elders</h2>
+            <h3>After serving as managing board members for many years, they now provide guidance and wisdom.</h3>
+        </hgroup>
+        <dl>
+            <dt>Dave Templeton</dt>
+                <dd>Technique 2004 to 2011</dd>
+            <dt>Carrie Niziolek</dt>
+                <dd>Technique 2001 to 2010</dd>
+            <dt>Eric Schmiedl</dt>
+                <dd>Technique ??? to 2009</dd>
+            <dt>Marcos Ojeda</dt>
+                <dd>Technique ??? to ???</dd>
+        </dl>
+    </section>
+    
+    
+    
+</article>
+
+
+
+{% endblock %}

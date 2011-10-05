@@ -24,6 +24,15 @@ body {
     font-size: 14px;
 }
 
+a, a:link, a:visited {
+    text-decoration: none;
+    color: @indigoColor;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 .headerFooterBg () {
     background-color: rgba(0,0,0,1);
     .bar-gradient-with-image;
@@ -266,7 +275,8 @@ a.button:active {
             
             li.support,
             li.lgs,
-            li.join {
+            li.join,
+            li.hire {
                 margin-bottom: 1.6em;
             }
         }
@@ -356,7 +366,9 @@ a.button:active {
 
 #content.buy,
 #content.hire,
-#content.support {
+#content.support,
+#content.join,
+#content.about {
     @leftColWidth: 400px;
     @rightColWidth: 460px;
     
@@ -378,6 +390,16 @@ a.button:active {
             .taglineText;
             margin-top: 0;
             margin-bottom: 1.5em;
+        }
+        section hgroup {
+            h2 {
+                .smallHeadlineText;
+                margin-bottom: .2em;
+            }
+            h3 {
+                .mediumText;
+                margin: 0;
+            }
         }
     }
     
@@ -673,6 +695,63 @@ a.button:active {
         .taglineText;
         strong {
             .largeText;
+        }
+    }
+}
+
+#content.about,
+#content.join {
+    p {
+        .normalText;
+    }
+    section {
+        &#yearly, &#weekly, &#staph, &#about-grogo,
+        &#visit, &#equip, &#film, &#digs {
+            .column-width(8);
+        }
+        
+        &#yearly, &#staph, &#visit, &#film {
+            clear: left;
+            float: left;
+        }
+        
+        &#visit, &#equip {
+            height: 265px;
+        }
+        
+        &#weekly, &#about-grogo, &#equip, &#digs {
+            clear: right;
+            float: right;
+        }
+        
+        &#manboard{
+            margin-top: @colSpace;
+        }
+        
+        &#fine-print {
+            padding-top: @colSpace*2;
+        }
+        
+        &#manboard, &#council, &#fine-print {
+            clear: both;
+            margin-bottom: @colSpace*2;
+            dl {
+                dt, dd {
+                    .column-width(5);
+                    margin: 0;
+                    float: left;
+                }
+                dt {
+                    clear: left;
+                }
+                dd {
+                    padding-top: 4px;
+                    margin-bottom: .8em;
+                }
+            }
+            &:after {
+                .clear-floats;
+            }
         }
     }
 }
@@ -1001,6 +1080,7 @@ header nav ul,
     li.lgs, li.lgs a{ border-color: @redColor; }
     li.join, li.join a{ border-color: @purpleColor; }
     li.hire, li.hire a{ border-color: @indigoColor; }
+    li.about, li.about a{ border-color: @darkGreenColor; }
     
     li.buy a:hover, li.buy.selected a{ background-color: @greenColor; }
     li.support a:hover, li.support.selected a{ background-color: @blueColor; }
@@ -1008,4 +1088,5 @@ header nav ul,
     li.lgs a:hover, li.lgs.selected a{ background-color: @redColor; }
     li.join a:hover, li.join.selected a{ background-color: @purpleColor; }
     li.hire a:hover, li.hire.selected a{ background-color: @indigoColor; }
+    li.about a:hover, li.about.selected a{ background-color: @darkGreenColor; }
 }

@@ -26,6 +26,7 @@ urlpatterns = patterns('',
     url(r'^support/', direct_to_template, {'template' : 'tnq_site/support.html'}, name='tnq_support'),
     url(r'^join/', direct_to_template, {'template' : 'tnq_site/join.html'}, name='tnq_join'),
     url(r'^hire/', direct_to_template, {'template' : 'tnq_site/hire.html'}, name='tnq_hire'),
+    url(r'^about/', direct_to_template, {'template' : 'tnq_site/about.html'}, name='tnq_about'),
     
     #Favicon processing
     url(r'favicon\.ico/$', redirect_to, {'url' : settings.STATIC_URL + 'images/favicon.gif'}),
