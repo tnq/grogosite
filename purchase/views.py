@@ -23,4 +23,4 @@ def buy_form(request):
                 print form
     else:
         formset = OldBookFormSet()
-    return render_to_response('tnq_site/purchase/buy_form.html', {'formset':formset })
+    return render_to_response('tnq_site/buy/buy_form.html', {'formset':formset })

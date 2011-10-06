@@ -5,6 +5,6 @@ urlpatterns = patterns('',
     # Example:
     # (r'^orders/', include('orders.foo.urls')),
     url(r'^$', direct_to_template, {'template' : 'tnq_site/buy.html'}, name='tnq_buy'),
-    url(r'^order/', direct_to_template, {'template' : 'tnq_site/buy/buy_form.html'}, name='buy_form'),    
+    url(r'^order/', 'purchase.views.buy_form', name='buy_form'),    
     
 )
