@@ -1,0 +1,111 @@
+
+{% extends 'tnq_base.html' %}
+
+{% load site_settings %}
+{% load dajaxice_templatetags %}
+{% load static %}
+
+{% block extra_headers %}
+<script type="text/javascript" src="{% get_static_prefix %}js/jquery-1.6.1.min.js"></script>
+<script type="text/javascript" src="{% get_static_prefix %}js/orders.js"></script>
+{% endblock %}
+
+{% block content%}
+
+<div id="orderform"> 
+    <form action="https://shopmitprd.mit.edu/controller/index.php?auto_submit=Y" method=post id="order_form"> 
+    <input name="merchant_id" type="hidden" value="MIT_SAO_Technique" /> 
+    <input name="amount" type="hidden" value="0" /> 
+    <input name="billTo_country" type="hidden" value="us" /> 
+    <input name="shipping_method" type="hidden" value=":none" />
+    <input id="test_mode" type="hidden" value="Y" name="test_mode">
+    
+    {% block purchase_details %} 
+    
+    <h2>You're buying {{ order_tag_pretty }}!</h2>
+
+    <input id="shipping_price" type="hidden" value="{{ shipping_price }}">
+
+    <p>Your order (as we'll see it) is <input id="comments" name="comments" type="text" value="{{ order_tag }}" readonly="readonly" size="28"/> for a grand total of $<input id="amount" name="amount" type="text" value="{{ amount }}" readonly="readonly" size="3"/>.</p>
+    
+    {% endblock %}
+
+    <h3>Pick Up / Shipping</h3> 
+    
+    <p>You have three options for book delivery:
+        <ul>
+            <li>Visit our booths in Lobby 10 and the Student Center during book distribution in May.</li>
+            <li><a href="mailto:tnq-orders@mit.edu">Arrange a time</a> to pick up your book from our office, W20-451.</li>
+            <li>Click the checkbox below to have your book(s) mailed you for $5 each.</li>
+        </ul>
+    </p>
+    
+    <p> 
+        <input title="Shipping" id="id_shipping" name="shipping" type="checkbox" value="Shipping" /> Purchase shipping for <strong>${% tnq_setting "shipping_price" %} / book</strong>!
+    </p> 
+    
+    <h3>Billing Information</h3> 
+        <p>Please enter your credit card billing address.  You will enter your credit card number on the next page.</p> 
+        
+        <div id="billingaddress"> 
+            <fieldset>
+                <label for="billTo_firstName" class="required" style="display:block; width: 11em; float: left;">First / Last Name:</label>
+                    <input id="billTo_firstName" name="billTo_firstName" type="text" /> 
+                    <input id="billTo_lastName" name="billTo_lastName" type="text" />
+                    <br />
+                <label for="billTo_street1" class="required" style="display:block; width: 11em; float: left;">Address:</label>
+                    <input id="billTo_street1" name="billTo_street1" type="text" />
+                    <br />
+                <label for="billTo_street2" style="display:block; width: 11em; float: left;">Address Line 2:</label>
+                    <input id="billTo_street2" name="billTo_street2" type="text" />
+                    <br />
+                <label for="billTo_city" class="required" style="display:block; width: 11em; float: left;">City / State / Zip:</label>
+                    <input id="billTo_city" name="billTo_city" type="text" />
+                    <input id="billTo_state" name="billTo_state" maxlength="2" size="2" type="text" />
+                    <input id="billTo_postalCode" name="billTo_postalCode" maxlength="5" size="5" type="text" />
+                    <br />
+                <label for="billTo_email" class="required" style="display:block; width: 11em; float: left;">Email Address / Phone:</label>
+                    <input id="billTo_email" name="billTo_email" type="text" />
+                    <input id="billTo_phoneNumber" name="billTo_phoneNumber" maxlength="15" size="15" type="text" />
+                    <br />
+            </fieldset>
+        </div> <!-- end #billingaddress -->
+    
+    <h3>Pickup / Shipping Information</h3> 
+        <p>Students or others picking up a book must present an ID matching the name entered below.</p> 
+    
+        <div id="shippingaddress"> 
+        <fieldset>
+            <label for="shipTo_firstName" class="required" style="display:block; width: 11em; float: left;">First / Last Name:</label>
+                <input id="shipTo_firstName" name="shipTo_firstName" type="text" /> 
+                <input id="shipTo_lastName" name="shipTo_lastName" type="text" />
+                <br />
+            <div id="required_if_shipping" style="display:none;">
+                <input id="ship_to_bill" name="ship_to_bill" type="button" value="Copy the billing address above" />
+                <br />
+                <label for="shipTo_street1" class="required" style="display:block; width: 11em; float: left;">Address:</label>
+                    <input id="shipTo_street1" name="shipTo_street1" type="text" />
+                    <br />
+                <label for="shipTo_street2" style="display:block; width: 11em; float: left;">Address line 2:</label>
+                    <input id="shipTo_street2" name="shipTo_street2" type="text" />
+                    <br />
+                <label for="shipTo_city" class="required" style="display:block; width: 11em; float: left;">City / State / Zip:</label>
+                    <input id="shipTo_city" name="shipTo_city" type="text" />
+                    <input id="shipTo_state" name="shipTo_state" maxlength="2" size="2" type="text" />
+                    <input id="shipTo_postalCode" name="shipTo_postalCode" maxlength="5" size="5" type="text" />
+                    <br />
+            </div> <!-- end #required_if_shipping --> 
+        </fieldset>
+        </div> <!-- end #shippingaddress -->
+    
+    <h3>Almost there!</h3> 
+    <p>Please make sure all of the above information is correct &#8211; mistakes will delay the processing of your order.  Once you are ready, click the <strong>Next</strong> button once and you will be redirected to a secure form to enter your credit card information.</p> 
+
+    <button type=submit name=submitbutton>Next</button></p> 
+    <button type=reset>Clear Form</button></p> 
+
+    </form> 
+</div> <!-- end #orderform -->
+
+
+{% endblock %}

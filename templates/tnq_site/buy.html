@@ -18,7 +18,7 @@
             <p>Your copy of Technique 2012, the current volume, can be pre-ordered today for <strong>$90</strong>.</p>
         </div>
         <div class="order-links">
-            <a href="#" class="button preorder"><strong>Pre-order</strong> Technique 2012</a>
+            <a href="{% url buy_book 2012 %}" class="button preorder"><strong>Pre-order</strong> Technique 2012</a>
             <p>Book prices will rise to <strong>$120</strong> after January 31st.</p>
         </div>
     </section>
@@ -30,8 +30,8 @@
             <p>Pre-order the Senior Bundle (Technique 2009 to 2012) today for <strong>$390</strong>. <span>(A $90 discount)</span></p>
         </div>
         <div class="order-links">
-            <a href="#" class="button bundle freshman"><strong>Get the Freshman Bundle</strong> (Technique 2012 to 2015)</a>
-            <a href="#" class="button bundle senior"><strong>Get the Senior Bundle</strong> (Technique 2009 to 2012)</a>
+            <a href="{% url buy_freshman_bundle %}" class="button bundle freshman"><strong>Get the Freshman Bundle</strong> (Technique 2012 to 2015)</a>
+            <a href="{% url buy_senior_bundle %}" class="button bundle senior"><strong>Get the Senior Bundle</strong> (Technique 2009 to 2012)</a>
         </div>
     </section>
     

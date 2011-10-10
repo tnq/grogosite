@@ -14,20 +14,18 @@
 
 {% block content%}
 
-<h3>THIS IS A TEST PAGE, DO NOT ORDER ANYTHING FROM THIS PAGE!</h3>
-<p class="info">This page is for ordering Technique yearbooks using your credit card as payment. We accept <strong>Visa, Master Card, American Express,</strong> and <strong>Discover!</strong> The form is submitted using Secure Sockets Layer (SSL) technology to ensure your privacy.</p> 
-<p class="info">Javascript <strong>MUST</strong> be enabled in your browser for the order amount to process. If you cannot enable Javascript, please try a different browser or computer! Please fill in all required fields, and please read the <a href="#returnpolicy">Return Policy</a> and <a href="http://web.mit.edu/chargemit/policy.html">Privacy Policy</a>. If you have trouble, contact us at <a href="mailto:tnq-orders@mit.edu">tnq-orders@mit.edu</a>.</p> 
+<p>This page is for ordering Technique yearbooks using your credit card as payment. We accept <strong>Visa, Master Card, American Express,</strong> and <strong>Discover!</strong> The form is submitted using Secure Sockets Layer (SSL) technology to ensure your privacy.</p> 
+<p>Javascript <strong>MUST</strong> be enabled in your browser for the order amount to process. If you cannot enable Javascript, please try a different browser or computer! Please fill in all required fields, and please read the <a href="#returnpolicy">Return Policy</a> and <a href="http://web.mit.edu/chargemit/policy.html">Privacy Policy</a>. If you have trouble, contact us at <a href="mailto:tnq-orders@mit.edu">tnq-orders@mit.edu</a>.</p> 
 <div id="orderform"> 
     <form action="{% url buy_form %}" method=post id="order_form"> 
     <input name="merchant_id" type="hidden" value="MIT_SAO_Technique" /> 
-    <input name="amount" type="hidden" value="0" /> 
     <input name="billTo_country" type="hidden" value="us" /> 
     <input name="shipping_method" type="hidden" value=":none" /> 
 
     {{ formset.management_form }}
 
     <h3>Become a Patron</h3> 
-    <p class="info">Patrons of Technique will receive a copy of <em>Technique {% tnq_setting "tnq_year" %}</em> for no additional charge. Platinum, Gold, and Silver Patrons will receive an additional gift: a beautifully mounted photograph taken on the MIT campus by our photographers. See our <a href="patrons">Patrons</a> page for more details.</p> 
+    <p>Patrons of Technique will receive a copy of <em>Technique {% tnq_setting "tnq_year" %}</em> for no additional charge. Platinum, Gold, and Silver Patrons will receive an additional gift: a beautifully mounted photograph taken on the MIT campus by our photographers. See our <a href="{% url tnq_support %">Support Us</a> page for more details.</p> 
 <div class="ordersection"> 
     <ul id="patronlist" class="orderlist">
         <li><input title="{% tnq_setting 'patron_year' %}-Platinum" name="patron" type="radio" value="platinum" /> Become a <strong>Platinum Patron</strong> of <em>Technique {% tnq_setting "tnq_year" %}</em> for <strong>${% tnq_setting "platinum_price" %}!</strong></li>
@@ -40,7 +38,7 @@
 
     <p class="orderoption"><strong>Patrons Only:</strong> The name you would like to appear in <em>Technique {% tnq_setting "tnq_year" %}</em>:</p> 
     <p class="orderoption"> 
-        <input maxlength="64" name="patron_name" size="60" type="text" /></p> 
+        <input maxlength="64" name="merchantDefinedData2" size="60" type="text" /></p> 
 </div> 
 <h3>Buy a four-year bundle!</h3>
     <div class="ordersection">
@@ -76,72 +74,74 @@
     <input type="button" value="Remove book from order" id="remove_button" />
 </div> 
 <h3>Shipping</h3> 
-<p class="info">Shipping costs ${% tnq_setting "shipping_price" %} / book.  The current year&#8217;s book is usually shipped out in the second week of June.  All other orders are generally processed within a few weeks and sent via USPS Media Mail.  Please note that we do not generally reimburse shipping costs, even if the purchaser or student picks the book up in person.</p> 
+<p>We mail our books via USPS Media Mail for ${% tnq_setting "shipping_price" %} / book.  Copies of <em>Technique {% tnq_setting "tnq_year" %}</em> will shipped out in the second week of June, and all other orders are processed within a few weeks of their placement.  Please note that we do not generally reimburse shipping costs, even if the purchaser or student picks the book up in person.</p> 
 <div class="ordersection"> 
-<p class="orderoption"> 
-<input title="Shipping" id="id_shipping" name="shipping" type="checkbox" value="Shipping" /> Purchase shipping for <strong>${% tnq_setting "shipping_price" %} / book</strong>!</p> 
+    <p class="orderoption"> 
+    <input title="Shipping" id="id_shipping" name="shipping" type="checkbox" value="Shipping" /> Purchase shipping for <strong>${% tnq_setting "shipping_price" %} / book</strong>!</p> 
 </div> 
 <div class="ordersection"> 
-<p class="ordertotal">Your Order Total Is:<br /> 
-<input name="total" id="total" readonly="readonly" size="9" type="text" /></p> 
-<p class="ordertotal">Your Order Is:<br /> 
-<input name="comment" id="comment" readonly="readonly" size="80" type="text" /></p> 
+    <p class="ordertotal">Your Order Total Is:<br /> 
+        <input name="total" id="total" readonly="readonly" size="9" type="text" />
+    </p> 
+    <p class="ordertotal">Your Order Is:<br /> 
+        <input name="comment" id="comment" readonly="readonly" size="80" type="text" />
+    </p> 
 </div> 
-<p class="info">If checkboxes above do not cause the Order Total to accumulate, you probably have Javascript disabled. Turn it on, or try a different browser or computer. The Order Total listed above MUST be correct for your order to be processed!</p> 
-<p><strong> </strong></p> 
+<p>If checkboxes above do not cause the Order Total to accumulate, you probably have Javascript disabled. Turn it on, or try a different browser or computer. The Order Total listed above MUST be correct for your order to be processed!</p> 
+
 <h3>Billing Information</h3> 
-<p class="info">Please enter your credit card billing address.  USA addresses only.<br />Items marked with a <span style="color: #ff0000;">*</span> are required.</p> 
+<p>Please enter your credit card billing address.  USA addresses only.<br />Items marked with a <span style="color: #ff0000;">*</span> are required.</p> 
 <div id="billingaddress" class="ordersection"> 
-<fieldset>
-    <label for="billTo_firstName" class="required" style="display:block; width: 11em; float: left;">First / Last Name:</label>
-        <input name="billTo_firstName" type="text" /> 
-        <input name="billTo_lastName" type="text" />
-        <br />
-    <label for="billTo_company" style="display:block; width: 11em; float: left;">Company:</label>
-        <input name="billTo_company" type="text" />
-        <br />
-    <label for="billTo_street1" class="required" style="display:block; width: 11em; float: left;">Address:</label>
-        <input name="billTo_street1" type="text" />
-        <br />
-    <label for="billTo_street2" style="display:block; width: 11em; float: left;">Room / Apt:</label>
-        <input name="billTo_street2" type="text" />
-        <br />
-    <label for="billTo_city" class="required" style="display:block; width: 11em; float: left;">City:</label>
-        <input name="billTo_city" type="text" />
-        <input name="billTo_state" maxlength="2" size="2" type="text" />
-        <input name="billTo_postalCode" maxlength="5" size="5" type="text" />
-        <br />
-    <label for="billTo_email" class="required" style="display:block; width: 11em; float: left;">Email Address / Phone:</label>
-        <input name="billTo_email" type="text" />
-        <input name="billTo_phoneNumber" maxlength="15" size="15" type="text" />
-        <br />
-</fieldset>
+    <fieldset>
+        <label for="billTo_firstName" class="required" style="display:block; width: 11em; float: left;">First / Last Name:</label>
+            <input name="billTo_firstName" type="text" /> 
+            <input name="billTo_lastName" type="text" />
+            <br />
+        <label for="billTo_company" style="display:block; width: 11em; float: left;">Company:</label>
+            <input name="billTo_company" type="text" />
+            <br />
+        <label for="billTo_street1" class="required" style="display:block; width: 11em; float: left;">Address:</label>
+            <input name="billTo_street1" type="text" />
+            <br />
+        <label for="billTo_street2" style="display:block; width: 11em; float: left;">Address Line 2:</label>
+            <input name="billTo_street2" type="text" />
+            <br />
+        <label for="billTo_city" class="required" style="display:block; width: 11em; float: left;">City / State / Zip:</label>
+            <input name="billTo_city" type="text" />
+            <input name="billTo_state" maxlength="2" size="2" type="text" />
+            <input name="billTo_postalCode" maxlength="5" size="5" type="text" />
+            <br />
+        <label for="billTo_email" class="required" style="display:block; width: 11em; float: left;">Email Address / Phone:</label>
+            <input name="billTo_email" type="text" />
+            <input name="billTo_phoneNumber" maxlength="15" size="15" type="text" />
+            <br />
+    </fieldset>
 </div> 
 <h3>Pickup / Shipping Information</h3> 
-<p class="info">Students or others picking up a book must present an ID matching the name entered below.</p> 
+<p>Students or others picking up a book must present an ID matching the name entered below.</p> 
 
 <div id="shippingaddress" class="ordersection"> 
 <fieldset>
-    <label for="shipTo_firstName" class="required" style="display:block; width: 12em; float: left;">First / Last Name:</label>
+    <label for="shipTo_firstName" class="required" style="display:block; width: 11em; float: left;">First / Last Name:</label>
         <input name="shipTo_firstName" type="text" /> 
         <input name="shipTo_lastName" type="text" />
         <br />
     Only enter the information below if you have chosen shipping above.<br />
-    <label for="shipTo_company" style="display:block; width: 12em; float: left;">Company:</label>
+    <label for="shipTo_company" style="display:block; width: 11em; float: left;">Company:</label>
         <input name="shipTo_company" type="text" />
         <br />
-    <label for="shipTo_street1" class="required" style="display:block; width: 12em; float: left;">Address:</label>
+    <label for="shipTo_street1" class="required" style="display:block; width: 11em; float: left;">Address:</label>
         <input name="shipTo_street1" type="text" />
         <br />
-    <label for="shipTo_street2" style="display:block; width: 12em; float: left;">Room / Apt:</label>
+    <label for="shipTo_street2" style="display:block; width: 11em; float: left;">Address line 2:</label>
         <input name="shipTo_street2" type="text" />
         <br />
-    <label for="shipTo_city" class="required" style="display:block; width: 12em; float: left;">City / State / Postal Code:</label>
+    <label for="shipTo_city" class="required" style="display:block; width: 11em; float: left;">City / State / Zip:</label>
         <input name="shipTo_city" type="text" />
         <input name="shipTo_state" maxlength="2" size="2" type="text" />
         <input name="shipTo_postalCode" maxlength="5" size="5" type="text" />
         <br />
-    <label for="shipTo_email" class="required" style="display:block; width: 12em; float: left;">Email Address / Phone:</label>
+    <label for="shipTo_email" class="required" style="display:block; width: 11em; float: left;">Email Address / Phone:</label>
         <input name="shipTo_email" type="text" />
         <input name="shipTo_phoneNumber" maxlength="15" size="15" type="text" />
         <br />
@@ -149,7 +149,7 @@
 </div> 
 
 <h3>Almost there!</h3> 
-<p class="info">Please make sure all of the above information is correct &#8211; mistakes will delay the processing of your order.  Once you are ready, click the &#8220;Next&#8221; button once and you will be redirected to a secure form to enter your credit card information.</p> 
+<p>Please make sure all of the above information is correct &#8211; mistakes will delay the processing of your order.  Once you are ready, click the &#8220;Next&#8221; button once and you will be redirected to a secure form to enter your credit card information.</p> 
 <div class="ordersection"> 
 <p class="orderoption"><button type=submit name=submitbutton>Next</button></p> 
 <p class="orderoption"><button type=reset>Clear Form</button></p> 
