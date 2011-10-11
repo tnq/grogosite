@@ -19,30 +19,31 @@
     <input name="billTo_country" type="hidden" value="us" /> 
     <input name="shipping_method" type="hidden" value=":none" />
     <input id="test_mode" type="hidden" value="Y" name="test_mode">
+    <input id="shipping_price" type="hidden" value="{{ shipping_price }}">
     
     {% block purchase_details %} 
     
     <h2>You're buying {{ order_tag_pretty }}!</h2>
-
-    <input id="shipping_price" type="hidden" value="{{ shipping_price }}">
-
-    <p>Your order (as we'll see it) is <input id="comments" name="comments" type="text" value="{{ order_tag }}" readonly="readonly" size="28"/> for a grand total of $<input id="amount" name="amount" type="text" value="{{ amount }}" readonly="readonly" size="3"/>.</p>
     
     {% endblock %}
-
+    
+    {% block shipping_choice %}
     <h3>Pick Up / Shipping</h3> 
     
     <p>You have three options for book delivery:
         <ul>
             <li>Visit our booths in Lobby 10 and the Student Center during book distribution in May.</li>
             <li><a href="mailto:tnq-orders@mit.edu">Arrange a time</a> to pick up your book from our office, W20-451.</li>
-            <li>Click the checkbox below to have your book(s) mailed you for $5 each.</li>
+            <li>Click the checkbox below to have your book(s) mailed you for {% block shipping_string_one %}$5 each.{% endblock %}</li>
         </ul>
     </p>
     
     <p> 
-        <input title="Shipping" id="id_shipping" name="shipping" type="checkbox" value="Shipping" /> Purchase shipping for <strong>${% tnq_setting "shipping_price" %} / book</strong>!
+        <input title="Shipping" id="id_shipping" name="shipping" type="checkbox" value="Shipping" /> {% block shipping_string_two %} Purchase shipping for <strong>${{ shipping_price}} / book</strong>!{% endblock %}
     </p> 
+    {% endblock %}
+    
+    <p>Your order (as we'll see it) is <input id="comments" name="comments" type="text" value="{{ order_tag }}" readonly="readonly" size="28"/> for a grand total of $<input id="amount" name="amount" type="text" value="{{ amount }}" readonly="readonly" size="3"/>.</p>
     
     <h3>Billing Information</h3> 
         <p>Please enter your credit card billing address.  You will enter your credit card number on the next page.</p> 

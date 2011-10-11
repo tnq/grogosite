@@ -1,0 +1,26 @@
+{% extends 'tnq_site/buy/new_buy_form.html' %}
+
+{% load site_settings %}
+
+{% block purchase_details %} 
+    
+    <h2>Thank you for supporting Technique!</h2>
+    
+    <p>As a patron, your name will be included in the "Patrons" section of Technique {% tnq_setting "tnq_year" %}.  Platinum, Gold, and Silver patrons will also receive a matted print featuring the MIT campus as a thank-you from the entire Technique staph.</p>
+
+    <input id="shipping_price" type="hidden" value="{{ shipping_price }}">
+    
+    <ul id="patronlist" class="orderlist">
+        <li><input title="{{ book_year }}-Platinum" name="patron" type="radio" value="{{ platinum_price }}" /> Become a <strong>Platinum Patron</strong> for <strong>${{ platinum_price }}!</strong></li>
+        <li><input title="{{ book_year }}-Gold" name="patron" type="radio" value="{{ gold_price }}" /> Become a <strong><span style="color: #ffcc00;">Gold Patron</span></strong> for <strong>${{ gold_price }}!</strong></li>
+        <li><input title="{{ book_year }}-Silver" name="patron" type="radio" value="{{ silver_price }}" /> Become a <strong><span style="color: #cccccc;">Silver Patron</span></strong> for <strong>${{ silver_price }}!</strong></li>
+        <li><input title="{{ book_year }}-Bronze" name="patron" type="radio" value="{{ bronze_price }}" /> Become a <strong><span style="color: #cc9900;">Bronze Patron</span></strong> for <strong>${{ bronze_price }}!</strong></p></li>
+    </ul>
+    
+    <p>The name you would like to appear in <em>Technique {% tnq_setting "tnq_year" %}</em>:</p> 
+    <input maxlength="64" name="merchantDefinedData2" size="60" type="text" />
+    
+{% endblock %}
+
+{% block shipping_string_one %}free!{% endblock %}
+{% block shipping_string_two %}Check to have your book mailed to you for free!{% endblock %}

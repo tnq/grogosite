@@ -11,5 +11,6 @@ urlpatterns = patterns('',
     url(r'^book/(?P<book_year>\d{4})/', 'purchase.views.buy_form', {'purchase_option':'book'}, name='buy_book'),
     url(r'^seniorbundle/', 'purchase.views.buy_form', {'purchase_option':'senior_bundle'}, name='buy_senior_bundle'),
     url(r'^freshmanbundle/', 'purchase.views.buy_form', {'purchase_option':'freshman_bundle'}, name='buy_freshman_bundle'),
+    url(r'^patron/', 'purchase.views.buy_form', {'purchase_option':'patron'}, name='buy_patron'),
     
 )

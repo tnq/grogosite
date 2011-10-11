@@ -44,6 +44,24 @@ def buy_form(request, purchase_option=None, book_year=None):
         order_tag = "%s-Book" % book_year
         order_tag_pretty = "a copy of Technique %s" % book_year
         
+    elif option=="patron":
+        try:
+            platinum_price = Setting.objects.get(tag="platinum_price").value
+            gold_price = Setting.objects.get(tag="gold_price").value
+            silver_price = Setting.objects.get(tag="silver_price").value
+            bronze_price = Setting.objects.get(tag="bronze_price").value
+            
+            shipping_price = 0
+        except ObjectDoesNotExist:
+            pass
+        
+        return render_to_response('tnq_site/buy/patron_form.html', {'platinum_price' : platinum_price,
+                                                                     'gold_price' : gold_price,
+                                                                     'silver_price' : silver_price,
+                                                                     'bronze_price' : bronze_price,
+                                                                     'shipping_price' : 0,
+                                                                     'book_year' : book_year })
+    
     else:
         return HttpResponseRedirect(reverse('tnq_buy'))
         
