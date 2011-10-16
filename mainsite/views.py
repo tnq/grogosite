@@ -1,7 +1,7 @@
 # Create your views here.
 from django.shortcuts import render_to_response
 from xml.etree import ElementTree
-import urllib2
+from urllib2 import urlopen
 from email.utils import mktime_tz, parsedate_tz
 from datetime import datetime
 
@@ -14,7 +14,7 @@ def index(request):
     tweet_date = cache.get("tweet_date")
     if not tweet or not tweet_date:
         try:
-            item = ElementTree.parse(urllib2.urlopen("http://twitter.com/statuses/user_timeline/56618461.rss")).find(".//item")
+            item = ElementTree.parse(urlopen("http://twitter.com/statuses/user_timeline/56618461.rss")).find(".//item")
             tweet = item.findtext("title").replace("hrhgrogo: ", "")
 
             tweet_date = item.findtext("pubDate")
@@ -28,4 +28,27 @@ def index(request):
         cache.set("tweet", tweet, 600)
         cache.set("tweet_date", tweet_date, 600)
 
-    return render_to_response('tnq_site/index.html', {'tweet': tweet, 'tweet_date' : tweet_date })
+    #Upcoming events
+    events = cache.get("events")
+
+    if not events:
+        events = []
+        ns = '{http://www.w3.org/2005/Atom}'
+        event_elements = ElementTree.parse(urlopen("https://www.google.com/calendar/feeds/r28lcips84n5bqspuidk7fi4og%40group.calendar.google.com/public/full?futureevents=true")).findall(ns+"entry")
+
+        for element in event_elements:
+            event = {}
+            event['title'] = element.findtext(ns+"title")
+            event['content'] = element.findtext(ns+"content")
+
+            start_time = element.find("{http://schemas.google.com/g/2005}when").get("startTime")[:19]
+            start_time = datetime.strptime(start_time, "%Y-%m-%dT%H:%M:%S")
+            event['start_time'] = start_time.strftime("%A, %B %e @%l:%M %p")
+
+            event['url'] = element.find("{http://www.w3.org/2005/Atom}link").get('href')
+
+            events.append(event)
+
+        cache.set("events", events, 600)
+
+    return render_to_response('tnq_site/index.html', {'tweet': tweet, 'tweet_date' : tweet_date, 'events' : events })

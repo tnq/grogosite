@@ -36,12 +36,10 @@
 </section>
 <section id="upcoming-events" role="upcoming-events">
     <h2>Upcoming Events</h2>
-    <h3>Intro to the Book</h3>
-    <h4>Saturday 24 September 2011</h4>
-    <p>Learn how to get involved in designing, photo editing, and crafting the 2012 yearbook. Meet the manboard officers and get the schedule.</p>
-    
-    <h3>Photoshop &amp; Darkroom Tutorials. </h3>
-    <h4>Saturday 1 October 2011</h4>
-    <p>Learn how to get involved in designing, photo editing, and crafting the 2012 yearbook. Meet the manboard officers and get the schedule.</p>
+{% for event in events %}
+    <h3><a href="{{event.url}}">{{event.title}}</a></h3>
+    <h4>{{event.start_time}}</h4>
+    <p>{{event.content}}</p>
+{% endfor %}
 </section>
 {% endblock %}
