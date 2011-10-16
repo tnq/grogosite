@@ -74,6 +74,13 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'cache_table',
+    }
+}
+
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '99&xeaxqq+om4i1lhqid#&olgq1crnah#9b)bz(j7kub(s84v9'
 

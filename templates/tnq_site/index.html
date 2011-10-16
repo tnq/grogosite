@@ -27,7 +27,7 @@
 </nav>
 <section id="twitter-feed" role="twitter-feed">
     <blockquote>
-        <p>I'll be teaching you how to use a camera, today at 1pm in W20-451. Be there! <span>&mdash;Sep 17</span></p>
+        <p>{{ tweet|urlize }}<span> &mdash; {{ tweet_date }}</span></p>
     </blockquote>
     <div class="grogo">
         <p>Our mascot is<br />H.R.H. Grogo, a gorilla.<br /><img src="{% get_static_prefix %}images/twitter_bird.png" width="34" height="24" alt="Twitter" /> <a href="#">@hrhgrogo</a></p>
