@@ -4,6 +4,13 @@
 {% block lgs_selected %}selected{% endblock %}
 {% block content_class_tag %}class="lgs"{% endblock %}
 
+{% block extra_headers %}
+    <script type="text/javascript" src="{% get_static_prefix %}js/jquery-1.6.1.min.js"></script>
+    <script type="text/javascript" src="{% get_static_prefix %}fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+    <script type="text/javascript" src="{% get_static_prefix %}js/lg_fancybox.js"></script>
+    <link rel="stylesheet" href="{% get_static_prefix %}fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
+{% endblock %}
+
 {% block content %}
 <article>
     <h1>Living Groups, schedule a group photo</h1>
@@ -39,7 +46,7 @@
             <img src="{% get_static_prefix %}images/crest.png" alt="Sample Living Group Crest" />
             <span>Including a crest or coat-of-arms for your group costs <strong>$30</strong>.</span>
         </p>
-        <a class="sample" href="#">
+        <a id="lg_photo" class="sample" href="{% get_static_prefix %}images/lg_full.png">
             <img src="{% get_static_prefix %}images/lg_sample.jpg" alt="Sample Living Group Photo" />
             <span>&gt; See example Living Group Page</span>
         </a>
