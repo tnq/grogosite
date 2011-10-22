@@ -10,8 +10,7 @@ from django.core.cache import cache
 def index(request):
 
     # Twitter
-    tweet = cache.get("tweet")
-    tweet_date = cache.get("tweet_date")
+    tweet, tweet_date = cache.get("tweet", [None, None])
     if not tweet or not tweet_date:
         try:
             item = ElementTree.parse(urlopen("http://twitter.com/statuses/user_timeline/56618461.rss")).find(".//item")
@@ -24,9 +23,8 @@ def index(request):
         except:
             tweet = "Error with Twitter!"
             tweet_date = "???"
-
-        cache.set("tweet", tweet, 600)
-        cache.set("tweet_date", tweet_date, 600)
+        else:
+            cache.set("tweet", [tweet, tweet_date], 600)
 
     #Upcoming events
     events = cache.get("events")
