@@ -14,9 +14,9 @@
 
 <div id="orderform"> 
     <form action="https://shopmitprd.mit.edu/controller/index.php?auto_submit=Y" method=post id="order_form"> 
-    <input name="merchant_id" type="hidden" value="MIT_SAO_Technique" /> 
-    <input name="amount" type="hidden" value="0" /> 
-    <input name="billTo_country" type="hidden" value="us" /> 
+    <input id="merchant_id" name="merchant_id" type="hidden" value="MIT_SAO_Technique" /> 
+    <input id="billTo_country" name="billTo_country" type="hidden" value="us" />
+    <input id="shipTo_country" name="shipTo_country" type="hidden" value="" /> 
     <input name="shipping_method" type="hidden" value=":none" />
     <input id="test_mode" type="hidden" value="Y" name="test_mode">
     <input id="shipping_price" type="hidden" value="{{ shipping_price }}">
@@ -39,7 +39,7 @@
     </p>
     
     <p> 
-        <input title="Shipping" id="id_shipping" name="shipping" type="checkbox" value="Shipping" /> {% block shipping_string_two %} Purchase shipping for <strong>${{ shipping_price}} / book</strong>!{% endblock %}
+        <input title="Shipping" id="id_shipping" name="shipping" type="checkbox" value="Shipping" /> {% block shipping_string_two %} Purchase shipping for <strong>${{ shipping_price}}</strong>!{% endblock %}
     </p> 
     {% endblock %}
     
@@ -102,7 +102,7 @@
     <h3>Almost there!</h3> 
     <p>Please make sure all of the above information is correct &#8211; mistakes will delay the processing of your order.  Once you are ready, click the <strong>Next</strong> button once and you will be redirected to a secure form to enter your credit card information.</p> 
 
-    <button type=submit name=submitbutton>Next</button></p> 
+    <button type=submitbutton id="submitbutton" name=submitbutton>Next</button></p> 
     <button type=reset>Clear Form</button></p> 
 
     </form> 
