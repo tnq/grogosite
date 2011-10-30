@@ -26,20 +26,26 @@
     </ul>
 </nav>
 <section id="twitter-feed" role="twitter-feed">
+    {% if tweet %}
     <blockquote>
         <p>{{ tweet|urlize }}<span> &mdash; {{ tweet_date }}</span></p>
     </blockquote>
+    {% endif %}
     <div class="grogo">
-        <p>Our mascot is<br />H.R.H. Grogo, a gorilla.<br /><img src="{% get_static_prefix %}images/twitter_bird.png" width="34" height="24" alt="Twitter" /> <a href="#">@hrhgrogo</a></p>
+        <p>Our mascot is<br />H.R.H. Grogo, a gorilla.<br /><img src="{% get_static_prefix %}images/twitter_bird.png" width="34" height="24" alt="Twitter" /> <a href="http://www.twitter.com/hrhgrogo">@hrhgrogo</a></p>
         <a href="#"><img src="{% get_static_prefix %}images/grogo.png" width="96" height="139" alt="H.R.H. Grogo" /></a>
     </div>
 </section>
 <section id="upcoming-events" role="upcoming-events">
     <h2>Upcoming Events</h2>
+{% if events %}
 {% for event in events %}
     <h3><a href="{{event.url}}">{{event.title}}</a></h3>
     <h4>{{event.start_time}}</h4>
     <p>{{event.content}}</p>
 {% endfor %}
+{% else %}
+    <p>Oops! It looks like we don't have any scheduled events, but please come by Saturday at 1PM for our regular weekly meeting!</p>
+{% endif %}
 </section>
 {% endblock %}
