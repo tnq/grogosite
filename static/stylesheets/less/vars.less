@@ -15,6 +15,8 @@
 @lightGreen: #e6eedf;
 @lightYellow: #eeeadf;
 
+@fieldsetGreen: #7b826f;
+
 @lighterText: #595959;
 @mediumLightText: #2e2e2e;
 @darkerText: #181818;
@@ -25,7 +27,7 @@
 @activeScale: 0.9;
 
 .column-width(@colNum:4,@extra:0,@scale:1) {
-    width: ((@colNum * @colWidth) + 2*(@colSpace * (@colNum - 1) + @extra))*@scale;
+    width: ((@colNum * @colWidth) + 2*@colSpace*(@colNum - 1) + @extra)*@scale;
 }
 
 .centered-content () {
@@ -121,7 +123,6 @@
     -moz-box-shadow: @shadow;
     box-shadow: @shadow;
 }
-
 .linear-gradient(@colorStart:rgba(255,255,255,.69), @colorEnd:rgba(255,255,255,0), @start:0, @stop:100) {
     @opera-grad: -o-linear-gradient(top, @colorStart @start *1%, @colorEnd @stop * 1%);
     @moz-grad: -moz-linear-gradient(top, @colorStart @start * 1%, @colorEnd @stop * 1%);
@@ -171,4 +172,17 @@
     background-color: @lightGray;
     color: @mediumLightText;
     font-weight: 200;
+}
+
+.button-scaling (@fontSize:1.29em, @pad: 25px, @cols:3) {
+    padding: @pad 0;
+    font-size: @fontSize;
+    .column-width(@cols);
+    &:active {
+        font-size: @fontSize*@activeScale;
+        padding: @pad*@activeScale 0;
+        .column-width(@cols, 0, @activeScale);
+        margin-left:((@cols*@colWidth + 2*@colSpace*(@cols - 1))*(1-@activeScale))/2;
+        margin-right:((@cols*@colWidth + 2*@colSpace*(@cols - 1))*(1-@activeScale))/2;
+    }
 }

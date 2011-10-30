@@ -24,15 +24,15 @@ def seniors(request):
     return render_to_response('tnq_site/seniors.html')
 
 def enterinfo(request):
-    formset = ActivityFormSet()
+    activityFormset = ActivityFormSet()
     if request.method == 'POST': #If the form has been submitted
-        form = SeniorForm(request.POST)
-        formset = ActivityFormSet(request.POST)
-        if form.is_valid() and formset.is_valid():
-            senior = form.save(commit=False)
+        seniorFormset = SeniorForm(request.POST)
+        activityFormset = ActivityFormSet(request.POST)
+        if seniorFormset.is_valid() and activityFormset.is_valid():
+            senior = seniorFormset.save(commit=False)
             senior.tnq_year = __CURRENT_TNQ_YEAR
             senior.save()
-            for act_form in formset.forms:
+            for act_form in activityFormset.forms:
                 if act_form.is_valid() and "title" in act_form.cleaned_data.keys() and act_form.cleaned_data['title']:  #Activity is valid and not blank
                     activity = act_form.save(commit=False)
                     activity.senior = senior
@@ -42,10 +42,10 @@ def enterinfo(request):
             #sendemail(senior)
             return HttpResponseRedirect(reverse('senior_success'))
     else:
-        form = SeniorForm()
-        formset = ActivityFormSet()
+        seniorFormset = SeniorForm()
+        activityFormset = ActivityFormSet()
 
-    return render_to_response('tnq_site/seniors/enterinfo.html', { 'form':form, 'formset':formset } )
+    return render_to_response('tnq_site/seniors/enterinfo.html', { 'seniorFormset':seniorFormset, 'activityFormset':activityFormset } )
 
 def thanks(request):
     if 'seniorid' in request.session:

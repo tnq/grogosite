@@ -1,7 +1,11 @@
 {% extends 'tnq_base.html' %}
 {% load static %}
+{% load site_settings %}
 
-{% block title %}Technique 2012 Senior Information{% endblock %}
+{% block seniors_selected %}selected{% endblock %}
+{% block content_class_tag %}class="seniors"{% endblock %}
+
+{% block title %}Technique 2012 Senior Biographical Information{% endblock %}
 
 {% block extra_headers %}
     <script type="text/javascript" src="{% get_static_prefix %}js/jquery-1.6.1.min.js"></script>
@@ -9,150 +13,117 @@
 {% endblock %}
 
 {% block content%}
-{% load site_settings %}
-<div style="padding-top:30px; padding-bottom:30px; width:100%; text-align:center"><img src="{% get_static_prefix %}images/ghe_senior.jpg" /></div>
-<p class="info">This form is for filling out your biographical information to go with your senior photo in <em>Technique 2012</em>.  It is NOT for scheduling your senior photo - for that, please go back to our main <a href="{% url tnq_seniors %}">seniors page</a>.
-<p class="info">Please fill out as many fields as you can.  You'll be able to review this information after you submit it, but changing it is somewhat of a hassle.</p>
-<p class="info">Want to see your previously submitted answers? Visit <a href="{% url senior_email %}">this page</a>!</p>
-<p class="info">If you have any questions or concerns please email us at <a href="mailto:tnq-seniors@mit.edu">tnq-seniors@mit.edu</a>.
-<p class="info">Required fields have a <span class="required_callout">*</span>.
-    <form action={% url submit_senior_info %} method="post">
-        {{ form.non_field_errors }}
-        <h3>Biographical Information</h3>
-        <div class="formSubSection">
-            <div class="fieldWrapper">
-                <p class="fieldSuperText"><span class="required_callout">*</span> Your name, as you want it to appear in the book:</p> 
-                {{ form.name.errors }}
-                {{ form.name }}
-                <p class="fieldSubText">Ex: "Timothy Beaver IV"</p>
-            </div>
-            <div class="fieldWrapper">
-                <p class="fieldSuperText">If your name has any special characters or accents, please describe them in words (do not simply enter the character):</p> 
-                {{ form.name_comments.errors }}
-                {{ form.name_comments }}
-                <p class="fieldSubText">Ex: "Rene with an acute accent on the second e"</p>
-            </div>
-            <div class="fieldWrapper">
-                <p class="fieldSuperText"><span class="required_callout">*</span> The first letter of your last name (used to sort your name):</p> 
-                {{ form.sort_letter.errors }}
-                {{ form.sort_letter }}
-                <p class="fieldSubText">Ex: Timothy Beaver IV would enter "B"</p>
-            </div>
-            <div class="fieldWrapper">
-                <p class="fieldSuperText"><span class="required_callout">*</span> Your hometown:</p> 
-                {{ form.home_town.errors }}
-                {{ form.home_town }}
-                <p class="fieldSubText">Ex: "Chicago"</p>
-            </div>
-            <div class="fieldWrapper">
-                <p class="fieldSuperText"><span class="required_callout">*</span> Your home state (or country if not the USA):</p> 
-                {{ form.home_state_or_country.errors }}
-                {{ form.home_state_or_country }}
-                <p class="fieldSubText">Ex: "Illinois" or "Kenya"</p>
-            </div>
-        </div>
-        <h3>MIT Information</h3>
-        <div class="formSubSection">
-            <div class="fieldWrapper">
-                <p class="fieldSuperText"><span class="required_callout">*</span> Kerberos username:</p> 
-                {{ form.kerberos.errors }}
-                {{ form.kerberos }}
-                <p class="fieldSubText">Ex: "tbeaver"</p>
-            </div>
-            <div class="fieldWrapper">
-                <p class="fieldSuperText"><span class="required_callout">*</span> Major(s):</p> 
-                {{ form.major.errors }}
-                {{ form.major }}
-                <p class="fieldSubText">Only include numbers and letters.  Separate multiple majors by space-slash-space.</p>
-                <p class="fieldSubText">Ex: "3" or "7-A" or "6 / 15"</p>
-            </div>
-            <div class="fieldWrapper">
-                <p class="fieldSuperText">Minor(s):</p> 
-                {{ form.minor }}
-                {{ form.minor.errors }}
-            </div>
-            <div class="fieldWrapper">
-                <p class="fieldSuperText">Living Group / Dorm:</p> 
-                {{ form.lg }}
-                {{ form.lg.errors }}
-                <p class="fieldSubText">Ex: "Senior Haus" or "Conner 1"</p>
-            </div>
-        </div>
-        <h3>Activities</h3>
-        <div class="formSubSection">
-            {{ formset.management_form }}
-            
+<article>
+    <hgroup>
+        <h1>Senior Biographical Information</h1>
+        <h2>What do you want to have appear next to your photo?</h2>
+    </hgroup>
+    <aside>
+        <p>Note: This form is for filling out your biographical information to go with your senior photo in <em>Technique 2012</em>. It is NOT for scheduling your senior portrait&mdash;for that, please go back to the <a href="{% url tnq_seniors %}">seniors page</a>.</p>
+        <p>Please fill out as many fields as you can.  You'll be able to review this information after you submit it, but changing it is somewhat of a hassle.</p>
+        <p>If you want, you make see <a href="{% url senior_email %}">previously submitted answers</a>.</p>
+        <p>If you have any questions or concerns please email us at <a href="mailto:tnq-seniors@mit.edu">tnq-seniors@mit.edu</a>.
+    </aside>
+    <section id="senior_bio_form">
+        <form action={% url submit_senior_info %} method="post">
+            {{ seniorFormset.non_field_errors }}
+            <fieldset id="basic_info">
+                <legend>The Basics</legend>
+                
+                <label for="id_{{ seniorFormset.name.html_name }}">{{ seniorFormset.name.label }}, <span><strong>exactly</strong> as you want it to appear in the book <strong class="required">(required)</strong>:</span></label>
+                {{ seniorFormset.name.errors }}
+                {{ seniorFormset.name }}
+                
+                <input type="checkbox" id="show_name_comments" /><label for="show_name_comments">My name has special characters or accents (example: Ren&eacute;)</label>
+                
+                <label for="id_{{ seniorFormset.name_comments.html_name }}">{{ seniorFormset.name_comments.label }}:<br /><span>Please don’t just enter in the character. We want to get your name perfectly.</span></label>
+                {{ seniorFormset.name_comments.errors }}
+                {{ seniorFormset.name_comments }}
+                
+                <label for="id_{{ seniorFormset.sort_letter.html_name }}">{{ seniorFormset.sort_letter.label }},<br /><span>used to sort your name <strong class="required">(required)</strong>:<br />(Timothy Beaver IV would enter B)</span></label>
+                {{ seniorFormset.sort_letter.errors }}
+                {{ seniorFormset.sort_letter }}
+                
+                <label for="id_{{ seniorFormset.home_town.html_name }}">{{ seniorFormset.home_town.label }},<br /><strong class="required">(required)</strong>:</label>
+                {{ seniorFormset.home_town.errors }}
+                {{ seniorFormset.home_town }}
+                
+                
+                <label for="id_{{ seniorFormset.home_state_or_country.html_name }}">{{ seniorFormset.home_state_or_country.label }},<br /><strong class="required">(required)</strong>:</label>
+                {{ seniorFormset.home_state_or_country.errors }}
+                {{ seniorFormset.home_state_or_country }}
+                
+            </fieldset>
+            <fieldset id="mit_info">
+                <legend>MIT Information</legend>
+                
+                <label for="id_{{ seniorFormset.kerberos.html_name }}">{{ seniorFormset.kerberos.label }},<br /><strong class="required">(required)</strong>:</label>
+                {{ seniorFormset.kerberos.errors }}
+                {{ seniorFormset.kerberos }}
+                
+                <label for="id_{{ seniorFormset.major.html_name }}">{{ seniorFormset.major.label }},<br /><strong class="required">(required)</strong>:</label>
+                {{ seniorFormset.major.errors }}
+                {{ seniorFormset.major }}
+                
+                <label for="id_{{ seniorFormset.minor.html_name }}">{{ seniorFormset.minor.label }}:</label>
+                {{ seniorFormset.minor.errors }}
+                {{ seniorFormset.minor }}
+                
+                <label for="id_{{ seniorFormset.minor.html_name }}">{{ seniorFormset.lg.label }}:</label>
+                {{ seniorFormset.lg.errors }}
+                {{ seniorFormset.lg }}
+            </fieldset>
+            <fieldset>
+                <legend>Favorite Quote</legend>
+                {{ seniorFormset.quote.errors }}
+                {{ seniorFormset.quote }}
+                
+                <label for="id_{{ seniorFormset.quote_author.html_name }}">{{ seniorFormset.quote_author.label }}:</label>
+                {{ seniorFormset.quote_author.errors }}
+                {{ seniorFormset.quote_author }}
+            </fieldset>
+            {{ activityFormset.management_form }}
             <div style="display:none;" id="form_template">
-                <div class="activity_section" id="activity_section__prefix__">                    
-                    <p class="fieldSuperText">Name of group/activity</p>
-                    {{ formset.empty_form.title.errors }}
-                    {{ formset.empty_form.title }}
-    
-                    <p class="fieldCloseSuperText">Years Involved:</p>
-                    {{ formset.empty_form.years.errors }}
-                    {{ formset.empty_form.years }}
-    
-                    <p class="fieldCloseSuperText">Offices held:</p>
-                    {{ formset.empty_form.offices.errors }}
-                    {{ formset.empty_form.offices }}
-                </div>
+                <fieldset class="activity_section" id="activity_section__prefix__">
+                    <legend>Activity #__prefix2__</legend>
+                    <label for="id_{{ activityFormset.empty_form.title.html_name }}">{{ activityFormset.empty_form.title.label }}:</label>
+                    {{ activityFormset.empty_form.title.errors }}
+                    {{ activityFormset.empty_form.title }}
+                    
+                    <label for="id_{{ activityFormset.empty_form.years.html_name }}">{{ activityFormset.empty_form.years.label }} (1-freshman, 2-sophomore, 3-junior, etc.) please separate with spaces:</label>
+                    {{ activityFormset.empty_form.years.errors }}
+                    {{ activityFormset.empty_form.years }}
+                    
+                    <label for="id_{{ activityFormset.empty_form.offices.html_name }}">{{ activityFormset.empty_form.offices.label }}:</label>
+                    {{ activityFormset.empty_form.offices.errors }}
+                    {{ activityFormset.empty_form.offices }}
+                </fieldset>
             </div>
-            
             <div id="forms">
+                {% for act_form in activityFormset.forms %}
+                    <fieldset class="activity_section" id="activity_section0">
+                        <legend>Activity #{{ forloop.counter }}</legend>
+                        <label for="id_{{ act_form.title.html_name }}">{{ act_form.title.label }}:</label>
+                        {{ act_form.title.errors }}
+                        {{ act_form.title }}
+                        
+                        <label for="id_{{ act_form.years.html_name }}">{{ act_form.years.label }} (1-freshman, 2-sophomore, 3-junior, etc.) please separate with spaces:</label>
+                        {{ act_form.years.errors }}
+                        {{ act_form.years }}
+                        
+                        <label for="id_{{ act_form.offices.html_name }}">{{ act_form.offices.label }}:</label>
+                        {{ act_form.offices.errors }}
+                        {{ act_form.offices }}
+                    </fieldset><!-- end activitysection0 -->
+                {% endfor %}
+            </div>
             
-            {% for act_form in formset.forms %}
-                <div class="activity_section" id="activity_section0">  
-                    <p class="fieldSuperText">Name of group/activity (#{{ forloop.counter }})</p>
-                    {{ act_form.title.errors }}
-                    {{ act_form.title }}
-                    {% if forloop.first %}
-                        <p class="fieldSubText">Please keep it short; try to use abbreviations!</p>
-                        <p class="fieldSubText">Ex: "Basketweaving Society" or "UA"</p>
-                    {% endif %}
-    
-                    <p class="fieldCloseSuperText">Years Involved:</p>
-                    {{ act_form.years.errors }}
-                    {{ act_form.years }}
-                    {% if forloop.first %}
-                        <p class="fieldSubText">Use 1 for freshman year, 2 for sophomore, etc. Separate with spaces only.</p>
-                        <p class="fieldSubText">Ex: "2" or "1 2 3 4" or "1 3 4"</p>
-                    {% endif %}
-    
-                    <p class="fieldCloseSuperText">Offices held:</p>
-                    {{ act_form.offices.errors }}
-                    {{ act_form.offices }}
-                    {% if forloop.first %}
-                        <p class="fieldSubText">Ex: "Social Chair"</p>
-                    {% endif %}
-                </div><!-- end activitysection0 -->
-            {% endfor %}
-            </div> <!-- end forms -->
-        </div>
-        
-        <input type="button" value="Add another activity" id="add_button" />
-        <input type="button" value="Remove last activity" id="remove_button" />
-
-        <h3>Favorite Quote:</h3>
-        <div class="formSubSection">
-            <div class="fieldWrapper">
-                <p class="fieldSuperText">Quote:</p> 
-                {{ form.quote.errors }}
-                {{ form.quote }}
-                <p class="fieldSubText">Don't use quotation marks. Don't put the name of the source.</p>
-                <p class="fieldSubText">Ex: I want to know God's thoughts... the rest are details.</p>
-            </div>
-            <div class="fieldWrapper">
-                <p class="fieldSuperText">Quote Source:</p> 
-                {{ form.quote_author.errors }}
-                {{ form.quote_author }}
-                <p class="fieldSubText">Ex: "Albert Einstein"</p>
-            </div>
-        </div>
-
-        <div class="formSubSection">
-            <br />
-            <br />
+            
+            <input type="button" value="Add another activity" id="add_button" />
+            <input type="button" value="Remove last activity" id="remove_button" />
+            
             <input type="submit" value="Submit" />
-        </div>
-    </form>
+        </form>
+    </section>
+</article>
 {% endblock %}
