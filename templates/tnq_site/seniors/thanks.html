@@ -1,5 +1,8 @@
 {% extends 'tnq_base.html' %}
 
+{% block seniors_selected %}selected{% endblock %}
+{% block content_class_tag %}class="seniors"{% endblock %}
+
 {% block content %}
 <h2>Thanks!</h2>
 <p class="info">Thanks, {{ senior.name }}!  All the information below is now in our database.  If you see any mistakes or want to change anything, please email <a href="mailto:tnq-seniors@mit.edu">tnq-seniors@mit.edu</a> - we reject duplicate kerberos usernames, so you will not be able to re-submit the form.</p>

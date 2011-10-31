@@ -5,6 +5,9 @@
 {% load dajaxice_templatetags %}
 {% load static %}
 
+{% block buy_selected %}selected{% endblock %}
+{% block content_class_tag %}class="buy"{% endblock %}
+
 {% block extra_headers %}
 <script type="text/javascript" src="{% get_static_prefix %}js/jquery-1.6.1.min.js"></script>
 <script type="text/javascript" src="{% get_static_prefix %}js/orders.js"></script>
