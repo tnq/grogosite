@@ -31,7 +31,6 @@ def index(request):
 
     if events is None:
         try:
-            raise Exception()
             events = []
             ns = '{http://www.w3.org/2005/Atom}'
             event_elements = ElementTree.parse(urlopen("https://www.google.com/calendar/feeds/r28lcips84n5bqspuidk7fi4og%40group.calendar.google.com/public/full?futureevents=true")).findall(ns+"entry")
