@@ -42,11 +42,15 @@ def index(request):
 
                 start_time = element.find("{http://schemas.google.com/g/2005}when").get("startTime")[:19]
                 start_time = datetime.strptime(start_time, "%Y-%m-%dT%H:%M:%S")
+                event['start_time_full'] = start_time
                 event['start_time'] = start_time.strftime("%A, %B %e @%l:%M %p")
 
                 event['url'] = element.find("{http://www.w3.org/2005/Atom}link").get('href')
 
                 events.append(event)
+
+            events.sort(key=lambda event:event['start_time_full'])
+
         except:
             events = []
             cache.set("events", [], 60)
