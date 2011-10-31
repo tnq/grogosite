@@ -24,10 +24,13 @@ urlpatterns = patterns('',
     (r'^lg/', include('lg.urls')),
     (r'^buy/', include('purchase.urls')),
     url(r'^support/', direct_to_template, {'template' : 'tnq_site/support.html'}, name='tnq_support'),
+    url(r'^patrons', redirect_to, {'url' : '/support/'}),
     url(r'^join/', direct_to_template, {'template' : 'tnq_site/join.html'}, name='tnq_join'),
     url(r'^hire/', direct_to_template, {'template' : 'tnq_site/hire.html'}, name='tnq_hire'),
     url(r'^about/', direct_to_template, {'template' : 'tnq_site/about.html'}, name='tnq_about'),
-    
+
+    url(r'^scripts/seniors', redirect_to, {'url' : '/seniors/info/'}),
+
     #Favicon processing
     url(r'favicon\.ico/$', redirect_to, {'url' : settings.STATIC_URL + 'images/favicon.gif'}),
     url(r'favicon\.gif/$', redirect_to, {'url' : settings.STATIC_URL + 'images/favicon.gif'}),
@@ -37,7 +40,7 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
     url(r'^login/', 'django.contrib.auth.views.login', name='login-page'),
     url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout-page'),
-    
+
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/creditcard/purchaser/upload/$', 'creditcard.views.upload', name='upload'),
     (r'^%s/' % settings.DAJAXICE_URL_PREFIX, include('dajaxice.urls')),
