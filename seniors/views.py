@@ -72,7 +72,7 @@ def email(request):
             request.session['kerberos'] = kerberos
             try:
                 senior = Senior.objects.get(kerberos=kerberos)
-                #sendemail(senior)
+                sendemail(senior)
                 return HttpResponseRedirect(reverse('senior_email_sent'))
             except ObjectDoesNotExist:
                 return HttpResponseRedirect(reverse('no_senior_info'))
