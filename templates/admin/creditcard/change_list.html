@@ -9,7 +9,7 @@
             </a>
           </li>
           <li>
-            <a href="upload/{% if is_popup %}?_popup=1{% endif %}" class="addlink">
+            <a href="{% url orders_upload %}{% if is_popup %}?_popup=1{% endif %}" class="addlink">
               Upload CSV file
             </a>
           </li>
