@@ -22,7 +22,6 @@ if os.path.exists("settings_private.py"):
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/admin'
-FORCE_SCRIPT_NAME = None
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
