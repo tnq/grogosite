@@ -1,0 +1,78 @@
+@import 'vars';
+
+/*a.button,
+input[type='submit'],
+#content.main blockquote{
+    behavior: url('http://18.83.7.47:8000/static/ie_hacks/border-radius.htc');
+}*/
+
+#content.main blockquote {
+    border-radius: 15px !important;
+    background-color: #ffffff !important;
+}
+
+#content.seniors,
+#content.lgs {
+    ol {
+        li.last {
+            .column-width(6);
+            margin:0;
+            background-color: @lightGreen;
+            &:before {
+                content: "3";
+                background-color: @greenColor;
+            }
+            p {
+                margin-bottom: 17px;
+                margin-left: @colWidth+2px;
+                margin-right: @colWidth+2px;
+            }
+            &:after {
+                content: "";
+            }
+        }
+        &:after {
+            .clear-floats;
+        }
+        a.button {
+            behavior: none;
+        }
+    }
+}
+
+#content.lgs {
+    ol {
+        li.last {
+            p {
+                margin-bottom: 7px;
+            }
+        }
+    }
+    section#more-info {
+        p.last {
+            margin-top: 0;
+        }
+    }
+}
+
+#content.support {
+    p.last {
+        .column-width(8);
+        text-align: right;
+        .taglineText;
+        strong {
+            .largeText;
+        }
+    }
+}
+
+#content.hire {
+    .imagerow {
+        img.last {
+            margin-right: 0;
+        }
+    }
+}
+#wrapper {
+    background-color: #f4f4f4 !important;
+}

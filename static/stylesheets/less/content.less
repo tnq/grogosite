@@ -186,9 +186,10 @@
                 }
             }
             a.button {
+                line-height: 23px;
                 .green-button;
-                &:active { margin: 7px 0; }
-                .button-scaling(1.29em, 25px, 3);
+                &:active { margin: 3px 0; }
+                .button-scaling(1.29em, 29px, 3);
             }
             
         }
@@ -219,12 +220,15 @@
                 }
             }
             a.button {
+                line-height: 20px;
                 .blue-button;
-                &:active { margin: 2px 0; }
+                margin-bottom: 20px;
+                &:active { 
+                    margin: 1px 0;
+                    margin-bottom: 22px; 
+                }
                 .button-scaling(1.14em, 10px, 4);
                 padding-bottom: 11px;
-                margin-bottom: 20px;
-                &:active { margin-bottom: 24px; }
             }
         }
         &#about {
@@ -245,15 +249,13 @@
         &#previous {
             width: @leftColWidth;
             float: left;
-            input[type='submit'] {
-                margin-top: -1px;
-            }
         }
         &#patron {
             width: @rightColWidth;
             float: right;
         }
-        &.subarticle {
+        &#previous,
+        &#patron {
             padding-top: 1em;
             h1 {
                 line-height: 1em;
@@ -281,9 +283,17 @@
                 .blue-button;
                 font-weight: 800;
                 font-size: 14px;
-                line-height: 2.1em;
+                line-height: 23px;
                 .column-width(3);
                 float: right;
+                padding: 10px 0;
+            }
+            input[type='submit'] {
+                margin-top: -1px;
+                &::-moz-focus-inner {
+                    padding: 4px 0;
+                    border: 0
+                }
             }
             a.button {
                 margin-top: 3px;
@@ -458,9 +468,6 @@
             &:after {
                 content: "";
             }
-        }
-        &:after {
-            .clear-floats;
         }
     }
     
@@ -646,6 +653,7 @@
         .normalText;
     }
     a.button {
+        line-height: 23px;
         .blue-button;
         .largeText;
         font-weight: 200;
@@ -666,6 +674,7 @@
         float: right;
         .column-width(8);
         margin-top: -10px;
+        height: 70px;
     }
     p:last-child {
         .column-width(8);

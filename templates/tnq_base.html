@@ -5,7 +5,15 @@
     <head>
         <meta charset="UTF-8" />
         <title>Technique: The yearbook, photography &amp; design club of MIT.</title>
+        <!--[if lte IE 8]>
+        <script type="text/javascript" src="{% get_static_prefix %}js/jquery-1.6.1.min.js"></script>
+        <script type="text/javascript" src="{% get_static_prefix %}js/ie-hacks.js"></script>
+        <script type="text/javascript" src="{% get_static_prefix %}js/modernizr.js"></script>
+        <![endif]-->
         <link rel="stylesheet" href="{% get_static_prefix %}stylesheets/css/main.css" />
+        <!--[if lte IE 8]>
+        <link rel="stylesheet" href="{% get_static_prefix %}stylesheets/css/ie_fixes.css" />
+        <![endif]-->
         {% block extra_headers %}
 	    {% endblock %}
     </head>
@@ -28,7 +36,7 @@
             </nav>
         </header>
         <div id="wrapper">
-            <div id="content" role="content" {% block content_class_tag %}{% endblock %}>
+            <div id="content" {% block content_class_tag %}{% endblock %}>
                 {% block content %}
     	        {% endblock %}
             </div>

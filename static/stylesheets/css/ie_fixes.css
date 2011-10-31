@@ -1,0 +1,63 @@
+/*  Technique Stylesheet
+    copyright 2011 Technique */
+/*a.button,
+input[type='submit'],
+#content.main blockquote{
+    behavior: url('http://18.83.7.47:8000/static/ie_hacks/border-radius.htc');
+}*/
+#content.main blockquote {
+  border-radius: 15px !important;
+  background-color: #ffffff !important;
+}
+#content.seniors ol li.last, #content.lgs ol li.last {
+  width: 340px;
+  margin: 0;
+  background-color: #e6eedf;
+}
+#content.seniors ol li.last:before, #content.lgs ol li.last:before {
+  content: "3";
+  background-color: #79ba01;
+}
+#content.seniors ol li.last p, #content.lgs ol li.last p {
+  margin-bottom: 17px;
+  margin-left: 42px;
+  margin-right: 42px;
+}
+#content.seniors ol li.last:after, #content.lgs ol li.last:after {
+  content: "";
+}
+#content.seniors ol:after, #content.lgs ol:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+#content.seniors ol a.button, #content.lgs ol a.button {
+  behavior: none;
+}
+#content.lgs ol li.last p {
+  margin-bottom: 7px;
+}
+#content.lgs section#more-info p.last {
+  margin-top: 0;
+}
+#content.support p.last {
+  width: 460px;
+  text-align: right;
+  font-size: 1em;
+  font-weight: 700;
+  color: #595959;
+}
+#content.support p.last strong {
+  font-size: 1.57em;
+  font-weight: 200;
+  color: #181818;
+  line-height: 1.22em;
+}
+#content.hire .imagerow img.last {
+  margin-right: 0;
+}
+#wrapper {
+  background-color: #f4f4f4 !important;
+}

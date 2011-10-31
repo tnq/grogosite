@@ -115,6 +115,7 @@
 .border-radius(@radius) {
     -webkit-border-radius: @radius;
     -moz-border-radius: @radius;
+    -khtml-border-radius: @radius;
     border-radius: @radius;
 }
 
@@ -156,14 +157,17 @@
 }
 
 .green-button() {
+    background-color: @greenColor;
     .linear-gradient(@greenColor, darken(@greenColor, 8%));
 }
 
 .blue-button() {
+    background-color: @blueColor;
     .linear-gradient(@blueColor, darken(@blueColor, 8%));
 }
 
 .indigo-button() {
+    background-color: @indigoColor;
     .linear-gradient(@indigoColor, darken(@indigoColor, 8%));
 }
 
@@ -174,7 +178,7 @@
     font-weight: 200;
 }
 
-.button-scaling (@fontSize:1.29em, @pad: 25px, @cols:3) {
+.button-scaling (@fontSize:1.29em, @pad:25px, @cols:3) {
     padding: @pad 0;
     font-size: @fontSize;
     .column-width(@cols);
