@@ -21,7 +21,7 @@ def closed(request):
     return render_to_response('tnq_site/seniors/closed.html')
     
 def seniors(request):
-    return render_to_response('tnq_site/seniors.html')
+    return render_to_response('tnq_site/seniors.html', {'senior_photos': xrange(6)})
 
 def enterinfo(request):
     activityFormset = ActivityFormSet()

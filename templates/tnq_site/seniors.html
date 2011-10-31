@@ -1,5 +1,6 @@
 {% extends 'tnq_base.html' %}
 {% load static %}
+{% load site_settings %}
 
 {% block seniors_selected %}selected{% endblock %}
 {% block content_class_tag %}class="seniors"{% endblock %}
@@ -47,11 +48,9 @@
     </h2>
     
     <aside class="sample-images">
-        <img src="{% get_static_prefix %}images/senior_photos/senior1.jpg" alt="Senior Sample" />
-        <img src="{% get_static_prefix %}images/senior_photos/senior1.jpg" alt="Senior Sample" />
-        
-        <img src="{% get_static_prefix %}images/senior_photos/senior1.jpg" alt="Senior Sample" />
-        <img src="{% get_static_prefix %}images/senior_photos/senior1.jpg" alt="Senior Sample" />
+        {% for photo in senior_photos|sample:4 %}
+        <img src="{% get_static_prefix %}images/senior_photos/senior{{photo}}.jpg" alt="Senior Sample" />
+        {% endfor %}
     </aside>
     
     <dl>

@@ -2,6 +2,7 @@ from django import template
 from django.conf import settings
 from mainsite.models import Setting
 from django.core.exceptions import ObjectDoesNotExist
+import random
 
 register = template.Library()
 
@@ -39,3 +40,7 @@ class EvaluateNode(template.Node):
             return t.render(context)
         except template.VariableDoesNotExist, template.TemplateSyntaxError:
             return 'Error rendering', self.variable
+
+@register.filter
+def sample(value, arg):
+    return random.sample(value, arg)
