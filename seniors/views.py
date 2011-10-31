@@ -39,7 +39,7 @@ def enterinfo(request):
                     activity.save()
             
             request.session['seniorid'] = senior.id;
-            #sendemail(senior)
+            sendemail(senior)
             return HttpResponseRedirect(reverse('senior_success'))
     else:
         seniorFormset = SeniorForm()
