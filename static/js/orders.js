@@ -25,8 +25,7 @@ $(document).ready(function() {
     });
     
     $("#submitbutton").click(function() {
-        validateForm();
-        return false;
+        return validateForm();
     });
         
     function update_shipping() {
