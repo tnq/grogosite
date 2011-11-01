@@ -30,6 +30,7 @@ urlpatterns = patterns('',
     url(r'^about/', direct_to_template, {'template' : 'tnq_site/about.html'}, name='tnq_about'),
 
     url(r'^scripts/seniors', redirect_to, {'url' : '/seniors/info/'}),
+    url(r'^lg/lgform', redirect_to, {'url' : '/lg/signup/'}),
 
     #Favicon processing
     url(r'favicon\.ico/$', redirect_to, {'url' : settings.STATIC_URL + 'images/favicon.gif'}),
