@@ -1,5 +1,6 @@
 # Create your views here.
 from django.shortcuts import render_to_response
+from django.contrib.auth.decorators import login_required
 from xml.etree import ElementTree
 from urllib2 import urlopen
 from email.utils import mktime_tz, parsedate_tz
@@ -58,3 +59,8 @@ def index(request):
             cache.set("events", events, 600)
 
     return render_to_response('tnq_site/index.html', {'tweet': tweet, 'tweet_date' : tweet_date, 'events' : events })
+
+@login_required
+def staph(request):
+    return render_to_response('tnq_site/staph.html', {} )
+
