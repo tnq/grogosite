@@ -28,8 +28,11 @@ urlpatterns = patterns('',
     url(r'^join/', direct_to_template, {'template' : 'tnq_site/join.html'}, name='tnq_join'),
     url(r'^hire/', direct_to_template, {'template' : 'tnq_site/hire.html'}, name='tnq_hire'),
     url(r'^about/', direct_to_template, {'template' : 'tnq_site/about.html'}, name='tnq_about'),
-    
-    #Favicon processing
+
+    # Old Seniors page
+    url(r'^scripts/seniors/?$', redirect_to, {'url' : '/seniors/info/'}),
+
+    # Favicon processing
     url(r'favicon\.ico/$', redirect_to, {'url' : settings.STATIC_URL + 'images/favicon.gif'}),
     url(r'favicon\.gif/$', redirect_to, {'url' : settings.STATIC_URL + 'images/favicon.gif'}),
 
