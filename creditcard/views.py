@@ -8,6 +8,8 @@ from django import forms
 from django.db.models import Q
 from django.forms import ModelForm
 from django.forms.formsets import formset_factory
+import collections
+import json
 
 #from reportlab.pdfgen import canvas
 #from reportlab.lib.units import inch
@@ -131,7 +133,7 @@ def graph_dates(request):
     plusday = datetime.timedelta(days=1)
     delivered_books = LineItem.objects.exclude(deliverydate=None)   # Exclude undelivered books
     delivered_books = delivered_books.exclude(deliverytype="v")     # Exclude voided books
-    delivered_books = delivered_books.filter(year=2011)             # Only include 2011 books
+    delivered_books = delivered_books.filter(year=2012)             # Only include 2012 books
     delivered_books = delivered_books.order_by("deliverydate")      
     ddate = lambda x: x.deliverydate
     for deliverydate, group in groupby(delivered_books, key=ddate):
@@ -144,19 +146,25 @@ def graph_dates(request):
     tomorrow = 1000*time.mktime((datetime.datetime.combine(datetime.date.today(),midnight)+plusday+toutc).utctimetuple())
     deliveries += [[tomorrow, 0]]
 
-    sales = []
-    total_sales = []
-    total = 0
+    sales = collections.defaultdict(list)
+    cum_sales = collections.defaultdict(list)
+    total = collections.defaultdict(lambda: 0)
     sold_books = LineItem.objects.exclude(deliverytype="v")         # Exclude voided books
     sold_books = sold_books.exclude(deliverytype="f")               # Exclude free books
-    sold_books = sold_books.filter(year=2011)                       # Only include 2011 books
-    sold_books = sold_books.order_by("purchaser__purchasedate")
-    pdate = lambda x: x.purchaser.purchasedate
-    for purchasedate, group in groupby(sold_books, key=pdate):
-        epoch_time = 1000*time.mktime((datetime.datetime.combine(purchasedate,midnight)+toutc).utctimetuple())
-        num = len(list(group))
-        sales += [[epoch_time, num]]
-        total += num
-        total_sales += [[epoch_time, total]]
+    sold_books = sold_books.filter(year__gt=2009)
+    sold_books = sold_books.order_by("year", "purchaser__purchasedate")
 
-    return render_to_response('creditcard/graph.html', {'deliveries':deliveries, "sales":sales, "total_deliveries":total_deliveries, "total_sales":total_sales})
+    for (year, purchasedate), group in groupby(sold_books, key=lambda x: (x.year, x.purchaser.purchasedate)):
+        epoch_time = datetime.datetime.combine(purchasedate,midnight)
+        epoch_time = epoch_time.replace(year=2012+int(epoch_time.year)-int(year))
+        epoch_time = 1000*time.mktime((epoch_time+toutc).utctimetuple())
+        num = len(list(group))
+        sales[year] += [[epoch_time, num]]
+        total[year] += num
+        cum_sales[year] += [[epoch_time, total[year]]]
+
+    return render_to_response("creditcard/graph.html", {
+        "deliveries":deliveries,
+        "sales":json.dumps(dict(sales)),
+        "total_deliveries":total_deliveries,
+        "cum_sales":json.dumps(dict(cum_sales))})

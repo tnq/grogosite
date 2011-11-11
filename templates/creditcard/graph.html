@@ -2,15 +2,23 @@
 <html>
     <head>
         <title>Graph</title>
-        <script language="javascript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+        <script language="javascript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
 	<script language="javascript" type="text/javascript" src="http://web.mit.edu/nwiltsie/www/flot/jquery.flot.js"></script>
 	<script language="javascript" type="text/javascript" src="http://web.mit.edu/nwiltsie/www/flot/jquery.flot.selection.js"></script>
    <script>
 $(document).ready(function(){
     var deliveries = { data: {{deliveries}}, label:"Daily Deliveries", color:1};
     var total_deliveries = { data: {{total_deliveries}}, label:"Total Deliveries", color: 2};
-    var sales = { data: {{sales}}, label:"Daily Sales", color: 3};
-    var total_sales = { data: {{total_sales}}, label:"Total Sales", color:4};
+    var sales = {{sales|safe}};
+    sales = $.map(sales, function(value, year) {
+        return { data: value, label:year.toString()+" Daily Sales" };
+        });
+    $.merge(sales, [deliveries]);
+    var cum_sales = {{cum_sales|safe}};
+    cum_sales = $.map(cum_sales, function(value, year) {
+        return { data: value, label:year.toString()+" Total Sales" };
+        });
+    $.merge(sales, [total_deliveries]);
 
     var options = { xaxis: { mode: "time" },
                     yaxes: [{ min: 0 }, { position:"right" }],
@@ -19,9 +27,11 @@ $(document).ready(function(){
                     selection: { mode: "x" }
                   }
 
-    var saleplot = $.plot($("#salediv"), [total_sales, total_deliveries], options );
-    var deliveryplot = $.plot($("#deliverydiv"), [sales, deliveries], options );
-    var overview = $.plot($("#overview"), [deliveries, sales, total_deliveries, total_sales], {
+    var saleplot = $.plot($("#salediv"), cum_sales, options );
+    var deliveryplot = $.plot($("#deliverydiv"), sales, options );
+    var overview_series = $.merge([], sales);
+    $.merge(overview_series, cum_sales);
+    var overview = $.plot($("#overview"),overview_series, {
                                 series:{
                                     lines: { show:true, lineWidth: 1 },
                                     shadowSize: 0
@@ -34,12 +44,12 @@ $(document).ready(function(){
 
     $("#deliverydiv").bind("plotselected", function (event, ranges) {
         // do the zooming
-        deliveryplot = $.plot($("#deliverydiv"), [sales, deliveries],
+        deliveryplot = $.plot($("#deliverydiv"), sales,
                       $.extend(true, {}, options, {
                           xaxis: { min: ranges.xaxis.from, max: ranges.xaxis.to }
                       }));
 
-        saleplot = $.plot($("#salediv"), [total_sales, total_deliveries],
+        saleplot = $.plot($("#salediv"), cum_sales,
                       $.extend(true, {}, options, {
                           xaxis: { min: ranges.xaxis.from, max: ranges.xaxis.to }
                       }));
@@ -50,12 +60,12 @@ $(document).ready(function(){
 
     $("#salediv").bind("plotselected", function (event, ranges) {
         // do the zooming
-        deliveryplot = $.plot($("#deliverydiv"), [sales, deliveries],
+        deliveryplot = $.plot($("#deliverydiv"), sales,
                       $.extend(true, {}, options, {
                           xaxis: { min: ranges.xaxis.from, max: ranges.xaxis.to }
                       }));
 
-        saleplot = $.plot($("#salediv"), [total_sales, total_deliveries],
+        saleplot = $.plot($("#salediv"), cum_sales,
                       $.extend(true, {}, options, {
                           xaxis: { min: ranges.xaxis.from, max: ranges.xaxis.to }
                       }));
