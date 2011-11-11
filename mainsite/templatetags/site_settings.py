@@ -2,7 +2,9 @@ from django import template
 from django.conf import settings
 from mainsite.models import Setting
 from django.core.exceptions import ObjectDoesNotExist
+from django.utils.safestring import SafeUnicode
 import random
+import re
 
 register = template.Library()
 
@@ -42,5 +44,29 @@ class EvaluateNode(template.Node):
             return 'Error rendering', self.variable
 
 @register.filter
-def sample(value, arg):
-    return random.sample(value, arg)
+def in_group(user, group):
+	"""Returns True/False if the user is in the given group(s).
+	Usage::
+		{% if user|in_group:"Friends" %}
+		or
+		{% if user|in_group:"Friends,Enemies" %}
+		...
+		{% endif %}
+	You can specify a single group or comma-delimited list.
+	No white space allowed.
+	"""
+
+	if re.search(',', group):
+	    group_list = re.sub('\s+','',group).split(',')
+	elif re.search(' ', group):
+	    group_list = group.split()
+	else:
+	    group_list = [group]
+
+	user_groups = []
+	for group in user.groups.all():
+	    user_groups.append(str(group.name))
+
+	return filter(lambda x:x in user_groups, group_list)
+
+in_group.is_safe = True

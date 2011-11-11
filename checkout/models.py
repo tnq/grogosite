@@ -86,6 +86,13 @@ class Equipment(models.Model):
         else:
             return None
 
+    def current_user(self):
+        current_checkout = self.current_checkout()
+        if current_checkout:
+            return current_checkout.user
+        else:
+            return None
+
     def is_overdue(self):
         date_due = self.date_due()
         if date_due:

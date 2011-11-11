@@ -1,16 +1,26 @@
+{% load site_settings %}
+
         <h2>{{ table_name }}</h2>
         <table>
-            <tr><th>Brand</th><th>Model</th><th>Name</th><th>Due Date</th></tr>
+            <tr><th>Brand / Model</th><th>Name</th>{% if user|in_group:"manboard" %}<th>Checker-Outer</th>{% endif %}<th>Due Date</th></tr>
             {% for equipment in equip_list %}
             <tr>
-                <td>{{ equipment.brand }}</td><td>{{ equipment.model }}</td><td>{{ equipment }}</td>
+                <td>{{ equipment.brand }} {{ equipment.model }}</td><td>{{ equipment }}</td>
+                {% if user|in_group:"manboard" %}
+                    {% if equipment.current_user %}
+                        <td>{{ equipment.current_user }}</td>
+                    {% else %}
+                        <td>-</td>
+                    {% endif %}
+                {% endif %}
+
             {% if equipment.current_checkout %}
                 {% if equipment.is_overdue %}
                     <td class="equipment_overdue">
                 {% else %}
                     <td class="equipment_out">
                 {% endif %}
-                    {{ equipment.current_checkout.date_due }}</td>
+                    {{ equipment.current_checkout.date_due|date:"D, M j, Y" }}</td>
             {% else %}
                 <td class="equipment_id">Checked In!</td>
             {% endif %}

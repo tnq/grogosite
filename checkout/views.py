@@ -1,6 +1,7 @@
 # Create your views here.
 from django.shortcuts import render_to_response
 from django.contrib.auth.decorators import login_required
+from django.template import RequestContext
 from checkout.models import *
 
 from datetime import datetime, timedelta
@@ -81,5 +82,5 @@ def view_equipment(request):
                                                                 'medium_cameras'    : medium_cameras,
                                                                 'large_cameras'     : large_cameras,
                                                                 'lenses'            : lenses,
-                                                              })
+                                                              }, context_instance=RequestContext(request))
 
