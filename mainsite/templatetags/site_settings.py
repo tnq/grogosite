@@ -44,6 +44,10 @@ class EvaluateNode(template.Node):
             return 'Error rendering', self.variable
 
 @register.filter
+def sample(value, arg):
+    return random.sample(value, arg)
+
+@register.filter
 def in_group(user, group):
 	"""Returns True/False if the user is in the given group(s).
 	Usage::
