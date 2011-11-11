@@ -44,8 +44,6 @@ urlpatterns = patterns('',
     
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/creditcard/upload/$', 'creditcard.views.upload', name='orders_upload'),
-    (r'^%s/' % settings.DAJAXICE_URL_PREFIX, include('dajaxice.urls')),
-    (r'^scripts/%s/' % settings.DAJAXICE_URL_PREFIX, include('dajaxice.urls')),
 )
 
 urlpatterns += staticfiles_urlpatterns()
