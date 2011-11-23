@@ -22,7 +22,7 @@ if os.path.exists("settings_private.py"):
     execfile("settings_private.py")
 
 LOGIN_URL = '/login/'
-LOGIN_REDIRECT_URL = '/admin'
+LOGIN_REDIRECT_URL = '/admin/'
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name

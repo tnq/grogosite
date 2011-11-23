@@ -49,7 +49,7 @@ def sample(value, arg):
 
 @register.filter
 def in_group(user, group):
-	"""Returns True/False if the user is in the given group(s).
+	"""Return True/False if the user is in the given group(s).
 	Usage::
 		{% if user|in_group:"Friends" %}
 		or
