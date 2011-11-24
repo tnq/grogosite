@@ -4,12 +4,17 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 
 from django.core.exceptions import ObjectDoesNotExist
+import datetime
 from mainsite.models import Setting
 from purchase.models import Book
 from django import forms
 
 class BookForm(forms.Form):
-    tnq_year = int(Setting.objects.get(tag="tnq_year").value)
+    try:
+        tnq_year = int(Setting.objects.get(tag="tnq_year").value)
+    except ObjectDoesNotExist:
+        # If the tag has not been defined, set it as one year past the current year
+        tnq_year = datetime.datetime.now().year + 1
     year = forms.IntegerField(max_value=tnq_year, 
                               min_value=1885, 
                               required=False,
