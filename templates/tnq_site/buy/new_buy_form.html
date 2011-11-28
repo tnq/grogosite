@@ -15,6 +15,8 @@
 
 {% block content%}
 
+<article>
+
 <div id="orderform"> 
     <form action="https://shopmitprd.mit.edu/controller/index.php?auto_submit=Y" method=post id="order_form"> 
     <input id="merchant_id" name="merchant_id" type="hidden" value="MIT_SAO_Technique" /> 
@@ -25,7 +27,7 @@
     
     {% block purchase_details %} 
     
-    <h2>You're buying {{ order_tag_pretty }}!</h2>
+    <h1>Purchase {{ order_tag_pretty }}!</h1>
     
     {% endblock %}
     
@@ -110,5 +112,6 @@
     </form> 
 </div> <!-- end #orderform -->
 
+</article>
 
 {% endblock %}
