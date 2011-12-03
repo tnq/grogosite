@@ -20,6 +20,7 @@ urlpatterns = patterns('',
     (r'^lg/', include('lg.urls')),
     (r'^buy/', include('purchase.urls')),
     url(r'^support/', direct_to_template, {'template' : 'tnq_site/support.html'}, name='tnq_support'),
+    url(r'^patrons/$', redirect_to, {'url' : '/support/'}),
     url(r'^join/', direct_to_template, {'template' : 'tnq_site/join.html'}, name='tnq_join'),
     url(r'^hire/', direct_to_template, {'template' : 'tnq_site/hire.html'}, name='tnq_hire'),
     url(r'^about/', direct_to_template, {'template' : 'tnq_site/about.html'}, name='tnq_about'),
@@ -42,7 +43,6 @@ urlpatterns = patterns('',
     url(r'^password-reset/done/$', 'django.contrib.auth.views.password_reset_done', name='password_reset_done'),
     url(r'^reset/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$', 'django.contrib.auth.views.password_reset_confirm'),
     url(r'^reset/done/$', 'django.contrib.auth.views.password_reset_complete'),
-
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Orders uploading page
