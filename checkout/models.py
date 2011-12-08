@@ -48,7 +48,7 @@ class Equipment(models.Model):
     status_choices = (  ('ACTIVE', 'Active'),
                         ('REPAIR', 'Out for repair'),
                         ('MISSING', 'Missing'),
-                        ('BROKEN', 'Broken')
+                        ('BROKEN', 'Broken'),
                         ('RETURNED', 'Returned to owner')
                     )
 
