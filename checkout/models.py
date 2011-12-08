@@ -49,6 +49,7 @@ class Equipment(models.Model):
                         ('REPAIR', 'Out for repair'),
                         ('MISSING', 'Missing'),
                         ('BROKEN', 'Broken')
+                        ('RETURNED', 'Returned to owner')
                     )
 
     barcode_id = models.CharField('Barcode ID', max_length=13, unique=True)
