@@ -280,5 +280,5 @@ _global_theme_dir = os.path.join(PROJECT_ROOT, 'themes', SITE_THEME, 'assets')
 if os.path.exists(_global_theme_dir):
     STATICFILES_DIRS += (('theme', _global_theme_dir),)
 
-STATIC_ROOT = os.path.join(DJANGO_ROOT, "static")
+STATIC_ROOT = os.path.join(DJANGO_ROOT, "staticfiles")
 
