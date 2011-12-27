@@ -10,7 +10,7 @@ class ActivityInline(admin.TabularInline):
 
 class SeniorAdmin(admin.ModelAdmin):
     inlines = [ ActivityInline, ]
-    search_fields = ('name','kerberos',)
+    search_fields = ('name', 'kerberos',)
 
     list_display = ('name', 'kerberos', 'sort_letter',)
     list_filter = ('tnq_year',)
@@ -37,7 +37,7 @@ class SeniorAdmin(admin.ModelAdmin):
                          'activity5', 'years5', 'offices5', ])
 
         for senior in queryset:
-    	    this_row = [senior.name.encode('utf8'),
+            this_row = [senior.name.encode('utf8'),
                              senior.name.strip().split(" ")[0].encode('utf8'),
                              senior.name.strip().split(" ")[-1].encode('utf8'),
                              senior.name_comments.encode('utf8'),
