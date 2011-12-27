@@ -2,8 +2,7 @@ import csv
 import datetime
 from django import forms
 from django.contrib import admin
-from django.contrib.contenttypes.models import ContentType
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse
 from creditcard.models import Purchaser, LineItem, Patron
 
 class LineItemInline(admin.TabularInline):
@@ -49,7 +48,7 @@ class PurchaserAdmin(admin.ModelAdmin):
         writer = csv.writer(response)
         writer.writerow(['First Name', 'Last Name', 'Student ID', 'Bill Amount'])
         for purchaser in queryset:
-    	    writer.writerow([purchaser.firstname,
+            writer.writerow([purchaser.firstname,
                              purchaser.lastname,
                              purchaser.studentid,
                              purchaser.amount_paid])
@@ -89,7 +88,7 @@ class LineItemAdmin(admin.ModelAdmin):
         writer = csv.writer(response)
         writer.writerow(['Full Name', 'Company', 'Address 1', 'Address 2', 'City', 'State', 'Zip Code', 'Country', 'E Mail'])
         for lineitem in queryset:
-    	    writer.writerow([lineitem.ship_first_name + " " + lineitem.ship_last_name,
+            writer.writerow([lineitem.ship_first_name + " " + lineitem.ship_last_name,
                              'MIT Technique',
                              lineitem.ship_street,
                              lineitem.ship_street2,
