@@ -14,12 +14,12 @@ def graph_checkouts(request):
     toutc = timedelta(hours=-5)
     plusday = timedelta(days=1)
 
-    for e in equipment:
-        checkouts = Checkout.objects.filter(equipment=e).order_by(date_out)
+    for equip in equipment:
+        checkouts = Checkout.objects.filter(equipment=equip).order_by(date_out)
         checkout_list = []
-        for c in checkouts:
-            checkout_list.append((1000*time.mktime(c.date_out.utctimetuple()), 1))
-            checkout_list.append((1000*time.mktime(c.date_in.utctimetuple()), 0))
+        for checkout in checkouts:
+            checkout_list.append((1000*time.mktime(checkout.date_out.utctimetuple()), 1))
+            checkout_list.append((1000*time.mktime(checkout.date_in.utctimetuple()), 0))
         all_checkouts.append(checkout_list)
 
     return render_to_response('checkout/graph.html', {'checkouts':all_checkouts})
@@ -32,12 +32,12 @@ def graph_user_checkouts(request):
     toutc = timedelta(hours=-5)
     plusday = timedelta(days=1)
 
-    for e in equipment:
-        checkouts = Checkout.objects.filter(equipment=e).order_by(date_out)
+    for equip in equipment:
+        checkouts = Checkout.objects.filter(equipment=equip).order_by(date_out)
         checkout_list = []
-        for c in checkouts:
-            checkout_list.append((1000*time.mktime(c.date_out.utctimetuple()), 1))
-            checkout_list.append((1000*time.mktime(c.date_in.utctimetuple()), 0))
+        for checkout in checkouts:
+            checkout_list.append((1000*time.mktime(checkout.date_out.utctimetuple()), 1))
+            checkout_list.append((1000*time.mktime(checkout.date_in.utctimetuple()), 0))
         all_checkouts.append(checkout_list)
 
     return render_to_response('checkout/graph.html', {'checkouts':all_checkouts})
@@ -51,18 +51,20 @@ def graph_equipment_checkouts(request, equipment):
     toutc = timedelta(hours=-5)
     plusday = timedelta(days=1)
 
-    for e in equipment:
-        checkouts = Checkout.objects.filter(equipment=e).order_by(date_out)
+    for equip in equipment:
+        checkouts = Checkout.objects.filter(equipment=equip).order_by(date_out)
         checkout_list = []
-        for c in checkouts:
-            checkout_list.append((1000*time.mktime(c.date_out.utctimetuple()), 1))
-            checkout_list.append((1000*time.mktime(c.date_in.utctimetuple()), 0))
+        for checkout in checkouts:
+            checkout_list.append((1000*time.mktime(checkout.date_out.utctimetuple()), 1))
+            checkout_list.append((1000*time.mktime(checkout.date_in.utctimetuple()), 0))
         all_checkouts.append(checkout_list)
 
     return render_to_response('checkout/graph.html', {'checkouts':all_checkouts})
 
 @login_required
 def view_equipment(request):
+    """List all equipment pieces by type."""
+
     digital_cameras = Equipment.objects.filter(equip_type="CAMERA").order_by("brand","-model")
     film_cameras = Equipment.objects.filter(equip_type="35MM_CAMERA").order_by("brand","-model")
     medium_cameras = Equipment.objects.filter(equip_type="MEDIUM_FORMAT_CAMERA").order_by("brand","-model")

@@ -3,7 +3,7 @@ from django.contrib import admin
 import datetime
 
 class EquipmentAdmin(admin.ModelAdmin):
-    list_display = ('pet_name','equip_type','brand','model', 'barcode_id', 'active',)
+    list_display = ('pet_name', 'equip_type', 'brand', 'model', 'barcode_id', 'active',)
     list_filter = ('equip_type','brand')
     fieldsets = (
         ('Technique Information', { 
@@ -20,7 +20,7 @@ class EquipmentAdmin(admin.ModelAdmin):
 
 class CheckoutAdmin(admin.ModelAdmin):
     list_display = ('user', 'equipment', 'date_out', 'date_due', 'date_in', 'returned',)
-    list_filter = ('user','equipment', )
+    list_filter = ('user', 'equipment', )
     actions = ['return_equipment',]
 
     def return_equipment(self, request, queryset):

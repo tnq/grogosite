@@ -20,7 +20,7 @@ class User(DjangoUser):
 
     def __unicode__(self):
         if self.user.first_name or self.user.last_name:
-            return "%s %s" %(self.user.first_name, self.user.last_name)
+            return "%s %s" % (self.user.first_name, self.user.last_name)
         else:
             return str(self.user.username)
 
@@ -65,7 +65,7 @@ class Equipment(models.Model):
     notes = models.TextField(max_length=500, blank=True, null=True)
 
     def active(self):
-        return self.status=='ACTIVE'
+        return self.status == 'ACTIVE'
     active.boolean = True
 
     def __unicode__(self):
@@ -117,5 +117,5 @@ class Checkout(models.Model):
     returned.boolean = True
 
     def __unicode__(self):
-        return "%s - %s" %(self.user.user.username, self.equipment.__unicode__())
+        return "%s - %s" % (self.user.user.username, self.equipment.__unicode__())
 
