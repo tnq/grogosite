@@ -12,6 +12,7 @@ from django.forms.formsets import formset_factory
 from django.core.mail import send_mail, EmailMessage
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse
+from django.core.context_processors import csrf
 from seniors.forms import SeniorForm, ActivityFormSet, KerberosForm
 import csv
 
@@ -45,7 +46,10 @@ def enterinfo(request):
         seniorFormset = SeniorForm()
         activityFormset = ActivityFormSet()
 
-    return render_to_response('tnq_site/seniors/enterinfo.html', { 'seniorFormset':seniorFormset, 'activityFormset':activityFormset } )
+    c = { 'seniorFormset':seniorFormset, 'activityFormset':activityFormset }
+    c.update(csrf(request))
+
+    return render_to_response('tnq_site/seniors/enterinfo.html', c)
 
 def thanks(request):
     if 'seniorid' in request.session:

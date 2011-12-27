@@ -1,6 +1,7 @@
 # Create your views here.
 from django.shortcuts import render_to_response, get_object_or_404, get_list_or_404
 from creditcard.models import Purchaser, LineItem, Patron, PurchaserForm, PatronForm, LineItemForm
+from django.core.context_processors import csrf
 from django.http import Http404, HttpResponse
 from django.contrib.auth.decorators import login_required, permission_required
 from django.template import RequestContext
@@ -10,9 +11,6 @@ from django.forms import ModelForm
 from django.forms.formsets import formset_factory
 import collections
 import json
-
-#from reportlab.pdfgen import canvas
-#from reportlab.lib.units import inch
 
 class UploadFileForm(forms.Form):
     file = forms.FileField()
@@ -29,7 +27,11 @@ def upload(request):
             purchased_items = create_orders_from_file(reader)
     else:
         form = UploadFileForm()
-    return render_to_response('admin/creditcard/upload.html', {'form':form, 'purchased_items':purchased_items})
+
+    c = {'form':form, 'purchased_items':purchased_items}
+    c.update(csrf(request))
+
+    return render_to_response('admin/creditcard/upload.html', c )
 
 import csv, time
 def create_orders_from_file(reader):
@@ -72,38 +74,41 @@ def create_orders_from_file(reader):
                 for item in line_items:
                     if len(item) == 0:
                         itemlist.append("PROBLEMS WITH THIS PURCHASER")
+
                     elif item == "Shipping":
                         itemlist.append("Shipping")
-                    elif item in Patron.reverse_patron_dict.keys():
-                        patron = Patron(purchaser = purchaser,
-                                        color = Patron.reverse_patron_dict[item],
-                                        year = int(current_year),
-                                        name = order['MerDatafield2'] )
-                        patron.save()
-                        itemlist.append(item)
-                        create_lineitem(current_year, purchaser, order, True)
-    
-                    elif item == "Bundle":
-                        for year in range(int(current_year)-3, int(current_year)+1):
-                            create_lineitem(year, purchaser, order, 'Shipping' in line_items)
-                        itemlist.append("Bundle")
-    
-                    elif item.find("AddShipping") != -1:
-                        itemlist.append("SOMEONE ADDED SHIPPING TO THEIR PURCHASE!")
-                            
+
                     else:
-                        book_count = 1
-                        if item[1] == "x":  #3x2010-Book
-                            book_count = int(item[0])
-                            item = item[2:] #3x2010-Book --> 2010-Book
-                        for temp in range(book_count):
-                            create_lineitem(item[0:4], purchaser, order, 'Shipping' in line_items)
-    
-                            itemlist.append(str(item[0:4]))
+                        #2012-Book, 2012-FreshmanBundle, 2012-Bronze
+                        year = int(item[0:4])
+                        item = item[5:] # 2012-Book --> Book
+
+                        if item == "Book":
+                            create_lineitem(year, purchaser, order, 'Shipping' in line_items)
+                            itemlist.append(year)
+
+                        elif item == "FreshmanBundle":
+                            for tempyear in range(year, year+4):
+                                create_lineitem(tempyear, purchaser, order, 'Shipping' in line_items)
+                                itemlist.append(tempyear)
+
+                        elif item == "SeniorBundle":
+                            for tempyear in range(year-3, year+1):
+                                create_lineitem(tempyear, purchaser, order, 'Shipping' in line_items)
+                                itemlist.append(tempyear)
+
+                        elif item in Patron.reverse_patron_dict.keys():
+                            patron = Patron(purchaser = purchaser,
+                                            color = Patron.reverse_patron_dict[item],
+                                            year = int(year),
+                                            name = order['MerDatafield2'] )
+                            patron.save()
+                            itemlist.append(item)
+                            create_lineitem(current_year, purchaser, order, True)
 
                 purchaserlist.append(itemlist)
                 returnlist.append(purchaserlist)
-    
+
     return returnlist
 
 def create_lineitem(year, purchaser, order, shipping_paid):

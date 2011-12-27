@@ -23,7 +23,7 @@
         <p>If you have any questions or concerns please email us at <a href="mailto:tnq-seniors@mit.edu">tnq-seniors@mit.edu</a>.
     </aside>
     <section id="senior_bio_form">
-        <form action={% url submit_senior_info %} method="post">
+        <form action={% url submit_senior_info %} method="post">{% csrf_token %}
             {{ seniorFormset.non_field_errors }}
             <fieldset id="basic_info">
                 <legend>The Basics</legend>
