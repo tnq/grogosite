@@ -1,12 +1,33 @@
-# Create your views here.
-from django.shortcuts import render_to_response
-from django.contrib.auth.decorators import login_required
-from xml.etree import ElementTree
-from urllib2 import urlopen
-from email.utils import mktime_tz, parsedate_tz
-from datetime import datetime
-
+from django import forms
+from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.localflavor.us.forms import USPhoneNumberField
 from django.core.cache import cache
+from django.core.context_processors import csrf
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
+from django.shortcuts import render_to_response
+from django.template import RequestContext
+
+from datetime import datetime
+from email.utils import mktime_tz, parsedate_tz
+from urllib2 import urlopen
+from xml.etree import ElementTree
+
+from checkout.models import User
+
+class UserForm(forms.Form):
+    first_name = forms.CharField(label="First Name", required=True)
+    last_name = forms.CharField(label="Last Name", required=True)
+    kerberos = forms.CharField(label="Kerberos", required=True, max_length=8)
+    password = forms.CharField(label="Password", widget=forms.PasswordInput(render_value=False))
+    phone = USPhoneNumberField(label="Phone Number", required=False)
+    id_number = forms.IntegerField(label="MIT ID Number", required=True)
+
+    def clean_id_number(self):
+        id_number = self.cleaned_data['id_number']
+        if len(str(id_number)) != 9:
+            raise forms.ValidationError("Your ID number must be 9 digits in length.")
+        return id_number
 
 def index(request):
 
@@ -62,5 +83,53 @@ def index(request):
 
 @login_required
 def staph(request):
-    return render_to_response('tnq_site/staph.html', {} )
+    return render_to_response('tnq_site/staph.html', {})
 
+def user_on_manboard(user):
+    if user:
+        return user.groups.filter(name='Manboard').count() != 0
+    return False
+
+@login_required
+@user_passes_test(user_on_manboard)
+def add_user(request):
+    if request.method == 'POST':
+        form = UserForm(request.POST)
+        if form.is_valid():
+            new_user = User()
+            new_user.first_name = form.cleaned_data['first_name']
+            new_user.last_name = form.cleaned_data['last_name']
+            new_user.set_password(form.cleaned_data['password'])
+            new_user.kerberos = form.cleaned_data['kerberos']
+            new_user.username = form.cleaned_data['kerberos']
+            new_user.phone = form.cleaned_data['phone']
+            new_user.email = "%s@mit.edu" % form.cleaned_data['kerberos']
+            new_user.barcode_id = form.cleaned_data['id_number']
+            new_user.is_staff = True
+
+            new_user.save()
+
+            request.session['new_user_id'] = new_user.id
+            return HttpResponseRedirect(reverse('tnq_add_user_success'))
+    else:
+        form = UserForm()
+
+    context = {'form': form}
+    context.update(csrf(request))
+
+    return render_to_response('tnq_site/add_user.html', context )
+
+@login_required
+def add_user_success(request):
+    if 'new_user_id' in request.session:
+        try:
+            new_user = User.objects.get(id=request.session['new_user_id'])
+        except:
+            del request.session['new_user_id']
+            return HttpResponseRedirect(reverse('tnq_add_user'))
+    else:
+        return HttpResponseRedirect(reverse('tnq_add_user'))
+
+    return render_to_response('tnq_site/add_user_success.html',
+                             {'new_user' : new_user},
+                             context_instance=RequestContext(request))

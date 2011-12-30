@@ -1,0 +1,18 @@
+{% extends "tnq_base.html" %}
+
+{% block content %}
+<article>
+    <hgroup>
+        <h1>Hey New Stapher!</h1>
+        <h2>Fill out the fields below and you can check out equipment!</h2>
+    </hgroup>
+    
+    <form action={% url tnq_add_user %} method="post">{% csrf_token %}
+    
+    {{ form.as_p }}
+    <input type="submit" value="Submit" />
+    
+    </form>
+   
+</article>
+{% endblock %}
