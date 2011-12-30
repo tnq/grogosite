@@ -7,4 +7,4 @@ class Setting(models.Model):
     description = models.TextField('Tag Description', blank=True)
 
     def __unicode__(self):
-        return "%s - %s" %(self.tag, self.value)
+        return "%s - %s" % (self.tag, self.value)

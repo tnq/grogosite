@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.localflavor.us.forms import USPhoneNumberField
 from django.core.cache import cache
 from django.core.context_processors import csrf
+from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
@@ -24,9 +25,10 @@ class UserForm(forms.Form):
     id_number = forms.IntegerField(label="MIT ID Number", required=True)
 
     def clean_id_number(self):
+        """Ensure that the MIT ID number is 9 digits long."""
         id_number = self.cleaned_data['id_number']
         if len(str(id_number)) != 9:
-            raise forms.ValidationError("Your ID number must be 9 digits in length.")
+            raise forms.ValidationError("Your ID number must have 9 digits.")
         return id_number
 
 def index(request):
@@ -54,20 +56,20 @@ def index(request):
     if events is None:
         try:
             events = []
-            ns = '{http://www.w3.org/2005/Atom}'
-            event_elements = ElementTree.parse(urlopen("https://www.google.com/calendar/feeds/r28lcips84n5bqspuidk7fi4og%40group.calendar.google.com/public/full?futureevents=true")).findall(ns+"entry")
+            name_space = '{http://www.w3.org/2005/Atom}'
+            event_elements = ElementTree.parse(urlopen("https://www.google.com/calendar/feeds/r28lcips84n5bqspuidk7fi4og%40group.calendar.google.com/public/full?futureevents=true")).findall(name_space+"entry")
 
             for element in event_elements:
                 event = {}
-                event['title'] = element.findtext(ns+"title")
-                event['content'] = element.findtext(ns+"content")
+                event['title'] = element.findtext(name_space+"title")
+                event['content'] = element.findtext(name_space+"content")
 
                 start_time = element.find("{http://schemas.google.com/g/2005}when").get("startTime")[:19]
                 start_time = datetime.strptime(start_time, "%Y-%m-%dT%H:%M:%S")
                 event['start_time_full'] = start_time
                 event['start_time'] = start_time.strftime("%A, %B %e @%l:%M %p")
 
-                event['url'] = element.find("{http://www.w3.org/2005/Atom}link").get('href')
+                event['url'] = element.find(name_space+"link").get('href')
 
                 events.append(event)
 
@@ -79,7 +81,9 @@ def index(request):
         else:
             cache.set("events", events, 600)
 
-    return render_to_response('tnq_site/index.html', {'tweet': tweet, 'tweet_date' : tweet_date, 'events' : events })
+    return render_to_response('tnq_site/index.html', {'tweet': tweet,
+                                                      'tweet_date' : tweet_date,
+                                                      'events' : events })
 
 @login_required
 def staph(request):
@@ -124,7 +128,7 @@ def add_user_success(request):
     if 'new_user_id' in request.session:
         try:
             new_user = User.objects.get(id=request.session['new_user_id'])
-        except:
+        except ObjectDoesNotExist:
             del request.session['new_user_id']
             return HttpResponseRedirect(reverse('tnq_add_user'))
     else:
