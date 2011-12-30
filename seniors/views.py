@@ -7,6 +7,7 @@ from django.core.mail import EmailMessage
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse
 from django.core.context_processors import csrf
+from django.conf import settings
 from seniors.forms import SeniorForm, ActivityFormSet, KerberosForm
 import csv
 
@@ -34,7 +35,11 @@ def enterinfo(request):
                     activity.save()
             
             request.session['seniorid'] = senior.id
-            sendemail(senior)
+
+            #Dev environments usually don't have working email servers
+            if not settings.DEBUG:
+                sendemail(senior)
+
             return HttpResponseRedirect(reverse('senior_success'))
     else:
         seniorFormset = SeniorForm()

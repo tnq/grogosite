@@ -36,8 +36,8 @@ EDIT_LICENSE_NOTE = """<p>By clicking "Save Changes" you are agreeing to release
 
 SIGNUP_TOS = """I agree to release my contributions under the <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">Creative Commons-By license</a>, unless noted otherwise. See <a href="/Copyrights" target="_blank">Copyrights</a>."""
 
-#if os.path.exists("settings_private.py"):
-#    execfile("settings_private.py")
+if os.path.exists("settings_private.py"):
+    execfile("settings_private.py")
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/admin/'
