@@ -36,8 +36,8 @@ EDIT_LICENSE_NOTE = """<p>By clicking "Save Changes" you are agreeing to release
 
 SIGNUP_TOS = """I agree to release my contributions under the <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">Creative Commons-By license</a>, unless noted otherwise. See <a href="/Copyrights" target="_blank">Copyrights</a>."""
 
-if os.path.exists("settings_private.py"):
-    execfile("settings_private.py")
+#if os.path.exists("settings_private.py"):
+#    execfile("settings_private.py")
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/admin/'
@@ -116,6 +116,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.RemoteUserMiddleware',
+    'util.middleware.RequireLoginMiddleware',
 )
 
 ROOT_URLCONF = 'urls'
@@ -146,6 +147,13 @@ INSTALLED_APPS = (
 ######################################################################
 ###  Localwiki Stuff
 ######################################################################
+
+#Generally views should be protected with the @login_required decorator;
+#this is a convenience that works with the util.middleware.LoginRequiredMiddleware
+#because we want to protect ALL wiki views.
+LOGIN_REQUIRED_URLS = (
+    '/wiki/',
+)
 
 PROJECT_ROOT = 'localwiki/sapling'
 
