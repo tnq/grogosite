@@ -235,6 +235,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "staticfiles.context_processors.static",
     "django.contrib.messages.context_processors.messages",
     "django.core.context_processors.request",
+    "staticfiles.context_processors.static",
 )
 
 MIDDLEWARE_CLASSES += (
@@ -255,6 +256,7 @@ INSTALLED_APPS += (
     'sorl.thumbnail',
     'guardian',
     'south',
+    'staticfiles',
 
     # Our apps
     'versionutils.versioning',
@@ -281,6 +283,11 @@ PROJECT_THEME_TEMPLATE_DIR = os.path.join(PROJECT_ROOT, 'themes', SITE_THEME, 't
 TEMPLATE_DIRS += (
     PROJECT_TEMPLATE_DIR,
     PROJECT_THEME_TEMPLATE_DIR,
+)
+
+STATICFILES_FINDERS = (
+    "staticfiles.finders.FileSystemFinder",
+    "staticfiles.finders.AppDirectoriesFinder"
 )
 
 _global_theme_dir = os.path.join(PROJECT_ROOT, 'themes', SITE_THEME, 'assets')
