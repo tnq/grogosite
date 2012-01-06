@@ -36,9 +36,6 @@ EDIT_LICENSE_NOTE = """<p>By clicking "Save Changes" you are agreeing to release
 
 SIGNUP_TOS = """I agree to release my contributions under the <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">Creative Commons-By license</a>, unless noted otherwise. See <a href="/Copyrights" target="_blank">Copyrights</a>."""
 
-if os.path.exists("settings_private.py"):
-    execfile("settings_private.py")
-
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/admin/'
 
@@ -216,6 +213,9 @@ HAYSTACK_CONNECTIONS = {
     },
 }
 
+HAYSTACK_SITECONF = 'sapling.search_sites'
+HAYSTACK_SEARCH_ENGINE = 'dummy'
+
 THUMBNAIL_BACKEND = 'utils.sorl_backends.AutoFormatBackend'
 
 OL_API = STATIC_URL + 'openlayers/OpenLayers.js?tm=1317359250'
@@ -273,6 +273,23 @@ INSTALLED_APPS += (
 
 SITE_THEME = 'sapling'
 
+OLWIDGET_DEFAULT_OPTIONS = {
+    'default_lat': 42.359083,
+    'default_lon': -71.094761,
+    'default_zoom': 16,
+    'zoom_to_data_extent_min': 16,
+
+    'layers': ['cloudmade.35165', 've.aerial'],
+    'map_options': {
+        'controls': ['Navigation', 'PanZoomBar', 'KeyboardDefaults'],
+        'theme': '/static/openlayers/theme/sapling/style.css',
+    },
+    'overlay_style': {'fillColor': '#ffc868',
+                      'strokeColor': '#db9e33',
+                      'strokeDashstyle': 'solid'},
+    'map_div_class': 'mapwidget',
+}
+
 ###############################
 # Setup template directories
 ###############################
@@ -297,3 +314,5 @@ if os.path.exists(_global_theme_dir):
 
 STATIC_ROOT = os.path.join(DJANGO_ROOT, "staticfiles")
 
+if os.path.exists("settings_private.py"):
+    execfile("settings_private.py")
