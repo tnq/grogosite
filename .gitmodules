@@ -1,0 +1,3 @@
+[submodule "localwiki"]
+	path = localwiki
+	url = ../localwiki.git
