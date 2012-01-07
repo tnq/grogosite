@@ -10,6 +10,8 @@ ADMINS = (
     ('Quentin Smith', 'quentin@mit.edu'),
 )
 
+DEFAULT_FROM_EMAIL = 'tnq-techno@mit.edu'
+
 MANAGERS = ADMINS
 
 DATABASES = {
