@@ -10,6 +10,31 @@ ADMINS = (
     ('Quentin Smith', 'quentin@mit.edu'),
 )
 
+if False:
+    LOGGING = {
+        'version': 1,
+        'formatters': {
+            'verbose': {
+                'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+            },
+        },
+        'handlers': {
+            'null': {
+                'level':'DEBUG',
+                'class':'django.utils.log.NullHandler',
+            },
+            'console':{
+                'level':'DEBUG',
+                'class':'logging.StreamHandler',
+                'formatter': 'verbose',
+            },
+        },
+        'root': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
+    }
+
 DEFAULT_FROM_EMAIL = 'tnq-techno@mit.edu'
 
 MANAGERS = ADMINS
