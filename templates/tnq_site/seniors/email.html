@@ -8,7 +8,7 @@
 <h2>Check Your Information</h2> 
 <p class="info">If you have already submitted your Senior information for inclusion in <em>Technique {% tnq_setting 'tnq_year' %}</em> <a href={% url enter_senior_info %}>here</a>, you can re-send the confirmation email by entering your Kerberos name (without '@mit.edu'!) in the form below:</p>
 
-<form action={% url submit_senior_email %} method="post">
+<form action={% url submit_senior_email %} method="post">{% csrf_token %}
     <div class="formSubSection">
         <div class="fieldWrapper">
             <p class="fieldSuperText">Kerberos:</p> 

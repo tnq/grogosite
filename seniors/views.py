@@ -79,7 +79,11 @@ def email(request):
                 return HttpResponseRedirect(reverse('no_senior_info'))
     else:
         form = KerberosForm()
-    return render_to_response('tnq_site/seniors/email.html', { 'form':form })
+
+    context = { 'form':form }
+    context.update(csrf(request))
+
+    return render_to_response('tnq_site/seniors/email.html', context)
 
 def noinfo(request):
     if 'kerberos' in request.session:
