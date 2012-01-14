@@ -9,7 +9,7 @@ class SeniorForm(ModelForm):
     class Meta:
         model = Senior
         widgets = {
-            'name': forms.TextInput(attrs={'placeholder': 'ex: Timothy Beaver IV','size','50'}),
+            'name': forms.TextInput(attrs={'placeholder': 'ex: Timothy Beaver IV','size':'50'}),
             'name_comments': forms.Textarea(attrs={'placeholder': 'ex: Rene with an acute accent on the second e.'}),
             'sort_letter': forms.TextInput(attrs={'placeholder': 'B'}),
             'home_town': forms.TextInput(attrs={'placeholder': 'ex: Boston'}),
