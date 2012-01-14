@@ -926,16 +926,16 @@ a.button:active {
   display: block;
 }
 #content.seniors section#senior_bio_form form fieldset#basic_info, #content.lgs section#senior_bio_form form fieldset#basic_info {
-  background-color: #7b826f;
+  background-color: transparent;
 }
 #content.seniors section#senior_bio_form form fieldset#mit_info, #content.lgs section#senior_bio_form form fieldset#mit_info {
-  background-color: #7b826f;
+  background-color: transparent;
 }
 #content.seniors section#senior_bio_form form fieldset#quote_info, #content.lgs section#senior_bio_form form fieldset#quote_info {
-  background-color: #7b826f;
+  background-color: transparent;
 }
 #content.seniors section#senior_bio_form form fieldset.activity_section, #content.lgs section#senior_bio_form form fieldset.activity_section {
-  background-color: #7b826f;
+  background-color: transparent;
 }
 #content.seniors a.button, #content.lgs a.button {
   font-size: 1.29em;
