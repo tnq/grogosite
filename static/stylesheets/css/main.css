@@ -906,7 +906,7 @@ a.button:active {
 }
 #content.seniors section#senior_bio_form form fieldset, #content.lgs section#senior_bio_form form fieldset {
   border: none;
-  color: white;
+  color: black;
 }
 #content.seniors section#senior_bio_form form fieldset legend, #content.lgs section#senior_bio_form form fieldset legend {
   font-size: 1.86em;
