@@ -1,13 +1,14 @@
-# Create your views here.
-from django.shortcuts import render_to_response, redirect
-from django.http import HttpResponseRedirect
-from django.core.urlresolvers import reverse
-
-from django.core.exceptions import ObjectDoesNotExist
 import datetime
+
+from django import forms
+from django.core.context_processors import csrf
+from django.core.exceptions import ObjectDoesNotExist
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
+from django.shortcuts import render_to_response, redirect
+
 from mainsite.models import Setting
 from purchase.models import Book
-from django import forms
 
 class BookForm(forms.Form):
     try:
@@ -31,7 +32,10 @@ def buy_info(request):
     else:
         form = BookForm()
 
-    return render_to_response('tnq_site/buy.html', {'form' : form})
+    context = {'form': form}
+    context.update(csrf(request))
+
+    return render_to_response('tnq_site/buy.html', context)
     
       
 def buy_form(request, purchase_option=None, book_year=None):

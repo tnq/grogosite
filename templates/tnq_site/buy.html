@@ -51,7 +51,7 @@
         <h1>Techniques from previous years</h1>
         <h2>We maintain an extensive archive of Techniques from past years.</h2>
     </hgroup>
-    <form action="{% url tnq_buy %}#bookform" method=post id="bookform">
+    <form action="{% url tnq_buy %}#bookform" method=post id="bookform">{% csrf_token %}
         <p>Please enter in the year of Technique you are interested in (ex: 2008, 2009):</p>
         {% if form.year.errors %}<p>{{ form.year.errors }} </p>{% endif %}
         {{ form.year }}
