@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.auth.models import Group
 from django.contrib.localflavor.us.forms import USPhoneNumberField
 from django.core.cache import cache
 from django.core.context_processors import csrf
@@ -110,7 +111,11 @@ def add_user(request):
             new_user.email = "%s@mit.edu" % form.cleaned_data['kerberos']
             new_user.barcode_id = form.cleaned_data['id_number']
             new_user.is_staff = True
+            new_user.save()
 
+            # Add the user to the "Authenticated" group so he can edit the Wiki
+            authenticated = Group.objects.get(name="Authenticated")
+            new_user.groups.add(authenticated)
             new_user.save()
 
             request.session['new_user_id'] = new_user.id
