@@ -115,7 +115,7 @@ AUTH_PROFILE_MODULE = 'checkout.User'
 AUTHENTICATION_BACKENDS = (
     'users.backends.CaseInsensitiveModelBackend',
     'users.backends.RestrictiveBackend',
-    'django.contrib.auth.backends.RemoteUserBackend',
+    'util.backends.TNQRemoteUserBackend',
 )
 
 CACHES = {
