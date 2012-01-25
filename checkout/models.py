@@ -32,6 +32,8 @@ class Equipment(models.Model):
                         ('STROBE', 'Strobe'),
                         ('TRIPOD', 'Tripod'),
                         ('MONOPOD', 'Monopod'),
+                        ('LIGHTSTAND', 'Light Stand'),
+                        ('LIGHTACCESSORY', 'Studio Light Accessory'),
                         ('ACCESSORY', 'Accessory'),
                         ('35MM_CAMERA', '35mm Camera'),
                         ('MEDIUM_FORMAT_CAMERA', 'Medium-Format Camera'),
