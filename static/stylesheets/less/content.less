@@ -246,6 +246,9 @@
         }
     }
     article {
+        noscript {
+            color: red;
+        }
         &#previous {
             width: @leftColWidth;
             float: left;
@@ -344,7 +347,7 @@
             form {
                 fieldset {
                     border: none;
-                    color: white;
+                    color: black;
                     legend {
                         .smallHeadlineText();
                         color: @lighterText;
@@ -357,16 +360,17 @@
                         display: block;
                     }
                     &#basic_info { 
-                        background-color: @fieldsetGreen;
+                        //background-color: @fieldsetGreen;
+                        background-color: transparent;
                     }
                     &#mit_info { 
-                        background-color: @fieldsetGreen;
+                        background-color: transparent;
                     }
                     &#quote_info { 
-                        background-color: @fieldsetGreen;
+                        background-color: transparent;
                     }
                     &.activity_section { 
-                        background-color: @fieldsetGreen;
+                        background-color: transparent;
                     }
                 }
             }

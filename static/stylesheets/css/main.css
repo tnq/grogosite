@@ -676,6 +676,13 @@ a.button:active {
   float: right;
   margin-left: 20px;
 }
+#content.buy article noscript,
+#content.hire article noscript,
+#content.support article noscript,
+#content.join article noscript,
+#content.about article noscript {
+  color: red;
+}
 #content.buy article#previous,
 #content.hire article#previous,
 #content.support article#previous,
