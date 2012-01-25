@@ -56,6 +56,7 @@ DJANGO_ROOT = os.path.join( os.path.dirname(os.path.abspath(__file__)) )
 #Add wiki to path so apps can be imported without localwiki.sapling prefix
 sys.path.append( os.path.join(DJANGO_ROOT, "localwiki") )
 sys.path.append( os.path.join(DJANGO_ROOT, "localwiki", "sapling") )
+sys.path.append( os.path.join(DJANGO_ROOT, "django-mass-edit") )
 
 GLOBAL_LICENSE_NOTE = """<p>Except where otherwise noted, this content is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution License</a>. See <a href="/Copyrights">Copyrights.</p>"""
 

@@ -1,3 +1,6 @@
 [submodule "localwiki"]
 	path = localwiki
 	url = ../localwiki.git
+[submodule "django-mass-edit"]
+	path = django-mass-edit
+	url = git@github.com:nwiltsie/django-mass-edit.git
