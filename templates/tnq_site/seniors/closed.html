@@ -5,7 +5,15 @@
 {% block content_class_tag %}class="seniors"{% endblock %}
 
 {% block content%}
-<div style="padding-top:30px; padding-bottom:30px; width:100%; text-align:center"><img src="http://technique.mit.edu/wp-content/uploads/2010/10/ghe_senior.jpg" /></div>
-<p class="info">Sorry, all the senior data has been entered into the book!  We can't accept any more submissions.</p>
-<p class="info">Want to see your previously submitted answers? Visit <a href={% url senior_email %}>this page</a>!</p>
+<article>
+    <hgroup>
+        <h1>Sorry!</h1>
+        <h2>Senior Info Entries are Now Closed</h2>
+    </hgroup>
+
+    <p>All information has now been entered into the book, and we cannot accept any more submissions.</p>
+
+    <p>Want to see your previous submissions?  You can check them <a href="{% url senior_email %}">here</a>.</p>
+
+</article>
 {% endblock %}

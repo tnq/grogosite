@@ -4,8 +4,10 @@
 {% block content_class_tag %}class="seniors"{% endblock %}
 
 {% block content %}
-<h2>No Information Found!</h2>
+<article>
+<h1>No Information Found!</h1>
 
 <p class="info">It doesn't look like user {{kerberos|upper}} has entered any information yet.  Please enter your biographical information via our Seniors form <a href={% url enter_senior_info %}>here</a> so that we can include it next to your portrait in <em>Technique</em>.</p>
 
+</article>
 {% endblock %}
