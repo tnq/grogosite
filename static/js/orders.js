@@ -24,7 +24,7 @@ $(document).ready(function() {
 
     });
     
-    $("#submitbutton").click(function() {
+    $("#order_form").submit(function() {
         return validateForm();
     });
         
