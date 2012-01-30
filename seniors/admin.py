@@ -17,7 +17,7 @@ class SeniorAdmin(admin.ModelAdmin):
 
     fieldsets = [
         ('Biographical Information', {'fields':['name', 'sort_letter', 'name_comments', 'home_town', 'home_state_or_country']}),
-        ('MIT Information', {'fields':['kerberos', 'major', 'minor', 'lg']}),
+        ('MIT Information', {'fields':['tnq_year', 'kerberos', 'major', 'minor', 'lg']}),
         ('Quote', {'fields':['quote', 'quote_author']}),
       ]
     actions = ['export_as_csv', ]
