@@ -14,6 +14,7 @@ class Senior(models.Model):
     lg = models.CharField('Living group / dorm', max_length=30, blank=True)
     quote = models.CharField(max_length=300, blank=True)
     quote_author = models.CharField(max_length=50, blank=True, verbose_name="Quote source")
+    image_path = models.CharField(max_length=40, null=True, verbose_name="Path to image file")
 
     def __unicode__(self):
         return "%s (%s)" % (self.name, self.kerberos)
