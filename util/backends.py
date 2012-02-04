@@ -21,7 +21,7 @@ class SendmailBackend(BaseEmailBackend):
             except:
                 self.sendmail_cmd = "sendmail"
         if isinstance(self.sendmail_cmd, str):
-            mailer = self.sendmail_cmd.split()
+            self.sendmail_cmd = self.sendmail_cmd.split()
         self._lock = threading.RLock()
 
     def open(self):
