@@ -3,3 +3,4 @@ yearbook+scripts
 settings_private.py
 *.esproj
 *~
+*.keytab
