@@ -9,7 +9,7 @@ class Senior(models.Model):
     kerberos = models.CharField('Kerberos username', max_length=10, unique=True)
     major = models.CharField('Your major(s)', max_length=30)
     minor = models.CharField('Your minor(s)', max_length=30, blank=True)
-    home_town = models.CharField('You hometown', max_length=50)
+    home_town = models.CharField('Your hometown', max_length=50)
     home_state_or_country = models.CharField('Your home state (or country)', max_length=20)
     lg = models.CharField('Living group / dorm', max_length=30, blank=True)
     quote = models.CharField(max_length=300, blank=True)
