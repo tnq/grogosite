@@ -69,10 +69,10 @@ class SendmailBackend(BaseEmailBackend):
         return True
 
 class KerberizedSendmailBackend(SendmailBackend):
-    def __init__(self, fail_silently=False, keytab_path, principal, **kwargs):
+    def __init__(self, fail_silently=False, keytab_path=None, principal=None, **kwargs):
         super(KerberizedSendmailBackend, self).__init__(fail_silently=fail_silently, **kwargs)
-        self.keytab_path = keytab_path
-        self.principal = principal
+        self.keytab_path = keytab_path or settings.KRB_KEYTAB
+        self.principal = principal or settings.KRB_PRINCIPAL
         _, self.ccache_path = tempfile.mkstemp(prefix="krb5")
 
     def _get_environ(self):
