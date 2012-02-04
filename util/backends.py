@@ -1,5 +1,6 @@
 from django.contrib.auth.backends import RemoteUserBackend
 
+import os
 import threading
 import tempfile
 
@@ -73,7 +74,7 @@ class KerberizedSendmailBackend(SendmailBackend):
         super(KerberizedSendmailBackend, self).__init__(fail_silently=fail_silently, **kwargs)
         self.keytab_path = keytab_path or settings.KRB_KEYTAB
         self.principal = principal or settings.KRB_PRINCIPAL
-        _, self.ccache_path = tempfile.mkstemp(prefix="krb5")
+        self.ccache_path = None
 
     def _get_environ(self):
         env = os.environ
@@ -82,5 +83,15 @@ class KerberizedSendmailBackend(SendmailBackend):
 
     def open(self):
         super(KerberizedSendmailBackend, self).open()
+        _, self.ccache_path = tempfile.mkstemp(prefix="krb5")
         check_call(["kinit", "-k", "-t", self.keytab_path, self.principal], env=self._get_environ())
         return True
+
+    def send_messages(self, *args, **kwargs):
+        if not self.ccache_path:
+            self.open()
+        return super(KerberizedSendmailBackend, self).send_messages(*args, **kwargs)
+
+    def __del__(self):
+        if self.ccache_path:
+            os.unlink(self.ccache_path)
