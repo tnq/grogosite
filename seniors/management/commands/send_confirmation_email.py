@@ -43,11 +43,9 @@ P.S. Everyone who we think had their portrait taken should have recieved an emai
 
 Name as it will appear: %s
 Picture: http://technique.mit.edu/static/seniorphotos/%s
-Major: %s
-Minor: %s
 Home Town: %s
 Home State (or Country): %s
-"""
+Major: %s"""
 
         connection = get_connection()
         connection.open()
@@ -60,11 +58,12 @@ Home State (or Country): %s
             message = base_message % (tnq_year,
                              senior.name,
                              file_name,
-                             senior.major,
-                             senior.minor,
                              senior.home_town,
-                             senior.home_state_or_country)
+                             senior.home_state_or_country,
+                             senior.major)
 
+            if senior.minor:
+                message += "\nMinor: %s" %senior.minor
             if senior.lg:
                 message += "\nLiving Group: %s" % senior.lg
             if senior.quote:
