@@ -10,6 +10,8 @@ ADMINS = (
     ('Quentin Smith', 'quentin@mit.edu'),
 )
 
+MANAGERS = ADMINS
+
 if False:
     LOGGING = {
         'version': 1,
@@ -37,8 +39,6 @@ if False:
 
 DEFAULT_FROM_EMAIL = 'tnq-techno@mit.edu'
 
-MANAGERS = ADMINS
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.spatialite',
@@ -57,12 +57,6 @@ DJANGO_ROOT = os.path.join( os.path.dirname(os.path.abspath(__file__)) )
 sys.path.append( os.path.join(DJANGO_ROOT, "localwiki") )
 sys.path.append( os.path.join(DJANGO_ROOT, "localwiki", "sapling") )
 sys.path.append( os.path.join(DJANGO_ROOT, "django-mass-edit") )
-
-GLOBAL_LICENSE_NOTE = """<p>Except where otherwise noted, this content is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution License</a>. See <a href="/Copyrights">Copyrights.</p>"""
-
-EDIT_LICENSE_NOTE = """<p>By clicking "Save Changes" you are agreeing to release your contribution under the <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">Creative Commons-By license</a>, unless noted otherwise. See <a href="/Copyrights" target="_blank">Copyrights</a>.</p>"""
-
-SIGNUP_TOS = """I agree to release my contributions under the <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">Creative Commons-By license</a>, unless noted otherwise. See <a href="/Copyrights" target="_blank">Copyrights</a>."""
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/admin/'
@@ -172,6 +166,13 @@ INSTALLED_APPS = (
 ######################################################################
 ###  Localwiki Stuff
 ######################################################################
+
+GLOBAL_LICENSE_NOTE = """<p>Except where otherwise noted, this content is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution License</a>. See <a href="/Copyrights">Copyrights.</p>"""
+
+EDIT_LICENSE_NOTE = """<p>By clicking "Save Changes" you are agreeing to release your contribution under the <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">Creative Commons-By license</a>, unless noted otherwise. See <a href="/Copyrights" target="_blank">Copyrights</a>.</p>"""
+
+SIGNUP_TOS = """I agree to release my contributions under the <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">Creative Commons-By license</a>, unless noted otherwise. See <a href="/Copyrights" target="_blank">Copyrights</a>."""
+
 
 #Generally views should be protected with the @login_required decorator;
 #this is a convenience that works with the util.middleware.LoginRequiredMiddleware
