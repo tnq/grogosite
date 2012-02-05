@@ -2,8 +2,6 @@
 
 import csv
 import os
-import shlex
-import subprocess
 
 from django.conf import settings
 from django.core.management.base import LabelCommand, CommandError
@@ -16,7 +14,7 @@ class Command(LabelCommand):
 
     help = "Send email confirmations to all the current year's seniors in the database."
 
-    def handle_label(self, orig_dir, **options):
+    def handle_label(self, photo_dir, **options):
 
         tnq_year = Setting.objects.get(tag="tnq_year").value
         tnq_year = 2013
@@ -25,9 +23,6 @@ class Command(LabelCommand):
             return
         if raw_input("Super sure? [yN] ").lower() != "y":
             return
-
-        convert_command = "convert %s -resize x200 -fill 'rgba(255,0,255,0.5)' -gravity center -pointsize 60 -font /Users/nwiltsie/Library/Fonts/AvenirLTStd-Light.otf  -annotate 330 'TNQ' jpg:-"
-        small_photo_dir = settings.SENIOR_IMAGE_DIRECTORY
 
         base_message = """Hi Senior!
 
@@ -51,7 +46,6 @@ Major: %s
 Minor: %s
 Home Town: %s
 Home State (or Country): %s
-Living Group: %s
 """
 
         connection = get_connection()
@@ -68,9 +62,10 @@ Living Group: %s
                              senior.major,
                              senior.minor,
                              senior.home_town,
-                             senior.home_state_or_country,
-                             senior.lg)
+                             senior.home_state_or_country)
 
+            if senior.lg:
+                message += "\nLiving Group: %s" % senior.lg
             if senior.quote:
                 message += "\nQuote: %s" % senior.quote
             if senior.quote_author:
@@ -92,10 +87,8 @@ Living Group: %s
             sender = "tnq-seniors@mit.edu"
             email_message = EmailMessage(subject, message, sender, recipient, bcc, connection=connection)
 
-            convert_args = shlex.split(convert_command % str(os.path.join(orig_dir, senior.image_path)) )
-            image = subprocess.check_output(convert_args)
-            image_file = open(os.path.join(small_photo_dir,file_name), "wb")
-            image_file.write(image)
+            image_file = open(os.path.join(photo_dir,file_name), "rb")
+            image = image_file.read()
             image_file.close()
 
             email_message.attach(file_name, image, 'image/jpeg')
