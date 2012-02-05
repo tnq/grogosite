@@ -190,7 +190,7 @@ class SeniorAdmin(admin.ModelAdmin):
     list_filter = ('tnq_year',)
 
     fieldsets = [
-        ('Biographical Information', {'fields':['name', 'sort_letter', 'name_comments', 'home_town', 'home_state_or_country']}),
+        ('Biographical Information', {'fields':['name', 'sort_letter', 'name_comments', 'home_town', 'home_state_or_country', 'image_path',]}),
         ('MIT Information', {'fields':['tnq_year', 'kerberos', 'major', 'minor', 'lg']}),
         ('Quote', {'fields':['quote', 'quote_author']}),
       ]
