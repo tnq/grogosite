@@ -84,7 +84,7 @@ Home State (or Country): %s
 
             subject = "Technique %s Senior Information for %s" % (tnq_year, senior.name)
             recipient = ["%s@mit.edu" % senior.kerberos]
-            bcc = ["tnq-seniors-info@mit.edu"]
+            bcc = ["tnq-seniors-info@mit.edu", "tnq.manboard+seniors@gmail.com"]
             sender = "tnq-seniors@mit.edu"
             email_message = EmailMessage(subject.encode("utf-8"), message.encode("utf-8"), sender, recipient, bcc, connection=connection)
 
