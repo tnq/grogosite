@@ -4,20 +4,21 @@ import csv
 import os
 
 from django.conf import settings
-from django.core.management.base import LabelCommand, CommandError
+from django.core.management.base import BaseCommand
 from django.core.mail import EmailMessage, get_connection
 
 from mainsite.models import Setting
 from seniors.models import Senior
 
-class Command(LabelCommand):
+class Command(BaseCommand):
 
     help = "Send email confirmations to all the current year's seniors in the database."
 
-    def handle_label(self, photo_dir, **options):
+    def handle(self, *args, **options):
 
         tnq_year = Setting.objects.get(tag="tnq_year").value
         tnq_year = 2013
+        photo_dir = settings.SENIOR_IMAGE_DIRECTORY
 
         if raw_input("This is going to send a LOT of emails to the %s seniors. Are you sure? [yN] " % tnq_year).lower() != "y":
             return
@@ -85,7 +86,7 @@ Home State (or Country): %s
             recipient = ["%s@mit.edu" % senior.kerberos]
             bcc = ["tnq-seniors-info@mit.edu"]
             sender = "tnq-seniors@mit.edu"
-            email_message = EmailMessage(subject, message, sender, recipient, bcc, connection=connection)
+            email_message = EmailMessage(subject.encode("utf-8"), message.encode("utf-8"), sender, recipient, bcc, connection=connection)
 
             image_file = open(os.path.join(photo_dir,file_name), "rb")
             image = image_file.read()
