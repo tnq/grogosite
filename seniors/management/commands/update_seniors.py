@@ -3,7 +3,6 @@
 import csv
 from django.core.management.base import LabelCommand, CommandError
 
-from creditcard.models import LineItem
 from mainsite.models import Setting
 from seniors.models import Senior
 
