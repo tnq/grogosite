@@ -243,7 +243,7 @@ class SeniorAdmin(admin.ModelAdmin):
 
         def format_senior(senior):
             if not senior:
-                return ""
+                return "<ParaStyle:Senior Info Text>"
             else:
                 senior_string = u"<ParaStyle:Senior Info Text>"
                 senior_string += senior.kerberos
@@ -291,7 +291,7 @@ class SeniorAdmin(admin.ModelAdmin):
                     page_string += "<ParaStyle:Senior Name>%s<cNextXChars:Box>\n" % senior.name
                     images += senior.image_path+"\n"
                 else:
-                    page_string += "<cNextXChars:Box>\n"
+                    page_string += "<ParaStyle:Senior Name><cNextXChars:Box>\n"
                     images += "\n"
             for j in range(SENIORS_PER_ROW):
                 page_string += format_senior(seniors[j])
