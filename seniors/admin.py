@@ -238,6 +238,9 @@ class SeniorAdmin(admin.ModelAdmin):
             pages.append(this_page)
             page += 1
 
+        def sanitize(str):
+            return str.replace(r"<", r"\<").replace(r">", r"\>")
+
         def format_senior(senior):
             if not senior:
                 return ""
@@ -266,9 +269,9 @@ class SeniorAdmin(admin.ModelAdmin):
                             senior_string += " (" + activity.offices + ")"
                 if senior.quote:
                     senior_string += SLASHES
-                    senior_string += senior.quote
+                    senior_string += sanitize(senior.quote)
                     senior_string += DASH
-                    senior_string += senior.quote_author
+                    senior_string += sanitize(senior.quote_author)
                 return senior_string
 
         for i in range(len(pages)):
