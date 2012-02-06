@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import csv
+from collections import defaultdict
 from StringIO import StringIO
 from zipfile import ZipFile
 from django.contrib import admin
@@ -182,6 +183,14 @@ def fix_seniors(tnq_year, func, attr=None, get=None, set=None):
                         set(senior, new_val)
                         senior.save()
 
+def _sort_seniors(queryset):
+    queryset = queryset.exclude(image_path=None)
+    sorted_seniors = list(queryset)
+    sort_first_name = lambda _: _.name.split()[0]
+    sort_last_name = lambda _: [w for w in _.name.split() if w[0].lower() == _.sort_letter.lower()][-1].lower()
+    sorted_seniors.sort(key=lambda _: (sort_last_name(_), sort_first_name(_)))
+    return sorted_seniors
+
 class SeniorAdmin(admin.ModelAdmin):
     inlines = [ ActivityInline, ]
     search_fields = ('name', 'kerberos',)
@@ -208,7 +217,27 @@ class SeniorAdmin(admin.ModelAdmin):
         SLASHES = u" // "
         DASH = u" – "
 
-        pages = Paginator(queryset, SENIORS_PER_PAGE)
+        SPECIAL_PAGES = defaultdict(lambda: SENIORS_PER_PAGE)
+        SPECIAL_PAGES.update({12:4,
+                             27:4,
+                             40:4,
+                             51:4,
+                             60:4,
+                             72:4})
+
+        sorted_seniors = _sort_seniors(queryset)
+
+        pages = []
+        unpaginated_seniors = list(sorted_seniors)
+
+        count = 0
+
+        page = 0
+        while unpaginated_seniors:
+            on_page = SPECIAL_PAGES[page]
+            this_page, unpaginated_seniors = unpaginated_seniors[:on_page], unpaginated_seniors[on_page:]
+            pages.append(this_page)
+            page += 1
 
         def format_senior(senior):
             if not senior:
@@ -233,7 +262,7 @@ class SeniorAdmin(admin.ModelAdmin):
                         senior_string += activity.title
                         senior_string += " <cPosition:Superscript>"
                         senior_string += activity.years
-                        senior_string += "<cPosition:> "
+                        senior_string += "<cPosition:>"
                         if activity.offices:
                             senior_string += " (" + activity.offices + ")"
                 if senior.quote:
@@ -243,9 +272,11 @@ class SeniorAdmin(admin.ModelAdmin):
                     senior_string += senior.quote_author
                 return senior_string
 
-        for i in range(pages.num_pages):
-            seniors = list(pages.page(i+1).object_list)
-            seniors.extend([None]*(SENIORS_PER_PAGE-len(seniors)))
+        for i in range(len(pages)):
+            seniors = pages[i]
+            if len(seniors) < SENIORS_PER_PAGE:
+                half_num = len(seniors)/2
+                seniors = seniors[:half_num]+[None]*(SENIORS_PER_ROW-half_num)+seniors[half_num:]+[None]*(SENIORS_PER_PAGE-len(seniors))
             page_string = u"""<UNICODE-MAC>
 <Version:7><FeatureSet:InDesign-Roman>
 """
@@ -270,10 +301,7 @@ class SeniorAdmin(admin.ModelAdmin):
         response = HttpResponse(mimetype='text/csv')
         response['Content-Disposition'] = 'attachment; filename=seniors.csv'
 
-        sort_first_name = lambda _: _.name.split()[0]
-        sort_last_name = lambda _: [w for w in _.name.split() if w[0].lower() == _.sort_letter.lower()][-1].lower()
-        sorted_seniors = list(queryset)
-        sorted_seniors.sort(key=lambda _: (sort_last_name(_), sort_first_name(_)))
+        sorted_seniors = _sort_seniors(queryset)
 
         writer = csv.writer(response,)
         writer.writerow(['name', 'firstname', 'lastname', 'comments',

@@ -16,6 +16,10 @@ class Senior(models.Model):
     quote_author = models.CharField(max_length=50, blank=True, verbose_name="Quote source")
     image_path = models.CharField(max_length=40, null=True, verbose_name="Path to image file")
 
+    def has_photo(self):
+        return self.image_path
+    has_photo.boolean = True
+
     def __unicode__(self):
         return "%s (%s)" % (self.name, self.kerberos)
 
