@@ -221,7 +221,6 @@ class SeniorAdmin(admin.ModelAdmin):
         SPECIAL_PAGES.update({11:4,
                              28:4,
                              49:4,
-                             51:4,
                              68:4})
 
         sorted_seniors = _sort_seniors(queryset)
@@ -275,15 +274,22 @@ class SeniorAdmin(admin.ModelAdmin):
             seniors = pages[i]
             if len(seniors) < SENIORS_PER_PAGE:
                 half_num = len(seniors)/2
-                seniors = seniors[:half_num]+[None]*(SENIORS_PER_ROW-half_num)+seniors[half_num:]+[None]*(SENIORS_PER_PAGE-len(seniors))
+                seniors = seniors[:half_num]\
+                    +[None]*(SENIORS_PER_ROW-half_num)\
+                    +seniors[half_num:]\
+                    +[None]*(SENIORS_PER_PAGE-len(seniors)-(SENIORS_PER_ROW-half_num)
+                    )
+            images = ""
             page_string = u"""<UNICODE-MAC>
 <Version:7><FeatureSet:InDesign-Roman>
 """
             for senior in seniors:
                 if senior:
                     page_string += "<ParaStyle:Senior Name>%s<cNextXChars:Box>\n" % senior.name
+                    images += senior.image_path+"\n"
                 else:
                     page_string += "<cNextXChars:Box>\n"
+                    images += "\n"
             for j in range(SENIORS_PER_ROW):
                 page_string += format_senior(seniors[j])
                 page_string += "\n"
@@ -291,6 +297,7 @@ class SeniorAdmin(admin.ModelAdmin):
                 page_string += "<cNextXChars:Column>\n"
 
             zip.writestr("page%d.txt" % i, page_string.encode("utf_16_le"))
+            zip.writestr("images%d.txt" % i, images)
         zip.close()
         return response
 
