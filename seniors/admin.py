@@ -218,12 +218,11 @@ class SeniorAdmin(admin.ModelAdmin):
         DASH = u" – "
 
         SPECIAL_PAGES = defaultdict(lambda: SENIORS_PER_PAGE)
-        SPECIAL_PAGES.update({12:4,
-                             27:4,
-                             40:4,
+        SPECIAL_PAGES.update({11:4,
+                             28:4,
+                             49:4,
                              51:4,
-                             60:4,
-                             72:4})
+                             68:4})
 
         sorted_seniors = _sort_seniors(queryset)
 
