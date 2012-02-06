@@ -3,6 +3,7 @@ from django.contrib.auth.backends import RemoteUserBackend
 import os
 import threading
 import tempfile
+import time
 
 from django.conf import settings
 from django.core.mail.backends.base import BaseEmailBackend
@@ -75,6 +76,7 @@ class KerberizedSendmailBackend(SendmailBackend):
         self.keytab_path = keytab_path or settings.KRB_KEYTAB
         self.principal = principal or settings.KRB_PRINCIPAL
         self.ccache_path = None
+        self.ccache_time = 0
 
     def _get_environ(self):
         env = os.environ
@@ -83,13 +85,15 @@ class KerberizedSendmailBackend(SendmailBackend):
 
     def open(self):
         super(KerberizedSendmailBackend, self).open()
-        _, self.ccache_path = tempfile.mkstemp(prefix="krb5")
-        check_call(["kinit", "-k", "-t", self.keytab_path, self.principal], env=self._get_environ())
+        if time.time() > self.ccache_time + 6*60*60:
+            if not self.ccache_path:
+                _, self.ccache_path = tempfile.mkstemp(prefix="krb5")
+            check_call(["kinit", "-k", "-t", self.keytab_path, self.principal], env=self._get_environ())
+            self.ccache_time = time.time()
         return True
 
     def send_messages(self, *args, **kwargs):
-        if not self.ccache_path:
-            self.open()
+        self.open()
         return super(KerberizedSendmailBackend, self).send_messages(*args, **kwargs)
 
     def __del__(self):
