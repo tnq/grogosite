@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import codecs
 import csv
 from collections import defaultdict
 from StringIO import StringIO
@@ -281,8 +282,7 @@ class SeniorAdmin(admin.ModelAdmin):
                     )
             images = ""
             page_string = u"""<UNICODE-MAC>
-<Version:7><FeatureSet:InDesign-Roman>
-"""
+<Version:7><FeatureSet:InDesign-Roman>"""
             for senior in seniors:
                 if senior:
                     page_string += "<ParaStyle:Senior Name>%s<cNextXChars:Box>\n" % senior.name
@@ -296,7 +296,7 @@ class SeniorAdmin(admin.ModelAdmin):
                 page_string += format_senior(seniors[j+SENIORS_PER_ROW])
                 page_string += "<cNextXChars:Column>\n"
 
-            zip.writestr("page%02d.txt" % i, page_string.encode("utf_16_le"))
+            zip.writestr("page%02d.txt" % i, codecs.BOM_UTF16_LE + page_string.encode("utf_16_le"))
             zip.writestr("images%02d.txt" % i, images)
         zip.close()
         return response
