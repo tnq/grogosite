@@ -241,7 +241,7 @@ class SeniorAdmin(admin.ModelAdmin):
             if not senior:
                 return ""
             else:
-                senior_string = u"<ParaStyle:Senior Info Text Second Try>"
+                senior_string = u"<ParaStyle:Senior Info Text>"
                 senior_string += senior.kerberos
                 senior_string += BULLET
                 senior_string += senior.major
@@ -281,7 +281,8 @@ class SeniorAdmin(admin.ModelAdmin):
                     )
             images = ""
             page_string = u"""<UNICODE-MAC>
-<Version:7><FeatureSet:InDesign-Roman>"""
+<Version:7><FeatureSet:InDesign-Roman>
+"""
             for senior in seniors:
                 if senior:
                     page_string += "<ParaStyle:Senior Name>%s<cNextXChars:Box>\n" % senior.name
