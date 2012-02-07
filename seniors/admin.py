@@ -253,8 +253,9 @@ class SeniorAdmin(admin.ModelAdmin):
                     senior_string += ", "+senior.minor
                 senior_string += SLASHES
                 senior_string += senior.home_town + ", " + senior.home_state_or_country
-                senior_string += BULLET
-                senior_string += senior.lg
+                if senior.lg:
+                    senior_string += BULLET
+                    senior_string += senior.lg
                 activities = Activity.objects.filter(senior = senior)
                 if activities:
                     senior_string += SLASHES
@@ -270,8 +271,9 @@ class SeniorAdmin(admin.ModelAdmin):
                 if senior.quote:
                     senior_string += SLASHES
                     senior_string += sanitize(senior.quote)
-                    senior_string += DASH
-                    senior_string += sanitize(senior.quote_author)
+                    if senior.quote_author:
+                        senior_string += DASH
+                        senior_string += sanitize(senior.quote_author)
                 return senior_string
 
         for i in range(len(pages)):
