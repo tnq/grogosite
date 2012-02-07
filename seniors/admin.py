@@ -277,12 +277,18 @@ class SeniorAdmin(admin.ModelAdmin):
         for i in range(len(pages)):
             seniors = pages[i]
             if len(seniors) < SENIORS_PER_PAGE:
-                half_num = len(seniors)/2
-                seniors = seniors[:half_num]\
-                    +[None]*(SENIORS_PER_ROW-half_num)\
-                    +seniors[half_num:]\
-                    +[None]*(SENIORS_PER_PAGE-len(seniors)-(SENIORS_PER_ROW-half_num)
-                    )
+                half_num = int(len(seniors)/2.0 + 0.5)
+                if i % 2 == 0: #On a left-hand page
+                    seniors = [None]*(SENIORS_PER_ROW-half_num) \
+                        + seniors[:half_num]\
+                        +[None]*(SENIORS_PER_PAGE-len(seniors)-(SENIORS_PER_ROW-half_num))\
+                        + seniors[half_num:]
+                else:
+                    seniors = seniors[:half_num]\
+                        +[None]*(SENIORS_PER_ROW-half_num)\
+                        +seniors[half_num:]\
+                        +[None]*(SENIORS_PER_PAGE-len(seniors)-(SENIORS_PER_ROW-half_num))
+
             images = ""
             page_string = u"""<UNICODE-MAC>
 <Version:7><FeatureSet:InDesign-Roman>"""
