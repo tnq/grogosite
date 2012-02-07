@@ -130,7 +130,7 @@ def format_state(state):
 
 def format_name(name):
     name = re.sub(r' ([A-Z]) ', r' \1. ', name)
-    return name
+    return name.strip()
 
 def format_years(years):
     years = re.sub(r',\s*', r' ', years)
@@ -296,7 +296,7 @@ class SeniorAdmin(admin.ModelAdmin):
 <Version:7><FeatureSet:InDesign-Roman>"""
             for senior in seniors:
                 if senior:
-                    page_string += "<ParaStyle:Senior Name>%s<cNextXChars:Box>\n" % senior.name
+                    page_string += "<ParaStyle:Senior Name>%s<cNextXChars:Box>\n" % format_name(senior.name)
                     images += senior.image_path+"\n"
                 else:
                     page_string += "<ParaStyle:Senior Name><cNextXChars:Box>\n"
