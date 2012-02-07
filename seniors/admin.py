@@ -185,11 +185,13 @@ def fix_seniors(tnq_year, func, attr=None, get=None, set=None):
                         senior.save()
 
 def _sort_seniors(queryset):
+    import PyICU
+    collator = PyICU.Collator.createInstance(PyICU.Locale("es_ES"))
     queryset = queryset.exclude(image_path=None)
     sorted_seniors = list(queryset)
-    sort_first_name = lambda _: _.name.split()[0]
-    sort_last_name = lambda _: [w for w in _.name.split() if w[0].lower() == _.sort_letter.lower()][-1].lower()
-    sorted_seniors.sort(key=lambda _: (sort_last_name(_), sort_first_name(_)))
+    sort_first_name = lambda _: _.name.split()[0].strip()
+    sort_last_name = lambda _: [w for w in _.name.split() if w[0].lower() == _.sort_letter.lower()][-1].lower().strip()
+    sorted_seniors.sort(key=lambda _: sort_last_name(_)+" "+sort_first_name(_), cmp=collator.compare)
     return sorted_seniors
 
 class SeniorAdmin(admin.ModelAdmin):
