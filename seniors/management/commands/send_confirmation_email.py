@@ -17,7 +17,6 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
 
         tnq_year = Setting.objects.get(tag="tnq_year").value
-        tnq_year = 2013
         photo_dir = settings.SENIOR_IMAGE_DIRECTORY
 
         if raw_input("This is going to send a LOT of emails to the %s seniors. Are you sure? [yN] " % tnq_year).lower() != "y":
