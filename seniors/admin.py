@@ -129,7 +129,7 @@ greek_letters = {
         "OMICRON"   : u"\u039F",
         "PI"        : u"\u03A0",
         "RHO"       : u"\u03A1",
-        "SIGMA"     : u"\u0393",
+        "SIGMA"     : u"\u03A3",
         "TAU"       : u"\u03A4",
         "UPSILON"   : u"\u03A5",
         "PHI"       : u"\u03A6",
@@ -140,12 +140,22 @@ greek_letters = {
 
 def format_lg(lg):
     fragments = lg.split()
+    output = ""
+    in_greek = False
     for i, word in enumerate(fragments):
         if word.upper() in greek_letters.keys():
-            fragments[i] = greek_letters[word.upper()]
+            if not in_greek:
+                output += "<CharStyle:Senior Info Greek>"
+            in_greek = True
+            output += greek_letters[word.upper()]
         else:
-            fragments[i] = word + " "
-    return "".join(fragments).strip()
+            if in_greek:
+                output += "<CharStyle:> "
+            in_greek = False
+            output += word + " "
+    if in_greek:
+        output += "<CharStyle:>"
+    return output.strip()
 
 def format_major(major):
     major = major.upper().strip()
@@ -166,8 +176,8 @@ def format_state(state):
     if state.upper() in states.keys():
         state = states[state.upper()]
 
-    if state.upper() in state_abbrs.keys():
-        state = state_abbrs[state.upper()]
+    if state in state_abbrs.keys():
+        state = state_abbrs[state]
     return state
 
 def format_name(name):
@@ -177,6 +187,11 @@ def format_name(name):
 def format_years(years):
     years = re.sub(r',\s*', r' ', years)
     return years.strip()
+
+def format_quote(quote):
+    quote = re.sub(r'^"(.*)"$', r'\1', quote)
+    quote = re.sub(r"^'(.*)'$", r"\1", quote)
+    return quote
 
 def format_author(author):
     author = re.sub(r'^"(.*)"$', r'\1', author)
@@ -297,7 +312,7 @@ class SeniorAdmin(admin.ModelAdmin):
                     senior_string += ", "+senior.minor
                 senior_string += SLASHES
                 senior_string += senior.home_town + ", " + format_state(senior.home_state_or_country)
-                if senior.lg:
+                if senior.lg.strip():
                     senior_string += BULLET
                     senior_string += format_lg(senior.lg)
                 activities = Activity.objects.filter(senior = senior)
@@ -314,7 +329,7 @@ class SeniorAdmin(admin.ModelAdmin):
                             senior_string += " (" + activity.offices + ")"
                 if senior.quote:
                     senior_string += SLASHES
-                    senior_string += sanitize(senior.quote)
+                    senior_string += u'\u201C' + format_quote(sanitize(senior.quote)) + u'\u201D'
                     if senior.quote_author:
                         senior_string += DASH
                         senior_string += sanitize(senior.quote_author)
