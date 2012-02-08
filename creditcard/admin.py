@@ -29,7 +29,7 @@ class PurchaserForm(forms.ModelForm):
 
 class PurchaserAdmin(admin.ModelAdmin):
     form = PurchaserForm
-    list_display = ('sort_name', 'amount_paid', 'paymentid', )
+    list_display = ('id', 'sort_name', 'amount_paid', 'paymentid', )
     list_filter = ('paymenttype',)
     search_fields = ('firstname', 'lastname', 'paymentid', )
     inlines = [ PatronInline, LineItemInline, ]
