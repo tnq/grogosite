@@ -97,6 +97,10 @@ states = {
 }
 ## end of http://code.activestate.com/recipes/577305/ }}}
 
+state_abbrs = {}
+for abbr in states.keys():
+    state_abbrs[states[abbr]] = abbr
+
 lg_expansions = [x.split("\t", 2) for x in
 """ADPhi	Alpha Delta Phi
 AEP	Alpha Epsilon Pi
@@ -105,8 +109,43 @@ B-Entry	MacGregor B-Entry
 Annex, McCormick	McCormick Annex
 Baker House	Baker
 Beast	East Campus 2E
-
 """.splitlines()]
+
+greek_letters = {
+        "ALPHA"     : "\u0391",
+        "BETA"      : "\U0392",
+        "GAMMA"     : "\U0393",
+        "DELTA"     : "\U0394",
+        "EPSILON"   : "\U0395",
+        "ZETA"      : "\U0396",
+        "ETA"       : "\U0397",
+        "THETA"     : "\U0398",
+        "IOTA"      : "\U0399",
+        "KAPPA"     : "\U039A",
+        "LAMBDA"    : "\U039B",
+        "MU"        : "\U039C",
+        "NU"        : "\U039D",
+        "XI"        : "\U039E",
+        "OMICRON"   : "\U039F",
+        "PI"        : "\U03A0",
+        "RHO"       : "\U03A1",
+        "SIGMA"     : "\U0393",
+        "TAU"       : "\U03A4",
+        "UPSILON"   : "\U03A5",
+        "PHI"       : "\U03A6",
+        "CHI"       : "\U03A7",
+        "PSI"       : "\U03A8",
+        "OMEGA"     : "\U03A9",
+}
+
+def format_lg(lg):
+    fragments = lg.split()
+    for i, word in enumerate(fragments):
+        if word.upper() in greek_letters.keys():
+            fragments[i] = greek_letters[word.upper()]
+        else:
+            fragments[i] = word + " "
+    return "".join(fragments).strip()
 
 def format_major(major):
     major = major.upper().strip()
@@ -126,6 +165,9 @@ def format_state(state):
 
     if state.upper() in states.keys():
         state = states[state.upper()]
+
+    if state.upper() in state_abbrs.keys():
+        state = state_abbrs[state.upper()]
     return state
 
 def format_name(name):
@@ -254,10 +296,10 @@ class SeniorAdmin(admin.ModelAdmin):
                 if senior.minor:
                     senior_string += ", "+senior.minor
                 senior_string += SLASHES
-                senior_string += senior.home_town + ", " + senior.home_state_or_country
+                senior_string += senior.home_town + ", " + format_state(senior.home_state_or_country)
                 if senior.lg:
                     senior_string += BULLET
-                    senior_string += senior.lg
+                    senior_string += format_lg(senior.lg)
                 activities = Activity.objects.filter(senior = senior)
                 if activities:
                     senior_string += SLASHES
