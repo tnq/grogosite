@@ -1,5 +1,6 @@
 {% extends 'tnq_base.html' %}
 {% load static %}
+{% load site_settings %}
 
 {% block lgs_selected %}selected{% endblock %}
 {% block content_class_tag %}class="lgs"{% endblock %}
@@ -12,9 +13,10 @@
 {% endblock %}
 
 {% block content %}
+{% technique_setting 'tnq_year' as tnq_year %}
 <article>
     <h1>Living Groups, schedule a group photo</h1>
-    <h2>We want your living group to appear in the MIT yearbook, Technique 2012.</h2>
+    <h2>We want your living group to appear in the MIT yearbook, <em>Technique {{ tnq_year }}</em>.</h2>
     
     <ol>
         <li>
@@ -55,7 +57,7 @@
             For <strong>$100</strong>, your group will be guaranteed a full page in the yearbook along with a "ghostie" diagram labeled with the names of everyone in the picture.
         </p>
         <p>
-            With this purchase, your group can buy a discounted copy of Technique 2012 for <strong>$50</strong>.
+            With this purchase, your group can buy a discounted copy of <em>Technique {{ tnq_year }}</em> for <strong>$50</strong>.
         </p>
         
     </section>

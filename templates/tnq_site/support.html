@@ -1,30 +1,32 @@
 {% extends 'tnq_base.html' %}
 {% load static %}
+{% load site_settings %}
 
 {% block support_selected %}selected{% endblock %}
 {% block content_class_tag %}class="support"{% endblock %}
 
 {% block content %}
+{% technique_setting 'tnq_year' as tnq_year %}
 <article>
     <hgroup>
-        <h1>Become a Patron of Technique 2012</h1>
+        <h1>Become a Patron of Technique {{ tnq_year }}</h1>
         <h2>With your support we can continue to document and share MIT culture with students of today and of tomorrow.</h2>
     </hgroup>
     
     <img src="{% get_static_prefix %}images/killian.jpg" alt="Killian Court Before Commencement" />
     <h2>Dear Friend of Technique,</h2>
-    <p>Technique 2012 captures the stories of the Institute and the students who live and work in its corridors. More than a mere documentary, Technique tells the tale of student life from many perspectives.</p> 
+    <p><em>Technique {{ tnq_year }}</em> captures the stories of the Institute and the students who live and work in its corridors. More than a mere documentary, Technique tells the tale of student life from many perspectives.</p> 
     <p>Our book showcases award-winning photography, graphic design, and poignant writing from a talented and diverse sampling of MIT students, in an overall effort to capture the essence of MIT life. It is more than a yearbook: it is a piece of art.</p>
-    <p>Technique is produced entirely by students. We strive to make the book as inexpensive as possible in order to make it as accessible as possible: the book is sold at its publication cost. We thus rely heavily on the support of donors to publish, as we currently receive none of our regular funding from the Institute.</p>
-    <p>Please consider becoming a Patron of Technique 2012: help us to continue our long tradition of quality and service to the MIT community. In addition to our masterwork annual publication, Technique is also MIT’s de facto photography club, and we take campus-wide initiatives to promote the art and science of photography at MIT.</p>
-    <p>As a Patron, your name will appear in a special section of the book, and you will receive a complimentary copy of Technique 2012. Platinum Patrons will receive an additional gift in gratitude for their support, a mounted print. In the US and some nations, donations are tax deductible above the book price.</p>
-    <p>MIT is a world-class instiution and Technique 2012 is a worthy counterpart. Enjoy it with pleasure and display it with pride.</p>
+    <p><em>Technique</em> is produced entirely by students. We strive to make the book as inexpensive as possible in order to make it as accessible as possible: the book is sold at its publication cost. We thus rely heavily on the support of donors to publish, as we currently receive none of our regular funding from the Institute.</p>
+    <p>Please consider becoming a Patron of <em>Technique {{ tnq_year }}</em>: help us to continue our long tradition of quality and service to the MIT community. In addition to our masterwork annual publication, Technique is also MIT’s de facto photography club, and we take campus-wide initiatives to promote the art and science of photography at MIT.</p>
+    <p>As a Patron, your name will appear in a special section of the book, and you will receive a complimentary copy of <em>Technique {{ tnq_year }}</em>. Platinum Patrons will receive an additional gift in gratitude for their support, a mounted print. In the US and some nations, donations are tax deductible above the book price.</p>
+    <p>MIT is a world-class instiution and <em>Technique {{ tnq_year }}</em> is a worthy counterpart. Enjoy it with pleasure and display it with pride.</p>
     <p class="become">
-        <a class="button" href="{% url buy_patron %}"><strong>Become a Patron of</strong> Technique 2012</a>
+        <a class="button" href="{% url buy_patron %}"><strong>Become a Patron of</strong> <em>Technique {{ tnq_year }}</em></a>
     </p>
     <p>
         Thank you for your support,<br />
-        <strong>The Staff of Technique 2012</strong>
+        <strong>The Staff of <em>Technique {{ tnq_year }}</em></strong>
     </p>
     
 </article>

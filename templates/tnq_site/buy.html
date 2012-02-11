@@ -15,12 +15,12 @@
     </hgroup>
     
     <section id="preorder">
-        <h2>{% if preorder_active != '0' %}Pre-order{% else %}Order{% endif %} Technique {{ tnq_year }}</h2>
+        <h2>{% if preorder_active != '0' %}Pre-order{% else %}Order{% endif %} <em>Technique {{ tnq_year }}</em></h2>
         <div class="order-info">
-            <p>Your copy of Technique {{ tnq_year }}, the current volume, can be {% if preorder_active != '0' %}pre-ordered{% else %}ordered{% endif %} today for <strong>{% if preorder_active != '0' %}$90{% else %}$120{% endif %}</strong>.</p>
+            <p>Your copy of <em>Technique {{ tnq_year }}</em>, the current volume, can be {% if preorder_active != '0' %}pre-ordered{% else %}ordered{% endif %} today for <strong>{% if preorder_active != '0' %}$90{% else %}$120{% endif %}</strong>.</p>
         </div>
         <div class="order-links">
-            <a href="{% url buy_book tnq_year %}" class="button preorder"><strong>{% if preorder_active != '0' %}Pre-order{% else %}Order{% endif %}</strong> Technique {{ tnq_year }}</a>
+            <a href="{% url buy_book tnq_year %}" class="button preorder"><strong>{% if preorder_active != '0' %}Pre-order{% else %}Order{% endif %}</strong> <em>Technique {{ tnq_year }}</em></a>
             {% if preorder_active != '0' %}<p>Book prices will rise to <strong>$120</strong> after February 10th.</p>{% endif %}
         </div>
     </section>
@@ -28,34 +28,34 @@
     <section id="bundle">
         <h2>Purchase a Four Year Bundle</h2>
         <div class="order-info">
-            <p>Pre-order the Freshman Bundle (Technique {{ tnq_year }} to {{ tnq_year|add:'3' }}) today for <strong>$290</strong>. <span>(A $190 discount)</span></p>
-            <p>Pre-order the Senior Bundle (Technique {{ tnq_year|add:'-3' }} to {{ tnq_year }}) today for <strong>$390</strong>. <span>(A $90 discount)</span></p>
+            <p>Pre-order the Freshman Bundle (<em>Technique {{ tnq_year }}</em> to <em>{{ tnq_year|add:'3' }}</em>) today for <strong>$290</strong>. <span>(A $190 discount)</span></p>
+            <p>Pre-order the Senior Bundle (<em>Technique {{ tnq_year|add:'-3' }}</em> to <em>{{ tnq_year }}</em>) today for <strong>$390</strong>. <span>(A $90 discount)</span></p>
         </div>
         <div class="order-links">
-            <a href="{% url buy_freshman_bundle %}" class="button bundle freshman"><strong>Get the Freshman Bundle</strong> (Technique {{ tnq_year }} to {{ tnq_year|add:'3' }})</a>
-            <a href="{% url buy_senior_bundle %}" class="button bundle senior"><strong>Get the Senior Bundle</strong> (Technique {{ tnq_year|add:'-3' }} to {{ tnq_year }})</a>
+            <a href="{% url buy_freshman_bundle %}" class="button bundle freshman"><strong>Get the Freshman Bundle</strong> (<em>Technique {{ tnq_year }}</em> to <em>{{ tnq_year|add:'3' }}</em>)</a>
+            <a href="{% url buy_senior_bundle %}" class="button bundle senior"><strong>Get the Senior Bundle</strong> (<em>Technique {{ tnq_year|add:'-3' }}</em> to <em>{{ tnq_year }}</em>)</a>
         </div>
     </section>
     
     <section id="about">
         <img src="{% get_static_prefix %}images/buy_photo.png" alt="Technique {{ tnq_year }}" />
         <p>
-            Technique {{ tnq_year }} captures the essence of MIT undergraduate life in photographs and stories. Our 400 page annual showcases award-winning photography, graphic design, and poignant writing from a talented and diverse sampling of MIT students.
+            <em>Technique {{ tnq_year }}</em> captures the essence of MIT undergraduate life in photographs and stories. Our 400 page annual showcases award-winning photography, graphic design, and poignant writing from a talented and diverse sampling of MIT students.
         </p>
     
-        <p>Sections include: Life in Hell—a photographic essay of MIT student life. Journal—a timline notable events at the Institute and around the world during the calendar year of {{ tnq_year|add:"-1"}}. Activities—featuring MIT’s diverse community of student groups. Sports—candid photographs of MIT athletes at their best. Living Groups—photographs of the members of nearly every dorm community, fraternity, sorority, and independent living group. Seniors—portraits of the {{ tnq_year } senior class.</p>
+        <p>Sections include: Life in Hell—a photographic essay of MIT student life. Journal—a timline notable events at the Institute and around the world during the calendar year of {{ tnq_year|add:"-1"}}. Activities—featuring MIT’s diverse community of student groups. Sports—candid photographs of MIT athletes at their best. Living Groups—photographs of the members of nearly every dorm community, fraternity, sorority, and independent living group. Seniors—portraits of the {{ tnq_year }} senior class.</p>
     
-        <p>Technique {{ tnq_year }} is a tribute not only to the students of today, but to the traditions that have shaped their undergraduate experience and the paths that they will take tomorrow.</p>
+        <p><em>Technique {{ tnq_year }}</em> is a tribute not only to the students of today, but to the traditions that have shaped their undergraduate experience and the paths that they will take tomorrow.</p>
     </section>
 </article>
 
 <article id="previous">
     <hgroup>
-        <h1>Techniques from previous years</h1>
-        <h2>We maintain an extensive archive of Techniques from past years.</h2>
+        <h1><em>Techniques</em> from previous years</h1>
+        <h2>We maintain an extensive archive of <em>Techniques</em> from past years.</h2>
     </hgroup>
     <form action="{% url tnq_buy %}#bookform" method=post id="bookform">{% csrf_token %}
-        <p>Please enter in the year of Technique you are interested in (ex: 2008, 2009):</p>
+        <p>Please enter in the year of <em>Technique</em> you are interested in (ex: 2008, 2009):</p>
         {% if form.year.errors %}<p>{{ form.year.errors }} </p>{% endif %}
         {{ form.year }}
         <input type="submit" value="Check Availability" />
@@ -64,8 +64,8 @@
 
 <article id="patron">
     <hgroup>
-        <h1>Become a Patron, get Technique {{ tnq_year }}</h1>
-        <h2>Technique cannot exist without the support of generous donors. If you are interested in supporting us, please become a patron for Technique {{tnq_year}}.</h2>
+        <h1>Become a Patron, get <em>Technique {{ tnq_year }}</em></h1>
+        <h2>Technique cannot exist without the support of generous donors. If you are interested in supporting us, please become a patron for <em>Technique {{tnq_year}}</em>.</h2>
     </hgroup>
     <a href="{% url buy_patron %}" class="button patron">Become a Patron</a>
 </article>

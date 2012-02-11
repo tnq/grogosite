@@ -8,18 +8,6 @@ import re
 
 register = template.Library()
 
-@register.simple_tag
-def tnq_setting(tag):
-    """Return the value of the tag, or a blank string if it does not exist."""
-    try:
-        value = Setting.objects.get(tag=tag).value
-    except ObjectDoesNotExist:
-        if settings.DEBUG:
-            value = "TAG %s NOT FOUND!" % (tag)
-        else:
-            value = ""
-    return value
-
 class TechniqueSettingNode(template.Node):
     def __init__(self, tag_name, var_name):
         self.tag_name = tag_name
