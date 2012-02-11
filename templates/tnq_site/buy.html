@@ -28,8 +28,8 @@
     <section id="bundle">
         <h2>Purchase a Four Year Bundle</h2>
         <div class="order-info">
-            <p>Pre-order the Freshman Bundle (<em>Technique {{ tnq_year }}</em> to <em>{{ tnq_year|add:'3' }}</em>) today for <strong>$290</strong>. <span>(A $190 discount)</span></p>
-            <p>Pre-order the Senior Bundle (<em>Technique {{ tnq_year|add:'-3' }}</em> to <em>{{ tnq_year }}</em>) today for <strong>$390</strong>. <span>(A $90 discount)</span></p>
+            <p>{% if preorder_active != '0' %}Pre-order{% else %}Order{% endif %} the Freshman Bundle (<em>Technique {{ tnq_year }}</em> to <em>{{ tnq_year|add:'3' }}</em>) today for <strong>$290</strong>. <span>(A $190 discount)</span></p>
+            <p>{% if preorder_active != '0' %}Pre-order{% else %}Order{% endif %} the Senior Bundle (<em>Technique {{ tnq_year|add:'-3' }}</em> to <em>{{ tnq_year }}</em>) today for <strong>$390</strong>. <span>(A $90 discount)</span></p>
         </div>
         <div class="order-links">
             <a href="{% url buy_freshman_bundle %}" class="button bundle freshman"><strong>Get the Freshman Bundle</strong> (<em>Technique {{ tnq_year }}</em> to <em>{{ tnq_year|add:'3' }}</em>)</a>
