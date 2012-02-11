@@ -20,6 +20,37 @@ def tnq_setting(tag):
             value = ""
     return value
 
+class TechniqueSettingNode(template.Node):
+    def __init__(self, tag_name, var_name):
+        self.tag_name = tag_name
+        self.var_name = var_name
+
+    def render(self, context):
+        try:
+            context[self.var_name] = Setting.objects.get(tag=self.tag_name).value
+        except ObjectDoesNotExist:
+            if settings.DEBUG:
+                context[self.var_name] = "TAG %s NOT FOUND!" % (self.tag_name)
+            else:
+                context[self.var_name] = ""
+        return ""
+
+@register.tag(name="technique_setting")
+def do_technique_setting(parser, token):
+    # This version uses a regular expression to parse tag contents.
+    try:
+        # Splitting by None == splitting by spaces.
+        tag_name, arg = token.contents.split(None, 1)
+    except ValueError:
+        raise template.TemplateSyntaxError("%r tag requires arguments" % token.contents.split()[0])
+    m = re.search(r'(.*?) as (\w+)', arg)
+    if not m:
+        raise template.TemplateSyntaxError("%r tag had invalid arguments" % tag_name)
+    format_string, var_name = m.groups()
+    if not (format_string[0] == format_string[-1] and format_string[0] in ('"', "'")):
+        raise template.TemplateSyntaxError("%r tag's argument should be in quotes" % tag_name)
+    return TechniqueSettingNode(format_string[1:-1], var_name)
+
 @register.filter
 def sample(population, k):
     """Return a list of k random samples from population."""

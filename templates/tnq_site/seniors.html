@@ -6,8 +6,12 @@
 {% block content_class_tag %}class="seniors"{% endblock %}
 
 {% block content %}
+
+{% technique_setting "preorder_active" as preorder_active %}
+{% technique_setting "tnq_year" as tnq_year %}
+
 <article>
-    <h1>Class of 2012, get your picture taken</h1>
+    <h1>Class of {{ tnq_year }}, get your picture taken</h1>
     <h2>How to get your picture in the yearbook:</h2>
     
     <ol>

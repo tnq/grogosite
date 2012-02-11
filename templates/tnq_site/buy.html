@@ -1,48 +1,51 @@
 {% extends 'tnq_base.html' %}
 {% load static %}
+{% load site_settings %}
 
 {% block buy_selected %}selected{% endblock %}
 {% block content_class_tag %}class="buy"{% endblock %}
 
 {% block content %}
+{% technique_setting "tnq_year" as tnq_year %}
+{% technique_setting "preorder_active" as preorder_active %}
 <article>
     <hgroup>
-        <h1>Technique 2012</h1>
-        <h2>The yearbook of the Massachusetts Institute of Technology, dedicated to the Class of 2012.</h2>
+        <h1>Technique {{ tnq_year }}</h1>
+        <h2>The yearbook of the Massachusetts Institute of Technology, dedicated to the Class of {{ tnq_year }}.</h2>
     </hgroup>
     
     <section id="preorder">
-        <h2>Pre-order Technique 2012</h2>
+        <h2>{% if preorder_active != '0' %}Pre-order{% else %}Order{% endif %} Technique {{ tnq_year }}</h2>
         <div class="order-info">
-            <p>Your copy of Technique 2012, the current volume, can be pre-ordered today for <strong>$90</strong>.</p>
+            <p>Your copy of Technique {{ tnq_year }}, the current volume, can be {% if preorder_active != '0' %}pre-ordered{% else %}ordered{% endif %} today for <strong>{% if preorder_active != '0' %}$90{% else %}$120{% endif %}</strong>.</p>
         </div>
         <div class="order-links">
-            <a href="{% url buy_book 2012 %}" class="button preorder"><strong>Pre-order</strong> Technique 2012</a>
-            <p>Book prices will rise to <strong>$120</strong> after February 10th.</p>
+            <a href="{% url buy_book tnq_year %}" class="button preorder"><strong>{% if preorder_active != '0' %}Pre-order{% else %}Order{% endif %}</strong> Technique {{ tnq_year }}</a>
+            {% if preorder_active != '0' %}<p>Book prices will rise to <strong>$120</strong> after February 10th.</p>{% endif %}
         </div>
     </section>
     
     <section id="bundle">
         <h2>Purchase a Four Year Bundle</h2>
         <div class="order-info">
-            <p>Pre-order the Freshman Bundle (Technique 2012 to 2015) today for <strong>$290</strong>. <span>(A $190 discount)</span></p>
-            <p>Pre-order the Senior Bundle (Technique 2009 to 2012) today for <strong>$390</strong>. <span>(A $90 discount)</span></p>
+            <p>Pre-order the Freshman Bundle (Technique {{ tnq_year }} to {{ tnq_year|add:'3' }}) today for <strong>$290</strong>. <span>(A $190 discount)</span></p>
+            <p>Pre-order the Senior Bundle (Technique {{ tnq_year|add:'-3' }} to {{ tnq_year }}) today for <strong>$390</strong>. <span>(A $90 discount)</span></p>
         </div>
         <div class="order-links">
-            <a href="{% url buy_freshman_bundle %}" class="button bundle freshman"><strong>Get the Freshman Bundle</strong> (Technique 2012 to 2015)</a>
-            <a href="{% url buy_senior_bundle %}" class="button bundle senior"><strong>Get the Senior Bundle</strong> (Technique 2009 to 2012)</a>
+            <a href="{% url buy_freshman_bundle %}" class="button bundle freshman"><strong>Get the Freshman Bundle</strong> (Technique {{ tnq_year }} to {{ tnq_year|add:'3' }})</a>
+            <a href="{% url buy_senior_bundle %}" class="button bundle senior"><strong>Get the Senior Bundle</strong> (Technique {{ tnq_year|add:'-3' }} to {{ tnq_year }})</a>
         </div>
     </section>
     
     <section id="about">
-        <img src="{% get_static_prefix %}images/buy_photo.png" alt="Technique 2012" />
+        <img src="{% get_static_prefix %}images/buy_photo.png" alt="Technique {{ tnq_year }}" />
         <p>
-            Technique 2012 captures the essence of MIT undergraduate life in photographs and stories. Our 400 page annual showcases award-winning photography, graphic design, and poignant writing from a talented and diverse sampling of MIT students.
+            Technique {{ tnq_year }} captures the essence of MIT undergraduate life in photographs and stories. Our 400 page annual showcases award-winning photography, graphic design, and poignant writing from a talented and diverse sampling of MIT students.
         </p>
     
-        <p>Sections include: Life in Hell—a photographic essay of MIT student life. Journal—a timline notable events at the Institute and around the world during the calendar year of 2011. Activities—featuring MIT’s diverse community of student groups. Sports—candid photographs of MIT athletes at their best. Living Groups—photographs of the members of nearly every dorm community, fraternity, sorority, and independent living group. Seniors—portraits of the 2012 senior class.</p>
+        <p>Sections include: Life in Hell—a photographic essay of MIT student life. Journal—a timline notable events at the Institute and around the world during the calendar year of {{ tnq_year|add:"-1"}}. Activities—featuring MIT’s diverse community of student groups. Sports—candid photographs of MIT athletes at their best. Living Groups—photographs of the members of nearly every dorm community, fraternity, sorority, and independent living group. Seniors—portraits of the {{ tnq_year } senior class.</p>
     
-        <p>Technique 2012 is a tribute not only to the students of today, but to the traditions that have shaped their undergraduate experience and the paths that they will take tomorrow.</p>
+        <p>Technique {{ tnq_year }} is a tribute not only to the students of today, but to the traditions that have shaped their undergraduate experience and the paths that they will take tomorrow.</p>
     </section>
 </article>
 
@@ -61,8 +64,8 @@
 
 <article id="patron">
     <hgroup>
-        <h1>Become a Patron, get Technique 2012</h1>
-        <h2>Technique cannot exist without the support of generous donors. If you are interested in supporting us, please become a patron for Technique 2012.</h2>
+        <h1>Become a Patron, get Technique {{ tnq_year }}</h1>
+        <h2>Technique cannot exist without the support of generous donors. If you are interested in supporting us, please become a patron for Technique {{tnq_year}}.</h2>
     </hgroup>
     <a href="{% url buy_patron %}" class="button patron">Become a Patron</a>
 </article>
