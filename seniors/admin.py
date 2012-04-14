@@ -266,6 +266,11 @@ class SeniorAdmin(admin.ModelAdmin):
     actions = ['export_as_csv', 'export_as_tagged_text', ]
 
     def export_as_tagged_text(modeladmin, request, queryset):
+        """
+        Export senior information as a series of Adobe Tagged Text files inside
+        a wrapper zip file, suitable for import into an Indesign document.
+        """
+
         response = HttpResponse(mimetype='application/zip')
         response['Content-Disposition'] = 'attachment; filename=seniors.zip'
 
@@ -287,8 +292,6 @@ class SeniorAdmin(admin.ModelAdmin):
 
         pages = []
         unpaginated_seniors = list(sorted_seniors)
-
-        count = 0
 
         page = 0
         while unpaginated_seniors:
@@ -374,6 +377,10 @@ class SeniorAdmin(admin.ModelAdmin):
     export_as_tagged_text.short_description = "Export selected seniors to Adobe Tagged Text"
 
     def export_as_csv(modeladmin, request, queryset):
+        """
+        Export senior information in CSV format.
+        """
+
         response = HttpResponse(mimetype='text/csv')
         response['Content-Disposition'] = 'attachment; filename=seniors.csv'
 

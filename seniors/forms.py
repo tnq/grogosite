@@ -14,7 +14,7 @@ class SeniorForm(ModelForm):
             'sort_letter': forms.TextInput(attrs={'placeholder': 'B','size':'10'}),
             'home_town': forms.TextInput(attrs={'placeholder': 'ex: Boston','size':'30'}),
             'home_state_or_country': forms.TextInput(attrs={'placeholder': 'ex: Massachusetts (or U.K.)','size':'30'}),
-            
+
             'kerberos': forms.TextInput(attrs={'placeholder': 'ex: tim','size':'30'}),
             'major': forms.TextInput(attrs={'placeholder': 'ex: 8 & 6 or 6-2 or 3','size':'10'}),
             'lg': forms.TextInput(attrs={'placeholder': 'ex: First East, East Campus','size':'30'}),
