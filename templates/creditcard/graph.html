@@ -18,7 +18,7 @@ $(document).ready(function(){
     cum_sales = $.map(cum_sales, function(value, year) {
         return { data: value, label:year.toString()+" Total Sales" };
         });
-    $.merge(sales, [total_deliveries]);
+    $.merge(cum_sales, [total_deliveries]);
 
     var options = { xaxis: { mode: "time" },
                     yaxes: [{ min: 0 }, { position:"right" }],
