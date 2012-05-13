@@ -36,7 +36,7 @@ def create_orders_from_file(reader):
     current_year = "2011"
     returnlist = []
     for order in reader:
-        paymentid = int(order['Merchant Reference Number'].replace("'",""))
+        paymentid = order['Merchant Reference Number'].strip("'")
         line_items = [item.strip() for item in order['Comment'].split(',')]
         
         only_shipping = len(line_items) == 1 and line_items[0] == 'Shipping'

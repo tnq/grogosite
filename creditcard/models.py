@@ -15,7 +15,7 @@ class Purchaser(models.Model):
 
     firstname = models.CharField('First Name', max_length = 30)
     lastname = models.CharField('Last Name', max_length = 30)
-    paymentid = models.IntegerField('Payment ID', unique = True, null = True)
+    paymentid = models.CharField('Payment ID', max_length = 32, unique = True, null = True)
     studentid = models.IntegerField('Student ID', blank = True, null = True)
     paymenttype = models.CharField('Payment Type', max_length = 1, choices=payment_choices)
     amount_paid = models.IntegerField('Amount Paid')
