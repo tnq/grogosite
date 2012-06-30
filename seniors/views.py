@@ -9,17 +9,26 @@ from django.core.urlresolvers import reverse
 from django.core.context_processors import csrf
 from django.conf import settings
 from seniors.forms import SeniorForm, ActivityFormSet, KerberosForm
+
+from mainsite.models import Setting
+
 import csv
 
 __CURRENT_TNQ_YEAR = 2012 #Replace this with a site-setting
 
-def closed(request):
-    return render_to_response('tnq_site/seniors/closed.html')
-    
 def seniors(request):
     return render_to_response('tnq_site/seniors.html', {'senior_photos': xrange(6)})
 
 def enterinfo(request):
+    try:
+        seniors_info_active = int(Setting.objects.get(tag="seniors_info_active").value)
+    except ObjectDoesNotExist:
+        # If the tag has not been defined, set it as one year past the current year
+        seniors_info_active = 1
+
+    if not seniors_info_active:
+        return render_to_response('tnq_site/seniors/closed.html')
+
     activityFormset = ActivityFormSet()
     if request.method == 'POST': #If the form has been submitted
         seniorFormset = SeniorForm(request.POST)
@@ -33,7 +42,7 @@ def enterinfo(request):
                     activity = act_form.save(commit=False)
                     activity.senior = senior
                     activity.save()
-            
+
             request.session['seniorid'] = senior.id
 
             #Dev environments usually don't have working email servers
@@ -153,7 +162,7 @@ def sendsenioremail(fileobject):
 
     base_message = """Hi Senior!
 
-Your friendly Technique staphers are busily laying out the Senior section of the yearbook, and we want to do one final check of your picture and data before we submit them.  
+Your friendly Technique staphers are busily laying out the Senior section of the yearbook, and we want to do one final check of your picture and data before we submit them.
 
 This is it.  What appears below goes into the book, so please double- and triple-check everything to make sure we haven't made any mistakes.  Make especially sure to check the picture (it will be much higher quality in the book!)
 
