@@ -41,7 +41,7 @@ def create_orders_from_file(reader):
         
         only_shipping = len(line_items) == 1 and line_items[0] == 'Shipping'
         already_loaded = Purchaser.objects.filter(paymentid = paymentid).count() != 0
-        order_okay = order['ReplyRFlag'] == "SOK,SOK"
+        order_okay = order['ReplyRFlag'] in ["SOK", "SOK,SOK"]
         is_reimbursement = order['Source'] == "UBC"
 
         if not already_loaded and order_okay and not is_reimbursement:
@@ -52,7 +52,7 @@ def create_orders_from_file(reader):
                 purchasedate = purchasedate,
                 paymentid = paymentid,
                 paymenttype = 'c',
-                amount_paid =int(float( order['PaymentAmount']  )),
+                amount_paid = int(float( order['PaymentAmount'] )),
                 bill_street = order['BillToAddress1'],
                 bill_street2 = order['BillToAddress2'],
                 bill_city = order['BillToCity'],
