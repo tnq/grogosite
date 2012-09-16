@@ -17,7 +17,7 @@ import csv
 __CURRENT_TNQ_YEAR = 2012 #Replace this with a site-setting
 
 def seniors(request):
-    return render_to_response('tnq_site/seniors.html', {'senior_photos': xrange(6)})
+    return render_to_response('tnq_site/seniors.html', {'senior_photos': xrange(4)})
 
 def enterinfo(request):
     try:
