@@ -6,6 +6,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
+    ('TNQ Techno', 'tnq-techno@mit.edu'),
     ('Jared Wong', 'jaredw@mit.edu'),
     ('Quentin Smith', 'quentin@mit.edu'),
 )
