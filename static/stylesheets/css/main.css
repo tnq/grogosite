@@ -28,7 +28,9 @@ body {
   font-family: "Helvetica Neue", "Helvetica", "Lucida Grande", "Arial", "Open Sans", sans-serif;
   font-size: 14px;
 }
-a, a:link, a:visited {
+a,
+a:link,
+a:visited {
   text-decoration: none;
   color: #1557a2;
 }
@@ -50,12 +52,14 @@ header {
   left: 0;
   color: #ffffff;
 }
-header hgroup, header nav {
+header hgroup,
+header nav {
   width: 960px;
   margin: 0 auto;
   position: relative;
 }
-header h1, header h2 {
+header h1,
+header h2 {
   margin: 0;
   position: absolute;
   font-size: 1em;
@@ -87,7 +91,9 @@ header nav ul a {
   padding-bottom: 13px;
   line-height: 17px;
 }
-header nav ul a, header nav ul a:link, header nav ul a:visited {
+header nav ul a,
+header nav ul a:link,
+header nav ul a:visited {
   color: #ffffff;
   font-size: 1em;
   font-weight: 500;
@@ -148,7 +154,9 @@ footer #credits {
   text-align: center;
   padding-top: 2em;
 }
-footer a, footer a:link, footer a:visited {
+footer a,
+footer a:link,
+footer a:visited {
   color: #ffffff;
   text-decoration: none;
 }
@@ -214,7 +222,9 @@ a.button:active {
   line-height: 1.2em;
   color: #181818;
 }
-#content p a, #content p a:link, #content p a:visited {
+#content p a,
+#content p a:link,
+#content p a:visited {
   color: #075584;
   text-decoration: none;
 }
@@ -278,7 +288,9 @@ a.button:active {
   line-height: 1.6em;
   color: #595959;
 }
-#content.main nav ul li a, #content.main nav ul li a:visited, #content.main nav ul li a:link {
+#content.main nav ul li a,
+#content.main nav ul li a:visited,
+#content.main nav ul li a:link {
   border-bottom: 2px solid;
   color: #181818;
   font-weight: 700;
@@ -843,39 +855,47 @@ a.button:active {
 #content.about article#patron a.button {
   margin-top: 3px;
 }
-#content.seniors h2, #content.lgs h2 {
+#content.seniors h2,
+#content.lgs h2 {
   clear: both;
   margin-top: 5px;
   margin-bottom: 1em;
 }
-#content.seniors section, #content.lgs section {
+#content.seniors section,
+#content.lgs section {
   margin-top: 20px;
 }
-#content.seniors section h3, #content.lgs section h3 {
+#content.seniors section h3,
+#content.lgs section h3 {
   font-size: 1.29em;
   font-weight: 200;
   color: #2e2e2e;
   line-height: 1.22em;
 }
-#content.seniors section#more-info, #content.lgs section#more-info {
+#content.seniors section#more-info,
+#content.lgs section#more-info {
   width: 580px;
   float: left;
   margin-bottom: 20px;
 }
-#content.seniors section#more-info img, #content.lgs section#more-info img {
+#content.seniors section#more-info img,
+#content.lgs section#more-info img {
   float: right;
   margin-left: 20px;
 }
-#content.seniors section#more-info h3, #content.lgs section#more-info h3 {
+#content.seniors section#more-info h3,
+#content.lgs section#more-info h3 {
   margin-top: 0;
 }
-#content.seniors section#more-info p, #content.lgs section#more-info p {
+#content.seniors section#more-info p,
+#content.lgs section#more-info p {
   font-size: 0.93em;
   font-weight: 400;
   line-height: 1.4em;
   color: #595959;
 }
-#content.seniors section#reminder, #content.lgs section#reminder {
+#content.seniors section#reminder,
+#content.lgs section#reminder {
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   -khtml-border-radius: 15px;
@@ -893,10 +913,12 @@ a.button:active {
 #content.lgs section#reminder p {
   margin: 0 40px;
 }
-#content.seniors section#reminder h3, #content.lgs section#reminder h3 {
+#content.seniors section#reminder h3,
+#content.lgs section#reminder h3 {
   margin-top: 30px;
 }
-#content.seniors section#reminder p, #content.lgs section#reminder p {
+#content.seniors section#reminder p,
+#content.lgs section#reminder p {
   font-size: .88em;
   font-weight: 400;
   line-height: 1.6em;
@@ -905,17 +927,21 @@ a.button:active {
   margin-top: 8px;
   margin-bottom: 10px;
 }
-#content.seniors section#reminder a.button, #content.lgs section#reminder a.button {
+#content.seniors section#reminder a.button,
+#content.lgs section#reminder a.button {
   width: 260px;
 }
-#content.seniors section#reminder a.button:active, #content.lgs section#reminder a.button:active {
+#content.seniors section#reminder a.button:active,
+#content.lgs section#reminder a.button:active {
   width: 234px;
 }
-#content.seniors section#senior_bio_form form fieldset, #content.lgs section#senior_bio_form form fieldset {
+#content.seniors section#senior_bio_form form fieldset,
+#content.lgs section#senior_bio_form form fieldset {
   border: none;
   color: black;
 }
-#content.seniors section#senior_bio_form form fieldset legend, #content.lgs section#senior_bio_form form fieldset legend {
+#content.seniors section#senior_bio_form form fieldset legend,
+#content.lgs section#senior_bio_form form fieldset legend {
   font-size: 1.86em;
   font-weight: 400;
   line-height: 1.2em;
@@ -932,19 +958,24 @@ a.button:active {
 #content.lgs section#senior_bio_form form fieldset label[for='id_sort_letter'] {
   display: block;
 }
-#content.seniors section#senior_bio_form form fieldset#basic_info, #content.lgs section#senior_bio_form form fieldset#basic_info {
+#content.seniors section#senior_bio_form form fieldset#basic_info,
+#content.lgs section#senior_bio_form form fieldset#basic_info {
   background-color: transparent;
 }
-#content.seniors section#senior_bio_form form fieldset#mit_info, #content.lgs section#senior_bio_form form fieldset#mit_info {
+#content.seniors section#senior_bio_form form fieldset#mit_info,
+#content.lgs section#senior_bio_form form fieldset#mit_info {
   background-color: transparent;
 }
-#content.seniors section#senior_bio_form form fieldset#quote_info, #content.lgs section#senior_bio_form form fieldset#quote_info {
+#content.seniors section#senior_bio_form form fieldset#quote_info,
+#content.lgs section#senior_bio_form form fieldset#quote_info {
   background-color: transparent;
 }
-#content.seniors section#senior_bio_form form fieldset.activity_section, #content.lgs section#senior_bio_form form fieldset.activity_section {
+#content.seniors section#senior_bio_form form fieldset.activity_section,
+#content.lgs section#senior_bio_form form fieldset.activity_section {
   background-color: transparent;
 }
-#content.seniors a.button, #content.lgs a.button {
+#content.seniors a.button,
+#content.lgs a.button {
   font-size: 1.29em;
   font-weight: 200;
   color: #2e2e2e;
@@ -955,7 +986,8 @@ a.button:active {
   padding: 0;
   margin: 0 auto;
 }
-#content.seniors a.button:active, #content.lgs a.button:active {
+#content.seniors a.button:active,
+#content.lgs a.button:active {
   width: 171px;
   height: 39.6px;
   line-height: 39.6px;
@@ -971,20 +1003,23 @@ a.button:active {
   background-image: -ms-linear-gradient(top, #79ba01 0%, #5f9101 100%);
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #79ba01), color-stop(1, #5f9101));
 }
-#content.seniors a.button.portrait, #content.lgs a.button.portrait {
+#content.seniors a.button.portrait,
+#content.lgs a.button.portrait {
   background-color: #0c93e5;
   background-image: -o-linear-gradient(top, #0c93e5 0%, #0a7abe 100%);
   background-image: -moz-linear-gradient(top, #0c93e5 0%, #0a7abe 100%);
   background-image: -ms-linear-gradient(top, #0c93e5 0%, #0a7abe 100%);
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #0c93e5), color-stop(1, #0a7abe));
 }
-#content.seniors ol, #content.lgs ol {
+#content.seniors ol,
+#content.lgs ol {
   list-style: none;
   margin: 0;
   padding: 0;
   position: relative;
 }
-#content.seniors ol li, #content.lgs ol li {
+#content.seniors ol li,
+#content.lgs ol li {
   width: 280px;
   float: left;
   margin-right: 20px;
@@ -998,11 +1033,13 @@ a.button:active {
   height: 190px;
   background-color: #dfe6ee;
 }
-#content.seniors ol li p, #content.lgs ol li p {
+#content.seniors ol li p,
+#content.lgs ol li p {
   margin: 0 40px;
   line-height: 1.43em;
 }
-#content.seniors ol li p.emphasize, #content.lgs ol li p.emphasize {
+#content.seniors ol li p.emphasize,
+#content.lgs ol li p.emphasize {
   font-size: 1.29em;
   font-weight: 200;
   color: #2e2e2e;
@@ -1010,7 +1047,8 @@ a.button:active {
   margin-top: 33px;
   margin-bottom: 7px;
 }
-#content.seniors ol li:before, #content.lgs ol li:before {
+#content.seniors ol li:before,
+#content.lgs ol li:before {
   content: "2";
   position: absolute;
   font-size: 2.07em;
@@ -1032,51 +1070,62 @@ a.button:active {
   top: -18px;
   margin-left: -13px;
 }
-#content.seniors ol li:after, #content.lgs ol li:after {
+#content.seniors ol li:after,
+#content.lgs ol li:after {
   content: url('../../images/arrow.png');
   position: absolute;
   top: 60px;
   margin-left: 256px;
 }
-#content.seniors ol li:first-child, #content.lgs ol li:first-child {
+#content.seniors ol li:first-child,
+#content.lgs ol li:first-child {
   background-color: #e6e6e6;
 }
-#content.seniors ol li:first-child:before, #content.lgs ol li:first-child:before {
+#content.seniors ol li:first-child:before,
+#content.lgs ol li:first-child:before {
   content: "1";
   background-color: #727272;
 }
-#content.seniors ol li:first-child p, #content.lgs ol li:first-child p {
+#content.seniors ol li:first-child p,
+#content.lgs ol li:first-child p {
   margin: 0 29px;
   margin-top: 33px;
   margin-bottom: 23px;
 }
-#content.seniors ol li:last-child, #content.lgs ol li:last-child {
+#content.seniors ol li:last-child,
+#content.lgs ol li:last-child {
   width: 340px;
   margin: 0;
   background-color: #e6eedf;
 }
-#content.seniors ol li:last-child:before, #content.lgs ol li:last-child:before {
+#content.seniors ol li:last-child:before,
+#content.lgs ol li:last-child:before {
   content: "3";
   background-color: #79ba01;
 }
-#content.seniors ol li:last-child p, #content.lgs ol li:last-child p {
+#content.seniors ol li:last-child p,
+#content.lgs ol li:last-child p {
   margin-bottom: 17px;
   margin-left: 42px;
   margin-right: 42px;
 }
-#content.seniors ol li:last-child:after, #content.lgs ol li:last-child:after {
+#content.seniors ol li:last-child:after,
+#content.lgs ol li:last-child:after {
   content: "";
 }
-#content.seniors .sample-images, #content.lgs .sample-images {
+#content.seniors .sample-images,
+#content.lgs .sample-images {
   width: 360px;
   float: right;
 }
-#content.seniors .sample-images img, #content.lgs .sample-images img {
+#content.seniors .sample-images img,
+#content.lgs .sample-images img {
   float: left;
   margin-left: 20px;
   margin-bottom: 20px;
 }
-#content.seniors .sample-images:after, #content.lgs .sample-images:after {
+#content.seniors .sample-images:after,
+#content.lgs .sample-images:after {
   content: ".";
   display: block;
   height: 0;
@@ -1180,7 +1229,8 @@ a.button:active {
   margin-top: 1em;
   margin-bottom: 1em;
 }
-#content.about p, #content.join p {
+#content.about p,
+#content.join p {
   font-size: 0.93em;
   font-weight: 400;
   line-height: 1.6em;
@@ -1219,7 +1269,7 @@ a.button:active {
 #content.join section#visit,
 #content.about section#equip,
 #content.join section#equip {
-  height: 340px;
+  height: 265px;
 }
 #content.about section#weekly,
 #content.join section#weekly,
@@ -1232,10 +1282,12 @@ a.button:active {
   clear: right;
   float: right;
 }
-#content.about section#manboard, #content.join section#manboard {
+#content.about section#manboard,
+#content.join section#manboard {
   margin-top: 10px;
 }
-#content.about section#fine-print, #content.join section#fine-print {
+#content.about section#fine-print,
+#content.join section#fine-print {
   padding-top: 20px;
 }
 #content.about section#manboard,
@@ -1432,7 +1484,8 @@ a.button:active {
   margin-left: 45.89999999999999px;
 }
 /* common navigation styles */
-header nav ul, #content.main nav ul {
+header nav ul,
+#content.main nav ul {
   list-style: none;
 }
 header nav ul a,
