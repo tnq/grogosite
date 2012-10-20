@@ -122,3 +122,10 @@ class Checkout(models.Model):
     def __unicode__(self):
         return "%s - %s" % (self.user.user.username, self.equipment.__unicode__())
 
+class Reservation(models.Model):
+    user = models.ForeignKey(User, related_name="reservations")
+    equipment = models.ForeignKey(Equipment, related_name="reservations")
+    date_start = models.DateTimeField()
+    date_end = models.DateTimeField()
+
+    reason = models.TextField(max_length=500, blank=True, null=True)
