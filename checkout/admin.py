@@ -1,4 +1,4 @@
-from checkout.models import User, Equipment, Checkout
+from checkout.models import User, Equipment, Checkout, Reservation
 from django.contrib import admin
 import datetime
 
@@ -37,7 +37,10 @@ class CheckoutAdmin(admin.ModelAdmin):
 class UserAdmin(admin.ModelAdmin):
     list_display = ('__unicode__', 'email', 'is_staff', ) 
 
+class ReservationAdmin(admin.ModelAdmin):
+    list_display = ('user', 'equipment', 'date_start', 'date_end')
 
 admin.site.register(Equipment, EquipmentAdmin)
 admin.site.register(Checkout, CheckoutAdmin)
 admin.site.register(User, UserAdmin)
+admin.site.register(Reservation, ReservationAdmin)
