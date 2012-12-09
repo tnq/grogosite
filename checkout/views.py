@@ -70,6 +70,8 @@ def view_equipment(request):
     medium_cameras = Equipment.objects.filter(equip_type="MEDIUM_FORMAT_CAMERA").order_by("brand","-model")
     large_cameras = Equipment.objects.filter(equip_type="LARGE_FORMAT_CAMERA").order_by("brand","-model")
     lenses = Equipment.objects.filter(equip_type="LENS").order_by("brand","-model")
+    memory_cards = Equipment.objects.filter(equip_type="MEMORY").order_by("brand","-model")
+    external_flashes = Equipment.objects.filter(equip_type="EXTERNAL_FLASH").order_by("brand","-model")
 
 #key_func = lambda r: r.date_due() if r.date_due() else datetime(1990,01,01,00,00,00,00)
 
@@ -84,5 +86,7 @@ def view_equipment(request):
                                                                 'medium_cameras'    : medium_cameras,
                                                                 'large_cameras'     : large_cameras,
                                                                 'lenses'            : lenses,
+                                                                'memory_cards'      : memory_cards,
+                                                                'external_flashes'  : external_flashes
                                                               }, context_instance=RequestContext(request))
 
