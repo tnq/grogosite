@@ -22,7 +22,7 @@
                 {% endif %}
                     {{ equipment.current_checkout.date_due|date:"D, M j, Y" }}</td>
             {% else %}
-                <td class="equipment_id">Checked In!</td>
+                <td class="equipment_id">-</td>
             {% endif %}
             </tr>
             {% endfor %}
