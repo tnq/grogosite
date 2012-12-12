@@ -91,7 +91,7 @@ def patron_form(request):
         bronze_price = Setting.objects.get(tag="bronze_price").value
     
         shipping_price = 0
-        book_year = "2012"
+        book_year = str(Setting.objects.get(tag="tnq_year").value)
         
     except ObjectDoesNotExist:
         #Something needs to go here - at best the javascript will choke if there is no value,
