@@ -1269,7 +1269,7 @@ a.button:active {
 #content.join section#visit,
 #content.about section#equip,
 #content.join section#equip {
-  height: 265px;
+  height: 340px;
 }
 #content.about section#weekly,
 #content.join section#weekly,
@@ -1366,7 +1366,6 @@ a.button:active {
   background-image: -ms-linear-gradient(top, #0c93e5 0%, #0a7abe 100%);
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #0c93e5), color-stop(1, #0a7abe));
   font-size: 1.57em;
-  font-weight: 200;
   color: #181818;
   line-height: 1.22em;
   font-weight: 200;

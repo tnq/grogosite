@@ -9,31 +9,37 @@ input[type='submit'],
   border-radius: 15px !important;
   background-color: #ffffff !important;
 }
-#content.seniors ol li.last, #content.lgs ol li.last {
+#content.seniors ol li.last,
+#content.lgs ol li.last {
   width: 340px;
   margin: 0;
   background-color: #e6eedf;
 }
-#content.seniors ol li.last:before, #content.lgs ol li.last:before {
+#content.seniors ol li.last:before,
+#content.lgs ol li.last:before {
   content: "3";
   background-color: #79ba01;
 }
-#content.seniors ol li.last p, #content.lgs ol li.last p {
+#content.seniors ol li.last p,
+#content.lgs ol li.last p {
   margin-bottom: 17px;
   margin-left: 42px;
   margin-right: 42px;
 }
-#content.seniors ol li.last:after, #content.lgs ol li.last:after {
+#content.seniors ol li.last:after,
+#content.lgs ol li.last:after {
   content: "";
 }
-#content.seniors ol:after, #content.lgs ol:after {
+#content.seniors ol:after,
+#content.lgs ol:after {
   content: ".";
   display: block;
   height: 0;
   clear: both;
   visibility: hidden;
 }
-#content.seniors ol a.button, #content.lgs ol a.button {
+#content.seniors ol a.button,
+#content.lgs ol a.button {
   behavior: none;
 }
 #content.lgs ol li.last p {
