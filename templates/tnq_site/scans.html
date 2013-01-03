@@ -2,7 +2,7 @@
 {% load static %}
 {% load site_settings %}
 
-{% block content_class_tag %}class="lgs"{% endblock %}
+{% block content_class_tag %}class="scans"{% endblock %}
 
 {% block extra_headers %}
     <script type="text/javascript" src="{% get_static_prefix %}js/jquery-1.6.1.min.js"></script>
@@ -14,66 +14,18 @@
 {% block content %}
 {% technique_setting 'tnq_year' as tnq_year %}
 <article>
-    <h1>Old volumes of <em>Technique</em></h1>
-    <h2>We've started scanning all of our old book; check them out here for free</em>.</h2>
+    <hgroup>
+      <h1>Digital Scans of old <em>Technique</em> Volumes</h1>
+      <h2>We've started scanning all of our old book; check them out here for free.  More years will be coming soon!</h2>
+    </hgroup>
     
-    <ol>
-        <li>
-            <p>Have your Living Group’s representative schedule a group photo with our photographers.</p>
-            <a class="button portrait" href="{% url lg_signup %}">Schedule Photo</a>
-        </li>
-        <li>
-            <p class="emphasize">
-                How would your group liked to be photographed?
-            </p>
-            <p>
-                Technique is an outlet for groups to showcase their creativity. Plan where & how you’d like the photo taken with our photographers.
-            </p>
-        </li>
-        <li>
-            <p class="emphasize">
-                We take a dozen or so photos, your group picks the best one.
-            </p>
-            <p>
-                Our photographer will contact your group shortly after the portrait date and work with your group leaders to choose the best photograph.
-            </p>
-        </li>
-    </ol>
-    
-    <section id="more-info">
-        <h2>Living Group Pricing</h2>
-        <blockquote>Including the portrait in the yearbook is <strong>completely free</strong>.</blockquote>
-        <p class="crest">
-            <img src="{% get_static_prefix %}images/crest.png" alt="Sample Living Group Crest" />
-            <span>Including a crest or coat-of-arms for your group costs <strong>$30</strong>.</span>
-        </p>
-        <a id="lg_photo" class="sample" href="{% get_static_prefix %}images/lg_full.png">
-            <img src="{% get_static_prefix %}images/lg_sample.jpg" alt="Sample Living Group Photo" />
-            <span>&gt; See example Living Group Page</span>
-        </a>
-        
-        <p>
-            For <strong>$150</strong>, your group will be guaranteed a full page in the yearbook along with a "ghostie" diagram labeled with the names of everyone in the picture.
-        </p>
-        <p>
-            With this purchase, your group will also be provided with <strong>full resolution file</strong> for your living group's use.
-        </p>
-        
+    <section>
+      <div class="imagerow">
+          <img src="{% get_static_prefix %}images/hire_images/booth_image3.jpg" alt="Photo Booth Sample Image Three" />
+          <img src="{% get_static_prefix %}images/hire_images/booth_image4.jpg" alt="Photo Booth Sample Image Four" />
+          <img src="{% get_static_prefix %}images/hire_images/booth_image5.jpg" alt="Photo Booth Sample Image Five" />
+      </div>
     </section>
-    
-{% include 'tnq_site/reminder_block.html' %}
-    
-    <h2>
-        Frequently Asked Questions
-    </h2>
-    
-    <dl>
-        <dt>When do Living Group portraits generally happen?</dt>
-        <dd>We schedule Living Group portraits throughout the Fall Semester, usually during October and November.  We take the most portraits on the weekend but can work with you to determine a time during the week if need be.</dd>
-        <dt>What should we wear?</dt>
-        <dd>This entirely depends on the culture of your group.  Most fraternities and sororities wear formal attire, while dorms and ILGs run the gamut from formal to zany.  We recommend deciding upon the dress code in advance within your living group.</dd>
-        <dt>Where are the photos taken?</dt>
-        <dd>Wherever you want!  We just ask that, if you choose an unconventional location, you don't get our photographer injured or arrested.</dd>
-    </dl>
+
 </article>
 {% endblock %}

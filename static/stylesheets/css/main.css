@@ -391,7 +391,8 @@ a.button:active {
 #content.hire h2,
 #content.support h2,
 #content.join h2,
-#content.about h2 {
+#content.about h2,
+#content.scans h2 {
   margin-top: 0;
   margin-bottom: .4em;
 }
@@ -399,7 +400,8 @@ a.button:active {
 #content.hire hgroup h2,
 #content.support hgroup h2,
 #content.join hgroup h2,
-#content.about hgroup h2 {
+#content.about hgroup h2,
+#content.scans hgroup h2 {
   font-size: 1em;
   font-weight: 700;
   color: #595959;
@@ -410,7 +412,8 @@ a.button:active {
 #content.hire section hgroup h2,
 #content.support section hgroup h2,
 #content.join section hgroup h2,
-#content.about section hgroup h2 {
+#content.about section hgroup h2,
+#content.scans section hgroup h2 {
   font-size: 1.86em;
   font-weight: 400;
   line-height: 1.2em;
@@ -421,7 +424,8 @@ a.button:active {
 #content.hire section hgroup h3,
 #content.support section hgroup h3,
 #content.join section hgroup h3,
-#content.about section hgroup h3 {
+#content.about section hgroup h3,
+#content.scans section hgroup h3 {
   font-size: 1.29em;
   font-weight: 200;
   color: #2e2e2e;
@@ -432,7 +436,8 @@ a.button:active {
 #content.hire section h3,
 #content.support section h3,
 #content.join section h3,
-#content.about section h3 {
+#content.about section h3,
+#content.scans section h3 {
   font-size: 1.57em;
   font-weight: 200;
   color: #181818;
@@ -442,7 +447,8 @@ a.button:active {
 #content.hire section .order-info,
 #content.support section .order-info,
 #content.join section .order-info,
-#content.about section .order-info {
+#content.about section .order-info,
+#content.scans section .order-info {
   float: left;
   clear: left;
 }
@@ -450,7 +456,8 @@ a.button:active {
 #content.hire section .order-links,
 #content.support section .order-links,
 #content.join section .order-links,
-#content.about section .order-links {
+#content.about section .order-links,
+#content.scans section .order-links {
   padding-top: 7px;
   float: right;
 }
@@ -459,11 +466,13 @@ a.button:active {
 #content.support section#preorder p,
 #content.join section#preorder p,
 #content.about section#preorder p,
+#content.scans section#preorder p,
 #content.buy section#bundle p,
 #content.hire section#bundle p,
 #content.support section#bundle p,
 #content.join section#bundle p,
-#content.about section#bundle p {
+#content.about section#bundle p,
+#content.scans section#bundle p {
   margin: 0;
 }
 #content.buy section#preorder a.button,
@@ -471,11 +480,13 @@ a.button:active {
 #content.support section#preorder a.button,
 #content.join section#preorder a.button,
 #content.about section#preorder a.button,
+#content.scans section#preorder a.button,
 #content.buy section#bundle a.button,
 #content.hire section#bundle a.button,
 #content.support section#bundle a.button,
 #content.join section#bundle a.button,
-#content.about section#bundle a.button {
+#content.about section#bundle a.button,
+#content.scans section#bundle a.button {
   font-weight: 200;
 }
 #content.buy section#preorder a.button strong,
@@ -483,11 +494,13 @@ a.button:active {
 #content.support section#preorder a.button strong,
 #content.join section#preorder a.button strong,
 #content.about section#preorder a.button strong,
+#content.scans section#preorder a.button strong,
 #content.buy section#bundle a.button strong,
 #content.hire section#bundle a.button strong,
 #content.support section#bundle a.button strong,
 #content.join section#bundle a.button strong,
-#content.about section#bundle a.button strong {
+#content.about section#bundle a.button strong,
+#content.scans section#bundle a.button strong {
   display: block;
   font-weight: 600;
 }
@@ -495,7 +508,8 @@ a.button:active {
 #content.hire section#preorder,
 #content.support section#preorder,
 #content.join section#preorder,
-#content.about section#preorder {
+#content.about section#preorder,
+#content.scans section#preorder {
   width: 400px;
   float: left;
 }
@@ -503,7 +517,8 @@ a.button:active {
 #content.hire section#preorder p,
 #content.support section#preorder p,
 #content.join section#preorder p,
-#content.about section#preorder p {
+#content.about section#preorder p,
+#content.scans section#preorder p {
   font-size: 1.57em;
   font-weight: 200;
   color: #181818;
@@ -513,21 +528,24 @@ a.button:active {
 #content.hire section#preorder .order-info,
 #content.support section#preorder .order-info,
 #content.join section#preorder .order-info,
-#content.about section#preorder .order-info {
+#content.about section#preorder .order-info,
+#content.scans section#preorder .order-info {
   width: 220px;
 }
 #content.buy section#preorder .order-links,
 #content.hire section#preorder .order-links,
 #content.support section#preorder .order-links,
 #content.join section#preorder .order-links,
-#content.about section#preorder .order-links {
+#content.about section#preorder .order-links,
+#content.scans section#preorder .order-links {
   width: 160px;
 }
 #content.buy section#preorder .order-links p,
 #content.hire section#preorder .order-links p,
 #content.support section#preorder .order-links p,
 #content.join section#preorder .order-links p,
-#content.about section#preorder .order-links p {
+#content.about section#preorder .order-links p,
+#content.scans section#preorder .order-links p {
   font-size: .88em;
   font-weight: 400;
   line-height: 1.6em;
@@ -541,7 +559,8 @@ a.button:active {
 #content.hire section#preorder a.button,
 #content.support section#preorder a.button,
 #content.join section#preorder a.button,
-#content.about section#preorder a.button {
+#content.about section#preorder a.button,
+#content.scans section#preorder a.button {
   line-height: 23px;
   background-color: #79ba01;
   background-image: -o-linear-gradient(top, #79ba01 0%, #5f9101 100%);
@@ -556,14 +575,16 @@ a.button:active {
 #content.hire section#preorder a.button:active,
 #content.support section#preorder a.button:active,
 #content.join section#preorder a.button:active,
-#content.about section#preorder a.button:active {
+#content.about section#preorder a.button:active,
+#content.scans section#preorder a.button:active {
   margin: 3px 0;
 }
 #content.buy section#preorder a.button:active,
 #content.hire section#preorder a.button:active,
 #content.support section#preorder a.button:active,
 #content.join section#preorder a.button:active,
-#content.about section#preorder a.button:active {
+#content.about section#preorder a.button:active,
+#content.scans section#preorder a.button:active {
   font-size: 1.161em;
   padding: 26.1px 0;
   width: 144px;
@@ -574,7 +595,8 @@ a.button:active {
 #content.hire section#bundle,
 #content.support section#bundle,
 #content.join section#bundle,
-#content.about section#bundle {
+#content.about section#bundle,
+#content.scans section#bundle {
   width: 460px;
   float: right;
   height: 204px;
@@ -583,7 +605,8 @@ a.button:active {
 #content.hire section#bundle .order-info,
 #content.support section#bundle .order-info,
 #content.join section#bundle .order-info,
-#content.about section#bundle .order-info {
+#content.about section#bundle .order-info,
+#content.scans section#bundle .order-info {
   width: 223px;
   padding-top: .5em;
 }
@@ -591,14 +614,16 @@ a.button:active {
 #content.hire section#bundle .order-links,
 #content.support section#bundle .order-links,
 #content.join section#bundle .order-links,
-#content.about section#bundle .order-links {
+#content.about section#bundle .order-links,
+#content.scans section#bundle .order-links {
   width: 220px;
 }
 #content.buy section#bundle p,
 #content.hire section#bundle p,
 #content.support section#bundle p,
 #content.join section#bundle p,
-#content.about section#bundle p {
+#content.about section#bundle p,
+#content.scans section#bundle p {
   font-weight: 400;
   line-height: 1.3em;
   margin-bottom: 1em;
@@ -607,7 +632,8 @@ a.button:active {
 #content.hire section#bundle p strong,
 #content.support section#bundle p strong,
 #content.join section#bundle p strong,
-#content.about section#bundle p strong {
+#content.about section#bundle p strong,
+#content.scans section#bundle p strong {
   font-size: 1.57em;
   font-weight: 200;
   color: #181818;
@@ -618,7 +644,8 @@ a.button:active {
 #content.hire section#bundle p span,
 #content.support section#bundle p span,
 #content.join section#bundle p span,
-#content.about section#bundle p span {
+#content.about section#bundle p span,
+#content.scans section#bundle p span {
   color: #e40d0d;
   font-size: .9em;
   vertical-align: top;
@@ -628,7 +655,8 @@ a.button:active {
 #content.hire section#bundle a.button,
 #content.support section#bundle a.button,
 #content.join section#bundle a.button,
-#content.about section#bundle a.button {
+#content.about section#bundle a.button,
+#content.scans section#bundle a.button {
   line-height: 20px;
   background-color: #0c93e5;
   background-image: -o-linear-gradient(top, #0c93e5 0%, #0a7abe 100%);
@@ -645,7 +673,8 @@ a.button:active {
 #content.hire section#bundle a.button:active,
 #content.support section#bundle a.button:active,
 #content.join section#bundle a.button:active,
-#content.about section#bundle a.button:active {
+#content.about section#bundle a.button:active,
+#content.scans section#bundle a.button:active {
   margin: 1px 0;
   margin-bottom: 22px;
 }
@@ -653,7 +682,8 @@ a.button:active {
 #content.hire section#bundle a.button:active,
 #content.support section#bundle a.button:active,
 #content.join section#bundle a.button:active,
-#content.about section#bundle a.button:active {
+#content.about section#bundle a.button:active,
+#content.scans section#bundle a.button:active {
   font-size: 1.026em;
   padding: 9px 0;
   width: 198px;
@@ -664,7 +694,8 @@ a.button:active {
 #content.hire section#about,
 #content.support section#about,
 #content.join section#about,
-#content.about section#about {
+#content.about section#about,
+#content.scans section#about {
   clear: both;
   padding-top: 20px;
 }
@@ -672,7 +703,8 @@ a.button:active {
 #content.hire section#about p,
 #content.support section#about p,
 #content.join section#about p,
-#content.about section#about p {
+#content.about section#about p,
+#content.scans section#about p {
   font-size: 0.93em;
   font-weight: 400;
   line-height: 1.6em;
@@ -684,7 +716,8 @@ a.button:active {
 #content.hire section#about img,
 #content.support section#about img,
 #content.join section#about img,
-#content.about section#about img {
+#content.about section#about img,
+#content.scans section#about img {
   float: right;
   margin-left: 20px;
 }
@@ -692,14 +725,16 @@ a.button:active {
 #content.hire article noscript,
 #content.support article noscript,
 #content.join article noscript,
-#content.about article noscript {
+#content.about article noscript,
+#content.scans article noscript {
   color: red;
 }
 #content.buy article#previous,
 #content.hire article#previous,
 #content.support article#previous,
 #content.join article#previous,
-#content.about article#previous {
+#content.about article#previous,
+#content.scans article#previous {
   width: 400px;
   float: left;
 }
@@ -707,7 +742,8 @@ a.button:active {
 #content.hire article#patron,
 #content.support article#patron,
 #content.join article#patron,
-#content.about article#patron {
+#content.about article#patron,
+#content.scans article#patron {
   width: 460px;
   float: right;
 }
@@ -716,11 +752,13 @@ a.button:active {
 #content.support article#previous,
 #content.join article#previous,
 #content.about article#previous,
+#content.scans article#previous,
 #content.buy article#patron,
 #content.hire article#patron,
 #content.support article#patron,
 #content.join article#patron,
-#content.about article#patron {
+#content.about article#patron,
+#content.scans article#patron {
   padding-top: 1em;
 }
 #content.buy article#previous h1,
@@ -728,11 +766,13 @@ a.button:active {
 #content.support article#previous h1,
 #content.join article#previous h1,
 #content.about article#previous h1,
+#content.scans article#previous h1,
 #content.buy article#patron h1,
 #content.hire article#patron h1,
 #content.support article#patron h1,
 #content.join article#patron h1,
-#content.about article#patron h1 {
+#content.about article#patron h1,
+#content.scans article#patron h1 {
   line-height: 1em;
   padding-bottom: .4em;
 }
@@ -741,11 +781,13 @@ a.button:active {
 #content.support article#previous h2,
 #content.join article#previous h2,
 #content.about article#previous h2,
+#content.scans article#previous h2,
 #content.buy article#patron h2,
 #content.hire article#patron h2,
 #content.support article#patron h2,
 #content.join article#patron h2,
-#content.about article#patron h2 {
+#content.about article#patron h2,
+#content.scans article#patron h2 {
   font-size: 1.57em;
   font-weight: 200;
   color: #181818;
@@ -757,11 +799,13 @@ a.button:active {
 #content.support article#previous p,
 #content.join article#previous p,
 #content.about article#previous p,
+#content.scans article#previous p,
 #content.buy article#patron p,
 #content.hire article#patron p,
 #content.support article#patron p,
 #content.join article#patron p,
-#content.about article#patron p {
+#content.about article#patron p,
+#content.scans article#patron p {
   width: 220px;
   font-size: .88em;
   font-weight: 400;
@@ -774,11 +818,13 @@ a.button:active {
 #content.support article#previous input[type='text'],
 #content.join article#previous input[type='text'],
 #content.about article#previous input[type='text'],
+#content.scans article#previous input[type='text'],
 #content.buy article#patron input[type='text'],
 #content.hire article#patron input[type='text'],
 #content.support article#patron input[type='text'],
 #content.join article#patron input[type='text'],
-#content.about article#patron input[type='text'] {
+#content.about article#patron input[type='text'],
+#content.scans article#patron input[type='text'] {
   width: 212px;
   height: 40px;
   border: 1px solid rgba(58, 58, 58, 0.44);
@@ -791,21 +837,25 @@ a.button:active {
 #content.support article#previous a.button,
 #content.join article#previous a.button,
 #content.about article#previous a.button,
+#content.scans article#previous a.button,
 #content.buy article#patron a.button,
 #content.hire article#patron a.button,
 #content.support article#patron a.button,
 #content.join article#patron a.button,
 #content.about article#patron a.button,
+#content.scans article#patron a.button,
 #content.buy article#previous input[type='submit'],
 #content.hire article#previous input[type='submit'],
 #content.support article#previous input[type='submit'],
 #content.join article#previous input[type='submit'],
 #content.about article#previous input[type='submit'],
+#content.scans article#previous input[type='submit'],
 #content.buy article#patron input[type='submit'],
 #content.hire article#patron input[type='submit'],
 #content.support article#patron input[type='submit'],
 #content.join article#patron input[type='submit'],
-#content.about article#patron input[type='submit'] {
+#content.about article#patron input[type='submit'],
+#content.scans article#patron input[type='submit'] {
   background-color: #0c93e5;
   background-image: -o-linear-gradient(top, #0c93e5 0%, #0a7abe 100%);
   background-image: -moz-linear-gradient(top, #0c93e5 0%, #0a7abe 100%);
@@ -823,11 +873,13 @@ a.button:active {
 #content.support article#previous input[type='submit'],
 #content.join article#previous input[type='submit'],
 #content.about article#previous input[type='submit'],
+#content.scans article#previous input[type='submit'],
 #content.buy article#patron input[type='submit'],
 #content.hire article#patron input[type='submit'],
 #content.support article#patron input[type='submit'],
 #content.join article#patron input[type='submit'],
-#content.about article#patron input[type='submit'] {
+#content.about article#patron input[type='submit'],
+#content.scans article#patron input[type='submit'] {
   margin-top: -1px;
 }
 #content.buy article#previous input[type='submit']::-moz-focus-inner,
@@ -835,11 +887,13 @@ a.button:active {
 #content.support article#previous input[type='submit']::-moz-focus-inner,
 #content.join article#previous input[type='submit']::-moz-focus-inner,
 #content.about article#previous input[type='submit']::-moz-focus-inner,
+#content.scans article#previous input[type='submit']::-moz-focus-inner,
 #content.buy article#patron input[type='submit']::-moz-focus-inner,
 #content.hire article#patron input[type='submit']::-moz-focus-inner,
 #content.support article#patron input[type='submit']::-moz-focus-inner,
 #content.join article#patron input[type='submit']::-moz-focus-inner,
-#content.about article#patron input[type='submit']::-moz-focus-inner {
+#content.about article#patron input[type='submit']::-moz-focus-inner,
+#content.scans article#patron input[type='submit']::-moz-focus-inner {
   padding: 4px 0;
   border: 0;
 }
@@ -848,11 +902,13 @@ a.button:active {
 #content.support article#previous a.button,
 #content.join article#previous a.button,
 #content.about article#previous a.button,
+#content.scans article#previous a.button,
 #content.buy article#patron a.button,
 #content.hire article#patron a.button,
 #content.support article#patron a.button,
 #content.join article#patron a.button,
-#content.about article#patron a.button {
+#content.about article#patron a.button,
+#content.scans article#patron a.button {
   margin-top: 3px;
 }
 #content.seniors h2,
@@ -1400,6 +1456,28 @@ a.button:active {
   font-weight: 200;
   color: #181818;
   line-height: 1.22em;
+}
+#content.scans .imagerow {
+  margin-bottom: 20px;
+}
+#content.scans .imagerow img {
+  float: left;
+  margin-right: 20px;
+}
+#content.scans .imagerow img:last-child {
+  margin-right: 0;
+}
+#content.scans .imagerow:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+#content.scans .imagerow.first {
+  width: 640px;
+  float: left;
+  margin-right: 20px;
 }
 #content.hire .imagerow {
   margin-bottom: 20px;
