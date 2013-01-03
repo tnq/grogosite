@@ -27,7 +27,7 @@ urlpatterns = patterns('',
     url(r'^join/', direct_to_template, {'template' : 'tnq_site/join.html'}, name='tnq_join'),
     url(r'^hire/', direct_to_template, {'template' : 'tnq_site/hire.html'}, name='tnq_hire'),
     url(r'^about/', direct_to_template, {'template' : 'tnq_site/about.html'}, name='tnq_about'),
-
+    url(r'^scans/', direct_to_template, {'template' : 'tnq_site/scans.hmtl'}, name='tnq_scans'),
     # Old Seniors page
     url(r'^scripts/seniors/?$', redirect_to, {'url' : '/seniors/info/'}),
 
