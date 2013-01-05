@@ -1460,11 +1460,11 @@ a.button:active {
 #content.scans .imagerow {
   margin-bottom: 20px;
 }
-#content.scans .imagerow img {
+#content.scans .imagerow div {
   float: left;
   margin-right: 20px;
 }
-#content.scans .imagerow img:last-child {
+#content.scans .imagerow div:last-child {
   margin-right: 0;
 }
 #content.scans .imagerow:after {
@@ -1478,6 +1478,37 @@ a.button:active {
   width: 640px;
   float: left;
   margin-right: 20px;
+}
+#content.scans .imagerow a.cover {
+  font-size: 1.29em;
+  font-weight: 200;
+  color: #2e2e2e;
+  line-height: 1.22em;
+  margin: 0;
+  height: 322px;
+  display: block;
+  float: right;
+  clear: right;
+  position: relative;
+  color: #ffffff;
+  text-decoration: none;
+}
+#content.scans .imagerow a.cover img {
+  float: none;
+  margin: 0;
+}
+#content.scans .imagerow a.cover span {
+  display: block;
+  position: absolute;
+  width: 205px;
+  height: 42px;
+  background-color: rgba(0, 0, 0, 0.73);
+  line-height: 42px;
+  padding-left: 15px;
+  top: 120px;
+}
+#content.scans .imagerow a.cover:hover span {
+  background-color: rgba(0, 0, 0, 0.25);
 }
 #content.hire .imagerow {
   margin-bottom: 20px;
