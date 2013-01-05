@@ -125,7 +125,8 @@
 #content.hire, 
 #content.support, 
 #content.join, 
-#content.about {
+#content.about, 
+#content.scans {
     @leftColWidth: 400px;
     @rightColWidth: 460px;
     h2 {
@@ -698,6 +699,61 @@
         }
     }
 }
+
+#content.scans {
+    .imagerow {
+        margin-bottom: @colSpace*2;
+        div {
+            float: left;
+            margin-right: @colSpace*2;
+        }
+        div:last-child {
+            margin-right: 0;
+        }
+
+        &:after {
+            .clear-floats;
+        }
+        &.first {
+            .column-width(11);
+            float: left;
+            margin-right: @colSpace*2;
+        }
+
+        a.cover {
+          img {
+              float: none;
+              margin: 0;
+          }
+          @width: 220px;
+          @height: 322px;
+          .mediumText;
+          margin: 0;
+          height: @height;
+          display: block;
+          float: right;
+          clear: right;
+          position: relative;
+          color: #ffffff;
+          text-decoration: none;
+          span {
+              display: block;
+              position: absolute;
+              width: @width - 15px;
+              height: 42px;
+              background-color: rgba(0, 0, 0, 0.73);
+              line-height: 42px;
+              padding-left: 15px;
+              top: 259px;
+          }
+          &:hover span {
+              background-color: rgba(0, 0, 0, 0.25);
+          }
+        }
+
+    }
+}
+
 #content.hire {
     .imagerow {
         margin-bottom: @colSpace*2;
