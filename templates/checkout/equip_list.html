@@ -1,6 +1,6 @@
 {% load site_settings %}
 
-        <h2>{{ table_name }}</h2>
+        <blink> <marquee> <h2>{{ table_name }}</h2> </marquee> </blink>
         <table>
             <tr><th>Brand / Model</th><th>Name</th>{% if user|in_group:"manboard" %}<th>Checker-Outer</th>{% endif %}<th>Due Date</th></tr>
             {% for equipment in equip_list %}
