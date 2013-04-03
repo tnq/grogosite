@@ -3,7 +3,7 @@ from django.contrib import admin
 import datetime
 
 class EquipmentAdmin(admin.ModelAdmin):
-    list_display = ('pet_name', 'equip_type', 'brand', 'model', 'barcode_id', 'active',)
+    list_display = ('pet_name', 'equip_type', 'brand', 'model', 'barcode_id', 'active', 'current_user', )
     list_filter = ('equip_type','brand')
     fieldsets = (
         ('Technique Information', { 
@@ -35,7 +35,7 @@ class CheckoutAdmin(admin.ModelAdmin):
     return_equipment.short_description = "Mark items as returned right now"
 
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('__unicode__', 'email', 'is_staff', ) 
+    list_display = ('__unicode__', 'email', 'barcode_id', 'phone', 'is_staff', ) 
 
 class ReservationAdmin(admin.ModelAdmin):
     list_display = ('user', 'equipment', 'date_start', 'date_end')
