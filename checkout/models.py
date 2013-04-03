@@ -119,6 +119,9 @@ class Checkout(models.Model):
         return self.date_in != None
     returned.boolean = True
 
+    def equipment_type(self):
+        return self.equipment.equip_type
+
     def __unicode__(self):
         return "%s - %s" % (self.user.user.username, self.equipment.__unicode__())
 

@@ -19,7 +19,7 @@ class EquipmentAdmin(admin.ModelAdmin):
     )
 
 class CheckoutAdmin(admin.ModelAdmin):
-    list_display = ('user', 'equipment', 'date_out', 'date_due', 'date_in', 'returned',)
+    list_display = ('user', 'equipment', 'equipment_type', 'date_out', 'date_due', 'date_in', 'returned',)
     list_filter = ('user', 'equipment', )
     actions = ['return_equipment',]
 
