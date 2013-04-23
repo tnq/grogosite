@@ -76,7 +76,7 @@ class LineItemForm(forms.ModelForm):
 class LineItemAdmin(admin.ModelAdmin):
     form = LineItemForm
     list_display = ('year', 'purchaser', 'recipient', 'delivered')
-    search_fields = ('purchaser__firstname', 'purchaser__lastname', 'ship_first_name', 'ship_last_name', 'email', )
+    search_fields = ('purchaser__firstname', 'purchaser__lastname', 'ship_first_name', 'ship_last_name', 'purchaser__email', )
     list_filter = ('shipping_paid', 'deliverytype', 'year')
     readonly_fields = ('purchaser',)
     actions = ['export_as_csv', 'mark_as_shipped']
