@@ -152,8 +152,8 @@ def graph_dates(request):
     delivered_books = LineItem.objects.exclude(deliverydate=None)
     # Exclude voided books
     delivered_books = delivered_books.exclude(deliverytype="v")
-    # Only include 2012 books
-    delivered_books = delivered_books.filter(year=2012)
+    # Only include 2013 books
+    delivered_books = delivered_books.filter(year=2013)
 
     delivered_books = delivered_books.order_by("deliverydate")
     ddate = lambda x: x.deliverydate
@@ -174,7 +174,7 @@ def graph_dates(request):
     # Exclude voided books
     sold_books = LineItem.objects.exclude(deliverytype="v")
     # Exclude free books
-    sold_books = sold_books.exclude(deliverytype="f")
+    sold_books = sold_books.exclude(purchaser__paymenttype="f")
     # Only include years past 2009
     sold_books = sold_books.filter(year__gt=2009)
 
