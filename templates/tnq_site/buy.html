@@ -7,6 +7,7 @@
 
 {% block content %}
 {% technique_setting "tnq_year" as tnq_year %}
+{% technique_setting "patron_year" as patron_year %}
 {% technique_setting "preorder_active" as preorder_active %}
 <article>
     <hgroup>
@@ -64,8 +65,8 @@
 
 <article id="patron">
     <hgroup>
-        <h1>Become a Patron, get <em>Technique {{ tnq_year }}</em></h1>
-        <h2>Technique cannot exist without the support of generous donors. If you are interested in supporting us, please become a patron for <em>Technique {{tnq_year}}</em>.</h2>
+        <h1>Become a Patron, get <em>Technique {{ patron_year }}</em></h1>
+        <h2>Technique cannot exist without the support of generous donors. If you are interested in supporting us, please become a patron for <em>Technique {{patron_year}}</em>.</h2>
     </hgroup>
     <a href="{% url buy_patron %}" class="button patron">Become a Patron</a>
 </article>
