@@ -61,7 +61,7 @@ def create_orders_from_file(reader):
                 email = order['BillToEmail'],
                 phone = order['BillToPhone'])
 
-            purchaserlist = [purchaser.firstname + " " + purchaser.lastname + " ($" + str(amount_paid) + ")"]
+            purchaserlist = [purchaser.firstname + " " + purchaser.lastname + " ($" + str(purchaser.amount_paid) + ")"]
             itemlist = []
             
             if only_shipping:
