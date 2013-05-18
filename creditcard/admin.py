@@ -86,9 +86,10 @@ class LineItemAdmin(admin.ModelAdmin):
         response['Content-Disposition'] = 'attachment; filename=addresses.csv'
     
         writer = csv.writer(response)
-        writer.writerow(['Full Name', 'Company', 'Address 1', 'Address 2', 'City', 'State', 'Zip Code', 'Country', 'E Mail'])
+        writer.writerow(['Year', 'Full Name', 'Company', 'Address 1', 'Address 2', 'City', 'State', 'Zip Code', 'Country', 'E Mail'])
         for lineitem in queryset:
-            writer.writerow([lineitem.ship_first_name + " " + lineitem.ship_last_name,
+            writer.writerow([lineitem.year, 
+                            lineitem.ship_first_name + " " + lineitem.ship_last_name,
                              'MIT Technique',
                              lineitem.ship_street,
                              lineitem.ship_street2,
