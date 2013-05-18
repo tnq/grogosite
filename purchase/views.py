@@ -66,10 +66,14 @@ def buy_form(request, purchase_option=None, book_year=None):
     elif option=="book":
         
         try:
-            amount = Book.objects.get(year=book_year).price
+            book = Book.objects.get(year=book_year)
         except ObjectDoesNotExist:
             return render_to_response('tnq_site/buy/book_not_available.html', {'book_year' : book_year })
             
+        if int(book.current_inventory) <= 0:
+            return render_to_response('tnq_site/buy/book_not_available.html', {'book_year' : book_year })
+            
+        amount = book.price            
         shipping_price = int(Setting.objects.get(tag="shipping_price").value)
         
         order_tag = "%s-Book" % book_year

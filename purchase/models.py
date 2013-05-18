@@ -1,14 +1,21 @@
 from django.db import models
-
-# Create your models here.
+        
+class PriceLimit(models.Model):
+    upper_limit = models.IntegerField(unique=True, help_text = "When only this many books left, prices goes up")
+    price = models.IntegerField(unique=True, help_text = "Price goes up to this value")
+    
+    def __unicode__(self):
+        return "$%d for <= %d books" % (self.price, self.upper_limit)
+        
+        
 class Book(models.Model):
     year = models.IntegerField(unique=True)
     original_inventory = models.IntegerField()
-    current_inventory = models.IntegerField(editable=False)
-    price = models.IntegerField(editable=False)
-                
+    current_inventory = models.IntegerField(default = 0)
+    price = models.IntegerField(default = 0)
+    
     def __unicode__(self):
-	    return "%d (%d left, $%d)" % (self.year, self.current_number, self.price)
-
+	    return "%d" % self.year
+                
     class Meta:
         ordering = ['-year']
