@@ -89,7 +89,7 @@ class LineItemAdmin(admin.ModelAdmin):
         writer.writerow(['Year', 'Purchase date', 'Full Name', 'Company', 'Address 1', 'Address 2', 'City', 'State', 'Zip Code', 'Country', 'E Mail'])
         for lineitem in queryset:
             writer.writerow([lineitem.year, 
-                            lineitem.purchaser.purchase_date,
+                            lineitem.purchaser.purchasedate,
                             lineitem.ship_first_name + " " + lineitem.ship_last_name,
                              'MIT Technique',
                              lineitem.ship_street,
