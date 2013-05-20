@@ -1,162 +1,113 @@
 {% extends 'tnq_base.html' %}
+{% load static %}
+{% load site_settings %}
 
 {% block lgs_selected %}selected{% endblock %}
 {% block content_class_tag %}class="lgs"{% endblock %}
 
+
+{% block extra_headers %}
+
+    <link rel="stylesheet" href="{% get_static_prefix %}jquery/smoothness/jquery-ui-1.10.3.custom.min.css" />
+    <link rel="stylesheet" href="{% get_static_prefix %}jquery/jquery.timepicker.css" />
+    <script type="text/javascript" src="{% get_static_prefix %}js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="{% get_static_prefix %}js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script type="text/javascript" src="{% get_static_prefix %}js/jquery.timepicker.min.js"></script>
+{% endblock %}
+
 {% block content %}
 
-<h2>Living Group Portrait Scheduling</h2>
-<p>This form is for scheduling your Living Group's portrait session with Technique.<br />
-Please fill out all fields.</p>
-<p>If you would like a logo or crest for your living group to be a part of the page, remember that the cost is now $30.  Please send the image as an attachment to <em>tnq-LG at mit dot edu</em>.  The file must have sufficient resolution, or we will contact you for a replacement file.  This means a vector file (.EPS, .SVG, .AI, etc) or a raster image (.JPG, .TIF, etc) with at least 500 pixels on its longer dimension.</p>
-<form action="http://web.mit.edu/bin/cgiemail/afs/athena.mit.edu/activity/y/yearbook/www/lgform.txt" method="post">
-<h3>Living Group Name (as it will be printed in the book):</h3>
-<input maxlength="50" name="LivingGroupName" size="30" type="text" />
-<h3>Living Group Representative's Name:</h3>
-<input maxlength="50" name="LGRepName" size="30" type="text" />
-<h3>E-mail:</h3>
-<input maxlength="50" name="LGRepEmail" size="30" type="text" />
-<h3>Phone:</h3>
-<input maxlength="50" name="LGRepPhone" size="30" type="text" />
-<p>Please choose three dates and times for your portrait.  We will try our best to accommodate your choices, but please keep in mind that we have a busy schedule of groups to photograph.  Each session will last approximately 30 minutes.  We prefer to take the portraits on Fridays, Saturdays, and Sundays, but please email if another day is more convenient.</p>
-<h3>First Choice:</h3>
-<select name="FirstChoiceDay">
-<option selected="selected" value="notchosen">Choose Day...</option>
-<option value="FriOct5">Fri/Oct 5</option>
-<option value="SatOct6">Sat/Oct 6</option>
-<option value="SunOct7">Sun/Oct 7</option>
-<option value="FriOct12">Fri/Oct 12</option>
-<option value="SatOct13">Sat/Oct 13</option>
-<option value="SunOct14">Sun/Oct 14</option>
-<option value="FriOct19">Fri/Oct 19</option>
-<option value="SatOct20">Sat/Oct 20</option>
-<option value="SunOct21">Sun/Oct 21</option>
-<option value="FriOct26">Fri/Oct 26</option>
-<option value="SatOct27">Sat/Oct 27</option>
-<option value="SunOct28">Sun/Oct 28</option>
-<option value="FriNov2">Fri/Nov 2</option>
-<option value="SatNov3">Sat/Nov 3</option>
-<option value="SunNov4">Sun/Nov 4</option>
-<option value="FriNov9">Fri/Nov 9</option>
-<option value="SatNov10">Sat/Nov 10</option>
-<option value="SunNov11">Sun/Nov 11</option>
-<option value="FriNov16">Fri/Nov 16</option>
-<option value="SatNov17">Sat/Nov 17</option>
-<option value="SunNov18">Sun/Nov 18</option>
-</select>
-<select name="FirstChoiceTime">
-<option selected="selected" value="notchosen">Choose Time...</option>
-<option value="10a">10am</option>
-<option value="11a">11am</option>
-<option value="12p">12pm</option>
-<option value="1p">1pm</option>
-<option value="2p">2pm</option>
-<option value="3p">3pm</option>
-<option value="4p">4pm</option>
-<option value="5p">5pm</option>
-<option value="6p">6pm</option>
-<option value="7p">7pm</option>
-<option value="8p">8pm</option>
-<option value="9p">9pm</option>
-<option value="10p">10pm</option>
-<option value="11p">11pm</option>
-</select>
-<h3>Second Choice:</h3>
-<select name="SecondChoiceDay">
-<option selected="selected" value="notchosen">Choose Day...</option>
-<option value="FriOct5">Fri/Oct 5</option>
-<option value="SatOct6">Sat/Oct 6</option>
-<option value="SunOct7">Sun/Oct 7</option>
-<option value="FriOct12">Fri/Oct 12</option>
-<option value="SatOct13">Sat/Oct 13</option>
-<option value="SunOct14">Sun/Oct 14</option>
-<option value="FriOct19">Fri/Oct 19</option>
-<option value="SatOct20">Sat/Oct 20</option>
-<option value="SunOct21">Sun/Oct 21</option>
-<option value="FriOct26">Fri/Oct 26</option>
-<option value="SatOct27">Sat/Oct 27</option>
-<option value="SunOct28">Sun/Oct 28</option>
-<option value="FriNov2">Fri/Nov 2</option>
-<option value="SatNov3">Sat/Nov 3</option>
-<option value="SunNov4">Sun/Nov 4</option>
-<option value="FriNov9">Fri/Nov 9</option>
-<option value="SatNov10">Sat/Nov 10</option>
-<option value="SunNov11">Sun/Nov 11</option>
-<option value="FriNov16">Fri/Nov 16</option>
-<option value="SatNov17">Sat/Nov 17</option>
-<option value="SunNov18">Sun/Nov 18</option>
-</select>
-<select name="SecondChoiceTime">
-<option selected="selected" value="notchosen">Choose Time...</option>
-<option value="10a">10am</option>
-<option value="11a">11am</option>
-<option value="12p">12pm</option>
-<option value="1p">1pm</option>
-<option value="2p">2pm</option>
-<option value="3p">3pm</option>
-<option value="4p">4pm</option>
-<option value="5p">5pm</option>
-<option value="6p">6pm</option>
-<option value="7p">7pm</option>
-<option value="8p">8pm</option>
-<option value="9p">9pm</option>
-<option value="10p">10pm</option>
-<option value="11p">11pm</option>
-</select>
-<h3>Third Choice:</h3>
-<select name="ThirdChoiceDay">
-<option selected="selected" value="notchosen">Choose Day...</option>
-<option value="FriOct5">Fri/Oct 5</option>
-<option value="SatOct6">Sat/Oct 6</option>
-<option value="SunOct7">Sun/Oct 7</option>
-<option value="FriOct12">Fri/Oct 12</option>
-<option value="SatOct13">Sat/Oct 13</option>
-<option value="SunOct14">Sun/Oct 14</option>
-<option value="FriOct19">Fri/Oct 19</option>
-<option value="SatOct20">Sat/Oct 20</option>
-<option value="SunOct21">Sun/Oct 21</option>
-<option value="FriOct26">Fri/Oct 26</option>
-<option value="SatOct27">Sat/Oct 27</option>
-<option value="SunOct28">Sun/Oct 28</option>
-<option value="FriNov2">Fri/Nov 2</option>
-<option value="SatNov3">Sat/Nov 3</option>
-<option value="SunNov4">Sun/Nov 4</option>
-<option value="FriNov9">Fri/Nov 9</option>
-<option value="SatNov10">Sat/Nov 10</option>
-<option value="SunNov11">Sun/Nov 11</option>
-<option value="FriNov16">Fri/Nov 16</option>
-<option value="SatNov17">Sat/Nov 17</option>
-<option value="SunNov18">Sun/Nov 18</option>
-</select>
-<select name="ThirdChoiceTime">
-<option selected="selected" value="notchosen">Choose Time...</option>
-<option value="10a">10am</option>
-<option value="11a">11am</option>
-<option value="12p">12pm</option>
-<option value="1p">1pm</option>
-<option value="2p">2pm</option>
-<option value="3p">3pm</option>
-<option value="4p">4pm</option>
-<option value="5p">5pm</option>
-<option value="6p">6pm</option>
-<option value="7p">7pm</option>
-<option value="8p">8pm</option>
-<option value="9p">9pm</option>
-<option value="10p">10pm</option>
-<option value="11p">11pm</option>
-</select>
-<p>If the best time to take the photo is on a weekday afternoon or night, please give the date and possible times here.</p>
-<p><textarea cols="50" rows="5" name="Weekday"></textarea></p>
-<p>Please describe the portrait location.  The portrait can be taken indoors or outdoors. Please provide the address if the location is off campus; in this case, please also arrange transportation for our equipment and photographers from the Student Center on the day of the portrait.</p>
-<p><textarea cols="50" rows="5" name="Location"></textarea></p>
-<h3>Any other comments/concerns? (optional)</h3>
-<p><textarea cols="50" rows="5" name="Comments"></textarea></p>
-<p>Remember that this is an agreement to have your LG shot taken and placed in the book if we can accommodate one of your three choices.<br />
-The information you entered will be sent to the Living Group Editors and CCed to yourself.  If you have trouble using this form, email us at <em>tnq-LG at mit dot edu</em>.<br />
-Thank you!</p>
-<input type="submit" value="Submit" />
-<input type="reset" />
-<input name="success" type="hidden" value="http://technique.mit.edu/lg/success/" />
-</form>
+{% technique_setting "senior_year" as year %}
+{% technique_setting "lg_schedule_start" as lg_schedule_start %}
+{% technique_setting "lg_schedule_end" as lg_schedule_end %}
+
+
+<article>
+    <hgroup>
+        <h1>Living group portrait scheduling form</h1>
+        <p>Putting your dorm, fraternity, sorority, or ILG's group portrait in <em>Technique {{ year }}</em> is a great way to show off your living group's members and unique culture, and is <strong>completely free.</strong></p>
+        <p>If you are the president, hall chair, or designated representative of your living group, please fill out the following information so that we can schedule the portrait. On the day of the portrait, please assemble the members of your group, and one or two of our photographers will be setup our professional equipment and take the portrait.</p>
+    </hgroup>
+    
+    <section id = "lg_form">
+        <form action = {% url lg_signup %} method = "post">{% csrf_token %}
+            {{ form.non_field_errors }}
+            <fieldset>
+                <legend>Contact information</legend>
+                <p></p>
+                <label for="id_{{ form.rep_name.html_name }}">Your name <span><strong class="required">(required)</strong>:</span></label>
+                {{ form.rep_name.errors }}
+                {{ form.rep_name }}
+                
+                <label for="id_{{ form.rep_email.html_name }}">Your email <span><strong class="required">(required)</strong>:</span></label>
+                {{ form.rep_email.errors }}
+                {{ form.rep_email }}
+                
+                <label for="id_{{ form.rep_phone.html_name }}">Your phone number <span><strong class="required">(required)</strong>:</span></label>
+                {{ form.rep_phone.errors }}
+                {{ form.rep_phone }}
+            </fieldset>
+        
+            <fieldset>
+                <legend>Portrait information</legend>
+    
+                <label for="id_{{ form.lg_name.html_name }}">Living Group name <span><strong>as you want it to appear in the book </strong><strong class="required">(required)</strong>:</span></label>
+                {{ form.lg_name.errors }}
+                {{ form.lg_name }}
+        
+                
+                <label for="id_{{ form.location.html_name }}">Please describe the portrait location. We bring our own lights, so the portrait can be taken indoors or outdoors. If the location is off campus, provide the address and also arrange transportation from the Student Center. <span><strong class="required">(required)</strong>:</span></label>
+                {{ form.location.errors }}
+                {{ form.location }}        
+            </fieldset>
+        
+            <fieldset>
+                <legend>Scheduling</legend>
+    
+                <p>Please choose three dates and times for your portrait.  We will try our best to accommodate your choices, but keep in mind that we have a busy schedule of groups to photograph.  Each session will last approximately 20 minutes.  We prefer to take the portraits on Fridays, Saturdays, and Sundays.</p>
+                <label for="id_{{ form.first_choice.html_name }}">First choice <span><strong class="required">(required)</strong>:</span></label>
+                {{ form.first_choice.errors }}
+                {{ form.first_choice }}
+
+                <label for="id_{{ form.second_choice.html_name }}">Second choice <span><strong class="required">(required)</strong>:</span></label>
+                {{ form.second_choice.errors }}
+                {{ form.second_choice }}
+                
+                <label for="id_{{ form.third_choice.html_name }}">Third choice <span><strong class="required">(required)</strong>:</span></label>
+                {{ form.third_choice.errors }}
+                {{ form.third_choice }}
+                <p></p>
+                <label for="id_{{ form.alternative_choice.html_name }}">If the best time to take the photo is on a weekday afternoon or night, please give the date and possible times: </label>
+                {{ form.alternative_choice.errors }}
+                {{ form.alternative_choice }}
+            </fieldset>
+            <fieldset>
+                <legend>Comments / Concerns </legend>
+                {{ form.comments.errors }}
+                {{ form.comments }}
+            </fieldset>
+            <fieldset style="position:relative;top:0px;height:350px;">
+                {{ form.captcha.errors }}          
+                {{ form.captcha }}          
+                <input type="reset" value="Reset" />
+                <input type="submit" value="Submit" />
+            </fieldset>
+        </form>
+    </section>
+</article>
+
+<script>
+    allowable = function(date) {
+        var td = date.getDay();
+        if (td != 0 && td != 5 && td != 6) return false;
+        return true;
+    }
+    $(function() {
+        var date = new Date();
+        var today = "Ex: " + (date.getMonth()+1) + "/" + date.getDate() + "/" + date.getFullYear();
+        $("[id$=_0]").css('display','inline').attr('placeholder',today).datepicker({firstDay: 1, duration: "fast", numberOfMonths: 2, minDate: "{{ lg_schedule_start }}", maxDate: "{{ lg_schedule_end }}", hideIfNoPrevNextType: true, beforeShowDay: function(date){return [allowable(date),'',''];}, showButtonPanel : true});
+        $("[id$=_1]").css('display','inline').attr('placeholder', '5:00pm').timepicker({minTime: "11:00am", maxTime: "9:00pm"});
+    });
+</script>
 
 {% endblock %}

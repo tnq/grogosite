@@ -177,7 +177,8 @@ a.button {
 a.button, 
 a.button:visited, 
 a.button:link,
-input[type='submit'] {
+input[type='submit'],
+input[type='reset'] {
     padding: .5em;
     text-align: center;
     text-decoration: none;
@@ -190,6 +191,9 @@ input[type='submit'] {
     outline: none;
     border: none;
 }
+input[type='reset'] {
+    background-color: @redColor;
+}    
 a.button:hover {
     text-decoration: none !important;
 }
@@ -253,7 +257,6 @@ header nav ul,
     li.lgs, li.lgs a{ border-color: @redColor; }
     li.join, li.join a{ border-color: @purpleColor; }
     li.hire, li.hire a{ border-color: @indigoColor; }
-    li.scans, li.scans a{ border-color: @darkOrangeColor; }
     li.about, li.about a{ border-color: @darkGreenColor; }
     
     li.buy a:hover, li.buy.selected a{ background-color: @greenColor; }
@@ -262,6 +265,5 @@ header nav ul,
     li.lgs a:hover, li.lgs.selected a{ background-color: @redColor; }
     li.join a:hover, li.join.selected a{ background-color: @purpleColor; }
     li.hire a:hover, li.hire.selected a{ background-color: @indigoColor; }
-    li.scans a:hover, li.scans.selected a{ background-color: @darkOrangeColor; }
     li.about a:hover, li.about.selected a{ background-color: @darkGreenColor; }
 }

@@ -174,7 +174,8 @@ a.button {
 a.button,
 a.button:visited,
 a.button:link,
-input[type='submit'] {
+input[type='submit'],
+input[type='reset'] {
   padding: .5em;
   text-align: center;
   text-decoration: none;
@@ -190,6 +191,9 @@ input[type='submit'] {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
   outline: none;
   border: none;
+}
+input[type='reset'] {
+  background-color: #e40d0d;
 }
 a.button:hover {
   text-decoration: none !important;
@@ -991,44 +995,39 @@ a.button:active {
 #content.lgs section#reminder a.button:active {
   width: 234px;
 }
-#content.seniors section#senior_bio_form form fieldset,
-#content.lgs section#senior_bio_form form fieldset {
+#content.seniors section form fieldset,
+#content.lgs section form fieldset {
   border: none;
   color: black;
+  background-color: transparent;
+  padding-left: 0;
 }
-#content.seniors section#senior_bio_form form fieldset legend,
-#content.lgs section#senior_bio_form form fieldset legend {
+#content.seniors section form fieldset p,
+#content.lgs section form fieldset p {
+  margin: 0;
+}
+#content.seniors section form fieldset .errorlist,
+#content.lgs section form fieldset .errorlist {
+  margin: 0;
+  color: red;
+}
+#content.seniors section form fieldset legend,
+#content.lgs section form fieldset legend {
   font-size: 1.86em;
   font-weight: 400;
   line-height: 1.2em;
   color: #181818;
   color: #595959;
   padding: 0;
+  padding-top: 8px;
   -webkit-padding-start: 0;
 }
-#content.seniors section#senior_bio_form form fieldset input[type='text'],
-#content.lgs section#senior_bio_form form fieldset input[type='text'],
-#content.seniors section#senior_bio_form form fieldset label[for='id_name_comments'],
-#content.lgs section#senior_bio_form form fieldset label[for='id_name_comments'],
-#content.seniors section#senior_bio_form form fieldset label[for='id_sort_letter'],
-#content.lgs section#senior_bio_form form fieldset label[for='id_sort_letter'] {
+#content.seniors section form fieldset input[type='text'],
+#content.lgs section form fieldset input[type='text'],
+#content.seniors section form fieldset label,
+#content.lgs section form fieldset label {
   display: block;
-}
-#content.seniors section#senior_bio_form form fieldset#basic_info,
-#content.lgs section#senior_bio_form form fieldset#basic_info {
-  background-color: transparent;
-}
-#content.seniors section#senior_bio_form form fieldset#mit_info,
-#content.lgs section#senior_bio_form form fieldset#mit_info {
-  background-color: transparent;
-}
-#content.seniors section#senior_bio_form form fieldset#quote_info,
-#content.lgs section#senior_bio_form form fieldset#quote_info {
-  background-color: transparent;
-}
-#content.seniors section#senior_bio_form form fieldset.activity_section,
-#content.lgs section#senior_bio_form form fieldset.activity_section {
-  background-color: transparent;
+  padding-top: 4px;
 }
 #content.seniors a.button,
 #content.lgs a.button {

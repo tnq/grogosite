@@ -7,8 +7,6 @@ TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
     ('TNQ Techno', 'tnq-techno@mit.edu'),
-    ('Jared Wong', 'jaredw@mit.edu'),
-    ('Quentin Smith', 'quentin@mit.edu'),
 )
 
 MANAGERS = ADMINS
@@ -123,6 +121,8 @@ CACHES = {
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '99&xeaxqq+om4i1lhqid#&olgq1crnah#9b)bz(j7kub(s84v9'
+
+RECAPTCHA_PUBLIC_KEY = '6LexRuESAAAAAPhayhcMKH_lfvwNoanw_x1ztY4O'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
