@@ -61,9 +61,6 @@ input[type='submit'],
   color: #181818;
   line-height: 1.22em;
 }
-#content.scans .imagerow img.last {
-  margin-right: 0;
-}
 #content.hire .imagerow img.last {
   margin-right: 0;
 }

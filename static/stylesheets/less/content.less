@@ -125,7 +125,8 @@
 #content.hire, 
 #content.support, 
 #content.join, 
-#content.about {
+#content.about, 
+#content.scans {
     @leftColWidth: 400px;
     @rightColWidth: 460px;
     h2 {
@@ -282,7 +283,7 @@
             }
             
             a.button,
-            input[type='submit']{
+            input[type='submit'] {
                 .blue-button;
                 font-weight: 800;
                 font-size: 14px;
@@ -291,7 +292,7 @@
                 float: right;
                 padding: 10px 0;
             }
-            input[type='submit'], input[type='reset'] {
+            input[type='submit'] {
                 margin-top: -1px;
                 &::-moz-focus-inner {
                     padding: 4px 0;
@@ -347,31 +348,29 @@
             fieldset {
                 border: none;
                 color: black;
-                background-color: transparent;
-                padding-left:0;
-                
-                p {
-                    margin: 0;
-                }
-                
-                .errorlist {
-                    margin: 0;
-                    color: red;
-                }
                 legend {
                     .smallHeadlineText();
                     color: @lighterText;
                     padding:0;
-                    padding-top:8px;
+                    padding-top: 8px;
                     -webkit-padding-start: 0;
                 }
-                
                 input[type='text'],
-                label {
-                    background-color: white;
+                label{
                     display: block;
-                    padding-top: 4px;
                 }
+                label {
+                    margin-top: 3px;
+                }
+                p {
+                    margin: 0;
+                }
+                .errorlist {
+                    margin: 0;
+                    color: red;
+                }
+                
+                background-color: transparent;
             }
         }
     }
@@ -614,7 +613,7 @@
         }
         
         &#visit, &#equip {
-            height: 265px;
+            height: 340px;
         }
         
         &#weekly, &#about-grogo, &#equip, &#digs {
@@ -697,6 +696,61 @@
         }
     }
 }
+
+#content.scans {
+    .imagerow {
+        margin-bottom: @colSpace*2;
+        div {
+            float: left;
+            margin-right: @colSpace*2;
+        }
+        div:last-child {
+            margin-right: 0;
+        }
+
+        &:after {
+            .clear-floats;
+        }
+        &.first {
+            .column-width(11);
+            float: left;
+            margin-right: @colSpace*2;
+        }
+
+        a.cover {
+          img {
+              float: none;
+              margin: 0;
+          }
+          @width: 220px;
+          @height: 322px;
+          .mediumText;
+          margin: 0;
+          height: @height;
+          display: block;
+          float: right;
+          clear: right;
+          position: relative;
+          color: #ffffff;
+          text-decoration: none;
+          span {
+              display: block;
+              position: absolute;
+              width: @width - 15px;
+              height: 42px;
+              background-color: rgba(0, 0, 0, 0.73);
+              line-height: 42px;
+              padding-left: 15px;
+              top: 259px;
+          }
+          &:hover span {
+              background-color: rgba(0, 0, 0, 0.25);
+          }
+        }
+
+    }
+}
+
 #content.hire {
     .imagerow {
         margin-bottom: @colSpace*2;

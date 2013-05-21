@@ -1000,16 +1000,6 @@ a.button:active {
   border: none;
   color: black;
   background-color: transparent;
-  padding-left: 0;
-}
-#content.seniors section form fieldset p,
-#content.lgs section form fieldset p {
-  margin: 0;
-}
-#content.seniors section form fieldset .errorlist,
-#content.lgs section form fieldset .errorlist {
-  margin: 0;
-  color: red;
 }
 #content.seniors section form fieldset legend,
 #content.lgs section form fieldset legend {
@@ -1027,7 +1017,19 @@ a.button:active {
 #content.seniors section form fieldset label,
 #content.lgs section form fieldset label {
   display: block;
-  padding-top: 4px;
+}
+#content.seniors section form fieldset label,
+#content.lgs section form fieldset label {
+  margin-top: 3px;
+}
+#content.seniors section form fieldset p,
+#content.lgs section form fieldset p {
+  margin: 0;
+}
+#content.seniors section form fieldset .errorlist,
+#content.lgs section form fieldset .errorlist {
+  margin: 0;
+  color: red;
 }
 #content.seniors a.button,
 #content.lgs a.button {
@@ -1639,12 +1641,6 @@ header nav ul li.hire a,
 #content.main nav ul li.hire a {
   border-color: #1557a2;
 }
-header nav ul li.scans,
-#content.main nav ul li.scans,
-header nav ul li.scans a,
-#content.main nav ul li.scans a {
-  border-color: #a90000;
-}
 header nav ul li.about,
 #content.main nav ul li.about,
 header nav ul li.about a,
@@ -1686,12 +1682,6 @@ header nav ul li.hire a:hover,
 header nav ul li.hire.selected a,
 #content.main nav ul li.hire.selected a {
   background-color: #1557a2;
-}
-header nav ul li.scans a:hover,
-#content.main nav ul li.scans a:hover,
-header nav ul li.scans.selected a,
-#content.main nav ul li.scans.selected a {
-  background-color: #a90000;
 }
 header nav ul li.about a:hover,
 #content.main nav ul li.about a:hover,
