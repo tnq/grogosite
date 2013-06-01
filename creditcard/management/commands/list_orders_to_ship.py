@@ -8,9 +8,9 @@ from mainsite.models import Setting
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
-        tnq_year = Setting.objects.get(tag="tnq_year").value
+        shipping_year = Setting.objects.get(tag="shipping_year").value
 
-        books = LineItem.objects.all().filter(year__lt=tnq_year)
+        books = LineItem.objects.all().filter(year__lt=shipping_year)
         books = books.filter(deliverytype="n")
         books = books.filter(shipping_paid=True)
 
