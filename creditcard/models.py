@@ -8,6 +8,7 @@ class Purchaser(models.Model):
                          ('t', 'TechCash'),
                          ('x', 'Check'),
                          ('f', 'Free'),
+                         ('r', 'Replacement')
                       )
     payment_dict = {}
     for choice in payment_choices:
