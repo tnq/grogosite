@@ -38,7 +38,7 @@ def index(request):
     tweet, tweet_date = cache.get("tweet", [None, None])
     if tweet is None:
         try:
-            item = ElementTree.parse(urlopen("https://api.twitter.com/1/statuses/user_timeline.rss?screen_name=hrhgrogo")).find(".//item")
+            item = ElementTree.parse(urlopen("http://tweet-2-rss.appspot.com/feed/hrhgrogo/pavDz4bx/statuses/user_timeline.json?screen_name=hrhgrogo")).find(".//item")
             tweet = item.findtext("title").replace("hrhgrogo: ", "")
 
             tweet_date = item.findtext("pubDate")
