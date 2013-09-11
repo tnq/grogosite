@@ -21,6 +21,19 @@
 {% technique_setting "lg_schedule_start" as lg_schedule_start %}
 {% technique_setting "lg_schedule_end" as lg_schedule_end %}
 
+<script>
+    allowable = function(date) {
+        var td = date.getDay();
+        if (td != 0 && td != 5 && td != 6) return false;
+        return true;
+    }
+    $(function() {
+        var date = new Date();
+        var today = "Ex: " + (date.getMonth()+1) + "/" + date.getDate() + "/" + date.getFullYear();
+        $("[id$=_0]").css('display','inline').attr('placeholder',today).datepicker({firstDay: 1, duration: "fast", numberOfMonths: 2, minDate: "{{ lg_schedule_start }}", maxDate: "{{ lg_schedule_end }}", hideIfNoPrevNextType: true, beforeShowDay: function(date){return [allowable(date),'',''];}, showButtonPanel : true});
+        $("[id$=_1]").css('display','inline').attr('placeholder', '5:00pm').timepicker({minTime: "11:00am", maxTime: "9:00pm"});
+    });
+</script>
 
 <article>
     <hgroup>
@@ -95,19 +108,5 @@
         </form>
     </section>
 </article>
-
-<script>
-    allowable = function(date) {
-        var td = date.getDay();
-        if (td != 0 && td != 5 && td != 6) return false;
-        return true;
-    }
-    $(function() {
-        var date = new Date();
-        var today = "Ex: " + (date.getMonth()+1) + "/" + date.getDate() + "/" + date.getFullYear();
-        $("[id$=_0]").css('display','inline').attr('placeholder',today).datepicker({firstDay: 1, duration: "fast", numberOfMonths: 2, minDate: "{{ lg_schedule_start }}", maxDate: "{{ lg_schedule_end }}", hideIfNoPrevNextType: true, beforeShowDay: function(date){return [allowable(date),'',''];}, showButtonPanel : true});
-        $("[id$=_1]").css('display','inline').attr('placeholder', '5:00pm').timepicker({minTime: "11:00am", maxTime: "9:00pm"});
-    });
-</script>
 
 {% endblock %}
