@@ -24,7 +24,7 @@
 <script>
     allowable = function(date) {
         var td = date.getDay();
-        if (td != 0 && td != 5 && td != 6) return false;
+        if (td != 0 && td != 6) return false;
         return true;
     }
     $(function() {
@@ -77,7 +77,7 @@
             <fieldset>
                 <legend>Scheduling</legend>
     
-                <p>Please choose three dates and times for your portrait.  We will try our best to accommodate your choices, but keep in mind that we have a busy schedule of groups to photograph.  Each session will last approximately 20 minutes.  We prefer to take the portraits on Fridays, Saturdays, and Sundays.</p>
+                <p>Please choose three dates and times for your portrait.  We will try our best to accommodate your choices, but keep in mind that we have a busy schedule of groups to photograph.  Each session will last approximately 20 minutes.  We prefer to take the portraits on weekends.</p>
                 <label for="id_{{ form.first_choice.html_name }}">First choice <span><strong class="required">(required)</strong>:</span></label>
                 {{ form.first_choice.errors }}
                 {{ form.first_choice }}
