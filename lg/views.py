@@ -31,36 +31,41 @@ def lgform(request):
     return render_to_response('tnq_site/lg/lg_form.html', context)
     
 
-plain_message = """Dear %s,
-Thank you for signing up for a portrait for your living group. Just as a confirmation for your records, here is the information we received:
+plain_message = """
+Dear %s,
+Thank you for including your living group's portraits in Technique %s.
+
+As a confirmation for your records, here is the information we received:
 
 Living group name: %s
 Contact phone number: %s
 
-First time choice: %s
-Second time choice: %s
-Third time choice: %s
-Alternative time choice: %s
+First choice: %s
+Second choice: %s
+Third choice: %s
+Alternative time: %s
 
 Location: %s
 Comments: %s
 
-We will be contacting you in the next few days to schedule the portrait. Once we finalize the date and time, please make sure to remind the other members of your group multiple time.
+We will be contacting you in the next few days to schedule the portrait. Once we agree on a time, please remind the other members of your group multiple times in advance to ensure that your group is well represented.
 
-While getting the portrait in the yearbook is free, consider these optional packages:
-* A full page dedicated to your group with a diagram labeling every member for %s
-* Your group's logo or crest next to your photo for %s
-* A digital copy of your photo for %s
-Let us know if you would like to pursue any of these options. Payment can be made by SAO account transfer, cash, or check made out to "MIT Technique" and can be given to the photographer on the day of your portrait.
+While getting the portrait in the yearbook is free, please consider these optional packages:
+-Your group's logo or crest next to the portrait in the yearbook for $%s
+-A full page in the yearbook dedicated to your group with a diagram labeling every member for $%s
+-A full resolution digital copy of your photo for $%s
+
+Let us know if you would like to pursue any of these options. Payment can be made by SAO account transfer, cash, or check made out to &quot;MIT Technique&quot; and can be given to the photographer on the day of your portrait.
 
 Please don't hesitate to email us at tnq-lg@mit.edu if you have any questions.
+
 Sincerely,
-The Staff of Technique %s
+		The Staff of Technique %s<
 """
 
-html_message = """<div><b><font size='4'>Dear %s,</font></b></div>
+html_message = """<div><b>Dear %s,</b></div>
 	<div>
-		Thank you for signing up for a portrait for your living group. Just as a confirmation for your records, here is the information we received:
+		Thank you for including your living group's portraits in Technique %s. As a confirmation for your records, here is the information we received:
 	</div>
 	<div>
 		<br>
@@ -75,16 +80,16 @@ html_message = """<div><b><font size='4'>Dear %s,</font></b></div>
 		<br>
 	</div>
 	<div>
-		<b>First time choice:</b> %s
+		<b>First choice:</b> %s
 	</div>
 	<div>
-		<b>Second time choice:</b> %s
+		<b>Second choice:</b> %s
 	</div>
 	<div>
-		<b>Third time choice:</b> %s
+		<b>Third choice:</b> %s
 	</div>
 	<div>
-		<b>Alternative time choice:</b> %s
+		<b>Alternative time:</b> %s
 	</div>
 	<div>
 		<br>
@@ -99,7 +104,7 @@ html_message = """<div><b><font size='4'>Dear %s,</font></b></div>
 		<br>
 	</div>
 	<div>
-		We will be contacting you in the next few days to schedule the portrait. Once we finalize the date and time, please <b>make sure to remind the other members of your group</b> multiple times.
+		We will be contacting you in the next few days to schedule the portrait. Once we agree on a time, <b>please remind the other members of your group multiple times in advance</b> to ensure that your group is well represented.
 	</div>
 	<div>
 		<br>
@@ -109,11 +114,11 @@ html_message = """<div><b><font size='4'>Dear %s,</font></b></div>
 	</div>
 	<div>
 		<ul>
-			<li>A full page dedicated to your group with a diagram labeling every member for $%s<br>
+			<li>Your group&#39;s logo or crest next to the portrait in the yearbook for $%s<br>
 			</li>
-			<li>Your group&#39;s logo or crest next to your photo for $%s<br>
+			<li>A full page in the yearbook dedicated to your group with a diagram labeling every member for $%s<br>
 			</li>
-			<li>A digital copy of your photo for $%s<br>
+			<li>A full resolution digital copy of your photo for $%s<br>
 			</li>
 		</ul>
 	</div>
@@ -145,6 +150,7 @@ def sendemail(lg):
     subject = "Portrait of %s for the %s yearbook" % (lg.lg_name, lg.year)
     
     plugin = (lg.rep_name,
+              lg.year,
               lg.lg_name,
               lg.rep_phone, 
               tf(lg.first_choice), 

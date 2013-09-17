@@ -14,6 +14,8 @@
 
 {% block content %}
 {% technique_setting 'tnq_year' as tnq_year %}
+{% technique_setting "lg_ghostie_cost" as lg_ghostie_cost %}
+
 <article>
     <h1>Living Groups, schedule a group photo</h1>
     <h2>We want your living group to appear in the MIT yearbook, <em>Technique {{ tnq_year }}</em>.</h2>
@@ -54,7 +56,7 @@
         </a>
         
         <p>
-            For <strong>$150</strong>, your group will be guaranteed a full page in the yearbook along with a "ghostie" diagram labeled with the names of everyone in the picture.
+            For <strong>${{ lg_ghostie_cost }}</strong>, your group will be guaranteed a full page in the yearbook along with a "ghostie" diagram labeled with the names of everyone in the picture.
         </p>
         <p>
             With this purchase, your group will also be provided with <strong>full resolution file</strong> for your living group's use.
