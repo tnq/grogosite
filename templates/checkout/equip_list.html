@@ -2,28 +2,34 @@
 
         <h2>{{ table_name }}</h2>
         <table>
-            <tr><th>Brand / Model</th><th>Name</th>{% if user|in_group:"manboard" %}<th>Checker-Outer</th>{% endif %}<th>Due Date</th></tr>
+            <tr><th>Brand / Model</th><th>Name</th><th>Staph</th>{% if user|in_group:"manboard" %}<th>Phone</th>{% endif %}<th>Due Date</th></tr>
             {% for equipment in equip_list %}
             <tr>
                 <td>{{ equipment.brand }} {{ equipment.model }}</td><td>{{ equipment }}</td>
+                {% if equipment.current_user %}
+                    <td><a href = "mailto:{{ equipment.current_user.user.email }}">{{ equipment.current_user }}</a></td> 
+                {% else %}
+                    <td>-</td>
+                {% endif %}
                 {% if user|in_group:"manboard" %}
                     {% if equipment.current_user %}
-                        <td>{{ equipment.current_user }}</td>
+                        <td><a href = "tel:+{{ equipment.current_user.phone }}"> {{ equipment.current_user.phone }} </a></td>
                     {% else %}
-                        <td>-</td>
+                        <td> </td>
                     {% endif %}
                 {% endif %}
 
+            <td class="equipment_out"> 
             {% if equipment.current_checkout %}
                 {% if equipment.is_overdue %}
-                    <td class="equipment_overdue">
+                    <span style="color:red;">{{ equipment.current_checkout.date_due|date:"D, M j" }}</span>
                 {% else %}
-                    <td class="equipment_out">
+                    {{ equipment.current_checkout.date_due|date:"D, M j" }}
                 {% endif %}
-                    {{ equipment.current_checkout.date_due|date:"D, M j, Y" }}</td>
             {% else %}
-                <td class="equipment_id">-</td>
+                -
             {% endif %}
+            </td>
             </tr>
             {% endfor %}
         </table>

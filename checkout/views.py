@@ -73,13 +73,15 @@ def view_equipment(request):
     memory_cards = Equipment.objects.filter(equip_type="MEMORY").order_by("brand","-model")
     external_flashes = Equipment.objects.filter(equip_type="EXTERNAL_FLASH").order_by("brand","-model")
 
-#key_func = lambda r: r.date_due() if r.date_due() else datetime(1990,01,01,00,00,00,00)
+    key_func = lambda r: r.date_due() if r.date_due() else datetime(3000,01,01,00,00,00,00)
 
-#digital_cameras = sorted(digital_cameras, key=key_func)
-#film_cameras = sorted(film_cameras, key=key_func)
-#medium_cameras = sorted(medium_cameras, key=key_func)
-#large_cameras = sorted(large_cameras, key=key_func)
-#lenses = sorted(lenses, key=key_func)
+    digital_cameras = sorted(digital_cameras, key=key_func)
+    film_cameras = sorted(film_cameras, key=key_func)
+    medium_cameras = sorted(medium_cameras, key=key_func)
+    large_cameras = sorted(large_cameras, key=key_func)
+    lenses = sorted(lenses, key=key_func)
+    memory_cards = sorted(memory_cards, key = key_func)
+    external_flashes = sorted(external_flashes, key = key_func)
 
     return render_to_response('checkout/view_equipment.html', { 'digital_cameras'   : digital_cameras,
                                                                 'film_cameras'      : film_cameras,
