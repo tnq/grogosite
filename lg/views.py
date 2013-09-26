@@ -159,8 +159,8 @@ def sendemail(lg):
               lg.alternative_choice, 
               lg.location, 
               lg.comments, 
-              Setting.objects.get(tag="lg_ghostie_cost").value,
               Setting.objects.get(tag="lg_crest_cost").value,
+              Setting.objects.get(tag="lg_ghostie_cost").value,
               Setting.objects.get(tag="lg_file_cost").value,
               lg.year)
     
