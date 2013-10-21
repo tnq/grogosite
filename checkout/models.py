@@ -42,6 +42,7 @@ class Equipment(models.Model):
                         ('LARGE_FORMAT_BACK', 'Large-Format Back'),
                         ('POLAROID', 'Polaroid Camera'),
                         ('CHARGER', 'Charger'),
+                        ('COMPUTER', 'Computer'),
                         ('BATTERY', 'Battery'),
                         ('BAG', 'Equipment Case'),
                         ('SNAX', 'Snacks'),
