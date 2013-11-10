@@ -3,8 +3,8 @@ from django.contrib import admin
 import datetime
 
 class EquipmentAdmin(admin.ModelAdmin):
-    list_display = ('pet_name', 'equip_type', 'brand', 'model', 'barcode_id', 'active', 'current_user', )
-    list_filter = ('equip_type','brand')
+    list_display = ('pet_name', 'equip_type', 'brand', 'model', 'barcode_id', 'active', 'current_user', 'checkout_hours')
+    list_filter = ('equip_type','status','brand')
     fieldsets = (
         ('Technique Information', { 
             'fields':('barcode_id', 'pet_name', 'checkout_hours', 'status'),

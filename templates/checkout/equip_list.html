@@ -6,30 +6,35 @@
             {% for equipment in equip_list %}
             <tr>
                 <td>{{ equipment.brand }} {{ equipment.model }}</td><td>{{ equipment }}</td>
-                {% if equipment.current_user %}
-                    <td><a href = "mailto:{{ equipment.current_user.user.email }}">{{ equipment.current_user }}</a></td> 
-                {% else %}
-                    <td>-</td>
-                {% endif %}
-                {% if user|in_group:"manboard" %}
+                
+                {% if equipment.active %}
                     {% if equipment.current_user %}
-                        <td><a href = "tel:+{{ equipment.current_user.phone }}"> {{ equipment.current_user.phone }} </a></td>
+                        <td><a href = "mailto:{{ equipment.current_user.user.email }}">{{ equipment.current_user }}</a></td> 
                     {% else %}
-                        <td> </td>
+                        <td>-</td>
                     {% endif %}
-                {% endif %}
+                    {% if user|in_group:"manboard" %}
+                        {% if equipment.current_user %}
+                            <td><a href = "tel:+{{ equipment.current_user.phone }}"> {{ equipment.current_user.phone }} </a></td>
+                        {% else %}
+                            <td> </td>
+                        {% endif %}
+                    {% endif %}
 
-            <td class="equipment_out"> 
-            {% if equipment.current_checkout %}
-                {% if equipment.is_overdue %}
-                    <span style="color:red;">{{ equipment.current_checkout.date_due|date:"D, M j" }}</span>
+                    <td class="equipment_out"> 
+                    {% if equipment.current_checkout %}
+                        {% if equipment.is_overdue %}
+                            <span style="color:red;">{{ equipment.current_checkout.date_due|date:"D, M j" }}</span>
+                        {% else %}
+                            {{ equipment.current_checkout.date_due|date:"D, M j" }}
+                        {% endif %}
+                    {% else %}
+                        -
+                    {% endif %}
+                    </td>
                 {% else %}
-                    {{ equipment.current_checkout.date_due|date:"D, M j" }}
+                    <td colspan="3" style = "font-style:italic;color:#AA7777;"> {{ equipment.get_status_display }} </td>
                 {% endif %}
-            {% else %}
-                -
-            {% endif %}
-            </td>
             </tr>
             {% endfor %}
         </table>
