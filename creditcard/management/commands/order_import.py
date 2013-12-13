@@ -9,8 +9,16 @@ import csv
 import datetime
 import mechanize
 import yaml
+from optparse import make_option
 
 class Command(BaseCommand):
+    option_list = BaseCommand.option_list + (
+        make_option('--days',
+                    dest='days',
+                    type='int',
+                    default=14,
+                    help='Number of days to import orders from'),
+        )
 
     def handle(self, *args, **options):
         br = mechanize.Browser(factory=mechanize.RobustFactory())
@@ -26,7 +34,7 @@ class Command(BaseCommand):
         br["password"] = settings.TNQ_CC_PASSWORD
         br["merchantId"] = settings.TNQ_CC_MERCHANT_ID
 
-        br["dateFrom"] = (datetime.datetime.now()-datetime.timedelta(days=14)).strftime("%m/%d/%Y")
+        br["dateFrom"] = (datetime.datetime.now()-datetime.timedelta(days=options['days'])).strftime("%m/%d/%Y")
         br["dateTo"] = datetime.datetime.now().strftime("%m/%d/%Y")
 
         br.submit(label="load")
