@@ -1,6 +1,7 @@
 # Create your views here.
 from django.shortcuts import render_to_response
 from creditcard.models import Purchaser, LineItem, Patron
+from mainsite.models import Setting
 from django.core.context_processors import csrf
 from django.contrib.auth.decorators import login_required
 from django import forms
@@ -33,7 +34,6 @@ import csv, time
 def create_orders_from_file(reader):
     """Process the Cybersource CSV orders file into Purchasers and LineItems."""
 
-    current_year = "2011"
     returnlist = []
     for order in reader:
         paymentid = order['Merchant Reference Number'].strip("'")
@@ -148,12 +148,17 @@ def graph_dates(request):
     toutc = datetime.timedelta(hours=-5)
     plusday = datetime.timedelta(days=1)
 
+    try:
+        current_year = int(Setting.objects.get(tag='tnq_year').value)
+    except ObjectDoesNotExist:
+        current_year = 2013
+
     # Exclude undelivered books
     delivered_books = LineItem.objects.exclude(deliverydate=None)
     # Exclude voided books
     delivered_books = delivered_books.exclude(deliverytype="v")
     # Only include 2013 books
-    delivered_books = delivered_books.filter(year=2013)
+    delivered_books = delivered_books.filter(year=current_year)
 
     delivered_books = delivered_books.order_by("deliverydate")
     ddate = lambda x: x.deliverydate
@@ -182,7 +187,12 @@ def graph_dates(request):
 
     for (year, purchasedate), group in groupby(sold_books, key=lambda x: (x.year, x.purchaser.purchasedate)):
         epoch_time = datetime.datetime.combine(purchasedate, midnight)
-        epoch_time = epoch_time.replace(year=2012+int(epoch_time.year)-int(year))
+        try:
+            epoch_time = epoch_time.replace(year=current_year+int(epoch_time.year)-int(year))
+        except ValueError:
+            # Leap years, bah
+            epoch_time = epoch_time.replace(year=current_year+int(epoch_time.year)-int(year),
+                                            day=28)
         epoch_time = 1000*time.mktime((epoch_time+toutc).utctimetuple())
         num = len(list(group))
         sales[year] += [[epoch_time, num]]
