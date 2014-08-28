@@ -5,6 +5,11 @@ import os.path, sys
 DEBUG = True 
 TEMPLATE_DEBUG = DEBUG
 
+ALLOWED_HOSTS = [
+    'technique.mit.edu',
+    'yearbook.scripts.mit.edu',
+]
+
 ADMINS = (
     ('TNQ Techno', 'tnq-techno@mit.edu'),
 )
