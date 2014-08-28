@@ -160,7 +160,7 @@ INSTALLED_APPS = (
     'dajaxice',
     'dajax',
     'checkout',
-    'massadmin',
+#    'massadmin',
     'lg',
 )
 
@@ -268,38 +268,38 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "staticfiles.context_processors.static",
 )
 
-MIDDLEWARE_CLASSES += (
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'versionutils.versioning.middleware.AutoTrackUserInfoMiddleware',
-    'redirects.middleware.RedirectFallbackMiddleware',
-)
+# MIDDLEWARE_CLASSES += (
+#     'django.contrib.messages.middleware.MessageMiddleware',
+#     'versionutils.versioning.middleware.AutoTrackUserInfoMiddleware',
+#     'redirects.middleware.RedirectFallbackMiddleware',
+# )
 
-INSTALLED_APPS += (
-    'django.contrib.gis',
-    'django.contrib.messages',
-    'django.contrib.sites',
+# INSTALLED_APPS += (
+#     'django.contrib.gis',
+#     'django.contrib.messages',
+#     'django.contrib.sites',
 
-    # Other third-party apps
-    'haystack',
-    'olwidget',
-    'registration',
-    'sorl.thumbnail',
-    'guardian',
-    'south',
-    'staticfiles',
+#     # Other third-party apps
+#     'haystack',
+#     'olwidget',
+#     'registration',
+#     'sorl.thumbnail',
+#     'guardian',
+#     'south',
+#     'staticfiles',
 
-    # Our apps
-    'versionutils.versioning',
-    'versionutils.diff',
-    'ckeditor',
-    'pages',
-    'maps',
-    'users',
-    'recentchanges',
-    'search',
-    'redirects',
-    'utils',
-)
+#     # Our apps
+#     'versionutils.versioning',
+#     'versionutils.diff',
+#     'ckeditor',
+#     'pages',
+#     'maps',
+#     'users',
+#     'recentchanges',
+#     'search',
+#     'redirects',
+#     'utils',
+# )
 
 SITE_THEME = 'sapling'
 
