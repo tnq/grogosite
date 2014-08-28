@@ -6,9 +6,9 @@
         <h1>Welcome, {{ new_user.first_name }}!</h1>
     </hgroup>
     
-    <p>Now that you have an account, you can check out equipment with the help of any <a href={% url tnq_about %}> Manboard Member</a>.  You can also find out more about Technique by visiting our wiki at <a href="http://technique.mit.edu/wiki/">http://technique.mit.edu/wiki/</a>.</p>
+    <p>Now that you have an account, you can check out equipment with the help of any <a href={% url "tnq_about" %}> Manboard Member</a>.  You can also find out more about Technique by visiting our wiki at <a href="http://technique.mit.edu/wiki/">http://technique.mit.edu/wiki/</a>.</p>
     
-    <p>{{ user.first_name }}, you can log out by clicking <a href={% url logout-page %}>here</a>.</p>
+    <p>{{ user.first_name }}, you can log out by clicking <a href={% url "logout-page" %}>here</a>.</p>
    
 </article>
 {% endblock %}

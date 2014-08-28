@@ -8,6 +8,7 @@ TEMPLATE_DEBUG = DEBUG
 ALLOWED_HOSTS = [
     'technique.mit.edu',
     'yearbook.scripts.mit.edu',
+    '*',
 ]
 
 ADMINS = (
@@ -158,6 +159,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.staticfiles',
+    'localflavor',
     'creditcard',
     'seniors',
     'mainsite',

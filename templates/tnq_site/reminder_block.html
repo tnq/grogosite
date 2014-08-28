@@ -4,5 +4,5 @@
 <section id="reminder">
     <h3>Don’t forget to {% if preorder_active != '0' %}pre-order{% else %}order{% endif %} your copy of <em>Technique {{tnq_year}}</em> for <strong>{% if preorder_active != '0' %}$90{% else %}$120{% endif %}</strong>.</h3>
     <p>Books will arrive in May before graduation.{% if preorder_active != '0' %} Prices will go back to $120 after February 10th.{% endif %}</p>
-    <a class="button preorder" href={% url buy_book 2013 %}>{% if preorder_active != '0' %}Pre-order{% else %}Order{% endif %} <em>Technique {{ tnq_year }}</em></a>
+    <a class="button preorder" href={% url "buy_book" 2013 %}>{% if preorder_active != '0' %}Pre-order{% else %}Order{% endif %} <em>Technique {{ tnq_year }}</em></a>
 </section>

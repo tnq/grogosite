@@ -21,14 +21,14 @@ class SeniorForm(ModelForm):
             'quote': forms.TextInput(attrs={'placeholder': 'ex: Science is a way of thinking much more than it is a body of knowledge.','size':'60'}),
             'quote_author': forms.TextInput(attrs={'placeholder': 'ex: Carl Sagan','size':'30'}),
         }
-        exclude = ('tnq_year')
+        exclude = ('tnq_year',)
 
 class ActivityForm(ModelForm):
     error_css_class = 'error'
     required_css_class = 'required'
     class Meta:
         model = Activity
-        exclude = ('senior')
+        exclude = ('senior',)
         widgets = {
             'title': forms.TextInput(attrs={'placeholder': 'ex: Underwater Basketweaving Society','size':'30'}),
             'years': forms.TextInput(attrs={'placeholder': 'ex: 2 3 4','size':'30'}),

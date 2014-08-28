@@ -7,7 +7,7 @@
         <h2>Fill out the fields below and you can check out equipment!</h2>
     </hgroup>
     
-    <form action={% url tnq_add_user %} method="post">{% csrf_token %}
+    <form action={% url "tnq_add_user" %} method="post">{% csrf_token %}
     
     {{ form.as_p }}
     <input type="submit" value="Submit" />

@@ -56,7 +56,7 @@ class LivingGroupForm(ModelForm):
             'comments'          : forms.Textarea(            attrs = {'placeholder' : 'Example: The outlet might far away, so bring a long extension cable.', 'cols': '60', 'rows':'4'}),
             'captcha'           : ReCaptcha()
         }
-        exclude = ('year')
+        exclude = ('year',)
     
     first_choice = SplitDateTimeField(input_date_formats = ['%m/%d/%Y'], input_time_formats = ['%I:%M%p'])
     second_choice = SplitDateTimeField(input_date_formats = ['%m/%d/%Y'], input_time_formats = ['%I:%M%p'])

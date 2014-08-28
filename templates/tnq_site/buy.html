@@ -21,7 +21,7 @@
             <p>Your copy of <em>Technique {{ tnq_year }}</em>, the current volume, can be {% if preorder_active != '0' %}pre-ordered{% else %}ordered{% endif %} today for <strong>{% if preorder_active != '0' %}$90{% else %}$120{% endif %}</strong>.</p>
         </div>
         <div class="order-links">
-            <a href="{% url buy_book tnq_year %}" class="button preorder"><strong>{% if preorder_active != '0' %}Pre-order{% else %}Order{% endif %}</strong> <em>Technique {{ tnq_year }}</em></a>
+            <a href="{% url "buy_book" tnq_year %}" class="button preorder"><strong>{% if preorder_active != '0' %}Pre-order{% else %}Order{% endif %}</strong> <em>Technique {{ tnq_year }}</em></a>
             {% if preorder_active != '0' %}<p>Book prices will rise to <strong>$120</strong> after March 28th.</p>{% endif %}
         </div>
     </section>
@@ -33,8 +33,8 @@
             <p>{% if preorder_active != '0' %}Pre-order{% else %}Order{% endif %} the Senior Bundle (<em>Technique {{ tnq_year|add:'-3' }}</em> to <em>{{ tnq_year }}</em>) today for <strong>$390</strong>. <span>(A $90 discount)</span></p>
         </div>
         <div class="order-links">
-            <a href="{% url buy_freshman_bundle %}" class="button bundle freshman"><strong>Get the Freshman Bundle</strong> (<em>Technique {{ tnq_year }}</em> to <em>{{ tnq_year|add:'3' }}</em>)</a>
-            <a href="{% url buy_senior_bundle %}" class="button bundle senior"><strong>Get the Senior Bundle</strong> (<em>Technique {{ tnq_year|add:'-3' }}</em> to <em>{{ tnq_year }}</em>)</a>
+            <a href="{% url "buy_freshman_bundle" %}" class="button bundle freshman"><strong>Get the Freshman Bundle</strong> (<em>Technique {{ tnq_year }}</em> to <em>{{ tnq_year|add:'3' }}</em>)</a>
+            <a href="{% url "buy_senior_bundle" %}" class="button bundle senior"><strong>Get the Senior Bundle</strong> (<em>Technique {{ tnq_year|add:'-3' }}</em> to <em>{{ tnq_year }}</em>)</a>
         </div>
     </section>
     
@@ -55,7 +55,7 @@
         <h1><em>Techniques</em> from previous years</h1>
         <h2>We maintain an extensive archive of <em>Techniques</em> from past years.</h2>
     </hgroup>
-    <form action="{% url tnq_buy %}#bookform" method=post id="bookform">{% csrf_token %}
+    <form action="{% url "tnq_buy" %}#bookform" method=post id="bookform">{% csrf_token %}
         <p>Please enter in the year of <em>Technique</em> you are interested in (ex: 2008, 2009):</p>
         {% if form.year.errors %}<p>{{ form.year.errors }} </p>{% endif %}
         {{ form.year }}
@@ -68,6 +68,6 @@
         <h1>Become a Patron, get <em>Technique {{ patron_year }}</em></h1>
         <h2>Technique cannot exist without the support of generous donors. If you are interested in supporting us, please become a patron for <em>Technique {{patron_year}}</em>.</h2>
     </hgroup>
-    <a href="{% url buy_patron %}" class="button patron">Become a Patron</a>
+    <a href="{% url "buy_patron" %}" class="button patron">Become a Patron</a>
 </article>
 {% endblock %}

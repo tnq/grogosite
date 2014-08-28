@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.models import Group
-from django.contrib.localflavor.us.forms import USPhoneNumberField
+from localflavor.us.forms import USPhoneNumberField
 from django.core.cache import cache
 from django.core.context_processors import csrf
 from django.core.exceptions import ObjectDoesNotExist
