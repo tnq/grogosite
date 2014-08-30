@@ -60,11 +60,13 @@ DJANGO_ROOT = os.path.join( os.path.dirname(os.path.abspath(__file__)) )
 
 #Add wiki to path so apps can be imported without localwiki.sapling prefix
 sys.path.append( os.path.join(DJANGO_ROOT, "localwiki") )
-sys.path.append( os.path.join(DJANGO_ROOT, "localwiki", "sapling") )
+sys.path.append( os.path.join(DJANGO_ROOT, "localwiki", "localwiki") )
 sys.path.append( os.path.join(DJANGO_ROOT, "django-mass-edit") )
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/admin/'
+
+SUBSCRIBE_MESSAGE = """I would like to receive occasional updates about this wiki via email."""
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -189,7 +191,7 @@ LOGIN_REQUIRED_URLS = (
     '/wiki/',
 )
 
-PROJECT_ROOT = 'localwiki/sapling'
+PROJECT_ROOT = 'localwiki/localwiki'
 
 # users app settings
 USERS_ANONYMOUS_GROUP = 'Anonymous'
@@ -250,7 +252,7 @@ HAYSTACK_CONNECTIONS = {
     },
 }
 
-HAYSTACK_SITECONF = 'sapling.search_sites'
+HAYSTACK_SITECONF = 'localwiki.main.search_sites'
 HAYSTACK_SEARCH_ENGINE = 'dummy'
 
 THUMBNAIL_BACKEND = 'utils.sorl_backends.AutoFormatBackend'
@@ -269,44 +271,53 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.csrf",
     "django.core.context_processors.media",
     "django.core.context_processors.static",
-    "staticfiles.context_processors.static",
     "django.contrib.messages.context_processors.messages",
     "django.core.context_processors.request",
-    "staticfiles.context_processors.static",
 )
 
-# MIDDLEWARE_CLASSES += (
-#     'django.contrib.messages.middleware.MessageMiddleware',
-#     'versionutils.versioning.middleware.AutoTrackUserInfoMiddleware',
-#     'redirects.middleware.RedirectFallbackMiddleware',
-# )
+#SOUTH_MIGRATION_MODULES = {
+#    # HACK: South treats 'database' as the name of constance.backends.database
+#    'database': 'migrations.south.constance',
+#}
 
-# INSTALLED_APPS += (
-#     'django.contrib.gis',
-#     'django.contrib.messages',
-#     'django.contrib.sites',
+MIDDLEWARE_CLASSES += (
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'versionutils.versioning.middleware.AutoTrackUserInfoMiddleware',
+    'redirects.middleware.RedirectFallbackMiddleware',
+)
 
-#     # Other third-party apps
-#     'haystack',
-#     'olwidget',
-#     'registration',
-#     'sorl.thumbnail',
-#     'guardian',
-#     'south',
-#     'staticfiles',
+INSTALLED_APPS += (
+    'django.contrib.gis',
+    'django.contrib.messages',
+    'django.contrib.sites',
 
-#     # Our apps
-#     'versionutils.versioning',
-#     'versionutils.diff',
-#     'ckeditor',
-#     'pages',
-#     'maps',
-#     'users',
-#     'recentchanges',
-#     'search',
-#     'redirects',
-#     'utils',
-# )
+    # Other third-party apps
+    'haystack',
+    'olwidget',
+    'registration',
+    'sorl.thumbnail',
+    'guardian',
+    'south',
+    'tastypie',
+    'honeypot',
+    'constance.backends.database',
+    'constance',
+
+    # Our apps
+    'versionutils.versioning',
+    'versionutils.diff',
+    'ckeditor',
+    'pages',
+    'maps',
+    'redirects',
+    'tags',
+    'users',
+    'recentchanges',
+    'search',
+    'dashboard',
+    'main.api',
+    'utils',
+)
 
 SITE_THEME = 'sapling'
 
@@ -340,8 +351,8 @@ TEMPLATE_DIRS += (
 )
 
 STATICFILES_FINDERS = (
-    "staticfiles.finders.FileSystemFinder",
-    "staticfiles.finders.AppDirectoriesFinder"
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder"
 )
 
 _global_theme_dir = os.path.join(PROJECT_ROOT, 'themes', SITE_THEME, 'assets')
@@ -350,6 +361,15 @@ if os.path.exists(_global_theme_dir):
     STATICFILES_DIRS += (('theme', _global_theme_dir),)
 
 STATIC_ROOT = os.path.join(DJANGO_ROOT, "staticfiles")
+
+CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
+CONSTANCE_DATABASE_CACHE_BACKEND = 'default'
+
+CONSTANCE_CONFIG = {
+    'GOOGLE_ANALYTICS_ID': ('', 'UA-* identifier to pass to GA _setAccount'),
+    'GOOGLE_ANALYTICS_SUBDOMAINS': ('', 'Subdomain value to pass to GA _setDomainName'),
+    'GOOGLE_ANALYTICS_MULTIPLE_TOPLEVEL_DOMAINS': ('', 'Truthy/Falsey value to trigger GA _setAllowLinker'),
+}
 
 if os.path.exists("settings_private.py"):
     execfile("settings_private.py")
