@@ -4,7 +4,6 @@ from django.views.generic import TemplateView, RedirectView
 import django.contrib.auth.views
 from django.conf import settings
 from django.contrib import admin
-#import massadmin.massadmin
 
 admin.autodiscover()
 
@@ -36,7 +35,7 @@ urlpatterns = patterns('',
     url(r'favicon\.gif/$', RedirectView.as_view(url=settings.STATIC_URL + 'images/favicon.gif')),
 
     # Admin page
-#    (r'^admin/', include(massadmin.massadmin.urls)),
+    (r'^admin/', include('massadmin.urls')),
     (r'^admin/', include(admin.site.urls)),
     url(r'^login/', 'django.contrib.auth.views.login', name='login-page'),
     url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout-page'),

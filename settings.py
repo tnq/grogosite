@@ -167,7 +167,7 @@ INSTALLED_APPS = (
     'dajaxice',
     'dajax',
     'checkout',
-#    'massadmin',
+    'massadmin',
     'lg',
 )
 
