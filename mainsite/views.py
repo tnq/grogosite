@@ -6,14 +6,15 @@ from django.core.cache import cache
 from django.core.context_processors import csrf
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse
+from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 
 from datetime import datetime
-from email.utils import mktime_tz, parsedate_tz
 from urllib2 import urlopen
 from xml.etree import ElementTree
+import tweepy
 
 from checkout.models import User
 
@@ -38,12 +39,16 @@ def index(request):
     tweet, tweet_date = cache.get("tweet", [None, None])
     if tweet is None:
         try:
-            item = ElementTree.parse(urlopen("http://tweet-2-rss.appspot.com/feed/hrhgrogo/pavDz4bx/statuses/user_timeline.json?screen_name=hrhgrogo")).find(".//item")
-            tweet = item.findtext("title").replace("hrhgrogo: ", "")
+            auth = tweepy.OAuthHandler(settings.TWITTER_CONSUMER_KEY, settings.TWITTER_CONSUMER_SECRET)
+            auth.set_access_token(settings.TWITTER_ACCESS_TOKEN, settings.TWITTER_ACCESS_TOKEN_SECRET)
 
-            tweet_date = item.findtext("pubDate")
-            tweet_date = mktime_tz(parsedate_tz(tweet_date))
-            tweet_date = datetime.fromtimestamp(tweet_date)
+            api = tweepy.API(auth)
+
+            tweets = api.user_timeline(count=1, exclude_replies=True)
+
+            tweet = tweets[0].text
+
+            tweet_date = tweets[0].created_at
             tweet_date = tweet_date.strftime("%e %b")
         except:
             tweet = ""
