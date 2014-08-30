@@ -1,7 +1,7 @@
 {% extends "admin/base_site.html" %}
-{% load i18n %}
+{% load i18n admin_static %}
 
-{% block extrastyle %}{% load adminmedia %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% admin_media_prefix %}css/login.css" />{% endblock %}
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/login.css" %}" />{% endblock %}
 
 {% block bodyclass %}login{% endblock %}
 
@@ -14,7 +14,7 @@
 {% block content %}
 {% if form.errors and not form.non_field_errors and not form.this_is_the_login_form.errors %}
 <p class="errornote">
-{% blocktrans count form.errors.items|length as counter %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
+{% if form.errors.items|length == 1 %}{% trans "Please correct the error below." %}{% else %}{% trans "Please correct the errors below." %}{% endif %}
 </p>
 {% endif %}
 
@@ -30,15 +30,20 @@
 <form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
   <div class="form-row">
     {% if not form.this_is_the_login_form.errors %}{{ form.username.errors }}{% endif %}
-    <label for="id_username" class="required">{% trans 'Username:' %}</label> {{ form.username }}
+    <label for="id_username" class="required">{{ form.username.label }}:</label> {{ form.username }}
   </div>
   <div class="form-row">
     {% if not form.this_is_the_login_form.errors %}{{ form.password.errors }}{% endif %}
     <label for="id_password" class="required">{% trans 'Password:' %}</label> {{ form.password }}
     <input type="hidden" name="this_is_the_login_form" value="1" />
     <input type="hidden" name="next" value="{{ next }}" />
-    <p style="margin-left:114px;"><a href="{% url "password_reset" %}">Forgot password?</a></p>
   </div>
+  {% url 'admin_password_reset' as password_reset_url %}
+  {% if password_reset_url %}
+  <div class="password-reset-link">
+    <a href="{{ password_reset_url }}">{% trans 'Forgotten your password or username?' %}</a>
+  </div>
+  {% endif %}
   <div class="submit-row">
     <label>&nbsp;</label><input type="submit" value="{% trans 'Log in' %}" />
   </div>

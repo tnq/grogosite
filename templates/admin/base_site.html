@@ -1,10 +1,7 @@
 {% extends "admin/base.html" %}
 {% load i18n %}
-{% load static %}
 
 {% block title %}{{ title }} | {% trans 'Technique Administration' %}{% endblock %}
-
-{% block stylesheet %}{% get_static_prefix %}admin/css/base.css{% endblock %}
 
 {% block branding %}
 <h1 id="site-name">{% trans 'Technique Administration' %}</h1>
