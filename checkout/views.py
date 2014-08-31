@@ -69,6 +69,7 @@ def view_equipment(request):
     film_cameras = Equipment.objects.filter(equip_type="35MM_CAMERA").order_by("brand","-model")
     medium_cameras = Equipment.objects.filter(equip_type="MEDIUM_FORMAT_CAMERA").order_by("brand","-model")
     large_cameras = Equipment.objects.filter(equip_type="LARGE_FORMAT_CAMERA").order_by("brand","-model")
+    nikon_lenses = Equipment.objects.filter(equip_type="NIKON_LENS").order_by("brand","-model")
     lenses = Equipment.objects.filter(equip_type="LENS").order_by("brand","-model")
     memory_cards = Equipment.objects.filter(equip_type="MEMORY").order_by("brand","-model")
     external_flashes = Equipment.objects.filter(equip_type="EXTERNAL_FLASH").order_by("brand","-model")
@@ -88,6 +89,7 @@ def view_equipment(request):
                                                                 'film_cameras'      : film_cameras,
                                                                 'medium_cameras'    : medium_cameras,
                                                                 'large_cameras'     : large_cameras,
+                                                                'nikon_lenses'      : nikon_lenses,
                                                                 'lenses'            : lenses,
                                                                 'memory_cards'      : memory_cards,
                                                                 'external_flashes'  : external_flashes

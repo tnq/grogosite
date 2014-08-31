@@ -26,6 +26,7 @@ class User(DjangoUser):
 
 class Equipment(models.Model):
     equip_choices = (   ('CAMERA', 'Digital Camera'),
+                        ('NIKON_LENS', 'Nikon Lens'),
                         ('LENS', 'Lens'),
                         ('MEMORY', 'Memory Card'),
                         ('EXTERNAL_FLASH', 'External Flash'),
