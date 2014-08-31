@@ -43,7 +43,7 @@
     </hgroup>
     
     <section id = "lg_form">
-        <form action = {% url lg_signup %} method = "post">{% csrf_token %}
+        <form action = {% url "lg_signup" %} method = "post">{% csrf_token %}
             {{ form.non_field_errors }}
             <fieldset>
                 <legend>Contact information</legend>

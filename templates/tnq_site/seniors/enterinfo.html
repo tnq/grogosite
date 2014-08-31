@@ -19,13 +19,13 @@
         <h2>What do you want to have appear next to your photo?</h2>
     </hgroup>
     <aside>
-        <p>Note: This form is for filling out your biographical information to go with your senior photo in <em>Technique {{ tnq_year }}</em>. It is NOT for scheduling your senior portrait&mdash;for that, please go back to the <a href="{% url tnq_seniors %}">seniors page</a>.</p>
+        <p>Note: This form is for filling out your biographical information to go with your senior photo in <em>Technique {{ tnq_year }}</em>. It is NOT for scheduling your senior portrait&mdash;for that, please go back to the <a href="{% url "tnq_seniors" %}">seniors page</a>.</p>
         <p>Please fill out as many fields as you can.  You'll be able to review this information after you submit it, but changing it is somewhat of a hassle.</p>
-        <p>If you want, you can see <a href="{% url senior_email %}"> your previously submitted answers</a>.</p>
+        <p>If you want, you can see <a href="{% url "senior_email" %}"> your previously submitted answers</a>.</p>
         <p>If you have any questions or concerns please email us at <a href="mailto:tnq-seniors@mit.edu">tnq-seniors@mit.edu</a>.
     </aside>
     <section id="senior_bio_form">
-        <form action={% url submit_senior_info %} method="post">{% csrf_token %}
+        <form action={% url "submit_senior_info" %} method="post">{% csrf_token %}
             {{ seniorFormset.non_field_errors }}
             <fieldset id="basic_info">
                 <legend>The Basics</legend>

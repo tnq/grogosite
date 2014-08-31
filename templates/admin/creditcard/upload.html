@@ -16,7 +16,7 @@
     <h2>Upload Purchaser CSV</h2>
     {{ purchased_items|unordered_list }}
 
-    <form action={% url orders_upload %} enctype="multipart/form-data" method="post">{% csrf_token %}
+    <form action={% url "orders_upload" %} enctype="multipart/form-data" method="post">{% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Process File" />
     </form>
