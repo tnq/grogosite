@@ -19,9 +19,9 @@
 <div id="orderform"> 
     <form action="https://shopmitprd.mit.edu/controller/index.php?auto_submit=Y" method=post id="order_form"> 
     <input id="merchant_id" name="merchant_id" type="hidden" value="MIT_SAO_Technique" /> 
-    <input id="billTo_country" name="billTo_country" type="hidden" value="us" />
+    <input id="billTo_country" name="billTo_country" type="hidden" value="US" />
     <input id="shipTo_country" name="shipTo_country" type="hidden" value="" /> 
-    <input name="shipping_method" type="hidden" value=":none" />
+    <input name="shipping_method" type="hidden" value="none" />
     <input id="shipping_price" type="hidden" value="{{ shipping_price }}">
     
     {% block purchase_details %} 
