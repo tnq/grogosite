@@ -37,7 +37,8 @@ def create_orders_from_file(reader):
     returnlist = []
     for order in reader:
         paymentid = order['Merchant Reference Number'].strip("'")
-        line_items = [item.strip() for item in order['Comment'].split(',')]
+        comment = order['Comment'] or order['MerDatafield1']
+        line_items = [item.strip() for item in comment.split(',')]
         
         only_shipping = len(line_items) == 1 and line_items[0] == 'Shipping'
         already_loaded = Purchaser.objects.filter(paymentid = paymentid).count() != 0
