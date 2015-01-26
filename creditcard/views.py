@@ -43,7 +43,7 @@ def create_orders_from_file(reader):
         only_shipping = len(line_items) == 1 and line_items[0] == 'Shipping'
         already_loaded = Purchaser.objects.filter(paymentid = paymentid).count() != 0
         order_okay = order['ReplyRFlag'] in ["SOK", "SOK,SOK"]
-        is_reimbursement = order['Source'] == "UBC"
+        is_reimbursement = (order['Source'] == "UBC") or (order['ReplyName'] == "ics_auth_reversal")
 
         if not already_loaded and order_okay and not is_reimbursement:
             purchasedate = time.strftime("%Y-%m-%d",  time.strptime(order['Request Date'], "%b %d %Y %H:%M:%S %p"))
