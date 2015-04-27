@@ -18,6 +18,11 @@ class Command(BaseCommand):
                     type='int',
                     default=14,
                     help='Number of days to import orders from'),
+        make_option('--end',
+                    dest='end',
+                    type='int',
+                    default=0,
+                    help='Number of days in the past to start'),
         )
 
     def handle(self, *args, **options):
@@ -34,8 +39,10 @@ class Command(BaseCommand):
         br["password"] = settings.TNQ_CC_PASSWORD
         br["merchantId"] = settings.TNQ_CC_MERCHANT_ID
 
-        br["dateFrom"] = (datetime.datetime.now()-datetime.timedelta(days=options['days'])).strftime("%m/%d/%Y")
-        br["dateTo"] = datetime.datetime.now().strftime("%m/%d/%Y")
+        end = datetime.datetime.now()-datetime.timedelta(days=options['end'])
+
+        br["dateFrom"] = (end-datetime.timedelta(days=options['days'])).strftime("%m/%d/%Y")
+        br["dateTo"] = end.strftime("%m/%d/%Y")
 
         br.submit(label="load")
 
