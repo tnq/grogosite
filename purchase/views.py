@@ -43,6 +43,8 @@ def buy_form(request, purchase_option=None, book_year=None):
     #Pull these as request variables
     if not book_year:
         book_year = int(Setting.objects.get(tag="tnq_year").value)
+
+    one_shipping_price = int(Setting.objects.get(tag="shipping_price").value)
         
     if purchase_option:
         option = purchase_option
@@ -74,7 +76,7 @@ def buy_form(request, purchase_option=None, book_year=None):
             return render_to_response('tnq_site/buy/book_not_available.html', {'book_year' : book_year })
             
         amount = book.price            
-        shipping_price = int(Setting.objects.get(tag="shipping_price").value)
+        shipping_price = one_shipping_price
         
         order_tag = "%s-Book" % book_year
         order_tag_pretty = "a copy of Technique %s" % book_year
@@ -85,7 +87,8 @@ def buy_form(request, purchase_option=None, book_year=None):
     return render_to_response('tnq_site/buy/new_buy_form.html', {'order_tag' : order_tag,
                                                                  'order_tag_pretty' : order_tag_pretty,
                                                                  'amount' : amount,
-                                                                 'shipping_price' : shipping_price })
+                                                                 'shipping_price' : shipping_price,
+                                                                 'one_shipping_price' : one_shipping_price})
                                                                  
 def patron_form(request):
     try:
