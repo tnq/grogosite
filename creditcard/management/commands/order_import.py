@@ -23,6 +23,11 @@ class Command(BaseCommand):
                     type='int',
                     default=0,
                     help='Number of days in the past to start'),
+        make_option('--dump_csv',
+                    dest='dump_csv',
+                    action='store_true',
+                    default=False,
+                    help='Dump CSV to stdout'),
         )
 
     def handle(self, *args, **options):
@@ -53,6 +58,10 @@ class Command(BaseCommand):
         else:
             br.select_form(nr=0)
             csv_response = br.submit(name="export")
+
+            if options['dump_csv']:
+                csv_response = csv_response.readlines()
+                print ''.join(csv_response)
 
             reader = csv.DictReader(csv_response)
             returnlist = creditcard.views.create_orders_from_file(reader)
