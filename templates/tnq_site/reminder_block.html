@@ -1,8 +1,11 @@
 {% load site_settings %}
 {% technique_setting "tnq_year" as tnq_year %}
+{% technique_setting "base_price" as base_price %}
 {% technique_setting "preorder_active" as preorder_active %}
+{% technique_setting "preorder_end" as preorder_end %}
+{% technique_setting "preorder_price" as preorder_price %}
 <section id="reminder">
-    <h3>Don’t forget to {% if preorder_active != '0' %}pre-order{% else %}order{% endif %} your copy of <em>Technique {{tnq_year}}</em> for <strong>{% if preorder_active != '0' %}$90{% else %}$120{% endif %}</strong>.</h3>
-    <p>Books will arrive in May before graduation.{% if preorder_active != '0' %} Prices will go back to $120 after February 10th.{% endif %}</p>
-    <a class="button preorder" href={% url "buy_book" 2013 %}>{% if preorder_active != '0' %}Pre-order{% else %}Order{% endif %} <em>Technique {{ tnq_year }}</em></a>
+    <h3>Don’t forget to {% if preorder_active != '0' %}pre-order{% else %}order{% endif %} your copy of <em>Technique {{tnq_year}}</em> for <strong>{% if preorder_active != '0' %}${{ preorder_price }}{% else %}${{ base_price }}{% endif %}</strong>.</h3>
+    <p>Books will arrive in May before graduation.{% if preorder_active != '0' %} Prices will go back to ${{ base_price }} after {{ preorder_end }}.{% endif %}</p>
+    <a class="button preorder" href={% url "buy_book" tnq_year %}>{% if preorder_active != '0' %}Pre-order{% else %}Order{% endif %} <em>Technique {{ tnq_year }}</em></a>
 </section>
