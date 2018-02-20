@@ -8,7 +8,10 @@
 {% block content %}
 {% technique_setting "tnq_year" as tnq_year %}
 {% technique_setting "patron_year" as patron_year %}
+{% technique_setting "base_price" as base_price %}
 {% technique_setting "preorder_active" as preorder_active %}
+{% technique_setting "preorder_end" as preorder_end %}
+{% technique_setting "preorder_price" as preorder_price %}
 <article>
     <hgroup>
         <h1>Technique {{ tnq_year }}</h1>
@@ -18,11 +21,11 @@
     <section id="preorder">
         <h2>{% if preorder_active != '0' %}Pre-order{% else %}Order{% endif %} <em>Technique {{ tnq_year }}</em></h2>
         <div class="order-info">
-            <p>Your copy of <em>Technique {{ tnq_year }}</em>, the current volume, can be {% if preorder_active != '0' %}pre-ordered{% else %}ordered{% endif %} today for <strong>{% if preorder_active != '0' %}$90{% else %}$120{% endif %}</strong>.</p>
+            <p>Your copy of <em>Technique {{ tnq_year }}</em>, the current volume, can be {% if preorder_active != '0' %}pre-ordered{% else %}ordered{% endif %} today for <strong>{% if preorder_active != '0' %}${{ preorder_price }}{% else %}${{ base_price }}{% endif %}</strong>.</p>
         </div>
         <div class="order-links">
             <a href="{% url "buy_book" tnq_year %}" class="button preorder"><strong>{% if preorder_active != '0' %}Pre-order{% else %}Order{% endif %}</strong> <em>Technique {{ tnq_year }}</em></a>
-            {% if preorder_active != '0' %}<p>Book prices will rise to <strong>$120</strong> after March 28th.</p>{% endif %}
+            {% if preorder_active != '0' %}<p>Book prices will rise to <strong>${{ base_price }}</strong> after {{ preorder_end }}.</p>{% endif %}
         </div>
     </section>
     
