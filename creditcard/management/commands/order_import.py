@@ -34,15 +34,16 @@ class Command(BaseCommand):
         br = mechanize.Browser(factory=mechanize.RobustFactory())
 
         br.open(settings.TNQ_CC_URL)
-        br.select_form(name="interfaceForm")
+        br.select_form(name="interfaceSetup")
 
-        br["userName"] = settings.TNQ_CC_USERNAME
+        br["userName"] = settings.TNQ_CC_FIRST_USERNAME
 
         br.submit()
 
-        br.select_form(name="interfaceForm")
+        br.select_form(name="interface")
+        br["userName"] = settings.TNQ_CC_USERNAME
         br["password"] = settings.TNQ_CC_PASSWORD
-        br["merchantId"] = settings.TNQ_CC_MERCHANT_ID
+        br["merchantId"] = [settings.TNQ_CC_MERCHANT_ID]
 
         end = datetime.datetime.now()-datetime.timedelta(days=options['end'])
 
@@ -56,8 +57,8 @@ class Command(BaseCommand):
         if status:
             print status
         else:
-            br.select_form(nr=0)
-            csv_response = br.submit(name="export")
+            br.select_form(name="export")
+            csv_response = br.submit(name="action")
 
             if options['dump_csv']:
                 csv_response = csv_response.readlines()
