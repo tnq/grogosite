@@ -1,0 +1,5 @@
+django-localflavor
+django-mass-edit
+django-utils
+django==1.6
+django-tastypie
