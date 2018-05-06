@@ -1,6 +1,10 @@
 Wow we have a readme now
 
 # Setting Stuff up
+setup a virtualenv for python2.7 (so, "python2.7 -m venv env"
+"source env/bin/activate"
+pip2.7 install -r req.txt
+
 When you clone this repo, run "git clone --recursive ...".
 Check that localwiki is at commit "a0e8fa8", if it's not, run "git reset --hard a0e8fa8"
 make sure you have mysql installed ,if not, run "brew install mysql"
