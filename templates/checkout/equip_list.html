@@ -10,6 +10,8 @@
                 {% if equipment.active %}
                     {% if equipment.current_user %}
                         <td><a href = "mailto:{{ equipment.current_user.user.email }}">{{ equipment.current_user }}</a></td> 
+                    {% elif equipment.current_checkout_count %}
+                        <td style="color:red;">MULTIPLE CHECKOUTS</td>
                     {% else %}
                         <td>-</td>
                     {% endif %}

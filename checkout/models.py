@@ -3,7 +3,7 @@ from django.forms import ModelForm
 from django.contrib.auth.models import User as DjangoUser
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
-from django.core.exceptions import ObjectDoesNotExist
+from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 import datetime
 
 @receiver(pre_save)
@@ -85,27 +85,29 @@ class Equipment(models.Model):
             return self.checkouts.get(date_in=None)
         except ObjectDoesNotExist:
             return None
+        except MultipleObjectsReturned:
+            return None
+
+    def current_checkout_count(self):
+        return self.checkouts.filter(date_in=None).count()
 
     def date_due(self):
         current_checkout = self.current_checkout()
         if current_checkout:
             return current_checkout.date_due
-        else:
-            return None
+        return None
 
     def current_user(self):
         current_checkout = self.current_checkout()
         if current_checkout:
             return current_checkout.user
-        else:
-            return None
+        return None
 
     def is_overdue(self):
         date_due = self.date_due()
         if date_due:
             return datetime.datetime.now() > date_due
-        else:
-            return False
+        return False
 
     class Meta:
         verbose_name_plural = "Equipment"
